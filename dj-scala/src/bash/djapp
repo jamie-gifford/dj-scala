@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "X$SCALA_HOME" == "X" ] ; then
+  echo "Missing SCALA_HOME"
+  exit 1
+fi
+
+lib=$SCALA_HOME/lib
+bootcp=$lib/scala-compiler.jar:$lib/scala-library.jar:$lib/scala-reflect.jar:$lib/jline.jar:$lib/jline-2.12.jar
+
+java -Xbootclasspath/p:$bootcp -cp @cp@ au.com.thoughtpatterns.djs.app.App $@
+

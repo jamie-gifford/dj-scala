@@ -1,0 +1,768 @@
+package au.com.thoughtpatterns.djs.lib
+
+import java.io.File
+import au.com.thoughtpatterns.djs.clementine.Clementine
+import scala.util.Sorting
+import au.com.thoughtpatterns.djs.tag.TagFactory
+import au.com.thoughtpatterns.djs.disco.tangoinfo.Synchroniser
+import au.com.thoughtpatterns.djs.util.RecordingDate
+import scala.collection.AbstractIterator
+import au.com.thoughtpatterns.djs.disco.Disco.Source
+import au.com.thoughtpatterns.core.util.CsvUtils
+import java.io.PrintWriter
+import au.com.thoughtpatterns.djs.clementine.PlayerInterface
+import au.com.thoughtpatterns.djs.clementine.PlayerInterfaceFactory
+import au.com.thoughtpatterns.djs.webapp.DJSession
+import au.com.thoughtpatterns.djs.webapp.Desktop
+import java.io.FileWriter
+
+trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with Formatter {
+
+  def lib: Library
+
+  def maker: ManagedMaker[T, S]
+
+  protected def make(i: Iterable[T]) = maker.make(i)
+
+  private def musicIterable =
+    (this filter {
+      x => x match { case y: MusicFile => true case _ => false }
+    }).asInstanceOf[Iterable[MusicFile]]
+
+  private def playlistIterable =
+    (this filter {
+      x => x match { case y: PlaylistFile => true case _ => false }
+    }).asInstanceOf[Iterable[PlaylistFile]]
+
+  // Idiomatic?
+  def music = ManagedMusic(lib, musicIterable)
+  def m = music
+
+  def playlists = ManagedPlaylists(lib, playlistIterable)
+  def p = playlists
+
+  // --------------------------------
+  // Filters
+
+  def path(p: String) = filtre(_.file.getAbsolutePath().contains(p))
+
+  def chunk(from: Int, size: Int) = make(slice(from, from + size))
+
+  // --------------------------------
+  // Operations
+
+  /**
+   * Union
+   */
+  def ||(a: Managed[T, S]) = combine(a, { _ ++ _ })
+
+  /**
+   * Difference
+   */
+  def \(a: Managed[T, S]) = combine(a, { _.toSet diff _.toSet })
+
+  /**
+   * Intersection
+   */
+  def &&(a: Managed[T, S]) = combine(a, { _.toSet intersect _.toSet })
+
+  def indirectContents: ManagedMusic = {
+    val p =
+      for (pl <- playlists; tr <- pl.indirectContents) yield { lib.resolve(tr) }
+
+    val set = music.toSet union p.toSet
+    ManagedMusic(lib, set)
+  }
+
+  private def combine(a: Managed[T, S], combinor: (List[T], List[T]) => Iterable[T]): Managed[T, S] = {
+    def lib0 = lib
+
+    def list1 = iterator.toList
+    def list2 = a.iterator.toList
+
+    def list0 = combinor(list1, list2)
+
+    make(list0)
+  }
+
+  def filtre(f: T => Boolean): S = {
+    val x = for (t <- iterator; if (f(t))) yield { t }
+    make(x.toList)
+  }
+
+  import MusicFormat._
+
+  /**
+   * Given a from path (eg "/media/Orange/Music") and a to path (eg "/media/mp3-player/Music")
+   * replicate the structures, transcoding to given format
+   */
+  def replicate(from: String, to: String, strategy: ReplicationStrategy) = {
+    val f = new File(from);
+    val t = new File(to);
+    if (!f.exists()) throw new IllegalArgumentException("No file " + f)
+    if (!t.exists()) throw new IllegalArgumentException("No file " + t)
+    for (m <- this)
+      m.replicate(strategy)
+    this
+  }
+
+  def repl(from: String, to: String) = {
+    val x = new ReplicationStrategy.Ogg(new File(from).toPath(), new File(to).toPath())
+    replicate(from, to, x)
+    this
+  }
+  
+}
+
+abstract trait DesktopCompat {
+
+  abstract class Operation(val name: String) {
+
+    def exec(): Unit
+
+  }
+
+  def size: Int
+
+  def name: String
+
+  def metadata: List[Pair[String, String]] = List()
+
+  def ops: List[Operation] = List()
+
+  private def quote(s: String): String = if (s != null) s.replaceAllLiterally("\"", "\\\"") else ""
+
+  private def qname = quote(name)
+
+  def desk(linkTo: Set[DesktopCompat] = Set()) {
+    val old = DJSession.session.desk
+    DJSession.session.desk = new Desktop(Some(this), Some(old), linkTo)
+  }
+
+  def toDeskJson(index: Int): String = {
+
+    val qmd = (for ((key, value) <- metadata) yield {
+      val qkey = quote(key)
+      val qvalue = quote(value)
+      s"""
+      | { "key": "$qkey", "value": "$qvalue" }
+      |""".stripMargin
+    }).mkString(",")
+
+    val qops = (for (op <- ops) yield ("\"" + quote(op.name) + "\"")).mkString(",")
+
+    s"""
+      |   {"name":"$qname", "objId": $index, "size": $size,
+      |    "ops": [ $qops ], 
+      |     "md": [ $qmd ]
+      |   }
+      |""".stripMargin
+  }
+
+  def execute(opName: String): Unit = {
+
+    for (op <- ops if op.name == opName) op.exec
+
+  }
+
+}
+
+abstract class ManagedContainers extends Managed[MusicContainer, ManagedContainers] {
+
+  type M = ManagedMaker[MusicContainer, ManagedContainers]
+
+  def maker: M = new M() {
+    val lib0 = lib
+    def make(i: Iterable[MusicContainer]): ManagedContainers = new ManagedContainers {
+      def iterator = i.iterator
+      def lib = lib0
+    }
+  }
+
+}
+
+object ManagedContainers {
+  def apply(lib0: Library, i: Iterable[MusicContainer]) = {
+    new ManagedContainers() {
+      def iterator = i.iterator
+      def lib = lib0
+    }
+  }
+}
+
+abstract class ManagedMusic(
+  val lib: Library) extends Managed[MusicFile, ManagedMusic] with DesktopCompat {
+
+  // TODO figure out how to get this conversion visible to users of ManagedMusic.
+  implicit def iterableToManagedMusic(i: Iterable[MusicFile]): ManagedMusic =
+    ManagedMusic(lib, i)
+
+  override def name = "Music: " + size + " item(s)"
+
+  val explodeOp = new Operation("Explode") {
+    def exec() {
+      for (e <- ManagedMusic.this.music) e.desk(Set(ManagedMusic.this))
+    }
+  }
+
+  override def ops = List(explodeOp)
+
+  def maker = new ManagedMaker[MusicFile, ManagedMusic]() {
+    def make(i: Iterable[MusicFile]) = new ManagedMusic(lib) {
+      def iterator = i.iterator
+    }
+  }
+
+  def require(f: => Metadata => Boolean) = filtre {
+    m =>
+      m.md match {
+        case Some(metadata) => { try { f(metadata) } catch { case _: Exception => false } }
+        case None => false
+      }
+  }
+
+  def artist(artist: String) = require(_.artist.contains(artist))
+  def genre(genre: String) = require(_.genre == genre)
+
+  def yearRange(from: Int, to: Int) = require(
+    x =>
+      RecordingDate.year(from - 1) < x.year &&
+        x.year < RecordingDate.year(to + 1))
+
+  def tvm = require(md => List("tango", "vals", "milonga").toSet.contains(md.genre))
+
+  def minRating(r: Double) = require(_.rating.getOrElse(0d) >= r)
+
+  def unrated = require(_.rating.getOrElse(-1d) == -1)
+
+  def rated = require(_.rating.getOrElse(-1d) != -1)
+
+  /**
+   * Find duplicates inside this list
+   */
+  def dups = {
+    // Map performances to list of MusicFiles
+    val perfs = this groupBy { _.toApproxPerformance }
+
+    // Find those with more than one MusicFile
+    val dupPerfs = perfs filter {
+      _ match {
+        case Pair(p, l) => l.size > 1
+      }
+    }
+
+    // The corresponding MusicFiles
+    val dups = dupPerfs flatMap { _._2 }
+
+    make(dups)
+  }
+
+  /**
+   * Intersection with "like"
+   */
+  def ~(m: ManagedMusic) = {
+    val perfs = (m map { _.toApproxPerformance }).iterator.toSet
+    filtre({ x => perfs.contains(x.toApproxPerformance) })
+  }
+
+  /**
+   * Send contents to clementine
+   */
+  def q() {
+    val list = for (m <- this) yield m
+    class TmpM3u(file: File) extends M3UPlaylist(file) {
+      override def load {
+        tracks = list.toList
+        relative = false
+        setReadDirty(false)
+      }
+    }
+    val file = File.createTempFile("dj-playlist", ".m3u")
+    val pl = new TmpM3u(file)
+    pl.read()
+    pl.save()
+
+    PlayerInterfaceFactory.getPlayer().addTrack(pl)
+  }
+
+  /**
+   * Make suggestions based on given set of playlists (tandas)
+   */
+  def suggest(tandas: ManagedPlaylists) = (tandas.containing(this).indirectContents \ this).music
+
+  /**
+   * Closure based on suggestions
+   */
+  def closure(tandas: ManagedPlaylists, depth: Integer = 100): ManagedMusic = {
+    if (depth <= 0) {
+      return this;
+    }
+    val next = this.suggest(tandas) || this;
+    if (next.size == this.size) {
+      return this;
+    }
+    return next.closure(tandas, depth - 1);
+  }
+
+  /**
+   * Json of connection coefficients according to tandas
+   */
+  def json(tandas: ManagedPlaylists): String = {
+
+    val map = (for (m <- iterator.zipWithIndex) yield (m._1.toPerformance -> m._2)).toMap
+    val out = new StringBuilder();
+
+    out.append("{\"nodes\":[");
+
+    def perfName(p: Performance) = {
+      //if (p.year != null) p.year.from.year + ": " + p.title else p.title
+      p.toString().replaceFirst("Performance", "").replaceAll("\"", "\\\"")
+    }
+
+    val nodes = (for (m <- iterator) yield "{\"name\":\"" + perfName(m.toPerformance) + "\"}")
+    out.append(nodes.mkString(",\n"))
+
+    out.append("],\n \"links\":[");
+
+    val links = collection.mutable.Set.empty[Tuple2[Integer, Integer]]
+
+    def process(songs: List[MusicFile]) {
+      songs match {
+        case a :: tail => {
+          tail match {
+            case b :: rest => {
+              val x = map.get(a.toPerformance)
+              val y = map.get(b.toPerformance)
+              for (u <- x; v <- y) {
+                links.add(Tuple2(u, v))
+              }
+            }
+            case _ => Unit
+          }
+          process(tail)
+        }
+        case _ => Unit
+      }
+    }
+
+    for (p <- tandas) {
+      val tanda = p.indirectContents.toList.map(lib.resolve(_))
+
+      process(tanda)
+    }
+
+    val ls = for (link <- links.toSeq)
+      yield "{\"source\": " + link._1 + ",\"target\":" + link._2 + "}"
+
+    out.append(ls.mkString(",\n"))
+
+    out.append("]}");
+
+    return out.toString
+  }
+
+  /**
+   * Group according to tandas (closure of equivalence), sort by average year,
+   * separate with separator.
+   */
+  def group(tandas: ManagedPlaylists, separator: ManagedMusic) = {
+
+    def sep = separator.head;
+
+    // Connected components
+    type Component = Set[MusicFile]
+
+    type Components = Set[Component]
+
+    // Current components
+    var components: Components = Set.empty
+
+    // Map of music to music in tandas (first level)
+    val siblingMap: Map[MusicFile, Set[MusicFile]] = {
+      val tm = for (
+        t <- tandas;
+        c0 = t.indirectContents.toSet;
+        c = c0 map { lib.resolve(_) };
+        m <- c
+      ) yield (m -> c)
+      tm.groupBy(_._1).flatMap(_._2)
+    }
+
+    // Current map of music files to current components
+    var compMap: Map[MusicFile, Component] = Map.empty
+
+    // Add the music file to the components. This can involve joining two components
+    def join(m: MusicFile) {
+
+      // Find other music related directly to this
+      val siblings = siblingMap.getOrElse(m, Set.empty)
+
+      // Find other current components with siblings
+      val siblingComponents = siblings collect {
+        case m if (compMap.contains(m)) => compMap(m)
+      }
+
+      // Replace these components with a new, joint component, plus the new music
+      val jointComponent =
+        if (siblingComponents.isEmpty)
+          Set(m)
+        else
+          (siblingComponents reduce ((x, y) => x union y)) + m
+
+      val tmp = components -- siblingComponents + jointComponent
+
+      components = tmp
+
+      val newMap = (for (z <- jointComponent) yield (z -> jointComponent)).toMap
+      val tmp2 = compMap -- siblings ++ newMap
+
+      compMap = tmp2
+    }
+
+    for (m <- iterator) {
+      join(m)
+    }
+
+    // Now we have a bunch of components. Order by average year
+    def calcYear(c: Component): Double = {
+      val dates = for (m <- c; md <- m.md; d = md.year; if (d != null)) yield d.from.year
+      val size = dates.toSeq.size
+      val average = if (size > 0) dates.reduce(_ + _) / size else 1940d
+      average
+    }
+
+    val ages = (components map (x => x -> calcYear(x))).toMap
+
+    val sortedComponents = components.toSeq.sortBy(x => ages.getOrElse(x, 1940d))
+
+    // Create new ManagedMusic by joining the components and separating with separator.
+
+    def title(m: MusicFile) = m.md match { case Some(md) => md.title case _ => "ZZZZZ" }
+
+    def concat(seq: Seq[Component]): List[MusicFile] = {
+      seq match {
+        case Nil => Nil
+        case _ => {
+
+          val c = seq.head
+
+          val contents = (for (m <- c) yield m).toList.sortBy(title)
+          contents ++ List(sep) ++ concat(seq.tail)
+        }
+      }
+    }
+
+    val out = concat(sortedComponents)
+    make(out)
+  }
+
+  /**
+   * Format for printing (TODO generalise formatting)
+   */
+  def print = {
+    println((for (m <- this) yield {
+      m.md match {
+        case Some(md) => format(md)
+        case None => m.file.toString()
+      }
+    }).mkString("\n"))
+  }
+
+  /**
+   * Get equivalent ManagedPerformances (approximate ones)
+   */
+  def approxPerfs = {
+    val me = this
+    new ManagedPerformances {
+      val lib = me.lib
+      def iterator = (for (m <- me) yield m.toApproxPerformance).iterator
+    }
+  }
+
+  /**
+   * List all approx performances from given discography and mark those which we have
+   */
+  def markDisco(disco: Iterable[Pair[Performance, Set[Source]]]): Iterable[Triple[Performance, Boolean, Set[Source]]] = {
+    val ours = approxPerfs.toSet
+    for ((d, src) <- disco) yield {
+      Triple(d, false, src)
+    }
+  }
+
+  // -------------------
+  // Sorting
+
+  def srt(lt: (Metadata, Metadata) => Boolean) = {
+    def f(a: MusicFile, b: MusicFile): Boolean = {
+      b.md match {
+        case None => true
+        case Some(bmd) => a.md match {
+          case Some(amd) => lt(amd, bmd)
+          case None => false
+        }
+      }
+    }
+    val sorted = Sorting.stableSort(this.toSeq, f _)
+    make(sorted)
+  }
+
+  private def nn(in: String) = if (in == null) "" else in
+
+  def byTitle = srt((x, y) => nn(x.title) < nn(y.title))
+  def byArtist = srt((x, y) => nn(x.artist) < nn(y.artist))
+  def byYear = srt((x, y) =>
+    if (x.year != null) {
+      if (y.year != null) {
+        x.year < y.year
+      } else {
+        true
+      }
+    } else {
+      false
+    })
+
+  def byRating = srt((x, y) => x.rating.getOrElse(0d) < y.rating.getOrElse(0d))
+  
+  def byBpm = srt((x, y) => x.bpm.getOrElse(0d) < y.bpm.getOrElse(0d))
+
+
+  // -------------------------
+  // Refactorings
+
+  /**
+   * Use this contents in preference to equivalent music in the given playlists.
+   * Also, transfer ratings to this music if nececessary and prune the dups in the entire library like this.
+   */
+  def exchange(pl: ManagedPlaylists) = {
+
+    // Refactor playlists
+    pl.prefer(this)
+
+    // Transfer ratings if necessary
+    for (m <- this) {
+      m.md match {
+        case Some(md) => {
+          if (md.rating.getOrElse(0) == 0) {
+            val rating = lib.rate(m)
+
+            if (rating > 0) {
+              // Apply rating to MusicFile
+              val tag = new TagFactory().getTag(m.file)
+              tag.setRating(rating)
+              tag.write()
+              m.update()
+            }
+
+          }
+        }
+        case None => {}
+      }
+    }
+
+    // Apply "pruned2" to others
+    val d = lib.m.dups ~ this
+    val others = (d \ this).m
+    others.prune
+    this
+  }
+
+  def prune = {
+    for (m <- this; if m.file.exists) {
+      m.md match {
+        case Some(md) => {
+          if (!md.genre.startsWith("pruned")) {
+            val tag = new TagFactory().getTag(m.file)
+            val g = tag.getGenre()
+            val g2 = "pruned2-" + g
+            tag.setGenre(g2)
+            tag.write()
+            m.update()
+          }
+        }
+        case None => {}
+      }
+    }
+
+    this
+  }
+
+  def synchronise: ManagedMusic = {
+    synchronise(180)
+  }
+
+  def synchronise(days: Int): ManagedMusic = {
+    val s = new Synchroniser(lib, this)
+    s.maxdays = days
+    s.update()
+    this
+  }
+  
+  def fixShortEnds(minEnd: Double): ManagedMusic = {
+    val shorts = this.filtre { m => m.endSilence.isDefined && m.endSilence.get < minEnd - 0.2d}
+    
+    for (m <- shorts) m.padEndSilence(minEnd - m.endSilence.get)
+    
+    shorts
+  }
+
+  // ---------------
+  // Dump to CSV
+
+  def toCsv(file: File) = {
+    val utils = new CsvUtils
+
+    val lines = (
+      for (
+        music <- this;
+        md <- music.md
+      ) yield List(if (md.year != null) md.year.toString else null, md.title, md.artist, music.file.toString(), md.genre).toArray).toArray
+
+    utils.toCsv(lines)
+
+    val pw = new PrintWriter(file)
+    pw.print(utils.getFormattedString())
+    pw.close()
+
+  }
+
+}
+
+object ManagedMusic {
+
+  def apply(lib: Library, i: Iterable[MusicFile]) = new ManagedMusic(lib) {
+    def iterator = i.iterator
+  }
+
+  def flatApply(lib: Library, i: Iterable[ManagedMusic]) = new ManagedMusic(lib) {
+    def x = i.iterator.toList flatMap (z => z)
+    def iterator = x.iterator
+  }
+
+}
+
+abstract class ManagedPlaylists(val lib: Library)
+  extends Managed[PlaylistFile, ManagedPlaylists] with DesktopCompat {
+
+  def absolute = filtre(!_.relative)
+
+  override def name = "Playlists: " + size + " item(s)"
+
+  def maker = new ManagedMaker[PlaylistFile, ManagedPlaylists]() {
+    def make(i: Iterable[PlaylistFile]) = new ManagedPlaylists(lib) {
+      def iterator = i.iterator
+    }
+  }
+
+  // ----------------
+  // Operators
+
+  def containing(m: ManagedMusic) = {
+    def file(mf: MusicFile) = mf.file
+
+    val files = (m.toSet) map file
+    filtre {
+      pl =>
+        {
+          val plFiles = (pl.indirectContents map file).iterator.toSet
+          val intersect = (files intersect plFiles)
+          !(intersect.isEmpty)
+        }
+    }
+  }
+
+  def broken = filtre(_.broken)
+
+  // -----------------
+  // Refactorings
+
+  def relativize() = {
+    var changed = false
+    for (t <- iterator; if !t.relative) {
+      t.relative = true
+      t.save
+      changed = true
+    }
+    if (changed) lib.write
+  }
+
+  def prefer(music: ManagedMusic) = {
+    for (m <- music) {
+      for (t <- this) {
+        t.prefer(lib, m)
+      }
+    }
+    this
+  }
+
+  override def repl(from: String, to: String) = {
+    val x = new ReplicationStrategy.Ogg(new File(from).toPath(), new File(to).toPath())
+    replicate(from, to, x)
+    indirectContents.replicate(from, to, x)
+    val db = new File(to, "db.json")
+    toJson(x, db)
+    this
+  }
+  
+  /**
+   * JSON representation
+   */
+  def toJson(strategy: ReplicationStrategy) : String = {
+    val p = new StringBuffer() 
+    
+    def f(file: File) = strategy.json.getOrElse(file, null)
+    
+    val pl = (for (m <- this) yield f(m.file)).mkString(", \n")
+    val music = (for (m <- indirectContents) yield f(m.file)).mkString(", \n")
+
+    p
+    .append(" { \"playlists\": [ ").append(pl).append(" ], \n")
+    .append(" \"music\": [ ").append(music).append(" ] }\n");
+    
+    p.toString
+    
+  }  
+
+  def toJson(strategy: ReplicationStrategy, file: File) {
+    val w = new PrintWriter(new FileWriter(file))
+    w.print(toJson(strategy))
+    w.close()
+  }
+
+  // ---------------------------
+
+  /**
+   * Format for printing (TODO generalise formatting)
+   */
+  def print {
+    println((for (m <- this) yield {
+      m.file.toString()
+    }).mkString("\n"))
+  }
+
+  def toTandas(root: File) {
+    for (m <- this) {
+      val path = m.toTandaFile(lib)
+
+      val loc = root.toPath().resolve(path).toAbsolutePath().toFile()
+
+      println("Save " + m.file + " to " + loc)
+
+      val p = new M3UPlaylist(loc)
+      p.tracks = m.tracks
+      p.relative = true
+
+      p.save()
+    }
+  }
+
+}
+
+object ManagedPlaylists {
+  def apply(lib: Library, i: Iterable[PlaylistFile]) = new ManagedPlaylists(lib) {
+    def iterator = i.iterator
+  }
+}
+
+trait ManagedMaker[T <: MusicContainer, S <: Managed[T, S]] {
+  def make(i: Iterable[T]): S
+}

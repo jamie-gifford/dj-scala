@@ -1,0 +1,155 @@
+
+<project name="dj" default="dj_app">
+	<import file="../core/build.xml"/>
+	<dirname property="dj_basedir" file="${ant.file.dj}"/>
+
+	<property environment="env"/>
+	<property name="scala.home" value="${env.SCALA_HOME}" />
+	<property name="scala-library.jar" value="${scala.home}/lib/scala-library.jar"/>
+
+	<taskdef resource="scala/tools/ant/antlib.xml">
+	    <classpath>
+	        <pathelement location="${scala.home}/lib/scala-compiler.jar"   />
+	        <pathelement location="${scala.home}/lib/scala-reflect.jar"   />
+	        <pathelement location="${scala-library.jar}"   />
+	    </classpath>
+	</taskdef>
+	
+	<filelist id="dj_dependency_files">
+        <file name="${dj_basedir}/library/taglib.jar"/>
+        <file name="${dj_basedir}/../core/library/junit-4.3.1.jar"/>
+        <file name="${dj_basedir}/../core/library/log4j-1.2.14.jar"/>
+        <file name="${dj_basedir}/../core/library/servlet-api-2.5-6.1.4rc1.jar"/>
+        <file name="${dj_basedir}/../core/library/jetty-6.1.4rc1.jar"/>
+        <file name="${dj_basedir}/../core/library/jetty-util-6.1.4rc1.jar"/>
+        <file name="${dj_basedir}/../core/build/lib/thoughtpatterns_core.jar"/>
+        <file name="${dj_basedir}/library/jsoup-1.7.2.jar"/>
+        <file name="${dj_basedir}/library/jline-1.0.jar"/>
+        <file name="${dj_basedir}/library/beatroot-dj.jar"/>
+	</filelist>
+
+    <filelist id="scala_files">
+        <file name="${scala.home}/lib/scala-library.jar"/>
+        <file name="${scala.home}/lib/scala-compiler.jar"/>
+        <file name="${scala.home}/lib/scala-reflect.jar"/>
+    </filelist>
+	
+    <path id="dj_dependencies">
+		<filelist refid="dj_dependency_files"/>
+    </path>
+    <path id="scala_dependencies">
+		<filelist refid="scala_files"/>
+    </path>
+    <path id="dj_scala_dependencies">
+		<filelist refid="dj_dependency_files"/>
+		<filelist refid="scala_files"/>
+    </path>
+	<path id="dj_build_dependencies">
+		<filelist refid="dj_dependency_files"/>
+		<file name="${dj_basedir}/build/classes"/>
+	</path>
+
+	<property name="dj_lib" location="${dj_basedir}/build/lib"/>
+	
+    <target name="dj_build" depends="core_build">
+        <mkdir dir="${dj_basedir}/build"/>    
+        <mkdir dir="${dj_basedir}/build/classes"/>    
+        <javac 
+          srcdir="${dj_basedir}/src/java"
+          destdir="${dj_basedir}/build/classes"
+          classpathref="dj_dependencies"
+          includeantruntime="false"
+          debug="on"
+        />
+        <scalac
+          fork="true"
+          usejavacp="true"
+          srcdir="${dj_basedir}/src/scala"
+          destdir="${dj_basedir}/build/classes"
+          bootclasspathref="scala_dependencies"
+          classpathref="dj_build_dependencies"
+        />
+        <javac 
+          srcdir="${dj_basedir}/src/scala"
+          destdir="${dj_basedir}/build/classes"
+          classpathref="dj_scala_dependencies"
+          includeantruntime="false"
+          debug="on"
+        />
+        <copy todir="${dj_basedir}/build/classes">
+            <fileset dir="${dj_basedir}/src/java">
+                <exclude name="**/*.java"/>
+                <exclude name="**/*.scala"/>
+            </fileset>
+        </copy>
+    	
+    	<mkdir dir="${dj_lib}"/>
+    	<jar basedir="${dj_basedir}/build/classes"
+	    	destfile="${dj_lib}/dj.jar"/>
+    	
+    </target>
+
+     <target name="dj_build_ext">
+        <mkdir dir="${dj_basedir}/build"/>    
+        <mkdir dir="${dj_basedir}/build/ext"/>    
+        <mkdir dir="${dj_basedir}/build/ext/classes"/>    
+        <javac 
+          srcdir="${dj_basedir}/src/ext"
+          destdir="${dj_basedir}/build/ext/classes"
+          debug="on"
+        />
+    </target>
+
+	<target name="dj_clean">
+		<delete dir="${dj_basedir}/build"/>
+	</target>
+	
+    <target name="dj_app" depends="dj_build,dj_build_ext">
+        <property name="dj_app" location="${dj_basedir}/build/app"/>
+        <mkdir dir="${dj_app}"/>
+    	
+        <path id="dj_app_cp">
+    		<filelist refid="dj_dependency_files"/>
+    		<pathelement path="${dj_lib}/dj.jar" />
+        </path>
+    	
+    	<pathconvert targetos="unix" property="dj_cp" refid="dj_app_cp" />
+    	
+    	<copy todir="${dj_basedir}/build/app">
+    	    <fileset dir="src/bash" />
+			<filterset>
+    		    <filter token="cp" value="${dj_cp}" />
+	 		</filterset>
+        </copy>
+    	<exec executable="chmod">
+    	    <arg value="755"/>
+    		<arg value="${dj_basedir}/build/app/djapp" />
+    	</exec>
+	</target>
+	
+	<!-- Doesn't work - classloading problems -->
+    <target name="dj_app_jar" depends="dj_build,dj_build_ext">
+        <property name="dj_app" location="${dj_basedir}/build/app"/>
+        <mkdir dir="${dj_app}"/>
+        <jar destfile="${dj_app}/djapp.jar">
+            <fileset dir="${dj_basedir}/build/lib"/>
+            <fileset dir="${dj_basedir}/library">
+                       <exclude name="taglib.jar"/> <!-- We build our own -->
+               </fileset>
+               <fileset dir="${dj_basedir}/build/ext/classes"/>
+            <fileset dir="${dj_basedir}/../core/library">
+               <include name="junit-4.3.1.jar"/>
+               <include name="log4j-1.2.14.jar"/>
+            </fileset>
+            <fileset dir="${dj_basedir}/../core/build/lib">
+               <include name="thoughtpatterns_core.jar"/>
+            </fileset>
+            <file file="${scala.home}/lib/scala-library.jar"/>
+               <manifest>
+                <attribute name="Main-Class" value="au.com.thoughtpatterns.djs.launch.Launcher"/>
+               </manifest>
+        </jar>
+   </target>
+
+	
+</project>

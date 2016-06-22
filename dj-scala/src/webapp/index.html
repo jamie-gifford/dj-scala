@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <style>
+
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.link {
+  stroke: #999;
+  stroke-opacity: .6;
+}
+
+.desk {
+  border: solid black 2px;
+}
+
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+ </head>
+
+ <body>
+  <div class="container-fluid">
+   <script src="d3.js"></script>
+
+   <form class="loader">
+    <input name="expr" class="form-control expr" placeholder="Scala expression"/>
+    <button type="submit" class="btn btn-primary load">Load</button>
+    <button type="button" class="btn btn-warning clear cmd" data-cmd="clearDesktop()">Clear desktop</button>
+   </form>
+
+   <svg class="desk" width="100%" height="500" style="margin-top: 10px;"></svg>
+
+   <div class="view" ></div>
+   <div class="ops" ></div>
+
+   <script>
+
+(function () {
+
+  var width = 960,
+    height = 500;
+
+  var color = d3.scale.category20();
+
+  var force = d3.layout.force()
+    .charge(-120)
+    .linkDistance(30)
+    .size([width, height]);
+
+  var svg = d3.select("svg.desk");
+
+  var view = d3.select("div.view");
+  var ops = d3.select("div.ops");
+
+  var opHandler = function(d, i) {
+    var me = this;
+    
+    var x = ops.datum;
+    var objId = x.objId;
+    
+    loadObj("scala.json?expr=" + encodeURIComponent("runOperator(" + objId + ", \"" + d + "\")"));
+    
+  }
+
+  var clickHandler = function(d, i) {
+    var me = this;
+    
+    var md = d.md;
+    var p = view.selectAll("p").data(md);
+    var enter = p.enter();
+    enter.append("p");
+    p.text(function(y, i) {
+      return y.key + ": " + y.value;
+    });
+    p.exit().remove();
+
+    ops.datum = d;
+
+    p = ops.selectAll("button").data(d.ops);
+    var enter = p.enter();
+    enter.append("button").attr("class", "op btn btn-info");
+    p.text(function(y, i) {
+      return y;
+    }).
+    on("click", opHandler);
+    p.exit().remove();    
+    
+  };
+
+  var loadObj = function(url) {
+
+    d3.json(url, function(error, graph) {
+      
+      if (graph.nodes.length == force.nodes().length) {
+        return;
+      }
+        
+      force
+        .nodes(graph.nodes)
+        .links(graph.links);
+  
+      force.start();
+      
+      var link = svg.selectAll(".link")
+        .data(graph.links);
+        
+      link.enter().append("line")
+        .attr("class", "link")
+        .style("stroke-width", 1);
+
+      link.exit().remove()
+
+      var node = svg.selectAll(".node")
+        .data(graph.nodes);
+        
+      node.enter().append("circle")
+        .attr("class", "node")
+        .attr("r", function(d) { 
+          return Math.sqrt(d.size) + 5 
+        })
+        .call(force.drag)
+        .on("click", clickHandler)
+        .append("title")
+        .text(function(d) { return d.name; });
+
+      node.exit().remove();
+
+      force.on("tick", function() {
+        link.attr("x1", function(d) { return d.source.x; })
+          .attr("y1", function(d) { return d.source.y; })
+          .attr("x2", function(d) { return d.target.x; })
+          .attr("y2", function(d) { return d.target.y; });
+
+        node.attr("cx", function(d) { return d.x; })
+          .attr("cy", function(d) { return d.y; });
+      });
+  
+    });
+
+  }; 
+
+
+  d3.select(".loader").on("submit", function() { 
+    var expr = d3.select(".expr");
+    var v = expr.property("value");
+    d3.event.preventDefault();
+    loadObj("scala.json?expr=" + encodeURIComponent(v));
+  });
+  
+  d3.select(".cmd").on("click", function(e) { 
+    var me = this;
+    var cmd = me.dataset.cmd;
+    loadObj("scala.json?expr=" + encodeURIComponent(cmd));
+  });
+
+})();
+
+   </script>
+  </div>
+ </body>
+</html>
+
+ 

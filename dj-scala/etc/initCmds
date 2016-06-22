@@ -1,0 +1,3 @@
+def tandas = l.p.path("Jamie")
+def t = tandas.containing(q.q)
+def s = q.q.suggest(tandas)
