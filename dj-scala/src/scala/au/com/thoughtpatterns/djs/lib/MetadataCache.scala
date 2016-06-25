@@ -14,6 +14,17 @@ import java.io.FileReader
 import au.com.thoughtpatterns.core.json.JsonyObject
 import au.com.thoughtpatterns.djs.util.RecordingDate
 
+/**
+ * An accurate metadata (tag) cache for music files.
+ * The primary interface is the {@link get} method, which returns the (optional) metadata for the file.
+ * 
+ * Tag reading is potentially slow so the cache saves read tag data in an internal cache, either automatically 
+ * every now and then, or when {@link write} is explicitly called.
+ * 
+ * Tag data is read from one of two possible sources: the music file itself, or a like-named "md" file in the same directory.
+ * Of these two files, the newest one has priority. In case that the two files don't have the same timestamp, the older one 
+ * is updated with the contents of the newer one as a side effect of reading.
+ */
 object MetadataCache {
 
   val cacheFile = new File(".metadata");
@@ -171,7 +182,7 @@ object MetadataCache {
     Log.info("Before gc have " + cache.keySet.size + " cache entries")
     var cacheCopy = Map[File, CachedMetadata]()
     for (f <- cache.keys; c <- cache.get(f)) {
-      if (c.m.title != null) {
+      if (f.exists && c.m.title != null) {
         cacheCopy = cacheCopy + (f -> c)  
       } else {
         dirty += 1

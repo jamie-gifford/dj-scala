@@ -6,6 +6,10 @@ import au.com.thoughtpatterns.djs.util.Log
 import java.io.File
 import java.nio.file.Path
 import java.io.FileWriter
+import au.com.thoughtpatterns.core.json.Jsony
+import au.com.thoughtpatterns.core.util.Resources
+import java.io.FileReader
+import java.io.IOException
 
 abstract class ReplicationStrategy(from: Path, to: Path) {
 
@@ -45,7 +49,7 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
 
   def dirty(src: File, file: File) = ! file.exists() || Math.abs(file.lastModified() - src.lastModified()) >= 2000;
     
-  def metadata(file: File) = new File(file.getAbsoluteFile + ".json")
+  def metadata(file: File) = MusicFile.fileToMdFile(file)
   
   def dirtyTarget(src: File): Option[Target] = {
     image(src) map { target(src, _) } filter { t => dirty(src, t.file) || dirty(src, metadata(t.file))}
@@ -59,7 +63,7 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
    */
   def transcode(m: MusicFile, src: File, target: Target) {
     if (dirty(src, target.file)) transcodeData(m, src, target)
-    if (dirty(src, metadata(target.file))) transcodeMetadata(m, src, target)
+    transcodeMetadata(m, src, target)
   }  
   
   def transcodeData(m: MusicFile, src: File, target: Target) {
@@ -105,14 +109,14 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
 
 
   def transcodeMetadata(m: MusicFile, src: File, target: Target) {
-    var metadataFile = metadata(target.file)
-
-    var json = m.toJson
-
-    var out = new FileWriter(metadataFile)
-    out.write(json)
-    out.close()
-    
+    val mdsrc = metadata(src)
+    val mddest = metadata(target.file)
+    if (mdsrc.exists()) {
+      val md = Resources.readString(new FileReader(mdsrc))
+      val w = new FileWriter(mddest)
+      w.write(md)
+      w.close()
+    }
   }
     
   /**

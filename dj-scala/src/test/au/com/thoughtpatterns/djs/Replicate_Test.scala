@@ -9,20 +9,11 @@ object Replicate_Test {
 
   def main(args: Array[String]) : Unit = {
     
-    val from = "/media/Orange/Music"
-    val to = "/media/Orange/replica"
-    val x = new ReplicationStrategy.Ogg(new File(from).toPath(), new File(to).toPath())
-    val l = Library.load(new java.io.File("jamie.djs"))
-
+    val from = "/home/james/tpg/dj-scala/dj-scala/var"
+    val to = "/home/james/tpg/dj-scala/dj-scala/var-repl"
+    val l = Library.load(new java.io.File("test.djs"))
     
-    val tandas = l.p.path("Jamie")
-    
-    val td = tandas
-    
-    Log.info("Replicate " + td.print)
-    Log.info("Replicate " + td.size + " items")
-    
-    td.repl(from, to)
+    l.m.replDJ(from, to)
     
   }
   

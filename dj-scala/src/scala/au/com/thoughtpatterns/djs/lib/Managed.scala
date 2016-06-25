@@ -15,6 +15,7 @@ import au.com.thoughtpatterns.djs.clementine.PlayerInterfaceFactory
 import au.com.thoughtpatterns.djs.webapp.DJSession
 import au.com.thoughtpatterns.djs.webapp.Desktop
 import java.io.FileWriter
+import au.com.thoughtpatterns.djs.util.Log
 
 trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with Formatter {
 
@@ -111,7 +112,23 @@ trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with 
     replicate(from, to, x)
     this
   }
+
+  def replDJ(from: String, to:String) = {
+    val okay = m.require(md => {
+      var z = md.rating match { case Some(x) if x >= 0.4 => true case _ => false }
+      Log.info(z + " => " + md)
+      z
+    })
+    val okayFiles = (okay.map { x => x.file }).toSet
+    val x = new ReplicationStrategy.DJ(new File(from).toPath(), new File(to).toPath(), okayFiles)
+    
+    for (f <- okayFiles) Log.info("Okay: " + f.toString)
+    
+    replicate(from, to, x)
+    this
+  }
   
+
 }
 
 abstract trait DesktopCompat {
