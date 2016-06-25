@@ -148,7 +148,7 @@ public class Lltag implements ITag {
                         break;
                     case "BPM":
                 		Double z = null;
-                		if (value != null && "".equals(value)) {
+                		if (value != null && ! "".equals(value)) {
                         	try {
                         		z = Double.parseDouble(value);
                         		if (z <= 0) {
@@ -340,6 +340,9 @@ public class Lltag implements ITag {
 		update("DATE", "" + getYear());
 		update("FMPS_RATING", getRating() != -1 ? "" + getRating() : null);
 		update("DESCRIPTION", getComment());
+		if (getBPM() != null) {
+			update("BPM", getBPM().toString());
+		}
 
 		cmd.add("--clear");
 

@@ -5,11 +5,22 @@ import au.com.thoughtpatterns.djs.tag.TagFactory
 import au.com.thoughtpatterns.djs.clementine.PlayerInterfaceFactory
 import java.nio.file.Path
 import au.com.thoughtpatterns.djs.util.ProcessExec
+import au.com.thoughtpatterns.core.json.JsonyObject
+import au.com.thoughtpatterns.core.json.AJsonyObject
+import au.com.thoughtpatterns.djs.util.Log
 
 @SerialVersionUID(3L)
 class MusicFile(private val file0: File) extends MusicContainer with DesktopCompat with Serializable {
 
   val file = file0.getCanonicalFile()
+  
+  val mdFile = MusicFile.fileToMdFile(file)
+  
+  override def fileAge = {
+    val age1 = if (file.exists) file.lastModified() else 0
+    val age2 = if (mdFile.exists) mdFile.lastModified() else Long.MaxValue;
+    Math.max(age1, age2)
+  }
 
   var md: Option[Metadata] = None
 
@@ -107,26 +118,21 @@ class MusicFile(private val file0: File) extends MusicContainer with DesktopComp
       dir.setLastModified(System.currentTimeMillis());
     }
   }
-
+  
   override def toJson: String = toJson(file.getAbsoluteFile.toPath)
 
   def toJson(p: Path): String = {
+    
+    var out = new AJsonyObject();
 
     def quote(s: String): String = if (s != null) s.replaceAllLiterally("\"", "\\\"") else ""
 
-    val qmd = (for ((key, value) <- metadata) yield {
-      val qkey = quote(key)
-      val qvalue = quote(value)
-      s""" "$qkey": "$qvalue" """
-    }).mkString(",")
-
+    for ((key, value) <- metadata) {
+      out.set(key, value)
+    }
     val qfile = quote(p.toString)
-
-    s"""
-      |   {"file":"$qfile",
-      |    $qmd 
-      |   }
-      |""".stripMargin
+    out.set("file", qfile)
+    out.toJson()
   }
 
   override def toString = md match { case Some(m) => m.toString case None => file.toString() }
@@ -196,4 +202,12 @@ object MusicFile {
       }
     }
   }
+
+  def fileToMdFile(file: File) = {
+    val fullname = file.getAbsolutePath();
+    val index = fullname.lastIndexOf(".");
+    val truncated = if (index >= 0) fullname.substring(0, index) else fullname
+    new File(truncated + ".md");
+  }
+
 }

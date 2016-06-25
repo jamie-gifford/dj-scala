@@ -7,6 +7,12 @@ import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
 import au.com.thoughtpatterns.djs.tag.TagFactory
 import au.com.thoughtpatterns.djs.util.Log
+import au.com.thoughtpatterns.core.json.AJsonyObject
+import java.io.FileWriter
+import au.com.thoughtpatterns.core.json.JsonyParser
+import java.io.FileReader
+import au.com.thoughtpatterns.core.json.JsonyObject
+import au.com.thoughtpatterns.djs.util.RecordingDate
 
 object MetadataCache {
 
@@ -54,9 +60,35 @@ object MetadataCache {
 
   private def read(file: File) = {
     val ts = file.lastModified();
-    val tag = new TagFactory().getTag(file);
+    
+    val mdFile = MusicFile.fileToMdFile(file)
+    val mdTs = mdFile.lastModified
+    
+    var md : Metadata = null
+    
+    if (mdTs >= ts) {
+      // MD file is up to date
+      (new JsonyParser()).parse(new FileReader(mdFile)) match {
+        case json : JsonyObject => 
 
-    CachedMetadata(Metadata(
+          md = Metadata(
+            json.getCast("title", classOf[String]),
+            json.getCast("artist", classOf[String]),
+            json.getCast("album", classOf[String]),
+            RecordingDate.parse(json.getCast("date", classOf[String])),
+            json.getCast("comment", classOf[String]),
+            json.getCast("genre", classOf[String]),
+            Option(json.getCast("track", classOf[Long])).getOrElse(0l).intValue(),
+            Option(json.getCast("rating", classOf[Double])),
+            json.getCast("bpm", classOf[Double]) match { case x if (x > 0) => Some(x) case _ => None }
+          )
+
+        case _ =>
+      }
+      
+    } else {
+      val tag = new TagFactory().getTag(file);
+      md = Metadata(
       tag.getTitle(),
       tag.getArtist(),
       tag.getAlbum(),
@@ -65,9 +97,37 @@ object MetadataCache {
       tag.getGenre(),
       tag.getTrack(),
       tag.getRating() match { case x if (x > 0) => Some(x) case _ => None },
-      tag.getBPM() match { case x if x != null => Some(x) case _ => None}), ts);
-  }
+      tag.getBPM() match { case x if x != null => Some(x) case _ => None})
+    }
+    
+    if (mdTs > ts) {
+      // File is out of date so update
+      val tag = new TagFactory().getTag(file);
+      tag.setTitle(md.title)
+      tag.setArtist(md.artist)
+      tag.setAlbum(md.album)
+      tag.setYear(md.year)
+      tag.setComment(md.comment)
+      tag.setGenre(md.genre)
+      tag.setTrack(md.track)
+      md.rating match { case Some(x) => tag.setRating(x) case _ =>  }
+      md.bpm match { case Some(x) => tag.setBPM(x) case _ =>  }
+      
+      tag.write()
+      file.setLastModified(mdTs)
+    }
+    
+      
+    val out = CachedMetadata(md, ts);
 
+    if (! mdFile.exists() || mdTs < ts) {
+      // Metadata file is out of date so update
+      writeMdFile(out, mdFile)
+    }
+
+    out
+  }
+  
   private def checkpoint() {
     if (dirty > 50) write()
   }
@@ -80,6 +140,32 @@ object MetadataCache {
       dirty = 0
     }
   }
+  
+  def writeMdFile(cmd: CachedMetadata, mdFile: File): Unit = {
+		val json = new AJsonyObject();
+		val md = cmd.m
+		json.set("title", md.title);
+		json.set("artist", md.artist);
+		json.set("album", md.album);
+		if (md.year != null) {
+			json.set("date", md.year.toString()); 
+		}
+		json.set("genre", md.genre);
+		md.rating match {
+		  case Some(x) => json.set("rating", x)
+		  case _ => 
+		}
+		md.bpm match {
+		  case Some(x) => json.set("bpm", x)
+		  case _ => 
+		}
+		
+		Log.info("Writing " + mdFile)
+		val mdw = new FileWriter(mdFile);
+		mdw.write(json.toJson());
+		mdw.close();
+		mdFile.setLastModified(cmd.ts)
+	}
   
   def gc() : Unit = {
     Log.info("Before gc have " + cache.keySet.size + " cache entries")
@@ -95,5 +181,20 @@ object MetadataCache {
     cache = cacheCopy
     Log.info("After gc have " + cache.keySet.size + " cache entries")
     write()
+  }
+  
+  def checkMDFiles() {
+    for (f <- cache.keys) {
+      read(f)
+    }
+    
+    for (f <- cache.keys; c <- cache.get(f)) {
+      val mdFile = MusicFile.fileToMdFile(f)
+      val mdTs = mdFile.lastModified
+      val diff = mdTs - c.ts
+      if (diff < 0) {
+        writeMdFile(c, mdFile)
+      }
+    }
   }
 }

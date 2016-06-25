@@ -3,6 +3,7 @@ package au.com.thoughtpatterns.djs.app
 import java.io.File
 import au.com.thoughtpatterns.djs.lib.Library
 import au.com.thoughtpatterns.djs.webapp.Main
+import au.com.thoughtpatterns.djs.lib.MetadataCache
 
 /**
  * The following operations are available:
@@ -83,7 +84,10 @@ object App {
       lib.playlists.relativize()
     }
     
-    if (cfg.save) lib.write
+    if (cfg.save) {
+      lib.write
+      MetadataCache.checkMDFiles()
+    }
 
     if (cfg.webapp) Main.runInThread()
 
