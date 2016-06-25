@@ -27,7 +27,7 @@ import au.com.thoughtpatterns.djs.util.RecordingDate
  */
 object MetadataCache {
 
-  val cacheFile = new File(".metadata");
+  val cacheFile = new File(".metadata2");
 
   @SerialVersionUID(1L)
   case class CachedMetadata(m: Metadata, ts: Long) extends Serializable
@@ -37,25 +37,32 @@ object MetadataCache {
   var dirty: Int = 0
 
   private def read() = {
-    try {
-      val i = new ObjectInputStream(new FileInputStream(cacheFile))
-      val o = i.readObject()
-      o match {
-        case x: Map[File, CachedMetadata] @unchecked => x
-        case _ => Map[File, CachedMetadata]()
+    if (cacheFile.exists()) {
+      try {
+        val i = new ObjectInputStream(new FileInputStream(cacheFile))
+        val o = i.readObject()
+        o match {
+          case x: Map[File, CachedMetadata] @unchecked => x
+          case _ => Map[File, CachedMetadata]()
+        }
+      } catch {
+        case ex: Exception => {
+          Log.error(ex)
+          Map[File, CachedMetadata]()  
+        }
       }
-    } catch {
-      case ex: Exception => {
-        Log.error(ex)
-        Map[File, CachedMetadata]()  
-      }
+    } else {
+      Map[File, CachedMetadata]()  
     }
   }
 
+  /**
+   * Accurate, cached metadata get. Accuracy is determined by timestamps.
+   */
   def get(f: File): Option[Metadata] = {
     if (f.exists()) {
       cache.get(f) match {
-        case Some(md) if (md.ts == f.lastModified()) => Some(md.m)
+        case Some(md) if (md.ts == lastModified(f)) => Some(md.m)
         case _ => {
           val md = read(f);
           cache = cache + (f -> md)
@@ -69,13 +76,26 @@ object MetadataCache {
     }
   }
 
+  def lastModified(file: File) {
+    val ts = file.lastModified();
+    val mdFile = MusicFile.fileToMdFile(file)
+    val mdTs = mdFile.lastModified
+    Math.max(ts, mdTs)    
+  }
+  
+  /**
+   * Pre-cache read, direct from filesystem. 
+   * Note that there are two possible sources - the file itself or its md equivalent.
+   * If these are out of synch, they are synchronized as a side effect of this function.
+   */
   private def read(file: File) = {
     val ts = file.lastModified();
-    
     val mdFile = MusicFile.fileToMdFile(file)
     val mdTs = mdFile.lastModified
     
     var md : Metadata = null
+    
+    val diff = mdTs - ts
     
     if (mdTs >= ts) {
       // MD file is up to date
@@ -127,7 +147,6 @@ object MetadataCache {
       tag.write()
       file.setLastModified(mdTs)
     }
-    
       
     val out = CachedMetadata(md, ts);
 
@@ -194,18 +213,4 @@ object MetadataCache {
     write()
   }
   
-  def checkMDFiles() {
-    for (f <- cache.keys) {
-      read(f)
-    }
-    
-    for (f <- cache.keys; c <- cache.get(f)) {
-      val mdFile = MusicFile.fileToMdFile(f)
-      val mdTs = mdFile.lastModified
-      val diff = mdTs - c.ts
-      if (diff < 0) {
-        writeMdFile(c, mdFile)
-      }
-    }
-  }
 }

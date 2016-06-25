@@ -40,7 +40,7 @@ class Player(val lib: Library) {
     } catch {
       case _ : Exception => new File(url.getPath());
     }
-    lib.resolve(new MusicFile(file))
+    lib.resolve(new MusicFile(file, lib))
   }
   
   

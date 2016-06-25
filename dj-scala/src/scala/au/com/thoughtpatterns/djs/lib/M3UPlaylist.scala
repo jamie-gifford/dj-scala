@@ -15,7 +15,7 @@ import java.io.FileOutputStream
 import au.com.thoughtpatterns.djs.lib.MusicFormat._
 
 @SerialVersionUID(1L)
-class M3UPlaylist(file0: File) extends PlaylistFile(file0) {
+class M3UPlaylist(file0: File, lib: Library) extends PlaylistFile(file0, lib) {
 
   def read = load
 
@@ -45,7 +45,7 @@ class M3UPlaylist(file0: File) extends PlaylistFile(file0) {
       }
 
       val f = p.toFile();
-      val m = new MusicFile(f);
+      val m = new MusicFile(f, lib);
       b.append(m)
     }
 

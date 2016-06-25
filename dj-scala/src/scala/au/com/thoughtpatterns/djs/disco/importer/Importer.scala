@@ -250,7 +250,7 @@ class Importer(lib: Library, root: File, accept: File => Boolean) extends Disco.
     List()
   }
 
-  def contents: ManagedImports = ManagedImports(lib, files map (new ImportedFile(_)))
+  def contents: ManagedImports = ManagedImports(lib, files map (new ImportedFile(_, lib)))
 
   def perfToLib(p: Performance): ManagedMusic = {
 
@@ -269,7 +269,7 @@ class Importer(lib: Library, root: File, accept: File => Boolean) extends Disco.
     ManagedMusic(lib, x)
   }
 
-  case class ImportedFile(f: File) extends MusicContainer {
+  case class ImportedFile(f: File, lib: Library) extends MusicContainer {
 
     def id: Option[Disco.SourcedPerformance] = identifiedFiles.get(f) map (_._1)
 

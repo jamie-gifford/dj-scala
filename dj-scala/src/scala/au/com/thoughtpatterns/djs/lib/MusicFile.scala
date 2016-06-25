@@ -10,7 +10,7 @@ import au.com.thoughtpatterns.core.json.AJsonyObject
 import au.com.thoughtpatterns.djs.util.Log
 
 @SerialVersionUID(3L)
-class MusicFile(private val file0: File) extends MusicContainer with DesktopCompat with Serializable {
+class MusicFile(private val file0: File, val lib: Library) extends MusicContainer with DesktopCompat with Serializable {
 
   val file = file0.getCanonicalFile()
   

@@ -59,7 +59,7 @@ object App {
 
   object cfg {
     var libfile: Option[File] = None
-    var update: Boolean = false
+    var faststart: Boolean = false
     var fix: Boolean = false
     var list: Option[String] = None
     var add: List[File] = Nil
@@ -78,15 +78,16 @@ object App {
       lib.add(f) 
     } 
     
-    if (cfg.update) lib.update
+    if (! cfg.faststart) lib.update
     
     if (cfg.fix) {
       lib.playlists.relativize()
     }
     
     if (cfg.save) {
-      lib.write
-      MetadataCache.checkMDFiles()
+      lib.write0 // unconditional
+    } else {
+      lib.write // only when dirty
     }
 
     if (cfg.webapp) Main.runInThread()
@@ -106,9 +107,8 @@ object App {
         cfg.libfile = Some(new File(lib))
         parse(tail)
       }
-      case ( "update" :: tail ) => {
-        cfg.update = true
-        cfg.save = true
+      case ( "faststart" :: tail ) => {
+        cfg.faststart = true
         parse(tail)
       } 
       case ( "list" :: genre :: tail ) => {
@@ -121,7 +121,6 @@ object App {
         parse(tail)
       }
       case ( "fix" :: tail ) => {
-        cfg.update = true
         cfg.fix = true
         cfg.save = true
         parse(tail)

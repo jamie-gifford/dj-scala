@@ -35,22 +35,25 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
   
   private var initCommands : List[String] = null
 
+  var dirty : Boolean = false
+
   def add(f: File): Unit = {
     contents.get(f) match {
       case None =>
         {
           val c = if (f.isDirectory())
-            Some(LibraryDir(f))
+            Some(LibraryDir(f, this))
           else {
             val bits = f.getName().toLowerCase().split("\\.")
             if (List("ogg", "flac").contains(bits.last)) {
-              Some(new MusicFile(f))
+              Some(new MusicFile(f, this))
             } else if ("m3u" == bits.last) {
-              Some(PlaylistFile(f))
+              Some(PlaylistFile(f, this))
             } else None
           }
           for (c0 <- c) {
             contents = contents + (f -> c0)
+            dirty = true
             c0.update()
           }
         }
@@ -58,13 +61,19 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
     }
   }
 
-  def refresh() {
+  /**
+   * Bring entire library up to date with respect to filesystem.
+   */
+  def update() {
     val toDelete = contents map {_._1} filter {!_.exists()}
     contents = contents -- toDelete
-    for ((f, c) <- contents) { c.check() }
-    update()
+    if (toDelete.size > 0) dirty = true
+    update0()
   }
 
+  /**
+   * Quick version of {@link refresh} which only checks dirty directories.
+   */
   def quick() {
 
     val dirtyParents = (for (
@@ -85,11 +94,11 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
     }
   }
 
-  def update() {
+  private def update0() {
     for ((f, c) <- contents; if c.check) { c.update() }
     for ((f, c) <- contents; if ! c.exists) {
       contents = contents - f
-      Log.info("removed " + f)
+      dirty = true
     }
   }
 
@@ -98,7 +107,7 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
   }
 
   @SerialVersionUID(1L)
-  case class LibraryDir(val file: File) extends MusicContainer with Serializable {
+  case class LibraryDir(val file: File, val lib: Library) extends MusicContainer with Serializable {
 
     def read() = {
       if (file.exists() && file.isDirectory()) {
@@ -112,6 +121,11 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
   def containers = contents.values
 
   def write() {
+    if (dirty) write0()
+    dirty = false
+  }
+  
+  def write0() {
     MetadataCache.write()
     FileMetadataCache.write()
     for (file <- libFile) {
@@ -336,13 +350,17 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
 
 object Library {
   def load(file: File) : Library = {
-    try {
-      Log.info("Loading " + file + "...")
-      val r = new ObjectInputStream(new FileInputStream(file)).readObject().asInstanceOf[Library]
-      Log.info("... done loading " + file)
-      return r
-    } catch {
-      case x: Exception => { Log.error(x); new Library(Some(file)) }
+    if (file.exists) {
+      try {
+        Log.info("Loading " + file + "...")
+        val r = new ObjectInputStream(new FileInputStream(file)).readObject().asInstanceOf[Library]
+        Log.info("... done loading " + file)
+        return r
+      } catch {
+        case x: Exception => { Log.error(x); new Library(Some(file)) }
+      }
+    } else {
+      new Library(Some(file))
     }
   }
 

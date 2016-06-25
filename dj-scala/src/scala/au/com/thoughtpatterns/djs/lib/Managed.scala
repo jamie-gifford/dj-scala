@@ -287,7 +287,7 @@ abstract class ManagedMusic(
    */
   def q() {
     val list = for (m <- this) yield m
-    class TmpM3u(file: File) extends M3UPlaylist(file) {
+    class TmpM3u(file: File) extends M3UPlaylist(file, lib) {
       override def load {
         tracks = list.toList
         relative = false
@@ -699,7 +699,10 @@ abstract class ManagedPlaylists(val lib: Library)
       t.save
       changed = true
     }
-    if (changed) lib.write
+    if (changed) {
+      lib.quick()
+      lib.write
+    }
   }
 
   def prefer(music: ManagedMusic) = {
@@ -764,7 +767,7 @@ abstract class ManagedPlaylists(val lib: Library)
 
       println("Save " + m.file + " to " + loc)
 
-      val p = new M3UPlaylist(loc)
+      val p = new M3UPlaylist(loc, lib)
       p.tracks = m.tracks
       p.relative = true
 

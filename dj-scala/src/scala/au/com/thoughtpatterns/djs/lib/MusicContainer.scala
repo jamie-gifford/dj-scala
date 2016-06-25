@@ -12,6 +12,8 @@ import au.com.thoughtpatterns.djs.util.Log
 trait MusicContainer extends Serializable {
 
   def file: File
+  
+  def lib : Library
 
   var lastRead: Long = 0
 
@@ -36,6 +38,7 @@ trait MusicContainer extends Serializable {
   def update() = {
     Log.info("update " + file + "; fileAge = " + fileAge + ", lastRead = " + lastRead + ", diff = " + (fileAge - lastRead))
     read()
+    lib.dirty = true
     lastRead = fileAge
     readDirty = false
   }
@@ -45,6 +48,7 @@ trait MusicContainer extends Serializable {
       return ;
     }
     read()
+    lib.dirty = true
   }
   
   def toJson: String = ""

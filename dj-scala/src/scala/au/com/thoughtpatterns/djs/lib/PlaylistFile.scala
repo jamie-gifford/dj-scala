@@ -10,7 +10,7 @@ import java.net.URL
 import au.com.thoughtpatterns.djs.disco.Artists
 
 @SerialVersionUID(1L)
-abstract class PlaylistFile(private val file0: File) extends MusicContainer with Playlist with Serializable {
+abstract class PlaylistFile(private val file0: File, val lib : Library) extends MusicContainer with Playlist with Serializable {
 
   val file = file0.getCanonicalFile()
 
@@ -55,7 +55,7 @@ abstract class PlaylistFile(private val file0: File) extends MusicContainer with
         val rel = from.relativize(path);
         val newpath = to.resolve(rel);
         val newFile = newpath.toFile();
-        new MusicFile(newFile);
+        new MusicFile(newFile, lib);
       } else {
         track
       }
@@ -199,8 +199,8 @@ abstract class PlaylistFile(private val file0: File) extends MusicContainer with
 
 object PlaylistFile {
 
-  def apply(f: java.io.File): PlaylistFile = {
-    new M3UPlaylist(f)
+  def apply(f: java.io.File, lib: Library): PlaylistFile = {
+    new M3UPlaylist(f, lib)
   }
 
 }
