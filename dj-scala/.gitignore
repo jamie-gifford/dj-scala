@@ -6,5 +6,5 @@ ws
 bin
 .cache-*
 *.djs
-
+.metadata2
 

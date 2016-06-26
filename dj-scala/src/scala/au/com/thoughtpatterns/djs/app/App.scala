@@ -78,7 +78,10 @@ object App {
       lib.add(f) 
     } 
     
-    if (! cfg.faststart) lib.update
+    if (! cfg.faststart) {
+      lib.update
+      lib.playlists.adjust()
+    }
     
     if (cfg.fix) {
       lib.playlists.relativize()

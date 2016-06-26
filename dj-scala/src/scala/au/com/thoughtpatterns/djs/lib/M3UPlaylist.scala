@@ -13,6 +13,7 @@ import java.io.FileWriter
 import java.io.OutputStreamWriter
 import java.io.FileOutputStream
 import au.com.thoughtpatterns.djs.lib.MusicFormat._
+import au.com.thoughtpatterns.djs.util.Log
 
 @SerialVersionUID(1L)
 class M3UPlaylist(file0: File, lib: Library) extends PlaylistFile(file0, lib) {
@@ -137,6 +138,8 @@ class M3UPlaylist(file0: File, lib: Library) extends PlaylistFile(file0, lib) {
       }
       targetFile.setLastModified(file.lastModified)
 
+      Log.info("Replicated " + targetFile)
+      
       def quote(s: String) = if (s != null) s.replaceAllLiterally("\"", "\\\"") else ""
       
       def jformatter(content: File): String = {

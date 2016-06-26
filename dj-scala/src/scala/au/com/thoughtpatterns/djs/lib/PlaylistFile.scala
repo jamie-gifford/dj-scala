@@ -72,6 +72,56 @@ abstract class PlaylistFile(private val file0: File, val lib : Library) extends 
       false
     }
   }
+  
+  /**
+   * Adjust ogg<->flac extensions 
+   */
+  def adjust() {
+    
+    def adj(track: MusicFile): MusicFile = {
+      
+      var out : Option[MusicFile] = None
+      
+      if (! track.file.exists()) {
+        val p = track.file.getAbsolutePath
+        val idx = p.lastIndexOf('.')
+        val ext = p.substring(idx + 1)
+        
+        val ext2 = ext.toLowerCase match {
+          case "flac" => Some("ogg")
+          case "ogg" => Some("flac")
+          case _ => None
+        }
+        
+        for (ex <- ext2) {
+          val p2 = p.substring(0, idx + 1) + ex
+          val f2 = new File(p2)
+          if (f2.exists) {
+            out = Some(new MusicFile(f2, lib)) 
+          }
+        }
+      }
+      
+      if (! out.isDefined) {
+        out = Some(track)
+      }
+      
+      out.get
+    }
+
+    val adjusted = for (t <- tracks) yield { adj(t) }
+
+    if (adjusted != tracks) {
+      val old = saveToString
+      lib.dirty = true
+      tracks0 = adjusted
+      Log.info("Rewrite playlist from \n" + old + "to\n" + saveToString)
+      true
+    } else {
+      false
+    }
+    
+  }
 
   def prefer(lib: Library, m: MusicFile) {
 
