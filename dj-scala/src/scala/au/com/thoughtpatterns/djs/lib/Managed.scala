@@ -689,8 +689,21 @@ abstract class ManagedPlaylists(val lib: Library)
   // -----------------
   // Refactorings
 
-  def adjust() = {
-    
+  def adjust() : Boolean = {
+    var changed = true
+    for (t <- iterator) {
+      
+      if (t.adjust()) {
+        val ts = t.file.lastModified
+        t.save
+        t.file.setLastModified(ts)
+        changed = true
+      }
+    }
+    if (changed) {
+      lib.dirty = true
+    }
+    return changed
   }
   
   def relativize() = {

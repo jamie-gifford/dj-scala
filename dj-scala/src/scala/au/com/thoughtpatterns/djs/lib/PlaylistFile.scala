@@ -66,7 +66,7 @@ abstract class PlaylistFile(private val file0: File, val lib : Library) extends 
     if (rerooted != tracks) {
       val old = saveToString
       tracks0 = rerooted
-      Log.info("Rewrite playlist from \n" + old + "to\n" + saveToString)
+      Log.info("Rewrite playlist " + file + "\nfrom \n" + old + "to\n" + saveToString)
       true
     } else {
       false
@@ -76,7 +76,7 @@ abstract class PlaylistFile(private val file0: File, val lib : Library) extends 
   /**
    * Adjust ogg<->flac extensions 
    */
-  def adjust() {
+  def adjust() : Boolean = {
     
     def adj(track: MusicFile): MusicFile = {
       
@@ -115,10 +115,10 @@ abstract class PlaylistFile(private val file0: File, val lib : Library) extends 
       val old = saveToString
       lib.dirty = true
       tracks0 = adjusted
-      Log.info("Rewrite playlist from \n" + old + "to\n" + saveToString)
-      true
+      Log.info("Rewrite playlist from \n" + old + "\nto\n" + saveToString)
+      return true
     } else {
-      false
+      return false
     }
     
   }

@@ -15,6 +15,8 @@ import au.com.thoughtpatterns.djs.disco.Types._
 import java.nio.file.Path
 import au.com.thoughtpatterns.djs.disco.importer.Importer
 import java.io.FileWriter
+import java.io.LineNumberReader
+import java.io.FileReader
 
 @SerialVersionUID(1L)
 class Library(val libFile: Option[File]) extends ManagedContainers with DesktopCompat with Serializable {
@@ -345,6 +347,116 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
     def accept(f: File) : Boolean = true
     
     new Importer(this, root, accept)
+  }
+  
+  /**
+   * Two-way synch (based on modification times) of m3u and m0u files. Looks in directories containing playlists.
+   */
+  def syncM0U() {
+    
+    val dirs = playlists.map(_.file.getParentFile).toSet
+    var dirty = false
+    
+    for (dir <- dirs) {
+      val d = syncM0U(dir)
+      dirty = dirty || d
+    }
+    
+    if (dirty) {
+      for (p <- playlists) {
+        // Force update of all playlists since we forge the modification time
+        p.update()
+      }
+    }
+
+    write()
+  }
+  
+  def syncM0U(dir: File) : Boolean = {
+    
+    import scala.io.Source
+
+    class Pair(val base: String) {
+      
+      var m3u : Option[File] = None
+      var m0u : Option[File] = None
+      
+      def sync() : Boolean = {
+        val ts3 = m3u.map { f => f.lastModified() } getOrElse(0L)
+        val ts0 = m0u.map { f => f.lastModified() } getOrElse(0L)
+        var dirty = false
+        if (ts3 > ts0) {
+          sync3to0()
+          dirty = true
+        }
+        if (ts0 > ts3) {
+          sync0to3()
+          dirty = true
+        }
+        
+        return dirty
+      }
+      
+      def sync3to0() {
+        val src = m3u.get
+        val dest = new File(base + ".m0u")
+        val writer = new PrintWriter(new FileWriter(dest))
+        for (line <- Source.fromFile(src).getLines()) {
+          val line0 = line.replaceAll("\\.[^\\.]+$", "")
+          writer.println(line0)
+        }
+        writer.close()
+        dest.setLastModified(src.lastModified())
+        Log.info("Synched m0u " + dest)
+      }
+      
+      def sync0to3() {
+        val src = m0u.get
+        val dest = new File(base + ".m3u")
+        val writer = new PrintWriter(new FileWriter(dest))
+        for (line <- Source.fromFile(m0u.get).getLines()) {
+          // Append "flac". This might not be right but later the library will adjust it
+          val line0 = line + ".flac"
+          writer.println(line0)
+        }
+        writer.close()
+        dest.setLastModified(src.lastModified())
+        Log.info("Synched m3u " + dest)
+      }
+      
+    }
+    
+    var map : Map[String, Pair] = Map()
+    
+    for (f <- dir.listFiles()) {
+      
+      def base(f: File) = {
+        f.toString().replaceAll("\\.[^\\.]+$", "")
+      }
+      def ext(f: File) = {
+        val s = f.toString()
+        val idx = s.lastIndexOf('.')
+        if (idx >= 0) s.substring(idx + 1) else ""
+      }
+      
+      var b = base(f)
+      val pair = map.getOrElse(b, new Pair(b))
+      var e = ext(f).toLowerCase()
+      e match {
+        case "m3u" => pair.m3u = Some(f)
+        case "m0u" => pair.m0u = Some(f)
+        case _ => 
+      }
+      map = map + ( b -> pair )
+    }
+    
+    var dirty = false
+    for ((b, pair) <- map) {
+      val d = pair.sync()
+      dirty = dirty || d
+    }
+    
+    return dirty
   }
 }
 

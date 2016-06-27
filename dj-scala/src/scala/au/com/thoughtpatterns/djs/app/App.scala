@@ -79,7 +79,8 @@ object App {
     } 
     
     if (! cfg.faststart) {
-      lib.update
+      lib.syncM0U()
+      lib.update()
       lib.playlists.adjust()
     }
     
