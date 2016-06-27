@@ -10,8 +10,8 @@ object Replicate_Test {
   def main(args: Array[String]) : Unit = {
     
     val from = "/media/james/Orange/Music"
-    val to = "/home/djs/replica-dj"
-    val l = Library.load(new java.io.File("jamie.djs"))
+    val to = "/home/djs/replica-dj/Music"
+    val l = Library.load(new java.io.File("orange.djs"))
     
     l.m.replDJ(from, to)
     

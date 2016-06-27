@@ -52,7 +52,21 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
   def metadata(file: File) = MusicFile.fileToMdFile(file)
   
   def dirtyTarget(src: File): Option[Target] = {
-    image(src) map { target(src, _) } filter { t => dirty(src, t.file) || dirty(src, metadata(t.file))}
+    image(src) map { target(src, _) } filter { 
+      t => {
+          val d = (dirty(src, t.file) || dirty(src, metadata(t.file))) && src.length() > 0
+          /* debugging
+          if (d) {
+            Log.info("Dirty: " + src + " length " + src.length())
+            Log.info("src ts =    " + src.lastModified() + " on " + src)
+            Log.info("t.file ts = " + t.file.lastModified() + " on " + t.file)
+            Log.info("t.file ts = " + metadata(t.file).lastModified() + " on " + metadata(t.file))
+          }
+          
+          */
+          d
+        }
+      }
   }
 
   protected def target(src: File, dest: File) : Target
@@ -116,6 +130,8 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
       val w = new FileWriter(mddest)
       w.write(md)
       w.close()
+      val ts = mdsrc.lastModified()
+      mddest.setLastModified(ts)
     }
   }
     

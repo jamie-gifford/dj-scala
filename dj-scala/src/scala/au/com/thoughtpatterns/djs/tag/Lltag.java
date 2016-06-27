@@ -268,7 +268,11 @@ public class Lltag implements ITag {
 		bpm = aBpm;
 	}
 
-	private void update(String key, String value) {
+	private void update(String key, Object value0) {
+		if (value0 == null) {
+			return;
+		}
+		String value = value0.toString();
 		for (Entry e : entries) {
 			if (e.key.toUpperCase().equals(key.toUpperCase())) {
 				if (Util.equals(e.value, value)) {
@@ -334,10 +338,10 @@ public class Lltag implements ITag {
 
 		update("TITLE", getTitle());
 		update("ALBUM", getAlbum());
-		update("NUMBER", "" + getTrack());
+		update("NUMBER", getTrack());
 		update("ARTIST", getArtist());
 		update("GENRE", getGenre());
-		update("DATE", "" + getYear());
+		update("DATE", getYear());
 		update("FMPS_RATING", getRating() != -1 ? "" + getRating() : null);
 		update("DESCRIPTION", getComment());
 		if (getBPM() != null) {
