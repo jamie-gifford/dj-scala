@@ -131,8 +131,10 @@ object MetadataCache {
       tag.getBPM() match { case x if x != null => Some(x) case _ => None})
     }
     
-    if (mdTs > ts) {
+    if (mdTs > ts && md.title != null) {
       // File is out of date so update
+      // But refuse to do so if we are missing a title (as a safety net in case lltag has failed)
+      
       val tag = new TagFactory().getTag(file);
       tag.setTitle(md.title)
       tag.setArtist(md.artist)
