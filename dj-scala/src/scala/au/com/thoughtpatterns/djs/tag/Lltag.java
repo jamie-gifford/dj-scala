@@ -51,6 +51,10 @@ public class Lltag implements ITag {
 	private double rating;
 
 	private Double bpm;
+	
+	private String rgGain;
+	
+	private String rgPeak;
 
 	private boolean toUpperCase = false;
 
@@ -162,6 +166,13 @@ public class Lltag implements ITag {
                     case "DESCRIPTION":
                         setComment(value);
                         break;
+                    case "REPLAYGAIN_TRACK_GAIN":
+                    	setRGGain(value);
+                    	break;
+                    case "REPLAYGAIN_TRACK_PEAK":
+                    	setRGPeak(value);
+                    	break;
+                    	
                     default:
                         break;
                     }
@@ -266,6 +277,26 @@ public class Lltag implements ITag {
 	@Override
 	public void setBPM(Double aBpm) {
 		bpm = aBpm;
+	}
+
+	@Override
+	public String getRGGain() {
+		return rgGain;
+	}
+
+	@Override
+	public String getRGPeak() {
+		return rgPeak;
+	}
+
+	@Override
+	public void setRGGain(String g) {
+		rgGain = g;
+	}
+
+	@Override
+	public void setRGPeak(String p) {
+		rgPeak = p;
 	}
 
 	private void update(String key, Object value0) {

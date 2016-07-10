@@ -97,8 +97,17 @@ object MetadataCache {
     
     val diff = mdTs - ts
     
+    def rg(g: String, p: String) : Option[ReplayGainData] = {
+      if (g != null && p != null) {
+        Some(ReplayGainData(g, p))
+      } else {
+        None
+      }
+    }
+    
     if (mdTs >= ts) {
       // MD file is up to date
+      
       (new JsonyParser()).parse(new FileReader(mdFile)) match {
         case json : JsonyObject => 
 
@@ -111,7 +120,8 @@ object MetadataCache {
             json.getCast("genre", classOf[String]),
             Option(json.getCast("track", classOf[Long])).getOrElse(0l).intValue(),
             Option(json.getCast("rating", classOf[Double])),
-            json.getCast("bpm", classOf[Double]) match { case x if (x > 0) => Some(x) case _ => None }
+            json.getCast("bpm", classOf[Double]) match { case x if (x > 0) => Some(x) case _ => None },
+            rg(json.getCast("rg_gain", classOf[String]), json.getCast("rg_peak", classOf[String]))
           )
 
         case _ =>
@@ -128,7 +138,8 @@ object MetadataCache {
       tag.getGenre(),
       tag.getTrack(),
       tag.getRating() match { case x if (x > 0) => Some(x) case _ => None },
-      tag.getBPM() match { case x if x != null => Some(x) case _ => None})
+      tag.getBPM() match { case x if x != null => Some(x) case _ => None},
+      rg(tag.getRGGain(), tag.getRGPeak()))
     }
     
     if (mdTs > ts && md.title != null) {
@@ -145,6 +156,7 @@ object MetadataCache {
       tag.setTrack(md.track)
       md.rating match { case Some(x) => tag.setRating(x) case _ =>  }
       md.bpm match { case Some(x) => tag.setBPM(x) case _ =>  }
+      md.rg match { case Some(x) => { tag.setRGGain(x.gain); tag.setRGPeak(x.peak); } case _ => }
       
       tag.write()
       file.setLastModified(mdTs)
@@ -190,6 +202,12 @@ object MetadataCache {
 		md.bpm match {
 		  case Some(x) => json.set("bpm", x)
 		  case _ => 
+		}
+		md.rg match {
+		  case Some(x) => {
+		    json.set("rg_gain", x.gain)
+		    json.set("rg_peak", x.peak)
+		  }
 		}
 		
 		Log.info("Writing " + mdFile)

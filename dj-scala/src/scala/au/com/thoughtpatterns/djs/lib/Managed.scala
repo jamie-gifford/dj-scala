@@ -618,6 +618,12 @@ abstract class ManagedMusic(
     
     shorts
   }
+  
+  def replaygain: ManagedMusic = {
+    val empty = this.require(_.rg.isEmpty)
+    for (m <- empty) m.replaygain()
+    empty
+  }
 
   // ---------------
   // Dump to CSV

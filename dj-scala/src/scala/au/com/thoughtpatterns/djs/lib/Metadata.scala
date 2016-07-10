@@ -12,7 +12,8 @@ case class Metadata(
   genre: String,
   track: Int,
   rating: Option[Double],
-  bpm:  Option[Double] = None) extends Serializable {
+  bpm:  Option[Double] = None,
+  rg: Option[ReplayGainData] = None) extends Serializable {
   
   def toPerformance = Performance(title, artist, genre, year)
   def toApproxPerformance = Performance(title, artist, genre, if (year != null) year.approx else null)

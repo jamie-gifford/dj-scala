@@ -58,12 +58,15 @@ class MusicFile(private val file0: File, val lib: Library) extends MusicContaine
     }
   }
 
+  def extension : String = {
+    val path = file.getAbsolutePath
+    val i = path.lastIndexOf('.')
+    return path.substring(i)
+  }
+  
   def padEndSilence(endSilence: Double): Unit = {
     
     val path = file.getAbsolutePath
-    val i = path.lastIndexOf('.')
-    val extension = path.substring(i)
-    
     val tmpFile = File.createTempFile("dj-tmp-", extension);
     tmpFile.deleteOnExit();
 
@@ -89,6 +92,28 @@ class MusicFile(private val file0: File, val lib: Library) extends MusicContaine
     
   }
 
+  def replaygain(): Unit = {
+    val path = file.getAbsolutePath
+    val ext = extension
+    ext match {
+      case ".ogg" =>
+        ProcessExec.exec(List(
+            "vorbisgain",
+            path
+            ))
+        update()
+      case ".flac" =>
+        ProcessExec.exec(List(
+            "metaflac",
+            "--add-replay-gain",
+            path
+            ))
+        update()
+      case _ => 
+    }
+  }
+  
+  
   type Props = Map[String, String]
 
   @transient

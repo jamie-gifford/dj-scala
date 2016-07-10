@@ -12,6 +12,8 @@ public interface ITag {
     String getComment();
     String getGenre();
     Double getBPM();
+    String getRGGain();
+    String getRGPeak();
     
     RecordingDate getYear();
     int getTrack();
@@ -27,6 +29,8 @@ public interface ITag {
     void setTrack(int track);
     void setRating(double rating);
     void setBPM(Double bpm);
+    void setRGGain(String g);
+    void setRGPeak(String p);
     
     String getSignature();
     
