@@ -208,6 +208,7 @@ object MetadataCache {
 		    json.set("rg_gain", x.gain)
 		    json.set("rg_peak", x.peak)
 		  }
+		  case None =>
 		}
 		
 		Log.info("Writing " + mdFile)
