@@ -360,7 +360,7 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
    */
   def syncM0U() {
     
-    val dirs = playlists.map(_.file.getParentFile).toSet
+    val dirs = contents.keySet.filter { x => x.isDirectory }
     var dirty = false
     
     for (dir <- dirs) {
