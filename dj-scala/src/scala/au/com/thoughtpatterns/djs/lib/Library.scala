@@ -122,6 +122,8 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
         }
       }
     }
+    
+    override def toString = file.toString()
   }
 
   def containers = contents.values
@@ -482,9 +484,9 @@ Managed collection functions
   repl      : replicate using "Ogg" strategy, good for phone. 
               eg tandas.repl("/media/Orange/Music", "/media/Orange/replica")
 
-  replDJ    : replicatingn using "DJ" strategy (ie, compress to Ogg if less than two stars).
+  replDJ    : replicate using "DJ" strategy (ie, compress to Ogg if less than two stars).
               Good for additional DJ rigs
-              eg l.repl("/media/Orange/Music", "/media/Orange/replica-dj")
+              eg l.repl("/media/Orange/Music", "/media/Orange/replica-dj/Music")
 
 Managed music functions
 

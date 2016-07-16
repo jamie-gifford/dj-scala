@@ -215,8 +215,8 @@ object ReplicationStrategy {
         if (ogg.exists() && target.file.exists()) {
           // Safety check: should be redundant
           if (! ogg.equals(target.file)) {
-            Log.info("!!!! DELETE " + ogg)
-            //ogg.delete()
+            ogg.delete()
+            Log.info("Deleted " + ogg)
           }
         }
       }
