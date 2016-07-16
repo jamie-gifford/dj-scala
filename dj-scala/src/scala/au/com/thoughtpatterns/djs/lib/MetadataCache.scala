@@ -88,6 +88,9 @@ object MetadataCache {
    * If these are out of synch, they are synchronized as a side effect of this function.
    */
   private def read(file: File) = {
+    
+    dirty0 += 0.001
+    
     val ts = file.lastModified();
     val mdFile = MusicFile.fileToMdFile(file)
     val mdTs = mdFile.lastModified
