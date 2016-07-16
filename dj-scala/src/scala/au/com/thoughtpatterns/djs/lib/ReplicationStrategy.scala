@@ -207,7 +207,21 @@ object ReplicationStrategy {
       else
         Target(dest, this)
     }
-
+    
+    override def transcode(m: MusicFile, src: File, target: Target) {
+      super.transcode(m, src, target);
+      if (target.file.getName.endsWith(".flac")) {
+        val ogg = rename(target.file, "ogg")
+        if (ogg.exists() && target.file.exists()) {
+          // Safety check: should be redundant
+          if (! ogg.equals(target.file)) {
+            Log.info("!!!! DELETE " + ogg)
+            //ogg.delete()
+          }
+        }
+      }
+    }
+      
   }
 
 }
