@@ -37,7 +37,11 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
   
   private var initCommands : List[String] = null
 
-  var dirty : Boolean = false
+  private var dirty0 : Boolean = false
+  
+  def markDirty() {
+    dirty0 = true
+  }
 
   def add(f: File): Unit = {
     contents.get(f) match {
@@ -55,7 +59,7 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
           }
           for (c0 <- c) {
             contents = contents + (f -> c0)
-            dirty = true
+            markDirty()
             c0.update()
           }
         }
@@ -69,7 +73,7 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
   def update() {
     val toDelete = contents map {_._1} filter {!_.exists()}
     contents = contents -- toDelete
-    if (toDelete.size > 0) dirty = true
+    if (toDelete.size > 0) markDirty()
     update0()
   }
 
@@ -100,7 +104,7 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
     for ((f, c) <- contents; if c.check) { c.update() }
     for ((f, c) <- contents; if ! c.exists) {
       contents = contents - f
-      dirty = true
+      markDirty()
     }
   }
 
@@ -123,8 +127,10 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
   def containers = contents.values
 
   def write() {
-    if (dirty) write0()
-    dirty = false
+    if (dirty0) {
+      dirty0 = false
+      write0()
+    }
   }
   
   def write0() {
@@ -328,7 +334,7 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
 
   def importCmd(path: String) {
     initCommands = scala.io.Source.fromFile(new File(path)).getLines.toList
-    write
+    write0
     Log.info("INIT commands imported from " + path)
     for (l <- getInitCommands) Log.info("INIT: " + l)
   }
@@ -457,6 +463,58 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
     }
     
     return dirty
+  }
+  
+  def help {
+    
+    print(s"""
+Useful objects/functions:
+
+Library
+
+  l : library
+  m = l.m : music
+
+Managed collection functions
+
+  ||, \\, && : combining operators
+
+  repl      : replicate using "Ogg" strategy, good for phone. 
+              eg tandas.repl("/media/Orange/Music", "/media/Orange/replica")
+
+  replDJ    : replicatingn using "DJ" strategy (ie, compress to Ogg if less than two stars).
+              Good for additional DJ rigs
+              eg l.repl("/media/Orange/Music", "/media/Orange/replica-dj")
+
+Managed music functions
+
+   require  : filter on metadata function
+   artist, genre, title: filter on these metadata items
+   yearRange: filter on years
+   unrated, rated, minRating : filter on rating
+
+   dups     : find dups within selection
+   ~, \\~    : combination operators "like"
+   suggest(tandas) : depth-1 suggestions from tandas
+   closure(tandas) : depth-100 suggestions from tandas
+
+Refactorings
+
+   m.exchange(pl)
+
+   * Use this contents in preference to equivalent music in the given playlists.
+   * Also, transfer ratings to this music if nececessary and prune the dups in the entire library like this.
+
+   m.fixShortEnds(minEnd: Double)
+
+   * Ensure all selected music has silence of at least minEnd seconds at end
+
+   m.replaygain
+
+   * Ensure all selected music has the replaygain tags defined
+
+     """.stripMargin)
+    
   }
 }
 

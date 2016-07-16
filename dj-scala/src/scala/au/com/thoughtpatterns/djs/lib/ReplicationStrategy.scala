@@ -168,6 +168,9 @@ object ReplicationStrategy {
     def target(src: File, dest: File) = Target(dest, this)
   }
 
+  /**
+   * Replication strategy that compresses everything to Ogg
+   */
   class Ogg(from: Path, to: Path) extends ReplicationStrategy(from, to) {
 
     def target(src: File, dest: File) = {
@@ -179,6 +182,9 @@ object ReplicationStrategy {
 
   }
 
+  /**
+   * Replication strategy that compresses everything to MP3
+   */
   class MP3(from: Path, to: Path) extends ReplicationStrategy(from, to) {
 
     def target(src: File, dest: File) = {
@@ -190,6 +196,9 @@ object ReplicationStrategy {
 
   }
 
+  /**
+   * Replication strategy that compresses everything to Ogg except stuff marked as noCompress
+   */
   class DJ(from: Path, to: Path, noCompress: Set[File]) extends ReplicationStrategy(from, to) {
 
     def target(src: File, dest: File) = {

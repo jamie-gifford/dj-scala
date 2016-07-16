@@ -32,7 +32,7 @@ class LibInterpreter(val library: Library, val input: Option[BufferedReader], va
 
   def applyBindingsWait() {
     // Forces wait for globalFuture
-    processLine("print(\"Applying bindings\");")
+    processLine("print(\"Applying bindings\\n\");")
     applyBindings();
   }
   
@@ -46,7 +46,7 @@ class LibInterpreter(val library: Library, val input: Option[BufferedReader], va
     bindVal("l", library)
     bindVal("m", library.music)
     bindVal("q", new Player(library))
-
+    
     bindVal("audacious", PlayerInterfaceFactory.useAudacious _);
     bindVal("clementine", PlayerInterfaceFactory.useClementine _);
 
@@ -74,8 +74,9 @@ class LibInterpreter(val library: Library, val input: Option[BufferedReader], va
       command(cmd)
     }
 
-    echo("--- Started DJ interpreter ---")
+    echo("--- Started DJ interpreter, type l.help for help ---")
   }
+  
 }
 
 object LibInterpreter {

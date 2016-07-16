@@ -113,6 +113,9 @@ trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with 
     this
   }
 
+  /**
+   * Replicate library, compressing to Ogg anthing with either no rating or rating less than 2 stars
+   */
   def replDJ(from: String, to:String) = {
     val okay = m.require(md => {
       var z = md.rating match { case Some(x) if x >= 0.4 => true case _ => false }
@@ -237,6 +240,8 @@ abstract class ManagedMusic(
 
   def artist(artist: String) = require(_.artist.contains(artist))
   def genre(genre: String) = require(_.genre == genre)
+  def title(title: String) = require(_.title.toLowerCase.contains(title.toLowerCase))
+  
 
   def yearRange(from: Int, to: Int) = require(
     x =>
@@ -278,6 +283,15 @@ abstract class ManagedMusic(
     val perfs = (m map { _.toApproxPerformance }).iterator.toSet
     filtre({ x => perfs.contains(x.toApproxPerformance) })
   }
+  
+  /**
+   * Difference with "like"
+   */
+  def \~(m: ManagedMusic) = {
+    val perfs = (m map { _.toApproxPerformance }).iterator.toSet
+    filtre({ x => ! perfs.contains(x.toApproxPerformance) })
+  }
+  
 
   /**
    * Send contents to clementine
@@ -696,7 +710,7 @@ abstract class ManagedPlaylists(val lib: Library)
   // Refactorings
 
   def adjust() : Boolean = {
-    var changed = true
+    var changed = false
     for (t <- iterator) {
       
       if (t.adjust()) {
@@ -707,7 +721,7 @@ abstract class ManagedPlaylists(val lib: Library)
       }
     }
     if (changed) {
-      lib.dirty = true
+      lib.markDirty()
     }
     return changed
   }
@@ -721,7 +735,7 @@ abstract class ManagedPlaylists(val lib: Library)
     }
     if (changed) {
       lib.quick()
-      lib.dirty = true
+      lib.markDirty()
     }
   }
 

@@ -38,7 +38,7 @@ trait MusicContainer extends Serializable {
   def update() = {
     Log.info("update " + file + "; fileAge = " + fileAge + ", lastRead = " + lastRead + ", diff = " + (fileAge - lastRead))
     read()
-    lib.dirty = true
+    lib.markDirty()
     lastRead = fileAge
     readDirty = false
   }
@@ -48,7 +48,7 @@ trait MusicContainer extends Serializable {
       return ;
     }
     read()
-    lib.dirty = true
+    lib.markDirty()
   }
   
   def toJson: String = ""

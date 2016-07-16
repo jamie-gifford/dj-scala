@@ -113,7 +113,7 @@ abstract class PlaylistFile(private val file0: File, val lib : Library) extends 
 
     if (adjusted != tracks) {
       val old = saveToString
-      lib.dirty = true
+      lib.markDirty()
       tracks0 = adjusted
       Log.info("Rewrite playlist from \n" + old + "\nto\n" + saveToString)
       return true
