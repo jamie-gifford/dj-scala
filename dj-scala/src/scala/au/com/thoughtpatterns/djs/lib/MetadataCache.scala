@@ -34,7 +34,7 @@ object MetadataCache {
 
   var cache: Map[File, CachedMetadata] = read()
 
-  var dirty: Int = 0
+  var dirty0: Double = 0
 
   private def read() = {
     if (cacheFile.exists()) {
@@ -66,7 +66,6 @@ object MetadataCache {
         case _ => {
           val md = read(f);
           cache = cache + (f -> md)
-          dirty += 1
           checkpoint()
           Some(md.m)
         }
@@ -129,6 +128,7 @@ object MetadataCache {
       
     } else {
       val tag = new TagFactory().getTag(file);
+      dirty0 += 1
       md = Metadata(
       tag.getTitle(),
       tag.getArtist(),
@@ -173,15 +173,15 @@ object MetadataCache {
   }
   
   private def checkpoint() {
-    if (dirty > 50) write()
+    if (dirty0 > 50) write()
   }
 
   def write() = {
-    if (dirty > 0) {
+    if (dirty0 > 0) {
       val o = new ObjectOutputStream(new FileOutputStream(cacheFile))
       o.writeObject(cache)
       o.close()
-      dirty = 0
+      dirty0 = 0
     }
   }
   
@@ -225,7 +225,7 @@ object MetadataCache {
       if (f.exists && c.m.title != null) {
         cacheCopy = cacheCopy + (f -> c)  
       } else {
-        dirty += 1
+        dirty0 += 1
         Log.info("Deleting " + f + " from metadata cache")
       }
     }
