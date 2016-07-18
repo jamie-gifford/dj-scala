@@ -634,7 +634,10 @@ abstract class ManagedMusic(
   }
   
   def replaygain: ManagedMusic = {
-    val empty = this.require(_.rg.isEmpty)
+    val empty = this.require(x => {
+      x.rg == null || x.rg.isEmpty
+    })
+    
     for (m <- empty) m.replaygain()
     empty
   }

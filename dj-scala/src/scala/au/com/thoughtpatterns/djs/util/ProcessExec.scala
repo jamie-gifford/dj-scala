@@ -26,6 +26,13 @@ object ProcessExec {
     val stdout = slurp(p.getInputStream())
     val stderr = slurp(p.getErrorStream())
     
+    Log.info("... result code " + resultCode)
+    
+    if (resultCode != 0) {
+      Log.info("Failed: " + stderr)
+      System.exit(resultCode)
+    }
+    
     ProcessResult(stdout, resultCode)
   }
   

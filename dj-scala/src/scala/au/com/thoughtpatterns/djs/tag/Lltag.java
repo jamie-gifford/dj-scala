@@ -378,6 +378,12 @@ public class Lltag implements ITag {
 		if (getBPM() != null) {
 			update("BPM", getBPM().toString());
 		}
+		if (getRGGain() != null) {
+			update("REPLAYGAIN_TRACK_GAIN", getRGGain());
+		}
+		if (getRGPeak() != null) {
+			update("REPLAYGAIN_TRACK_PEAK", getRGPeak());
+		}
 
 		cmd.add("--clear");
 
