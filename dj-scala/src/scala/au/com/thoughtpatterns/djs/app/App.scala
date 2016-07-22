@@ -78,20 +78,13 @@ object App {
       lib.add(f) 
     } 
     
-    if (cfg.fix) {
-      lib.playlists.relativize()
-    }
-    
     if (! cfg.faststart) {
+      lib.playlists.relativize()
       lib.syncM0U()
       lib.update()
       lib.playlists.adjust()
-    }
-
-    if (cfg.fix) {
       lib.playlists.relativize()
     }
-    
 
     if (cfg.save) {
       lib.write0 // unconditional

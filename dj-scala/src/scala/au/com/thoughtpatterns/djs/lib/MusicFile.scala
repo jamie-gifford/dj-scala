@@ -195,6 +195,37 @@ class MusicFile(private val file0: File, val lib: Library) extends MusicContaine
     }
 
   }
+  
+  // ------------------------
+  //
+  
+  def bits : Option[Integer] = {
+    SoxiCache.get(file) match {
+      case Some(m) => m.bits
+      case _ => None
+    }
+  }
+
+  def channels : Option[Integer] = {
+    SoxiCache.get(file) match {
+      case Some(m) => m.channels
+      case _ => None
+    }
+  }
+
+  def sampleRate : Option[Double] = {
+    SoxiCache.get(file) match {
+      case Some(m) => m.rate
+      case _ => None
+    }
+  }
+  
+  def encoding : Option[String] = {
+    SoxiCache.get(file) match {
+      case Some(m) => m.encoding
+      case _ => None
+    }
+  }
 
 }
 

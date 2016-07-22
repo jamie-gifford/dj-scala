@@ -138,6 +138,7 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
   def write0() {
     MetadataCache.write()
     FileMetadataCache.write()
+    SoxiCache.write()
     for (file <- libFile) {
       Log.info("Saving library " + file)
       val o = new ObjectOutputStream(new FileOutputStream(file))

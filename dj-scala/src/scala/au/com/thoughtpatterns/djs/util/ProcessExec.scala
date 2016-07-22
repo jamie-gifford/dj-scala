@@ -30,7 +30,6 @@ object ProcessExec {
     
     if (resultCode != 0) {
       Log.info("Failed: " + stderr)
-      System.exit(resultCode)
     }
     
     ProcessResult(stdout, resultCode)
