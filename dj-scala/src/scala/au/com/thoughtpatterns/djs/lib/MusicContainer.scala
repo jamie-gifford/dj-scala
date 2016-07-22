@@ -36,7 +36,7 @@ trait MusicContainer extends Serializable {
   def read()
 
   def update() = {
-    Log.info("update " + file + "; fileAge = " + fileAge + ", lastRead = " + lastRead + ", diff = " + (fileAge - lastRead))
+    //Log.info("update " + file + "; fileAge = " + fileAge + ", lastRead = " + lastRead + ", diff = " + (fileAge - lastRead))
     read()
     lib.markDirty()
     lastRead = fileAge

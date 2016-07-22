@@ -4,6 +4,7 @@ import java.io.File
 import au.com.thoughtpatterns.djs.lib.Library
 import au.com.thoughtpatterns.djs.webapp.Main
 import au.com.thoughtpatterns.djs.lib.MetadataCache
+import au.com.thoughtpatterns.djs.util.Log
 
 /**
  * The following operations are available:
@@ -79,11 +80,18 @@ object App {
     } 
     
     if (! cfg.faststart) {
-      lib.playlists.relativize()
-      lib.syncM0U()
+      Log.info("Start 6...")
       lib.update()
-      lib.playlists.adjust()
       lib.playlists.relativize()
+      Log.info("Start 5...")
+      lib.syncM0U()
+      Log.info("Start 4...")
+      lib.update()
+      Log.info("Start 3...")
+      lib.playlists.adjust()
+      Log.info("Start 2..")
+      lib.playlists.relativize()
+      Log.info("Start 1...")
     }
 
     if (cfg.save) {
