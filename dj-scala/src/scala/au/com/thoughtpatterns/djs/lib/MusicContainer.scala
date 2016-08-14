@@ -58,5 +58,7 @@ trait MusicContainer extends Serializable {
 
   def replicate(strategy: ReplicationStrategy) {}
   
+  def deleteMdFile() {}
+  
 }
 

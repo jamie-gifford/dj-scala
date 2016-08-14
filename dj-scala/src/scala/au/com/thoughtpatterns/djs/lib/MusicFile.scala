@@ -227,6 +227,12 @@ class MusicFile(private val file0: File, val lib: Library) extends MusicContaine
     }
   }
 
+  override def deleteMdFile() {
+    if (mdFile.exists()) {
+      mdFile.delete()
+    }
+  }
+
 }
 
 object MusicFile {

@@ -641,6 +641,14 @@ abstract class ManagedMusic(
     for (m <- empty) m.replaygain()
     empty
   }
+  
+  def hasRG : ManagedMusic = this.require(x => {
+      x.rg != null && ! x.rg.isEmpty
+  })
+  
+  def noRG : ManagedMusic = this.require(x => {
+      x.rg == null || x.rg.isEmpty
+  })
 
   // ---------------
   // Dump to CSV
@@ -660,6 +668,16 @@ abstract class ManagedMusic(
     pw.print(utils.getFormattedString())
     pw.close()
 
+  }
+  
+  // -------------
+  // Misc
+  
+  def deleteMdFile() = {
+    for (music <- this) {
+      music.deleteMdFile()
+    }
+    this
   }
 
 }
