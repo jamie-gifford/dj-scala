@@ -500,6 +500,7 @@ Managed music functions
    ~, \\~    : combination operators "like"
    suggest(tandas) : depth-1 suggestions from tandas
    closure(tandas) : depth-100 suggestions from tandas
+   closure(tandas, n) : depth-n suggestions from tandas
 
 Refactorings
 
@@ -515,6 +516,10 @@ Refactorings
    m.replaygain
 
    * Ensure all selected music has the replaygain tags defined
+
+   m.synchronise(n)
+ 
+   * synchronise with tango.info to last n days (based on TIN=XXX;SIDE=S) comments
 
      """.stripMargin)
     

@@ -29,7 +29,7 @@ public class TangoInfo {
 
 	private static final Logger log = Logger.get(TangoInfo.class);
 
-	private static final String BASE_URL = "https://tango.info/tools/tagger1.3.5.php";
+	private static final String BASE_URL = "https://tango.info/tracktagger/1.4.0";
 
 	private static final String SEPARATOR = ";";
 

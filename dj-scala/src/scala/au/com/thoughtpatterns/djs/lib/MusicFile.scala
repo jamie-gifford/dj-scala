@@ -255,7 +255,8 @@ object MusicFile {
       val hasKey = props.contains(key)
       if (hasKey) {
         val replacement = if (value != null) key + "=" + value else ""
-        return kv.replaceAllIn(comment, replacement)
+        val old = key + "=" + props.getOrElse(key, "")
+        return comment.replace(old, replacement)  
       } else if (value != null) {
         // Append
         return comment.trim() + ";" + key + "=" + value
