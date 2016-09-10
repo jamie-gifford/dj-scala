@@ -5,6 +5,7 @@ import au.com.thoughtpatterns.djs.tag.Lltag
 import au.com.thoughtpatterns.djs.util.Log
 import java.io.File
 import java.nio.file.Path
+import java.nio.file.Paths
 import java.io.FileWriter
 import au.com.thoughtpatterns.core.json.Jsony
 import au.com.thoughtpatterns.core.util.Resources
@@ -18,8 +19,8 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
   /**
    * Map src file to JSON representation
    */
-  val json = collection.mutable.Map.empty[File, String] 
-  
+  val json = collection.mutable.Map.empty[File, String]
+
   /**
    * Calculate the image (before transcoding) of the given file according to the given from and to paths
    */
@@ -47,13 +48,14 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
     image(src) map { target(src, _) }
   }
 
-  def dirty(src: File, file: File) = ! file.exists() || Math.abs(file.lastModified() - src.lastModified()) >= 2000;
-    
+  def dirty(src: File, file: File) = !file.exists() || Math.abs(file.lastModified() - src.lastModified()) >= 2000;
+
   def metadata(file: File) = MusicFile.fileToMdFile(file)
-  
+
   def dirtyTarget(src: File): Option[Target] = {
-    image(src) map { target(src, _) } filter { 
-      t => {
+    image(src) map { target(src, _) } filter {
+      t =>
+        {
           val d = (dirty(src, t.file) || dirty(src, metadata(t.file))) && src.length() > 0
           /* debugging
           if (d) {
@@ -66,10 +68,10 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
           */
           d
         }
-      }
+    }
   }
 
-  protected def target(src: File, dest: File) : Target
+  protected def target(src: File, dest: File): Target
 
   /**
    * Replicate the src file to the dest file. This will involve calculating the target file from the dest
@@ -78,20 +80,20 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
   def transcode(m: MusicFile, src: File, target: Target) {
     if (dirty(src, target.file)) transcodeData(m, src, target)
     transcodeMetadata(m, src, target)
-  }  
-  
+  }
+
   def transcodeData(m: MusicFile, src: File, target: Target) {
 
     val targetFile = target.file;
-    
+
     targetFile.getParentFile().mkdirs()
 
     val cmd =
       if (suffix(targetFile) != suffix(src))
         if (suffix(targetFile).toLowerCase() == "ogg")
-//          List("avconv", "-y", "-i", src.getAbsolutePath(), "-c", "libvorbis", "-q", "5", targetFile.getAbsolutePath())
+          //          List("avconv", "-y", "-i", src.getAbsolutePath(), "-c", "libvorbis", "-q", "5", targetFile.getAbsolutePath())
           List("ffmpeg", "-y", "-i", src.getAbsolutePath(), "-acodec", "libvorbis", "-aq", "6", targetFile.getAbsolutePath())
-        else 
+        else
           List("avconv", "-y", "-i", src.getAbsolutePath(), targetFile.getAbsolutePath())
       else
         List("cp", src.getAbsolutePath(), targetFile.getAbsolutePath())
@@ -105,6 +107,13 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
     val p = b.start();
     p.waitFor();
 
+    transcodeTags(m, src, target)
+
+    targetFile.setLastModified(src.lastModified)
+  }
+  
+  def transcodeTags(m: MusicFile, src: File, target: Target) {
+    val targetFile = target.file;
     if (suffix(targetFile).toLowerCase == "mp3" && suffix(src).toLowerCase != "mp3") {
       // Copy tags across since avconv seems to fail
       val srcTags = new Lltag(src)
@@ -117,10 +126,7 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
 
       destTags.write()
     }
-
-    targetFile.setLastModified(src.lastModified)
   }
-
 
   def transcodeMetadata(m: MusicFile, src: File, target: Target) {
     val mdsrc = metadata(src)
@@ -134,7 +140,7 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
       mddest.setLastModified(ts)
     }
   }
-    
+
   /**
    * Rename a file with the given extension (eg "ogg"). No dot in the extension should be given.
    */
@@ -156,7 +162,7 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
   }
 
   protected def isMusic(f: File) = Set("mp3", "flac", "ogg").contains(suffix(f).toLowerCase)
-  
+
   def relativize(target: File) = to.relativize(target.toPath())
 }
 
@@ -207,21 +213,98 @@ object ReplicationStrategy {
       else
         Target(dest, this)
     }
-    
+
     override def transcode(m: MusicFile, src: File, target: Target) {
       super.transcode(m, src, target);
       if (target.file.getName.endsWith(".flac")) {
         val ogg = rename(target.file, "ogg")
         if (ogg.exists() && target.file.exists()) {
           // Safety check: should be redundant
-          if (! ogg.equals(target.file)) {
+          if (!ogg.equals(target.file)) {
             ogg.delete()
             Log.info("Deleted " + ogg)
           }
         }
       }
     }
-      
+
+  }
+
+  /**
+   * Replication strategy for music files only, that renames transcodes to MP3 and renames files
+   * according to artist/track
+   */
+  class Share(lib: Library, from: Path, to: Path) extends ReplicationStrategy(from, to) {
+
+    def target(src: File, dest: File) = {
+      if (isMusic(dest))
+        Target(rename(dest, "mp3"), this)
+      else
+        Target(dest, this)
+    }
+
+    override def image(src: File): Option[File] = {
+
+      if (isMusic(src)) {
+        
+        val m = lib.resolve(src);
+        
+        m match {
+          case Some(x: MusicFile) => {
+            
+            x.md match {
+              case Some(md) => {
+
+                val split = "(.+), voc. (.+)".r
+    
+                val orq = md.artist match {
+                  case split(base, vocalist) => base
+                  case _ => md.artist
+                }
+                
+                val path = Paths.get(orq, md.title + ".mp3")
+                val dest = to.resolve(path)
+                
+                val destFile = dest.toFile
+                Some(destFile)
+                
+              } 
+              case _ => None
+            }
+            
+          } 
+          case _ => None
+        }
+        
+      } else {
+        None
+      }
+    }
+
+    /**
+     * Limit the tag info we share
+     */
+    override def transcodeTags(m: MusicFile, src: File, target: Target) {
+      val targetFile = target.file;
+      val srcTags = new Lltag(src)
+      val destTags = new Lltag(targetFile)
+
+      destTags.setArtist(srcTags.getArtist)
+      destTags.setTitle(srcTags.getTitle)
+      destTags.setGenre(srcTags.getGenre)
+      val date0 = srcTags.getYear()
+      val dateApprox = if (date0 != null) RecordingDate.year(date0.from.year) else null
+      destTags.setYear(dateApprox)
+
+      destTags.write()
+    }
+
+    /**
+     * Don't share md files
+     */
+    override def transcodeMetadata(m: MusicFile, src: File, target: Target) {
+    }
+
   }
 
 }

@@ -14,17 +14,9 @@ object Library_Test {
 
   def main(args: Array[String]) {
 
-    val l = Library.load(new File("jamie.djs"))
+    val l = Library.load(new File("test.djs"))
     
-    val mish = l.m.require(_.title == "Mishiadura")
-    
-    mish.print
-    println(mish.head.file)
-    println(mish.head.endSilence)
-    
-    mish.fixShortEnds(3.5d)
-    
-    println(mish.head.endSilence)
+    l.m.replShare("/home/djs/replica-dj/Music", "/tmp/share")
     
     /*
     l.refresh()

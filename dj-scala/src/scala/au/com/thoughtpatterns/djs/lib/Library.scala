@@ -194,6 +194,11 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
     }
     r
   }
+  
+  /**
+   * Given a File, return the corresponding MusicContainer 
+   */
+  def resolve(f : File) : Option[MusicContainer] = contents.get(f)
 
   /**
    * Given a music file, rate it according to equivalent music in library
@@ -468,6 +473,8 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
     return dirty
   }
   
+  
+  
   def help {
     
     print(s"""
@@ -487,7 +494,7 @@ Managed collection functions
 
   replDJ    : replicate using "DJ" strategy (ie, compress to Ogg if less than two stars).
               Good for additional DJ rigs
-              eg l.repl("/media/Orange/Music", "/media/Orange/replica-dj/Music")
+              eg l.replDJ("/media/Orange/Music", "/home/djs/replica-dj/Music")
 
 Managed music functions
 

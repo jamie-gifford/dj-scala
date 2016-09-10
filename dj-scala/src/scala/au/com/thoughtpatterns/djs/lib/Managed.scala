@@ -113,6 +113,12 @@ trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with 
     this
   }
 
+  def replIdentity(from: String, to: String) = {
+    val x = new ReplicationStrategy.Identity(new File(from).toPath(), new File(to).toPath())
+    replicate(from, to, x)
+    this
+  }
+
   /**
    * Replicate library, compressing to Ogg anthing with either no rating or rating less than 2 stars
    */
@@ -124,6 +130,15 @@ trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with 
     val okayFiles = (okay.map { x => x.file }).toSet
     val x = new ReplicationStrategy.DJ(new File(from).toPath(), new File(to).toPath(), okayFiles)
     
+    replicate(from, to, x)
+    this
+  }
+  
+  /**
+   * Replicate music files in library, renaming to artist/title and transcoding to MP3
+   */
+  def replShare(from: String, to: String) = {
+    val x = new ReplicationStrategy.Share(lib, new File(from).toPath(), new File(to).toPath())
     replicate(from, to, x)
     this
   }
