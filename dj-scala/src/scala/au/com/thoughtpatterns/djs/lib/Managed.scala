@@ -16,6 +16,7 @@ import au.com.thoughtpatterns.djs.webapp.DJSession
 import au.com.thoughtpatterns.djs.webapp.Desktop
 import java.io.FileWriter
 import au.com.thoughtpatterns.djs.util.Log
+import scala.collection.mutable.MutableList
 
 trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with Formatter {
 
@@ -843,6 +844,25 @@ abstract class ManagedPlaylists(val lib: Library)
 
       p.save()
     }
+  }
+
+  def expand(padding: ManagedMusic): ManagedMusic = {
+    
+    val list = new MutableList[MusicFile]
+    val size = playlists.indirectContents.size
+    
+    for (pl <- playlists) {
+      for (tr <- pl.indirectContents) {
+        val m = lib.resolve(tr); 
+        list += m;
+      }
+      for (tr <- padding.indirectContents) {
+        val m = lib.resolve(tr); 
+        list += m;
+      }
+    } 
+    
+    ManagedMusic(lib, list)
   }
 
 }
