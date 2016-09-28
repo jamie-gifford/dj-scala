@@ -13,6 +13,7 @@ import au.com.thoughtpatterns.core.json.JsonyParser
 import java.io.FileReader
 import au.com.thoughtpatterns.core.json.JsonyObject
 import au.com.thoughtpatterns.djs.util.RecordingDate
+import java.util.Date
 
 /**
  * An accurate metadata (tag) cache for music files.
@@ -168,6 +169,7 @@ object MetadataCache {
     val out = CachedMetadata(md, ts);
 
     if (! mdFile.exists() || mdTs < ts) {
+      Log.info("MD file is out of date: mdTs = " + new Date(mdTs) + "; file ts = " + new Date(ts));
       // Metadata file is out of date so update
       writeMdFile(out, mdFile)
     }
