@@ -818,7 +818,7 @@ abstract class ManagedPlaylists(val lib: Library)
     w.print(toJson(strategy))
     w.close()
   }
-
+  
   // ---------------------------
 
   /**
@@ -828,6 +828,63 @@ abstract class ManagedPlaylists(val lib: Library)
     println((for (m <- this) yield {
       m.file.toString()
     }).mkString("\n"))
+  }
+  
+  def prettyFormat : String = {
+    // Newline at each genre change
+    
+    val buff = new StringBuffer
+    
+    var lastGenre : Option[String] = None
+    
+    val contents = for (pl <- playlists; tr <- pl.tracks) yield { lib.resolve(tr) }
+    
+    val mds = for (tr <- contents; md <- tr.md) yield { md }
+    
+    def toYear(d: RecordingDate) = { if (d != null) d.toYear else "?" }
+    
+    for (md <- mds) {
+      
+      val genre = Some(md.genre)
+      val skip = ! genre.equals(lastGenre)
+      lastGenre = genre
+      
+      if (skip) {
+        buff.append("\n")
+      }
+
+      val tvm = List("tango", "vals", "milonga").toSet.contains(md.genre)
+      if (tvm) {
+        buff
+          .append(md.artist)
+          .append(" - ")
+          .append(md.title)
+          .append(" - ")
+          .append(toYear(md.year))
+          .append(" - ")
+          .append(md.genre)
+          .append("\n")
+      } else {
+        buff
+          .append(md.artist)
+          .append(" - ")
+          .append(md.title)
+          .append("\n")
+      }
+      
+    }
+    
+    return buff.toString()
+  }
+  
+  def prettyFormat(file: File) {
+    val w = new PrintWriter(new FileWriter(file))
+    w.print(prettyFormat)
+    w.close()
+  }
+  
+  def prettyFormat(filename: String) {
+    prettyFormat(new File(filename))
   }
 
   def toTandas(root: File) {

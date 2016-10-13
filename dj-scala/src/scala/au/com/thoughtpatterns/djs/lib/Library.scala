@@ -528,6 +528,12 @@ Refactorings
  
    * synchronise with tango.info to last n days (based on TIN=XXX;SIDE=S) comments
 
+Playlist
+
+   pl.prettyFormat("/tmp/out.txt")
+
+   * write pretty formatted milonga playlist
+
      """.stripMargin)
     
   }

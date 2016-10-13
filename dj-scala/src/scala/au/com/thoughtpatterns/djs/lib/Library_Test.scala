@@ -14,9 +14,12 @@ object Library_Test {
 
   def main(args: Array[String]) {
 
-    val l = Library.load(new File("test.djs"))
+    val l = Library.load(new File("/home/djs/replica-dj/library.djs"))
+
+    val p = l.p.path("2016-10-03 TISP")
     
-    l.m.replShare("/home/djs/replica-dj/Music", "/tmp/share")
+    println(p.prettyFormat)
+    
     
     /*
     l.refresh()

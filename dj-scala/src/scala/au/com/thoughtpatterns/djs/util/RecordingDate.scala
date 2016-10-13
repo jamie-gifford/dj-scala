@@ -8,6 +8,12 @@ class RecordingDate(val from: ApproxDate, val to: ApproxDate) extends Serializab
     else
       from.toString + "--" + to.toString
   }
+  def toYear = {
+    if (to == null)
+      from.toYear
+    else
+      from.toYear + "--" + to.toYear
+  }
 
   def <(other: RecordingDate): Boolean = {
     // TODO improve this
@@ -63,6 +69,7 @@ case class ApproxDate(day: Int, month: Int, year: Int) extends Serializable {
     else
       "%4d".format(year)
   }
+  def toYear = { "%4d".format(year) }
 }
 
 object RecordingDate {
