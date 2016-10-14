@@ -16,9 +16,9 @@ object Library_Test {
 
     val l = Library.load(new File("/home/djs/replica-dj/library.djs"))
 
-    val p = l.p.path("2016-10-03 TISP")
+    val p = l.p.path("public")
     
-    println(p.prettyFormat)
+    p.transcribeToRTF
     
     
     /*

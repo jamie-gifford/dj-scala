@@ -26,6 +26,7 @@
         <file name="${dj_basedir}/library/jsoup-1.7.2.jar"/>
         <file name="${dj_basedir}/library/jline-1.0.jar"/>
         <file name="${dj_basedir}/library/beatroot-dj.jar"/>
+        <file name="${dj_basedir}/library/jrtf-0.7.jar"/>
 	</filelist>
 
     <filelist id="scala_files">

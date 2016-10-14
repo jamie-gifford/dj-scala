@@ -13,5 +13,6 @@
 	<classpathentry kind="lib" path="/core/library/jetty-util-6.1.4rc1.jar"/>
 	<classpathentry kind="lib" path="/core/library/servlet-api-2.5-6.1.4rc1.jar"/>
 	<classpathentry kind="lib" path="library/beatroot-dj.jar" sourcepath="/beatroot/src/java"/>
+	<classpathentry kind="lib" path="library/jrtf-0.7.jar" sourcepath="library/jrtf-0.7-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

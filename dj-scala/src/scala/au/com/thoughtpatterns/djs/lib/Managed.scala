@@ -17,6 +17,11 @@ import au.com.thoughtpatterns.djs.webapp.Desktop
 import java.io.FileWriter
 import au.com.thoughtpatterns.djs.util.Log
 import scala.collection.mutable.MutableList
+import com.tutego.jrtf.Rtf
+import com.tutego.jrtf.RtfText
+import com.tutego.jrtf.RtfPara
+import scala.collection.JavaConverters._
+import com.tutego.jrtf.RtfHeader
 
 trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with Formatter {
 
@@ -887,6 +892,85 @@ abstract class ManagedPlaylists(val lib: Library)
     prettyFormat(new File(filename))
   }
 
+  def prettyRTF(filename : String, title: Option[String]) {
+    // Newline at each genre change
+    
+    val rtf = Rtf.rtf()
+    
+    rtf.header(RtfHeader.font("Bitstream Charter").at(0))
+    
+    val accum = new MutableList[RtfText]
+    
+    val paras = new MutableList[RtfPara]
+
+    for (t <- title) {
+      paras += RtfPara.p(RtfText.bold(t))
+    }
+
+    def flush() {
+      val arr = accum.toArray
+      val p = RtfPara.p(arr:_*)
+      paras += p
+      accum.clear()
+    }
+    
+    def text(txt: String) = RtfText.font(0, txt)
+    
+    var lastGenre : Option[String] = None
+    
+    val contents = for (pl <- playlists; tr <- pl.tracks) yield { lib.resolve(tr) }
+    
+    val mds = for (tr <- contents; md <- tr.md) yield { md }
+    
+    def toYear(d: RecordingDate) = { if (d != null) d.toYear else "?" }
+    
+    for (md <- mds) {
+      
+      val genre = Some(md.genre)
+      val skip = ! genre.equals(lastGenre)
+      lastGenre = genre
+      
+      if (skip) {
+        flush()
+      }
+
+      val tvm = List("tango", "vals", "milonga").toSet.contains(md.genre)
+      if (tvm) {
+        
+        val line = md.artist + " - " + md.title + " - " + toYear(md.year) + " - " + md.genre
+        
+        accum += text(line)
+        accum += RtfText.lineBreak()
+        
+      } else {
+        val line = md.artist + " - " + md.title
+        accum += RtfText.italic(text(line))
+        accum += RtfText.lineBreak()
+      }
+      
+    }
+    
+    flush()
+    rtf.section(paras.asJava)
+    
+    rtf.out(new FileWriter(new File(filename)))
+  }
+  
+  def transcribeToRTF {
+    for (m <- this) {
+      val single = this.filtre { x => x == m }
+      val filename = m.file.getAbsolutePath.replaceAll("\\.[^\\.]+", ".rtf")
+      val title = m.file.getName.replaceAll("\\.[^\\.]+", "")
+      
+      val dest = new File(filename)
+      if (! dest.exists()) {
+        single.prettyRTF(filename, Some(title))
+      }
+      
+    }
+  }
+  
+  
   def toTandas(root: File) {
     for (m <- this) {
       val path = m.toTandaFile(lib)
