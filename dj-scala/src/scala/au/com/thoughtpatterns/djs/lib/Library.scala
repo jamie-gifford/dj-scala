@@ -530,7 +530,7 @@ Refactorings
 
 Playlist
 
-   pl.prettyFormat("/tmp/out.txt")
+   p.transcribeToRTF
 
    * write pretty formatted milonga playlist
 
