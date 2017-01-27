@@ -42,9 +42,9 @@ object Types extends Serializable {
   spanish.setStrength(java.text.Collator.PRIMARY)
 
   @SerialVersionUID(1L)
-  class SpanishWord(word: String) extends Serializable {
+  class SpanishWord(val word: String) extends Serializable {
 
-    val key = spanish.getCollationKey(word).toByteArray().toList
+    val key = spanish.getCollationKey(if (word == null) { "" } else { word } ).toByteArray().toList
 
     override val hashCode = key.foldLeft(0)((a, b) => (a * 257 + b) % 65537)
 

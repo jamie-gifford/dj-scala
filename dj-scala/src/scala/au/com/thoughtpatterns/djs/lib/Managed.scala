@@ -301,16 +301,16 @@ abstract class ManagedMusic(
    * Intersection with "like"
    */
   def ~(m: ManagedMusic) = {
-    val perfs = (m map { _.toApproxPerformance }).iterator.toSet
-    filtre({ x => perfs.contains(x.toApproxPerformance) })
+    val perfs = (m map { _.toApproxPerformance.toSpanishPerformance }).iterator.toSet
+    filtre({ x => perfs.contains(x.toApproxPerformance.toSpanishPerformance) })
   }
   
   /**
    * Difference with "like"
    */
   def \~(m: ManagedMusic) = {
-    val perfs = (m map { _.toApproxPerformance }).iterator.toSet
-    filtre({ x => ! perfs.contains(x.toApproxPerformance) })
+    val perfs = (m map { _.toApproxPerformance.toSpanishPerformance }).iterator.toSet
+    filtre({ x => ! perfs.contains(x.toApproxPerformance.toSpanishPerformance) })
   }
   
 
