@@ -27,6 +27,8 @@ object SoxiCache {
   var cache: Map[File, CachedMetadata] = read()
 
   var dirty: Int = 0
+  
+  var checkpointSize: Int = 10
 
   private def read() = {
     try {
@@ -88,7 +90,10 @@ object SoxiCache {
   }
   
   private def checkpoint() {
-    if (dirty > 50) write()
+    if (dirty > checkpointSize) {
+      write()
+      checkpointSize *= 2
+    }
   }
 
   def write() = {

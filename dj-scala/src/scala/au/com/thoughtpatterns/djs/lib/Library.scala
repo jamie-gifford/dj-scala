@@ -143,8 +143,8 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
       Log.info("Saving library " + file)
       val o = new ObjectOutputStream(new FileOutputStream(file))
       o.writeObject(this)
-      o.close()
     }
+    o.close()
   }
   
   def dump(out: File) : Unit = {
