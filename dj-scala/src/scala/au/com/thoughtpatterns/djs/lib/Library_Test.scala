@@ -9,17 +9,83 @@ import au.com.thoughtpatterns.djs.disco.Types._
 import au.com.thoughtpatterns.djs.util.RecordingDate
 import au.com.thoughtpatterns.djs.disco.Types.SpanishWord
 import au.com.thoughtpatterns.djs.disco.Disco
+import au.com.thoughtpatterns.djs.clementine.Player
 
 object Library_Test {
 
   def main(args: Array[String]) {
 
     val l = Library.load(new File("/home/djs/replica-dj/library.djs"))
+    
+    l.update()
 
-    val p = l.p.path("public")
+    val x = l.m.tvm
+
+    var already = 0
+    var total = 0
+    var count = 0
     
-    p.transcribeToRTF
+    for (m <- x; md <- m.md; if (md.composer == null)) {
+      val c = m.lookupComposer
+      for (composer <- c) {
+        count = count + 1
+      }
+    }
+
+    for (m <- x; md <- m.md) {
+      val c = m.lookupComposer
+      for (composer <- c) {
+        total = total + 1
+      }
+      if (md.composer != null) {
+        already = already + 1
+      }
+      if (c.isDefined && md.composer == null) {
+        println(md.genre + ": " + md.title + ", " + md.artist + " => " + c.get)
+      }
+    }
+
+    println("Count " + count)
+    println("Total " + total)
+    println("Already " + already)
+
+    x.synchroniseComposer
     
+    l.write()
+    
+    /*
+    var total = 0
+    var okay = 0
+    
+    for (m <- x) {
+      val c = m.lookupComposer
+      println(m.toApproxPerformance + " => " + c)
+      
+      total = total + 1
+      if (c.isDefined) { okay = okay + 1 }
+      
+    }
+    
+    println(okay + " of " + total)
+    */
+    
+    /*
+    val rumbo = l.m.title("Sin rumbo fijo")
+    
+    val r2 = rumbo map { x => x.toApproxPerformance.toSpanishPerformance }
+    
+    for (p <- r2) {
+      println(p)
+    }
+    
+    val perf1Set = Set.empty + r2.head
+    
+    val perf2 = r2.tail.head
+    
+    val b  = perf1Set.contains(perf2)
+    
+    println("B = " + b)
+    */
     
     /*
     l.refresh()
