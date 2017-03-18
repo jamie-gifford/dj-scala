@@ -262,6 +262,7 @@ abstract class ManagedMusic(
   def artist(artist: String) = require(_.artist.contains(artist))
   def genre(genre: String) = require(_.genre == genre)
   def title(title: String) = require(_.title.toLowerCase.contains(title.toLowerCase))
+  def composer(composer: String) = require(_.composer.toLowerCase.contains(composer.toLowerCase))
   
 
   def yearRange(from: Int, to: Int) = require(
@@ -643,6 +644,23 @@ abstract class ManagedMusic(
     val s = new Synchroniser(lib, this)
     s.maxdays = days
     s.update()
+    this
+  }
+
+  def synchroniseComposer = {
+    
+    for (m <- this; md <- m.md; if (md.composer == null)) {
+      val c = m.lookupComposer
+      for (composer <- c) {
+        
+        val tag = new TagFactory().getTag(m.file)
+        tag.setComposer(composer)
+        tag.write()
+        m.update()
+        
+      }
+    }
+    
     this
   }
   

@@ -56,6 +56,8 @@ public class Lltag implements ITag {
 	
 	private String rgPeak;
 
+	private String composer;
+	
 	private boolean toUpperCase = false;
 
 	public Lltag(File aFile, boolean aToUpperCase) throws IOException {
@@ -124,6 +126,9 @@ public class Lltag implements ITag {
                     switch (key.toUpperCase()) {
                     case "ARTIST":
                         setArtist(value);
+                        break;
+                    case "COMPOSER":
+                        setComposer(value);
                         break;
                     case "TITLE":
                         setTitle(value);
@@ -299,6 +304,16 @@ public class Lltag implements ITag {
 		rgPeak = p;
 	}
 
+	@Override
+	public String getComposer() {
+		return composer;
+	}
+
+	@Override
+	public void setComposer(String c) {
+		composer = c;
+	}
+
 	private void update(String key, Object value0) {
 		if (value0 == null) {
 			return;
@@ -359,6 +374,7 @@ public class Lltag implements ITag {
 		setYear(other.getYear());
 		setRating(other.getRating());
 		setComment(other.getComment());
+		setComposer(other.getComposer());
 	}
 
 	private List<String> createCmd() {
@@ -371,6 +387,7 @@ public class Lltag implements ITag {
 		update("ALBUM", getAlbum());
 		update("NUMBER", getTrack());
 		update("ARTIST", getArtist());
+		update("COMPOSER", getComposer());
 		update("GENRE", getGenre());
 		update("DATE", getYear());
 		update("FMPS_RATING", getRating() != -1 ? "" + getRating() : null);

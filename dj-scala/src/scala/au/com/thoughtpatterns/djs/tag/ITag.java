@@ -14,6 +14,7 @@ public interface ITag {
     Double getBPM();
     String getRGGain();
     String getRGPeak();
+    String getComposer();
     
     RecordingDate getYear();
     int getTrack();
@@ -31,6 +32,7 @@ public interface ITag {
     void setBPM(Double bpm);
     void setRGGain(String g);
     void setRGPeak(String p);
+    void setComposer(String composer);
     
     String getSignature();
     

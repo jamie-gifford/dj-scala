@@ -124,7 +124,8 @@ object MetadataCache {
             Option(json.getCast("track", classOf[Long])).getOrElse(0l).intValue(),
             Option(json.getCast("rating", classOf[Double])),
             json.getCast("bpm", classOf[Double]) match { case x if (x > 0) => Some(x) case _ => None },
-            rg(json.getCast("rg_gain", classOf[String]), json.getCast("rg_peak", classOf[String]))
+            rg(json.getCast("rg_gain", classOf[String]), json.getCast("rg_peak", classOf[String])),
+            json.getCast("composer", classOf[String])
           )
 
         case _ =>
@@ -143,7 +144,9 @@ object MetadataCache {
       tag.getTrack(),
       tag.getRating() match { case x if (x > 0) => Some(x) case _ => None },
       tag.getBPM() match { case x if x != null => Some(x) case _ => None},
-      rg(tag.getRGGain(), tag.getRGPeak()))
+      rg(tag.getRGGain(), tag.getRGPeak()),
+      tag.getComposer
+      )
     }
     
     if (mdTs > ts && md.title != null) {
@@ -153,6 +156,7 @@ object MetadataCache {
       val tag = new TagFactory().getTag(file);
       tag.setTitle(md.title)
       tag.setArtist(md.artist)
+      tag.setComposer(md.composer)
       tag.setAlbum(md.album)
       tag.setYear(md.year)
       tag.setComment(md.comment)
@@ -195,6 +199,7 @@ object MetadataCache {
 		val md = cmd.m
 		json.set("title", md.title);
 		json.set("artist", md.artist);
+		json.set("composer", md.composer);
 		json.set("album", md.album);
 		if (md.year != null) {
 			json.set("date", md.year.toString()); 

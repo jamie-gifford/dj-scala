@@ -12,7 +12,7 @@ object Data {
   private def reader(resource: String) = new InputStreamReader(getClass.getResourceAsStream(resource))
   
   private val u1 = new CsvUtils();
-  private val works = u1.fromCsv(reader("tangoworks.csv")).toSeq.map(toWork _);
+  private val works = u1.fromCsv(reader("tangoworks.csv")).toSeq.map(toWork _).filter { _.isValid };
   
   private val u2 = new CsvUtils();
   private val performances = u2.fromCsv(reader("tangoperformances.csv")).toSeq.map(toPerformance _);
@@ -28,6 +28,11 @@ object Data {
   private def esp(x: String) = new SpanishWord(x)
   
   def composer(title: String, artist: String, genre: String) : Option[String] = {
+    
+    if (artist == null || artist == "") {
+      return None
+    }
+    
     val orq = artist.replaceAll(", voc..*", "");
     val instrumental = orq == artist;
     
@@ -66,7 +71,9 @@ object Data {
     
   }
   
-  case class Work (title: SpanishWord, genre: String, tiwc: String, composer: SpanishWord, lyricist: SpanishWord)
+  case class Work (title: SpanishWord, genre: String, tiwc: String, composer: SpanishWord, lyricist: SpanishWord) {
+    def isValid = composer.toString != null && composer.toString() != "";
+  }
   
   private def toWork(x: Array[String]) = new Work(esp(x(0)), x(1), x(2), esp(x(3)), esp(x(4)))
 
