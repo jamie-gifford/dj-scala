@@ -1,0 +1,1958 @@
+<!DOCTYPE html><html lang="en"><head>
+<title> Performances - Argentine Tango - tango.info</title>
+<meta charset="UTF-8" />
+<meta name="robots" content="NOODP" />
+<meta name="description" content="Tango.info since 2004: music, CDs, events, festivals, shoes, composers, lyricists, singers, teachers, DJs, videos" />
+<meta name="keywords" content=" Performances - Argentine Tango - tango.info" />
+<meta name="author" content="Tobias Conradi" />
+<meta name="referrer" content="origin" />
+<meta name=viewport content="width=device-width, initial-scale=1" />
+<link rel="home" href="/" />
+<link rel="author" href="/tangoinfo/" />
+<link rel="image_src" href="/x/graphics/logos/ti.u.tango.info.300x200.jpg" />
+<link rel="icon" sizes="192x192" href="/x/graphics/logos/tango.info.1062x1062.ti.noto.900-fff.192x192.png">
+<link rel="search" type="application/opensearchdescription+xml" title="tango.info" href="/x/xml/search.xml" />
+<style>/*html5*/
+article, section, aside, hgroup, nav, header, footer, figure, figcaption {display: block;}
+*, *:before, *:after {box-sizing: border-box;}
+/********** SITE WIDE - UNSORTED **********/
+html {/*allways show scrollbars*/
+	overflow-y: scroll;
+	line-height:1.4em;
+	height:100%;
+}
+/********** SITE WIDE - FONT, FONT SIZES **********/
+
+html,input{
+	font-family: "Noto Sans", "helvetica", "Arial", "Tahoma", sans-serif;
+}
+textarea,pre, code, tt, kbd, samp, {
+	font-family: 'Noto Mono', monospace,Courier;
+}
+
+/* font-family */
+main,footer,td,tr,table,p,input,
+h1,h2,h3,h4,h5{
+	line-height:2em;
+}
+
+body {
+	font-size: 90%;
+	min-height:100%;
+}
+
+.ti_logo_and_sitename {	
+	font-size:1.5em;
+	display: inline-block;
+	margin-top: 3px;
+	}
+
+h1{font-size:2em;}
+h2{font-size:1.5em;}
+h3{font-size:1.17em;}
+h4{font-size:1em;}
+h5{font-size:.83em;}
+h6{font-size:.67em;}
+a{
+	text-decoration:none;
+}
+a:hover{
+	text-decoration:underline;
+}
+footer h2{
+	font-size: 100%;
+}
+/********** SITE WIDE - MARGIN BORDR PADDING **********/
+body,table,tr,td,th,img,h1,h2,h3,h4,h5,p,form {
+	margin:0;
+	border:0;
+	padding:0;
+}
+h1,h2,h3,h4,h5{
+	_margin:8px 0px;
+	clear:both;
+}
+abbr {
+	border:0;
+}
+table,tr,td{
+	border-collapse:collapse;
+}
+td {
+	vertical-align:top;
+}
+.nowrap{/*for IE "--" in tables; and for date col*/
+	white-space: nowrap;
+}
+
+div.leaflet-control-attribution a{
+	color:#333;
+}
+div.leaflet-control-attribution {
+	font-size:9px;
+}
+div.leaflet-control-attribution{
+	line-height:12px;
+}
+hr {
+	border:0;
+	height:1px;
+}
+
+div.pre{
+	white-space:pre;
+}
+
+/********** SITE WIDE - POSITIONING **********/
+.clear_both{
+	clear:both;
+	height:0;
+}
+
+body > header > div,
+body > nav > div,
+body > main > div,
+body > footer > div{
+	width:100%;
+	max-width:1002px;
+	margin:auto;
+	
+}
+
+/*ensure the boxes contain their content, and don't collapse*/
+body > header:after,
+body > nav:after,
+body > main:after,
+body > footer:after {
+    content:"";
+    display:table;
+    clear:both;
+}
+
+header{
+    position: fixed;
+    width: 100%;
+    z-index: 99999;
+}
+body > nav {
+	padding-top:33px;
+}
+
+div.content_inner,
+aside{
+	float:left;
+}
+
+div#site_name_and_search,
+.aside_on div.content_inner{
+	max-width:690px;
+}
+
+div.ti_header_inner{
+    _margin-left:4px;
+    _margin-right:4px;
+    _border-bottom:1px solid #ccc;
+    position: relative;//so ti_user can be position:absolute
+    
+}
+div.ti_footer_inner{
+    _margin-left:2px;
+    _margin-right:2px;
+    border-top:1px solid #ccc;
+}
+
+footer div > section{
+	float:left;
+	width:300px;
+	margin:10px;
+}
+footer section.page_info a{
+	_margin:2px;
+}
+
+ul#lang_sel,
+ul#site_menu{
+	display:inline;
+	list-style:none;
+	padding:0;
+}
+ul#lang_sel li,
+ul#site_menu li{
+	float:left;
+	_display:inline;
+	margin:2px 3px;
+}
+ul#lang_sel li a,
+ul#lang_sel li span{
+	display:block;
+	width:2.2em;
+	text-align:center;
+}
+
+ul#site_menu li a{
+	display:block;
+	width:140px;
+	text-align:center;
+}
+
+div.content td{
+	text-align:left;
+}
+div#wide_menu,
+div.content_inner {
+	margin: 0px 0px 10px 2px;
+	/* https://tango.info/tracks/work.la_cumparsita
+	 is wider than 652
+	 and last column would not be shown if width=652
+	 so change from width: to min-width:
+	 
+	 */
+	min-width:690px;
+}
+div#wide_menu{ 
+/* has a border, therefore reduce width*/
+	width:650px;
+}
+
+.nav_main_subsite a{
+ _display:block;
+ margin-left:2px;
+ margin-right:2px;
+}
+
+header div#ti_user{
+	_margin-right:6px;
+	display:inline-block;
+	_float:right;
+	width:150px;
+	_margin-left:6px;
+	position:absolute;
+	top:0;
+	right:0px;
+	_background-color:#ddd;
+	padding:1px;
+}
+
+header span.tangoinfo{
+	_padding:2px 8px;
+}
+
+#all_top .all_left{
+	width:26px;
+}
+/* Remove "#all_top" so the rule is applied in the wiki too */
+.ti_logo{
+	font-weight:800;
+}
+
+#all_top
+#all_top span.datetime{
+	margin-top:8px;
+}
+#all_top .datetime{
+	float:right;
+	margin-right:10px;
+}
+
+.all_inner{
+	margin:0px 10px;
+}
+
+/* search */
+form.search {
+	display:inline;
+}
+
+form.main_search {
+	width:390px;
+	float:right;
+	display:inline-block;
+	margin:0 2px;
+}
+form.main_search div{
+	float:left;
+	width:100%;
+
+}
+form.main_search input.text{
+	background-color:#f9f9f9;
+	width:340px;
+	float:left;
+	_padding:1px;
+	font-size:16px;
+	_margin-bottom:3px;/*Tahoma font had the letters gqyjp outside the visible area*/
+	line-height:22px;/*Tahoma font had the letters gqyjp outside the visible area*/
+	_border-radius: 5px;
+	_margin:2px;
+	border:1px #ccc solid;
+	padding:0 0 0 2px;
+
+}
+form.main_search input.ti_search_button{
+	width:36px;
+	height:24px;
+	_background-color:#04c;
+	_color:#04c;
+	overflow:hidden;
+	float:right;
+	_margin-left:8px;
+	_margin-top:4px;
+	_background: url(https://tango.info/x/tango-icon-theme-0.8.1/22x22/actions/system-search.png);
+	_border:none;
+	padding:0;
+	_text-indent:-9999px;
+	_cursor: pointer;
+	_font-size:0;
+}
+div#all_middle{
+	clear:both;
+}
+/* div content */
+div.content{
+	min-height:250px;
+	min-height:300px;
+	text-align:left;
+	float:left;
+}
+
+/************ SITE WIDE - COLORS **************/
+html {
+	_background-color:#eee;
+	color:#222;
+}
+.exdate{
+	color:#c00;
+}
+a{
+	color:#06c;
+}
+header{
+	background-color:#fff;
+	_background-color:rgba(0,0,0,0.8);
+	_color:#eee;
+	padding-top:3px;
+	_box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 15px 25px -12px rgba(0, 0, 0, 0.5);
+	_border-bottom:3px solid #900;
+
+}
+header span.tangoinfo{
+	_background-color:#900;
+	_color:#eee;
+}
+header span.tangoinfo a{
+	_color:#eee;
+	_border-bottom:2px solid #c00;
+}
+body > header a,
+_body > nav a{
+	_color:#eee;
+}
+
+body > nav{
+	_background-color:#444;
+	_background-color:rgba(0,0,0,0.8);
+	_color:#eee;
+	_border-bottom:1px solid #ddd;
+	_box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2);
+}
+body > nav > div{
+	border-bottom:1px solid #ddd;
+}
+
+body > footer{
+	_background-color:#444;
+}
+
+/************infobox*************************************/
+
+div.content table.infobox {
+	width:300px;
+	overflow:hidden;
+	able-layout: fixed;
+}
+
+table.infobox th{
+	background-color: #e6e6e6;
+}
+
+table.infobox tbody{
+	width:300px;
+	overflow:hidden;
+}
+table.infobox td{
+	overflow: hidden;
+}
+table.infobox td.key{
+	width:80px;
+}
+table.infobox td.col1{
+	width:120px;
+	padding-right:5px;
+}
+table.infobox td.col2{
+	width:200px;
+}
+table.infobox tr.section td{
+	width:300px;
+	font-weight:700;
+	border-top:1px solid #ddd;
+}
+table.infobox tr.section {
+	font-weight:700;
+}
+table.infobox tr.i300x50 td{
+	padding:0;
+	border-top:0;
+}
+table.infobox th,
+table.infobox td{
+	padding:2px 5px 2px 5px;
+}
+
+table.infobox tr.i300x50 td{
+	padding:0;
+	border-top:0;
+}
+
+/* END infobox **********************/
+
+/* filterbox **********************/
+table.filterbox td{
+	border-top:1px solid #ddd;
+}
+/* END filterbox **********************/
+
+/********** TABLE LISTING *******************/
+table.listing{
+	border-spacing:0;
+	width:100%;
+}
+table.listing td,
+table.listing th {
+	text-align:left;
+	padding:2px 5px 2px 5px;
+}
+table.listing th.info{
+	width:2.2em;
+}
+table.listing tr th {
+	background-color: #ddd;
+}
+table.listing td {
+	border-top:1px solid #ccc;
+}
+
+table.listing tr.selected td {
+	background-color:#ddd;/*same tint
+	e.g. https://tango.info/08427328131100-1-14
+	*/
+}
+
+table.listing tr:hover td {
+	background-color:#e6e6e6;
+}
+
+/*videos*/
+table.listing td.thumbnail{
+	text-align:center;
+
+}
+
+/*user*/
+table.listing td span.editor_first {
+	text-align:right;
+	display:block;
+	float:right;
+}
+
+table.listing tr td span.editor_first a{
+	font-family:"Courier New", Courier, monospace;
+}
+div.content table#events_today td{
+	/*height:50px;min!height via 300x50 image or its placeholder*/
+	padding:2px;
+}
+
+table.listing th.datetime,
+table.listing td.datetime{
+	width:94px;/*one iso date ca 66px*/
+}
+table.listing td.location{
+	width:220px;
+}
+table.listing td.summary{
+	width:220px;
+}
+
+table.listing td.i300x50{
+	width:310px;
+	padding-right:0;
+	padding-left:0;
+	padding-top:0;
+}
+table.listing td.i300x50 div.i300x50{
+	width:300px;
+	height:50px;
+	padding-right:5px;
+	padding-left:5px;
+}
+table.listing td.info{
+	text-align:right;
+	width:20px;
+}
+
+table.listing td.geo{
+	width:180px;
+}
+
+table.listing td.side_num,
+table.listing td.track_num,
+table.listing td.qty{
+	text-align:right;
+}
+table.listing tr td a sub{
+	margin-left:-3px;
+}
+
+.pagetype-event .wikirender_outer{
+	clear:both;
+}
+.pagetype-event .wikirender{
+	border:1px solid #333;
+	border-left:0;
+	border-right:0;
+}
+.subsitetype-city_p #map{
+	width:300px;
+}
+
+.pagetype-event #map{
+	width:300px;
+}
+
+.subsitetype-city_p #all_middle .calendar{
+	width:300px;
+	float:left;
+}
+.pagetype-event .wikirender .toc,
+.pagetype-event .wikirender .ti_event{
+	display:none;
+}
+.pagetype-event .wikirender pre{
+	font-size:120%;
+}
+.pagetype-tinp .listing td{
+	_height:40px;
+}
+
+.pagetype-event table.infobox,
+.pagetype-tinp table.infobox{
+	float:left;
+}
+
+div.image_and_right_info {
+	float:right;
+	width:300px;
+	_border:5px solid #0ff;
+}
+.category-cookies table.listing textarea{
+	width:300px;
+}
+.category-cookies table.listing td{
+	width:50%;
+}
+
+#VideoPlayback{
+	width:480px; height:360px;
+}
+#ytplayer{
+	width:640px;
+	height:390px;
+}
+
+/*pagetype work*/
+div.pre_lyrics_outer{
+	float:left;
+}
+div.lyrics_outer{
+	float:left;
+}
+
+div.content table#events_today td.desc div.desc{
+	overflow: hidden
+}
+
+/* jquery.tablesort */
+//@import url(x-table-mattkruse-com.css);
+table.sortable th{
+	padding-left:16px;
+}
+table.sortable th.headerSortUp { 
+    background-image: url(https://tango.info/x/gif/js-table-sort/01_ascending.gif); 
+    background-color: #66c;
+    color:#fff;
+}
+table.sortable th.headerSortUp a,
+table.sortable th.headerSortDown a{
+    color:#fff;
+}
+table.sortable th.headerSortDown { 
+    background-image: url(https://tango.info/x/gif/js-table-sort/01_descending.gif); 
+    background-color: #04c;
+    color:#fff; 
+} 
+table.sortable th.header { 
+    background-image: url(https://tango.info/x/gif/js-table-sort/01_unsorted.gif);     
+    cursor: pointer; 
+    background-repeat: no-repeat; 
+    background-position: center right; 
+}
+
+/******** END TABLE LISTING ***********/
+
+/*location code*/
+.ti_venue_code{
+	background-color:#333;
+	border:1px solid #000;
+	text-align:center;
+	display:block;
+	width:22px;
+	float:left;
+	line-height:22px;
+	font-size:12px;
+	color:#fff;
+	border-radius:3px;
+}
+.map .ti_venue_code{
+	/*top left rounded to indicate position*/
+	border-radius:3px;
+}
+.t_venue_code:before,
+.t_venue_code:after
+{
+	content: ' ';
+}
+.ti_venue_code_outer{
+	background-color:#000;
+}
+.date{
+	white-space:nowrap;
+	min-width:10ex;
+}
+
+/*aside*/
+aside{
+	margin-left:8px;/*IE*/
+	/*margin:auto;*/
+	width:300px;
+	margin-right:2px;
+}
+/*marketing*/
+div#a2 {
+	width:300px;
+	margin-left:10px;
+	margin-right:10px;
+}
+
+aside div.wh300x50{
+	background-color:#f9f9f9;
+}
+aside div.wh300x50 div.inner{
+	text-align:center;
+	vertical-align:middle;
+	display:table-cell;
+	vertical-align:middle;
+	width:300px;
+	height:50px;
+}
+aside div.wh300x50 a{
+	font-size:200%;
+}
+
+.aimages{
+	line-height:0;
+}
+.au {
+	margin:2px auto;
+}
+tr.ai_top{
+	border-bottom:2px solid #ddd;
+}
+tr.ai_top a.ti_label_link {
+	float:left;
+}
+tr.ai_top div.au {
+	float:left;
+}
+/*sitenotice*/
+div#ti_sitenotice{
+	width:100%;
+	text-align:center;
+}
+
+/*************wide menu**********************/
+/*
+for subsites: city_p, festivals_p
+*/
+div#wide_menu{
+	float:left;
+	background-color:#ccc;
+	border:1px solid #ccc;
+	border-top:0;
+	border-radius: 0 0 9px 9px;
+}
+
+div#wide_menu table.main_menu{
+	width:330px;
+	border-radius: 9px;
+	border-collapse:separate;
+	margin-right:10px;
+}
+div#wide_menu table.main_menu td{
+	width:150px;
+}
+/*see also main_menu*/
+div#wide_menu ul {
+	list-style: none;
+	padding:0px 0px 0px 0px;
+	margin:3px 0px 3px 0px;
+	display:inline;
+}
+div#wide_menu ul ul{
+	padding:0px 0px 0px 0px;
+	margin:0px 0px 2px 0px;
+}
+div#wide_menu li {
+	margin-top:2px;
+	display:inline;
+}
+
+div#wide_menu li li{
+	margin-top:0;
+}
+
+div#wide_menu li li{
+	margin-left:0;
+}
+
+html>body div#wide_menu ul li a,
+html>body div#wide_menu ul li span{
+	width: auto;/*for non-IE*/
+}
+
+div#wide_menu a.active, 
+div#wide_menu a:hover{
+	background-color:#ddd;
+}
+/****************end wide menu****************/
+/****main_menu used for subsite city_p******************************/
+table.main_menu td{
+	padding:2px;
+}
+.main_menu ul {
+	list-style: none;
+	padding:0px 0px 0px 0px;
+	margin:3px 0px 3px 0px;
+	display:inline;
+}
+.main_menu ul ul{
+	padding:0px 0px 0px 0px;
+	margin:0px 0px 2px 0px;
+}
+.main_menu li {
+	margin-top:2px;
+	display:inline-block;
+}
+
+.main_menu li li{
+	margin-top:0;
+}
+
+.main_menu li li{
+	_padding-left:12px;
+	margin-left:0;
+}
+
+
+    .main_menu ul li ul{
+        min-width: 120px; /* Set width of the dropdown */
+        background: #eee;
+        color:#000;
+        display: none;
+        position: absolute;
+        z-index: 999;
+        
+        _top:16px;
+        margin:0;padding:0;
+    }
+    .main_menu ul li ul li{
+    	border:1px solid #ddd;
+    	margin:0;
+    	padding:0;
+    }
+    .main_menu ul li ul li a{
+    	_width:100%;
+    	
+    	margin:4px 4px 4px 5px;
+    	_padding:4px;
+    	display:block;
+    }
+    .main_menu ul li:hover ul{
+        display: block;	/* Display the dropdown */
+    }
+    .main_menu ul li ul li{
+        display: block;
+    }
+
+/*********subsite festivals_p***************/
+#wide_menu div.nav_countries {
+	width:648px;
+	line-height:10px;
+	margin:auto;
+	/*	text-align:center;*/
+}
+body.subsitetype-festivals_p nav .inner table#f_count_table {
+	width:100%;
+}
+
+body.subsitetype-festivals_p nav .inner table#f_count_table td
+/* make availabe for tango.info/festivals*/
+{
+	text-align:center;
+}
+
+/*********subsite reliquias***************/
+/* reliquias */
+/* COLOR="#B13551" */
+body.subsitetype-reliquias {
+	background-color:#FEF3C6;
+
+}
+.subsitetype-reliquias header {
+	background-color:#B13551;
+	color:#fff;
+	_border-bottom:16px solid #74AD60;
+}
+.subsitetype-reliquias div#wide_menu {
+	background-color:#74AD60;
+	color:#fff;
+}
+.subsitetype-reliquias #all_top .all_center{
+	margin-left:30px;
+}
+.subsitetype-reliquias header a{
+	color:#fff;
+}
+
+.subsitetype-reliquias h1{
+	margin:0px;
+	padding:5px;
+}
+
+.subsitetype-reliquias div#content{
+	margin:4px;
+	background-color:#FEF3C6;
+}
+
+.subsitetype-reliquias div#bottom{
+	background-color:#B13551;
+	font-size:80%;
+}
+.subsitetype-reliquias div#bottom,
+.subsitetype-reliquias div#bottom a{
+	color:#fff;
+	text-decoration:none;
+}
+
+
+.subsitetype-reliquias td {
+	vertical-align:top;
+}
+
+.subsitetype-reliquias img {
+	border:#B13551 solid 1px; 
+}
+
+.subsitetype-reliquias img.gallery,
+.subsitetype-reliquias div.gallery,
+.subsitetype-reliquias a.gallery{
+	border:0px;margin:0px;padding:0px;
+}
+
+html body.subsitetype-reliquias table#all_middle td.all_right li.active ul li a.active{
+	background-color:#B13551;
+	color:#fff;
+}
+
+.subsitetype-reliquias .logo {
+	font-size:7mm;
+	font-weight:800;
+	color:#fff;
+}
+.subsitetype-reliquias img.home_reliquias{
+	width:300px;
+}
+
+.subsitetype-reliquias table.all {
+	background-color:#FEF3C6;
+	border-spacing:0mm;
+}
+
+.subsitetype-reliquias table.all tr.row2 {
+	background-color:#FEF3C6;
+	
+}
+
+.subsitetype-reliquias header{
+	background-color:#B13551;
+	border-bottom:5px solid #74AD60;
+}
+
+.subsitetype-reliquias table.all td.all_left{
+	idth:160px;
+}
+.subsitetype-reliquias table#all_middle td.all_center{
+	order-left:16px solid #74AD60;
+	border-right:16px solid #74AD60;
+	width:*;
+}
+.subsitetype-reliquias table.all td.all_right{
+	width:320px;
+}
+
+
+.subsitetype-reliquias table.all tr.row2 td.all_left{
+	order-top:16px solid #74AD60;
+	border-bottom:16px solid #74AD60;
+	padding:8px;
+}
+
+.subsitetype-reliquias table.all tr.row2 td.all_left ul{
+	ist-style:none;
+	margin:1mm;
+	padding-left:16px;
+}
+
+.subsitetype-reliquias table.all tr.row2 td.col2{
+	order-top:16px solid #74AD60;
+	border-bottom:16px solid #74AD60;
+
+}
+.subsitetype-reliquias table.all tr.row2 td.all_right{
+	order-top:16px solid #74AD60;
+	border-bottom:16px solid #74AD60;
+
+}
+
+.subsitetype-reliquias table.all tr.row3 td.all_left{
+	background-color:#B13551;
+}
+
+
+.subsitetype-reliquias table.all a.active,
+.subsitetype-reliquias table.all li.active a.active{
+	background-color:#B13551;
+	color:#fff;
+}
+
+.subsitetype-reliquias table.all_middle li.active ul li a.active{
+	background-color:#B13551;
+	olor:#fff;
+}
+
+.subsitetype-reliquias table.listing td {
+	padding:5px;
+	border-color:#B13551;
+}
+.subsitetype-reliquias .track_num{
+	font-weight:700;
+	font-size:110%;
+	text-align:right;
+}
+.subsitetype-reliquias .track_name{
+	text-transform:ppercase;
+	color:#B13551;
+	font-weight:700;
+}
+.subsitetype-reliquias .track_genr{
+	text-transform:capitalize;
+	font-weight:700;
+	font-size:80%;
+}
+.subsitetype-reliquias .track_dura{
+	font-size:80%;
+}
+
+
+
+/****************** TABLE CALENDAR ********************/
+/*not the real calender, this is the days of the year table*/
+#all_middle td.all_right table.calendar{
+	margin-left:8px;
+	margin-right:2px;
+	
+	/*there is a rule table width 100% that interferes
+	if the table is to the right hand, making it the full 310px*/
+	width:300px;
+}
+
+/* used for subsite city_p */
+table.calendar{
+	width:300px;
+	border-radius: 9px;
+	margin-top:2px;
+	border-spacing:0;
+}
+table#all_top table.calendar{
+	float:right;
+	width:300px;
+}
+table.calendar th {
+	text-align:center;
+	border-bottom:1px solid #ccc;
+}
+table.calendar td {
+	text-align:center;
+}
+
+
+
+/* rmv double border that occur due to collpase.:separate*/
+td + td {
+border-left-width: 0;
+}
+
+tr + tr + tr td {
+border-top-width: 0;
+}
+
+table.calendar td.actday,
+table.calendar tr.actweek{
+	background-color:#ddd;
+}
+table.calendar td.actday a,
+table.calendar tr.actweek a{
+    _color:#04c;
+}
+table.calendar tr.weekinner td a{
+	display:block;
+	width:30px;
+	text-align:center;
+}
+table.calendar tr.weekinner td.week a{
+	width:26px;
+}
+table.calendar tr.weekinner td.weeknumber a{
+	width:40px;
+}
+/* col width*/
+table.calendar th.day {
+	width:30px;
+}
+table.calendar th.week {
+	width:40px;
+}
+table.calendar th.month {
+	width:50px;
+}
+
+
+/*************img*****************/
+/*class cannot start numeric, thus prefix with wh (width, height)*/
+.wh50x50{width:50px;height:50px;}
+.wh300x50{width:300px;height:50px;}
+.wh300x100{width:300px;height:100px;}
+.wh300x150{width:300px;height:150px;}
+.wh300x200{width:300px;height:200px;}
+.wh300x250{width:300px;height:250px;}
+.wh300x300{width:300px;height:300px;}
+.wh300x475{width:300px;height:475px;}
+
+img {
+	border:#999 solid 0px; 
+}
+img.gallery,div.gallery,a.gallery{
+	border:0;
+	margin:0;
+	padding:0;
+}
+img.location300x200{
+	width:300px;
+}
+img.place300x200{
+	width:300px;
+	height:200px;
+	float:right;
+}
+img.person300x300{
+	float:right;
+	width:300px;
+}
+img.video_thumbnail{
+	border:0;
+	height:50px;
+}
+img.noborder{
+	border:0;
+}
+img.product50x50left{
+	width:50px;
+	float:left;
+}
+img.map_locator{
+	float:right;
+	border:0;
+	margin:2px;
+}
+#picline img{
+	width:75px;
+}
+.face-list{
+	width:50px
+}
+div.imgcontainer img.map_locator{
+	width:300px;
+}
+div.imgcontainer{
+	width:300px;
+	float:right;
+}
+img.flag{
+	width:18px;
+	height:12px;
+}
+a.product_in_list img{
+	width:50px;
+	border:0;
+}
+
+div.box300{
+	width:300px;
+	float:left;
+	margin-right:5px;
+}
+
+table#locations img.location, /* e.g. https://tango.info/berlin/venues */
+.listing td.location img.location,
+.listing td.location div.location_no_img{
+	width:75px;
+	height:50px;
+	float:left;
+	margin-right:2px;
+}
+
+/**********map******************/
+#map_large, .map_large{
+	width:100%;
+	height:400px;
+}
+#map {
+	float:left;
+	height:300px;
+	width:100%;
+}
+/*,
+body.pagetype-event #map*/
+body.pagetype-location10 #map
+{
+	width:300px;
+}
+#map .tooltip{
+	background-color:#fff;
+	border:1px solid #000;
+	xpadding:1px;
+	font-size:80%;
+}
+.ti_event_marker{
+	_background-color:#f00;
+	width:8px;
+	height:8px;
+	border-radius:4px;
+	border:1px solid #000;
+}
+
+/***********gmap********************/
+/*maybe only temporary*/
+
+body.category-gmap #map{
+	height:512px;
+	width:100%;
+}
+body.subsitetype-gmap #map{
+	height:512px;
+	width:100%;
+}
+
+/************************** import from city_p ********************/
+/*some www.tango.info rules are deleted when found in city_p */
+
+.vertical {
+	writing-mode: tb-rl;
+}
+span.editor_first{
+	margin:0px 8px 0px 8px;
+}
+
+.events_from_wiki td.geo {
+	width:155px;
+	overflow:hidden;
+}
+.events_from_wiki td.geo .ti_location_name{
+	display: block; 
+	margin-left: 2.7em;
+}
+
+table.vidlist td.thumbnail{
+	width:67px;
+}
+
+.person_base_data{
+	height:302px;
+}
+
+/* end city_p */
+
+/**************tango.info************************/
+body.category-tangoinfo div#menu {
+	float:left;
+	width:300px;
+	margin-left:8px;
+}
+
+body.category-tangoinfo div#menu ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+body.category-tangoinfo div#menu ul a{
+	display:block;
+	width:290px;
+	border-top:1px dotted #000;
+	font-size:110%;
+	font-weight:800;
+	text-decoration:none;
+	padding:3px;
+}
+body.category-tangoinfo div#menu ul a:hover,div#menu ul a:focus{
+	background-color:#ccc;
+
+}
+
+a.head:active {
+	background-color:#ccc;
+	color:#009;
+}
+a.head:hover {
+	background-color:#ccc;
+	color:#009;
+	text-decoration:none;
+}
+
+.active {
+	font-weight:800;
+	font-style:italic;
+}
+
+td.thumbnail{
+	width:72px;
+}
+/*.op, div.middle, .bottom,
+main div.content table{
+	width:100%;
+}*/
+div#sidebar{
+	width:300px;
+	overflow:hidden;
+	margin:auto;
+}
+
+div.subsubline{
+	padding-left:5px;
+	display:block;
+	background-color:#9c9;
+	border-right:1px solid #696;
+	border-bottom:1px solid #696;
+	border-top:1px solid #cfc;
+	border-left:1px solid #cfc;
+	color:#222;
+}
+
+/* middle */
+
+ul#supermenu{
+	/*order:1px solid #0f0;*/
+	padding:0;
+	margin:0;
+}
+
+#nav_h2{
+	white-space:normal;
+}
+.nav_cats {
+	
+}
+.nav_cats a,
+#nav_h2{
+	width:168px;
+	display:block;
+}
+td.nav_cats{
+	width:170px;
+}
+.nav_cats a{
+	margin-bottom:1px;
+	/*adding:2px 10px 2px 2px;*/
+}
+div.nav_cats{
+	border-top:1px dotted #f33;
+	width:168px;
+}
+
+div.content #tangohead td{
+	width:99%;
+	text-align:center;
+}
+
+table.tango_events td.wday{
+	text-align:left;
+	padding-bottom:1px;
+	font-size:100%;
+	font-weight:600;
+	border-top:1px solid #f33;
+}
+
+img.flag, 
+ul#supermenu img, 
+ul.l5 li img,
+.content #links_listing img {
+	border:1px solid #666;
+	height:12px;
+	margin-right:5px;
+	margin-left:3px;
+	margin-top:1px;
+}
+
+.zero{
+	border:0;
+	margin:0;
+}
+
+/*********contactform****************/
+form#contactform textarea{
+	width:300px;
+}
+form#contactform code{
+	font-weight:800;
+	font-size:120%;
+}
+form#contactform textarea,
+form#contactform input {
+	color:#222;
+	border-color:#ccc;
+}
+
+form#contactform{
+	margin:0px 0px 0px 0px;
+}
+form#contactform input, 
+form#contactform select{
+	display:inline;
+}
+
+/****END contactform****************/
+
+/* ------------- middle ------------- */ 
+/*iv.middleside,*/
+.middle form textarea,
+ul#supermenu a,
+ul#supermenu span,
+.middle form input{
+	margin:0;
+	padding:1px 3px;
+	border:0;
+	padding:0;
+
+	vertical-align:top;
+	text-align:left;
+	display:block;
+}
+
+.middle form textarea {
+	border-top:1px solid #300;
+	border-left:1px solid #300;
+	border-right:1px solid #900;
+	border-bottom:1px solid #900;
+}
+.middle form input, 
+.middle form select,
+.middle form textarea {
+	background-color:#600;
+	color:#f33;
+	margin:1px;
+	display:inline;
+}
+/* ------------- menu/middleleft ------------- */ 
+ul#supermenu{
+	width:168px;
+	padding-left:2px;
+}
+ul#supermenu a,
+ul#supermenu span{
+	width:166px;
+}
+
+.m3a,.m4a,.m4sa,.m5a,.m6a,
+div#postcode .active {
+	padding:1px;
+	padding-left:3px;
+	padding-right:3px;
+	margin:0;
+}
+
+
+ul#supermenu .m4s,ul#supermenu .m4sa  {
+	display:block;
+	width:110px;
+}
+ul#supermenu div.cities{
+	margin-left:10px;
+}
+ul#supermenu div.cities a{
+	margin-left:0;
+	width:170px;
+	padding:0;
+}
+div#postcode{
+	margin:0;
+}
+
+/* ----- END -------- menu/middleleft ------------- */ 
+
+/* -- middlecenter -- */
+.content .l5,
+.content .l6,
+.content .l7 {
+	/*adding-left:9px;*/
+}
+.content .l4ww a{
+	display:block;
+}
+.content .l4ww td{
+	width:33%;
+}
+
+div.l5{
+	margin-right:6px;
+}
+div.l5,div.l6,div.l7   {
+	margin-left:6px;
+	padding-left:9px;
+	padding-bottom:10px;
+
+}
+div.l5 ,div.l6 , div.l7  {
+	border-left:1px solid #f33;
+	border-bottom:4px;
+}
+
+.middle form , 
+div#links_special/*,
+div#links_listing*/{
+	border-top:1px dotted #f33;
+	padding:1px;
+}
+
+
+/*extra*/
+table#dictionary td {width:50%;}
+
+
+div.nav_lang,
+div.nav_cats
+{
+	border-top-style:solid;
+}
+
+/* products */
+.product_img{
+	width:300px;
+}
+.product_img_back{
+	max-width:390px;
+}
+.product_info{
+	min-height:162px;
+	margin-bottom:5px;
+}
+
+table.products tr.product td{
+	xpadding:0;
+
+}
+table.products tr.product td a{
+	margin:0;
+
+}
+table.products img{
+	width:50px;
+	height:50px;
+	border:0;
+}
+table.products tr.product ul{
+	margin-top:2px;
+	margin-bottom:2px;
+}
+
+.index_page_main_content section{
+	_max-width:300px;
+	float:left;
+	margin:5px;
+	width:150px;
+}
+.index_page_main_content ul{
+	list-style: none;
+	padding:0;
+	margin:0;
+}
+
+.place_base_data{
+	height:202px;
+}
+	
+ul.first_letters,
+ul.first_letters li,
+ul.first_letters li a,
+ul#supermenu li ul.first_letters li a,
+ul#supermenu span#postcode a
+{
+	display:inline;
+	padding-left:2px;
+	margin:0;
+}
+
+ul.first_letters li,
+ul.first_letters li a,
+ul#supermenu li ul.first_letters li a,
+ul#supermenu span#postcode a
+{
+	width:10px;/*IEwould otherwise ignore inlinestatemant for a and li*/
+}
+
+ul#supermenu span#postcode a{
+	padding:1px 4px;
+}
+
+@media screen and (max-width: 980px) {
+	body > header > div,
+	#all_middle,
+	#all_middle_contact,
+	body > footer > div{
+		max-width:980px;
+	}
+
+	form.main_search{width:300px;}
+	form.main_search input.text{width:250px;}
+	
+	div#wide_menu,
+	div.content_inner{
+		min-width:320px;
+	}
+	.subsitetype-city_p #map {
+    	width: 300px;
+	}
+
+
+}</style>
+</head><body  class="category-performances pagetype-cat.performances-first_letter" ><header><div class="inner"><div class="ti_header_inner"><div id="site_name_and_search"><span class="ti_logo_and_sitename"><img src="/x/graphics/logos/tango.info.1062x1062.ti.noto.900-fff.192x192.png" style="
+    height: 16px;
+    margin: 0 5px;
+"><span class="ti_sitename"><span class="tangoinfo"><a href="/" title="tango.info"><span class="ti_tango">tango</span><span class="ti_dot">.</span><span class="ti_info">info</span></a></span></span></span><form action="/" method="get" id="main_search" class="search main_search" >    <div>
+    <input class="text" type="text" name="q" id="q" value=""
+        /><input class="ti_search_button" type="submit" value="info"/>
+    </div>
+    </form></div><div id="ti_user"><a class="ti_user" href="/wiki/log_in">log in</a></div></div></div></header><nav>
+</nav>
+<main><div class="inner ">
+<div class="content"><div class="content_inner"><h1><a href="/performances">Performances</a>: J</h1>
+<ul class="first_letters"><li><a href="/performances/A" title="Tango Performances A">A</a></li> <li><a href="/performances/B" title="Tango Performances B">B</a></li> <li><a href="/performances/C" title="Tango Performances C">C</a></li> <li><a href="/performances/D" title="Tango Performances D">D</a></li> <li><a href="/performances/E" title="Tango Performances E">E</a></li> <li><a href="/performances/F" title="Tango Performances F">F</a></li> <li><a href="/performances/G" title="Tango Performances G">G</a></li> <li><a href="/performances/H" title="Tango Performances H">H</a></li> <li><a href="/performances/I" title="Tango Performances I">I</a></li> <li><a class="active" href="/performances/J" title="Tango Performances J">J</a></li> <li><a href="/performances/K" title="Tango Performances K">K</a></li> <li><a href="/performances/L" title="Tango Performances L">L</a></li> <li><a href="/performances/M" title="Tango Performances M">M</a></li> <li><a href="/performances/N" title="Tango Performances N">N</a></li> <li><a href="/performances/O" title="Tango Performances O">O</a></li> <li><a href="/performances/P" title="Tango Performances P">P</a></li> <li><a href="/performances/Q" title="Tango Performances Q">Q</a></li> <li><a href="/performances/R" title="Tango Performances R">R</a></li> <li><a href="/performances/S" title="Tango Performances S">S</a></li> <li><a href="/performances/T" title="Tango Performances T">T</a></li> <li><a href="/performances/U" title="Tango Performances U">U</a></li> <li><a href="/performances/V" title="Tango Performances V">V</a></li> <li><a href="/performances/W" title="Tango Performances W">W</a></li> <li><a href="/performances/X" title="Tango Performances X">X</a></li> <li><a href="/performances/Y" title="Tango Performances Y">Y</a></li> <li><a href="/performances/Z" title="Tango Performances Z">Z</a></li> </ul>Quantity of tracks in this list: 706.<br />Quantity of performances in this list: 321.<br /><table class="listing sortable">
+	<thead>
+	<tr><th class="able-sortable:alphanumeric">Title</th><th class="able-sortable:alphanumeric">TIWC</th><th class="able-sortable:alphanumeric">Genre</th><th class="able-sortable:alphanumeric">Instrumentalist(s)</th><th class="able-sortable:alphanumeric">Vocalist(s)</th><th class="able-sortable:alphanumeric">Lang.</th><th class="able-sortable:alphanumeric">Perf. Date</th>
+	<th class="able-sortable:alphanumeric">Dura.</th>
+	 	<th class="able-sortable:numeric">Track Qty</th>  	<th >info</th> 
+	</tr>
+	</thead>
+	<tbody>
+	<tr  class="performance"><td><a href="/work.j_ai_chante_mon_amour_a_jeannette">J'ai chanté mon amour a Jeannette</a></td><td><a href="/"></a></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.j_ai_chante_mon_amour_a_jeannette">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.j_ai_fait_le_tour_du_monde_himmel">J'ai fait le tour du monde (Himmel)</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td></td><td><a href="/ConstRossi">Tino Rossi</a></td><td>fra</td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.j_ai_fait_le_tour_du_monde_himmel">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.j_en_ai_marre_weltschmerz">J'en ai marre | Weltschmerz</a></td><td><a href="/"></a></td><td><a href="/genre.fox trot">fox trot</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.j_en_ai_marre_weltschmerz">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.j_y_suis_jamias_alle">J'Y Suis Jamias Allé</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>01:31</td><td>1</td><td><a href="/tracks//work.j_y_suis_jamias_alle">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.j_f">J.F.</a></td><td><a href="/"></a></td><td><a href="/genre.jazz">jazz</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td>06:30</td><td>1</td><td><a href="/tracks//work.j_f">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.ja_mam_czas_ja_poczekam">Ja mam czas, ja poczekam</a></td><td><a href="/T9059236678">T9059236678</a></td><td><a href="/genre.tango">tango</a></td><td></td><td><a href="/MieczFogie">Mieczysław Fogg</a></td><td>pol</td><td><a class="date" href="/"></a></td><td>02:56</td><td>4</td><td><a href="/tracks//work.ja_mam_czas_ja_poczekam">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.ja_znam_cie_tyle_lat">Ja znam cię tyle lat</a></td><td><a href="/Z0999905232">Z0999905232</a></td><td><a href="/genre.tango">tango</a></td><td></td><td><a href="/StefaWitas">Stefan Nowita</a></td><td>pol</td><td><a class="date" href="/"></a></td><td>02:51</td><td>1</td><td><a href="/tracks//work.ja_znam_cie_tyle_lat">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.ja_ja_ja">Ja, ja, ja</a></td><td><a href="/Z0000001562">Z0000001562</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JulioDecar">Julio De Caro</a></td><td><a href="/OrlanVerri">Orlando Verri</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>02:25</td><td>1</td><td><a href="/tracks//work.ja_ja_ja">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.ja_ja_ja">Ja, ja, ja</a></td><td><a href="/Z0000001562">Z0000001562</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JulioDecar">Julio De Caro</a></td><td><a href="/OrlanVerri">Orlando Verri</a></td><td>spa</td><td><a class="date" href="/1951-06-01">1951-06-01</a></td><td>02:32</td><td>3</td><td><a href="/tracks//1951-06-01/work.ja_ja_ja">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jacinto_chiclana">Jacinto Chiclana</a></td><td><a href="/T0370899969">T0370899969</a></td><td><a href="/genre.">?</a></td><td><a href="/AstorPiazz">Astor Piazzolla</a></td><td></td><td></td><td><a class="date" href="/"></a></td><td>02:49</td><td>1</td><td><a href="/tracks//work.jacinto_chiclana">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jacinto_chiclana">Jacinto Chiclana</a></td><td><a href="/T0370899969">T0370899969</a></td><td><a href="/genre.">?</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.jacinto_chiclana">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jack_the_ripper">Jack the Ripper</a></td><td><a href="/T0373453032">T0373453032</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/AlejaMelin">Daniel Melingo</a></td><td><a href="/AlejaMelin">Daniel Melingo</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>02:16</td><td>1</td><td><a href="/tracks//work.jack_the_ripper">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jacob_and_the_angel">Jacob and the Angel</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.jacob_and_the_angel">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jacob_and_the_angel">Jacob and the Angel</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td></td><td>-</td><td>und</td><td><a class="date" href="/"></a></td><td>02:30</td><td>1</td><td><a href="/tracks//work.jacob_and_the_angel">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jacqueline">Jacqueline</a></td><td><a href="/Z0999901782">Z0999901782</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/CarloPerez">Charlo</a></td><td>spa</td><td><a class="date" href="/1929-12-11">1929-12-11</a></td><td>02:59</td><td>3</td><td><a href="/tracks//1929-12-11/work.jacqueline">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jaguel">Jagüel</a></td><td><a href="/T0370122443">T0370122443</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1927-06-15">1927-06-15</a></td><td>02:47</td><td>2</td><td><a href="/tracks//1927-06-15/work.jaguel">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jaguel">Jagüel</a></td><td><a href="/T0370122443">T0370122443</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanfMagli">Juan Félix Maglio</a></td><td></td><td></td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.jaguel">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jak_ty_moj_snie">Jak ty mój śnie</a></td><td><a href="/Z0999905244">Z0999905244</a></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td>pol</td><td><a class="date" href="/"></a></td><td>02:52</td><td>1</td><td><a href="/tracks//work.jak_ty_moj_snie">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jalisco_nunca_pierde">Jalisco nunca pierde</a></td><td><a href="/T0350001409">T0350001409</a></td><td><a href="/genre.paso doble">paso doble</a></td><td><a href="/EnriqRodri">Enrique Rodríguez</a></td><td><a href="/DominPatti">Roberto Flores</a></td><td>spa</td><td><a class="date" href="/1938-02-21">1938-02-21</a></td><td>03:00</td><td>1</td><td><a href="/tracks//1938-02-21/work.jalisco_nunca_pierde">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jalouise_celos">Jalouise (celos)</a></td><td><a href="/T0003692247">T0003692247</a></td><td><a href="/genre."></a></td><td><a href="/FrancLomut">Francisco Lomuto</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1943-12-07">1943-12-07</a></td><td>03:07</td><td>1</td><td><a href="/tracks//1943-12-07/work.jalouise_celos">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jalousie">Jalousie</a></td><td><a href="/T0003692247">T0003692247</a></td><td><a href="/genre.tango">tango</a></td><td></td><td><a href="/MieczFogie">Mieczysław Fogg</a></td><td>pol</td><td><a class="date" href="/"></a></td><td>03:07</td><td>1</td><td><a href="/tracks//work.jalousie">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jalousie">Jalousie</a></td><td><a href="/T0003692247">T0003692247</a></td><td><a href="/genre.tango">tango</a></td><td></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>03:01</td><td>1</td><td><a href="/tracks//work.jalousie">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jalousie">Jalousie</a></td><td><a href="/T0003692247">T0003692247</a></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td>06:20</td><td>1</td><td><a href="/tracks//work.jalousie">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jalousie">Jalousie</a></td><td><a href="/T0003692247">T0003692247</a></td><td><a href="/genre.tango">tango</a></td><td></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>04:26</td><td>1</td><td><a href="/tracks//work.jalousie">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jalousie">Jalousie</a></td><td><a href="/T0003692247">T0003692247</a></td><td><a href="/genre.tango">tango</a></td><td></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>03:04</td><td>1</td><td><a href="/tracks//work.jalousie">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jalousie">Jalousie</a></td><td><a href="/T0003692247">T0003692247</a></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.jalousie">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jalousie">Jalousie</a></td><td><a href="/T0003692247">T0003692247</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/ManuePizar">Manuel Pizarro</a></td><td></td><td></td><td><a class="date" href="/1959">1959</a></td><td>02:34</td><td>1</td><td><a href="/tracks//work.jalousie">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jalousie">Jalousie</a></td><td><a href="/T0003692247">T0003692247</a></td><td><a href="/genre.tango">tango</a></td><td></td><td>-</td><td>zxx</td><td><a class="date" href="/1982">1982</a></td><td>05:00</td><td>1</td><td><a href="/tracks//work.jalousie">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jalousie">Jalousie</a></td><td><a href="/T0003692247">T0003692247</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgfpantang">Trio Pantango</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>02:10</td><td>1</td><td><a href="/tracks//work.jalousie">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jalousie">Jalousie</a></td><td><a href="/T0003692247">T0003692247</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xghqntngus">QuinTango</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1998">1998</a></td><td>04:20</td><td>1</td><td><a href="/tracks//work.jalousie">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jalousie">Jalousie</a></td><td><a href="/T0003692247">T0003692247</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrquartan">Quartango</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>05:32</td><td>2</td><td><a href="/tracks//work.jalousie">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jalousie_ii">Jalousie II</a></td><td><a href="/"></a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrquartan">Quartango</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>03:53</td><td>1</td><td><a href="/tracks//work.jalousie_ii">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jamas">Jamás</a></td><td><a href="/Z0999900525">Z0999900525</a></td><td><a href="/genre.ranchera">ranchera</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/AidaeFalco">Ada Falcón</a></td><td>spa</td><td><a class="date" href="/1937-05-12">1937-05-12</a></td><td>03:20</td><td>1</td><td><a href="/tracks//1937-05-12/work.jamas">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jamas">Jamás</a></td><td><a href="/Z0999900525">Z0999900525</a></td><td><a href="/genre.ranchera">ranchera</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/DominMaida">Roberto Maida</a>, <a href="/xgvvchorbb">-choir-</a></td><td>spa</td><td><a class="date" href="/1937-04-10">1937-04-10</a></td><td>03:13</td><td>1</td><td><a href="/tracks//1937-04-10/work.jamas">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jamas">Jamás</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.jamas">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jamas_en_la_vida">Jamás en la vida</a></td><td><a href="/Z0999901607">Z0999901607</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrvvgitbb">-unspecified guitars-</a></td><td><a href="/RoberCarva">Roberto Díaz</a></td><td>spa</td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.jamas_en_la_vida">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jamas_lo_vas_a_saber">Jamás lo vas a saber</a></td><td><a href="/T0370844248">T0370844248</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JosehBasso">José Basso</a></td><td><a href="/AlfreBelus">Alfredo Belusi</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>02:36</td><td>1</td><td><a href="/tracks//work.jamas_lo_vas_a_saber">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jamas_lo_vas_a_saber">Jamás lo vas a saber</a></td><td><a href="/T0370844248">T0370844248</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/OsvalPugli">Osvaldo Pugliese</a></td><td><a href="/CarloPelle">Jorge Maciel</a></td><td>spa</td><td><a class="date" href="/1966">1966</a></td><td>03:05</td><td>5</td><td><a href="/tracks//work.jamas_lo_vas_a_saber">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jamas_lo_vas_a_saber">Jamás lo vas a saber</a></td><td><a href="/T0370844248">T0370844248</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrlsstdlt">Los siete del tango</a></td><td><a href="/ArnalRodri">Roberto Echagüe</a></td><td>spa</td><td><a class="date" href="/1968-01-25">1968-01-25</a></td><td>02:39</td><td>1</td><td><a href="/tracks//1968-01-25/work.jamas_lo_vas_a_saber">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jamas_me_olvidaras">Jamás me olvidarás</a></td><td><a href="/T0370320152">T0370320152</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/CarloFigar">Carlos Figari</a></td><td><a href="/HectoCivil">Héctor Omar</a></td><td>spa</td><td><a class="date" href="/1957-04-05">1957-04-05</a></td><td>02:44</td><td>3</td><td><a href="/tracks//1957-04-05/work.jamas_me_olvidaras">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jamas_me_olvidaras">Jamás me olvidarás</a></td><td><a href="/T0370320152">T0370320152</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JoseaSalaa">José Sala</a></td><td><a href="/AlfreBelus">Alfredo Belusi</a></td><td>spa</td><td><a class="date" href="/1953--1954">1953--1954</a></td><td>02:53</td><td>1</td><td><a href="/tracks//work.jamas_me_olvidaras">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jamas_podre_olvidarte">Jamas podre olvidarte</a></td><td><a href="/"></a></td><td><a href="/genre."></a></td><td><a href="/AdolfCarab">Adolfo Carabelli</a></td><td><a href="/EgidiAducc">Alberto Gómez</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>03:14</td><td>1</td><td><a href="/tracks//work.jamas_podre_olvidarte">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jamas_podre_olvidarte">Jamás podré olvidarte</a></td><td><a href="/T0370015443">T0370015443</a></td><td><a href="/genre.vals">vals</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/CarloPerez">Charlo</a></td><td>spa</td><td><a class="date" href="/1931-12-17">1931-12-17</a></td><td>03:45</td><td>1</td><td><a href="/tracks//1931-12-17/work.jamas_podre_olvidarte">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jamas_retornaras">Jamás retornarás</a></td><td><a href="/T0370192509">T0370192509</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/MigueCaloa">Miguel Caló</a></td><td><a href="/RaulaBeron">Raúl Berón</a></td><td>spa</td><td><a class="date" href="/1942-10-09">1942-10-09</a></td><td>02:32</td><td>7</td><td><a href="/tracks//1942-10-09/work.jamas_retornaras">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jamas_retornaras">Jamás retornarás</a></td><td><a href="/T0370192509">T0370192509</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/OsvalFrese">Osvaldo Fresedo</a></td><td><a href="/OscarSerpa">Oscar Serpa</a></td><td>spa</td><td><a class="date" href="/1943-06-28">1943-06-28</a></td><td>02:45</td><td>4</td><td><a href="/tracks//1943-06-28/work.jamas_retornaras">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jamas_retornare">Jamás retornaré</a></td><td><a href="/T0370192509">T0370192509</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/MigueCaloa">Miguel Caló</a></td><td><a href="/RaulaBeron">Raúl Berón</a></td><td>spa</td><td><a class="date" href="/1942-10-09">1942-10-09</a></td><td></td><td>1</td><td><a href="/tracks//1942-10-09/work.jamas_retornare">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jamas_te_olvidare">Jamás te olvidaré</a></td><td><a href="/T0370046835">T0370046835</a></td><td><a href="/genre.vals">vals</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/CarloPerez">Charlo</a></td><td>spa</td><td><a class="date" href="/1931-10-23">1931-10-23</a></td><td>03:13</td><td>1</td><td><a href="/tracks//1931-10-23/work.jamas_te_olvidare">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jana">Jana</a></td><td><a href="/Z0999902095">Z0999902095</a></td><td><a href="/genre.tango">tango</a></td><td></td><td>-</td><td>zxx</td><td><a class="date" href="/1928">1928</a></td><td>02:34</td><td>1</td><td><a href="/tracks//work.jana">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jango_del_angel">Jango del ángel</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td>04:37</td><td>1</td><td><a href="/tracks//work.jango_del_angel">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.janitzio">Janitzio</a></td><td><a href="/T0350001829">T0350001829</a></td><td><a href="/genre.vals">vals</a></td><td><a href="/AlfonEspar">Alfonso Esparza Oteo</a></td><td><a href="/PedroVarga">Pedro Vargas</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>03:19</td><td>1</td><td><a href="/tracks//work.janitzio">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.janquerisima">Janquerisima</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td>03:44</td><td>1</td><td><a href="/tracks//work.janquerisima">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.japonesita">Japonesita</a></td><td><a href="/Z0999901535">Z0999901535</a></td><td><a href="/genre.fox trot">fox trot</a></td><td><a href="/AdolfCarab">Adolfo Carabelli</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1927-08-03">1927-08-03</a></td><td>02:35</td><td>2</td><td><a href="/tracks//1927-08-03/work.japonesita">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.japonesita">Japonesita</a></td><td><a href="/Z0999901535">Z0999901535</a></td><td><a href="/genre.fox trot">fox trot</a></td><td><a href="/EnriqRodri">Enrique Rodríguez</a></td><td><a href="/AntonDitom">Roberto Videla</a></td><td>spa</td><td><a class="date" href="/1951-06-18">1951-06-18</a></td><td>02:18</td><td>2</td><td><a href="/tracks//1951-06-18/work.japonesita">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.japonesita">Japonesita</a></td><td><a href="/Z0999901535">Z0999901535</a></td><td><a href="/genre.fox trot">fox trot</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1927">1927</a></td><td>02:53</td><td>1</td><td><a href="/tracks//work.japonesita">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.japonesita">Japonesita</a></td><td><a href="/Z0999901535">Z0999901535</a></td><td><a href="/genre.fox trot">fox trot</a></td><td><a href="/xgrvvgitbb">-unspecified guitars-</a></td><td><a href="/IgnacCorsi">Ignacio Corsini</a></td><td>spa</td><td><a class="date" href="/1927-08-24">1927-08-24</a></td><td>02:15</td><td>1</td><td><a href="/tracks//1927-08-24/work.japonesita">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jaque_mate">Jaque mate</a></td><td><a href="/T0372980761">T0372980761</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrlssoljd">Los Solistas de D'Arienzo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>02:29</td><td>1</td><td><a href="/tracks//work.jaque_mate">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jarangon">Jarangón</a></td><td><a href="/T0370015454">T0370015454</a></td><td><a href="/genre.marcha">marcha</a></td><td><a href="/EnriqRodri">Enrique Rodríguez</a></td><td><a href="/DominPatti">Roberto Flores</a></td><td>spa</td><td><a class="date" href="/1939-02-24">1939-02-24</a></td><td>02:40</td><td>1</td><td><a href="/tracks//1939-02-24/work.jarangon">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jardin_florido">Jardín florido</a></td><td><a href="/"></a></td><td><a href="/genre.tango">tango</a></td><td><a href="/OsvalFrese">Osvaldo Fresedo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1922--1925">1922--1925</a></td><td></td><td>1</td><td><a href="/tracks//work.jardin_florido">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jardin_las_rosas">Jardín las rosas</a></td><td><a href="/"></a></td><td><a href="/genre.vals">vals</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.jardin_las_rosas">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jardinerita_de_triana">Jardinerita de Triana</a></td><td><a href="/"></a></td><td><a href="/genre.paso doble">paso doble</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/DominMaida">Roberto Maida</a></td><td>spa</td><td><a class="date" href="/1936">1936</a></td><td>03:09</td><td>1</td><td><a href="/tracks//work.jardinerita_de_triana">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jaulita_de_oro">Jaulita de oro</a></td><td><a href="/Z0999900061">Z0999900061</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanbGuido">Juan Bautista Guido</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1929-09-29">1929-09-29</a></td><td>03:19</td><td>5</td><td><a href="/tracks//1929-09-29/work.jaulita_de_oro">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jazmin_de_amor">Jazmín de amor</a></td><td><a href="/Z0999902066">Z0999902066</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/RoberFirpo">Roberto Firpo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1928-05-28">1928-05-28</a></td><td>03:16</td><td>1</td><td><a href="/tracks//1928-05-28/work.jazmin_de_amor">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jazmin_de_amor">Jazmín de amor</a></td><td><a href="/Z0999902066">Z0999902066</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/RoberFirpo">Roberto Firpo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1928-05-31">1928-05-31</a></td><td>03:11</td><td>1</td><td><a href="/tracks//1928-05-31/work.jazmin_de_amor">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jazmin_del_pais">Jazmín del país</a></td><td><a href="/Z0999901534">Z0999901534</a></td><td><a href="/genre.vals">vals</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/CarloPerez">Charlo</a></td><td>spa</td><td><a class="date" href="/1930-11-21">1930-11-21</a></td><td>03:48</td><td>2</td><td><a href="/tracks//1930-11-21/work.jazmin_del_pais">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jazmin_simon">Jazmín Simón</a></td><td><a href="/T0370182663">T0370182663</a></td><td><a href="/genre.">?</a></td><td></td><td><a href="/PieroFonta">Hugo del Carril</a></td><td>spa</td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.jazmin_simon">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jazmin_simon">Jazmín Simón</a></td><td><a href="/T0370182663">T0370182663</a></td><td><a href="/genre.">?</a></td><td></td><td><a href="/PieroFonta">Hugo del Carril</a></td><td>spa</td><td><a class="date" href="/1942">1942</a></td><td></td><td>1</td><td><a href="/tracks//work.jazmin_simon">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jazmin_simon">Jazmín Simon</a></td><td><a href="/T0370182663">T0370182663</a></td><td><a href="/genre.milonga candombe">milonga candombe</a></td><td><a href="/AmadoRiber">Tito Ribero</a></td><td><a href="/PieroFonta">Hugo del Carril</a></td><td>spa</td><td><a class="date" href="/1942">1942</a></td><td>02:03</td><td>1</td><td><a href="/tracks//work.jazmin_simon">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jazmin_simon">Jazmín Simón</a></td><td><a href="/T0370182663">T0370182663</a></td><td><a href="/genre.milonga">milonga</a></td><td><a href="/ManueBuzon">Manuel Buzón</a></td><td><a href="/AmadeManda">Amadeo Mandarino</a></td><td>spa</td><td><a class="date" href="/1942-05-12">1942-05-12</a></td><td>02:26</td><td>3</td><td><a href="/tracks//1942-05-12/work.jazmin_simon">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jazz">Jazz</a></td><td><a href="/"></a></td><td><a href="/genre.shimmy">shimmy</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.jazz">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.je_n_ai_pas_de_guitare">Je n'ai pas de guitare</a></td><td><a href="/Z0999901264">Z0999901264</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/AugusPesen">A. J. Pesenti</a></td><td></td><td></td><td><a class="date" href="/1937">1937</a></td><td>02:47</td><td>1</td><td><a href="/tracks//work.je_n_ai_pas_de_guitare">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.je_te_dirai">Je te dirai</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td></td><td><a href="/CharlGarde">Carlos Gardel</a></td><td>spa</td><td><a class="date" href="/1931-09-23">1931-09-23</a></td><td>03:19</td><td>4</td><td><a href="/tracks//1931-09-23/work.je_te_dirai">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.je_te_dirai">Je te dirai</a></td><td><a href="/"></a></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td>04:09</td><td>1</td><td><a href="/tracks//work.je_te_dirai">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.je_te_dirai_yo_te_dire">Je te dirai | Yo te diré</a></td><td><a href="/"></a></td><td><a href="/genre.fox trot">fox trot</a></td><td></td><td><a href="/CharlGarde">Carlos Gardel</a></td><td>spa</td><td><a class="date" href="/1931-09-23">1931-09-23</a></td><td></td><td>1</td><td><a href="/tracks//1931-09-23/work.je_te_dirai_yo_te_dire">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.je_vous_aime_plus_que_tout">Je vous aime plus que tout</a></td><td><a href="/Z0999901265">Z0999901265</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/AugusPesen">A. J. Pesenti</a></td><td></td><td></td><td><a class="date" href="/1938">1938</a></td><td>02:44</td><td>1</td><td><a href="/tracks//work.je_vous_aime_plus_que_tout">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jealousy">Jealousy</a></td><td><a href="/"></a></td><td><a href="/genre."></a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td>03:10</td><td>1</td><td><a href="/tracks//work.jealousy">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jealousy">Jealousy</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td>02:54</td><td>1</td><td><a href="/tracks//work.jealousy">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jealousy">Jealousy</a></td><td><a href="/"></a></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td>03:20</td><td>1</td><td><a href="/tracks//work.jealousy">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jealousy">Jealousy</a></td><td><a href="/"></a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgjmayoraa">Sexteto Mayor</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>03:48</td><td>1</td><td><a href="/tracks//work.jealousy">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jeanette">Jeanette</a></td><td><a href="/Z0999901082">Z0999901082</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanfMagli">Juan Félix Maglio</a></td><td></td><td></td><td><a class="date" href="/1930">1930</a></td><td></td><td>1</td><td><a href="/tracks//work.jeanette">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jeanette">Jeanette</a></td><td><a href="/Z0999901082">Z0999901082</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanfMagli">Juan Félix Maglio</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1930-10-07">1930-10-07</a></td><td>03:04</td><td>1</td><td><a href="/tracks//1930-10-07/work.jeanette">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jeanne">Jeanne</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td></td><td></td><td></td><td><a class="date" href="/1972-11">1972-11</a></td><td>02:34</td><td>1</td><td><a href="/tracks//work.jeanne">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jeanne">Jeanne</a></td><td><a href="/Z0999902118">Z0999902118</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanfMagli">Juan Félix Maglio</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1913">1913</a></td><td>03:41</td><td>1</td><td><a href="/tracks//work.jeanne">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jeanne">Jeanne</a></td><td><a href="/Z0999902118">Z0999902118</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanfMagli">Juan Félix Maglio</a></td><td></td><td></td><td><a class="date" href="/"></a></td><td></td><td>2</td><td><a href="/tracks//work.jeanne">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jeanne_et_paul">Jeanne et Paul</a></td><td><a href="/Z0000210923">Z0000210923</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgjmayoraa">Sexteto Mayor</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>01:36</td><td>1</td><td><a href="/tracks//work.jeanne_et_paul">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jeanne_y_paul">Jeanne y Paul</a></td><td><a href="/Z0000210923">Z0000210923</a></td><td><a href="/genre.">?</a></td><td><a href="/AstorPiazz">Astor Piazzolla</a></td><td></td><td></td><td><a class="date" href="/"></a></td><td>04:13</td><td>1</td><td><a href="/tracks//work.jeanne_y_paul">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jeanne_y_paul">Jeanne y Paul</a></td><td><a href="/Z0000210923">Z0000210923</a></td><td><a href="/genre.">?</a></td><td><a href="/AstorPiazz">Astor Piazzolla</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>04:12</td><td>1</td><td><a href="/tracks//work.jeanne_y_paul">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jeanne_y_paul">Jeanne y Paul</a></td><td><a href="/Z0000210923">Z0000210923</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgjmayoraa">Sexteto Mayor</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>01:36</td><td>1</td><td><a href="/tracks//work.jeanne_y_paul">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jeannette">Jeannette</a></td><td><a href="/Z0999902120">Z0999902120</a></td><td><a href="/genre.fox trot">fox trot</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/CarloPerez">Charlo</a></td><td>spa</td><td><a class="date" href="/1929-12-11">1929-12-11</a></td><td>03:04</td><td>2</td><td><a href="/tracks//1929-12-11/work.jeannette">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jeannette">Jeannette</a></td><td><a href="/Z0999901082">Z0999901082</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanfMagli">Juan Félix Maglio</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1930-10-07">1930-10-07</a></td><td>03:03</td><td>1</td><td><a href="/tracks//1930-10-07/work.jeannette">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jeannette">Jeannette</a></td><td><a href="/Z0999901082">Z0999901082</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanfMagli">Juan Félix Maglio</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1930-10-07">1930-10-07</a></td><td>03:02</td><td>1</td><td><a href="/tracks//1930-10-07/work.jeannette">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jema_otonal">Jema otoñal</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td>04:27</td><td>1</td><td><a href="/tracks//work.jema_otonal">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jesienne_roze">Jesienne róże</a></td><td><a href="/T8031058433">T8031058433</a></td><td><a href="/genre.tango">tango</a></td><td></td><td><a href="/MieczFogie">Mieczysław Fogg</a></td><td>pol</td><td><a class="date" href="/"></a></td><td>04:13</td><td>4</td><td><a href="/tracks//work.jesienne_roze">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jesienne_roze">Jesienne róże</a></td><td><a href="/T8031058433">T8031058433</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgraltango">Al Tango</a></td><td><a href="/PiotrRafal">Piotr Rafałko</a></td><td>pol</td><td><a class="date" href="/2006">2006</a></td><td></td><td>1</td><td><a href="/tracks//work.jesienne_roze">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jesienne_tango_nostalgias_pol_arg">Jesienne tango (Nostalgias)*(Pol./Arg.)</a></td><td><a href="/T0370038848">T0370038848</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgraltango">Al Tango</a></td><td><a href="/PiotrRafal">Piotr Rafałko</a></td><td>pol</td><td><a class="date" href="/2006">2006</a></td><td></td><td>1</td><td><a href="/tracks//work.jesienne_tango_nostalgias_pol_arg">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jest_tylko_jedna_milosc_utwor_dodatkowy">Jest tylko jedna miłość (utwór dodatkowy)</a></td><td><a href="/"></a></td><td><a href="/genre."></a></td><td></td><td><a href="/MieczFogie">Mieczysław Fogg</a></td><td>pol</td><td><a class="date" href="/"></a></td><td>02:42</td><td>1</td><td><a href="/tracks//work.jest_tylko_jedna_milosc_utwor_dodatkowy">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jestes_bez_serca">Jesteś bez serca</a></td><td><a href="/Z0999905265">Z0999905265</a></td><td><a href="/genre.tango">tango</a></td><td></td><td><a href="/MieczFogie">Mieczysław Fogg</a></td><td>pol</td><td><a class="date" href="/"></a></td><td>03:08</td><td>1</td><td><a href="/tracks//work.jestes_bez_serca">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jesus_del_gran_poder">Jesus del gran poder</a></td><td><a href="/"></a></td><td><a href="/genre.marcha himno">marcha himno</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.jesus_del_gran_poder">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jesus_negro">Jesús negro</a></td><td><a href="/Z0000193604">Z0000193604</a></td><td><a href="/genre.candombe">candombe</a></td><td><a href="/SalusVarel">Héctor Varela</a></td><td><a href="/FernaRomer">Jorge Rolando</a></td><td>spa</td><td><a class="date" href="/1970-12-22">1970-12-22</a></td><td>03:27</td><td>2</td><td><a href="/tracks//1970-12-22/work.jesus_negro">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jeux_d_enfants">Jeux d'Enfants</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td></td><td></td><td>und</td><td><a class="date" href="/"></a></td><td>04:39</td><td>1</td><td><a href="/tracks//work.jeux_d_enfants">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jimena">Jimena</a></td><td><a href="/"></a></td><td><a href="/genre.vals">vals</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/CarloPerez">Charlo</a></td><td>spa</td><td><a class="date" href="/1929-10-23">1929-10-23</a></td><td>02:57</td><td>1</td><td><a href="/tracks//1929-10-23/work.jimena">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jinetazo">Jinetazo</a></td><td><a href="/"></a></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/AgustIrust">Agustín Irusta</a></td><td>spa</td><td><a class="date" href="/1927-06-23">1927-06-23</a></td><td>03:04</td><td>1</td><td><a href="/tracks//1927-06-23/work.jinetazo">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jiron_de_pampa">Jirón de pampa</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td></td><td><a href="/CharlGarde">Carlos Gardel</a></td><td>spa</td><td><a class="date" href="/1925">1925</a></td><td></td><td>2</td><td><a href="/tracks//work.jiron_de_pampa">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jiron_de_suburbio">Jirón de suburbio</a></td><td><a href="/T0370203103">T0370203103</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/RicarTantu">Ricardo Tanturi</a></td><td><a href="/EnriqTronc">Enrique Campos</a></td><td>spa</td><td><a class="date" href="/1944-04-27">1944-04-27</a></td><td>02:39</td><td>4</td><td><a href="/tracks//1944-04-27/work.jiron_de_suburbio">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jiron_porteno_oro_muerto">Jirón porteño (Oro muerto)</a></td><td><a href="/T0370153222">T0370153222</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/AlfreDeang">Alfredo De Angelis</a></td><td><a href="/JulioHaris">Julio Martel</a></td><td>spa</td><td><a class="date" href="/1946-11-29">1946-11-29</a></td><td>02:52</td><td>17</td><td><a href="/tracks//1946-11-29/work.jiron_porteno_oro_muerto">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jo_eurotango_a_la_argentina">Jo eurotango a la argentina</a></td><td><a href="/"></a></td><td><a href="/genre.electro">electro</a></td><td></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>06:20</td><td>1</td><td><a href="/tracks//work.jo_eurotango_a_la_argentina">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joaquina">Joaquina</a></td><td><a href="/T0370015501">T0370015501</a></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a class="date" href="/1907">1907</a></td><td>03:36</td><td>1</td><td><a href="/tracks//work.joaquina">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joaquina">Joaquina</a></td><td><a href="/T0370015501">T0370015501</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1961-12-13">1961-12-13</a></td><td>02:40</td><td>1</td><td><a href="/tracks//1961-12-13/work.joaquina">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joaquina">Joaquina</a></td><td><a href="/T0370015501">T0370015501</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaDarie">Juan D'Arienzo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>02:55</td><td>4</td><td><a href="/tracks//work.joaquina">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joaquina">Joaquina</a></td><td><a href="/T0370015501">T0370015501</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaDarie">Juan D'Arienzo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1935--1953">1935--1953</a></td><td>03:10</td><td>1</td><td><a href="/tracks//work.joaquina">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joaquina">Joaquina</a></td><td><a href="/T0370015501">T0370015501</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaDarie">Juan D'Arienzo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1935-12-12">1935-12-12</a></td><td>03:05</td><td>7</td><td><a href="/tracks//1935-12-12/work.joaquina">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joaquina">Joaquina</a></td><td><a href="/T0370015501">T0370015501</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaDarie">Juan D'Arienzo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1943-11-23">1943-11-23</a></td><td>03:26</td><td>4</td><td><a href="/tracks//1943-11-23/work.joaquina">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joaquina">Joaquina</a></td><td><a href="/T0370015501">T0370015501</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaDarie">Juan D'Arienzo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1953-12-28">1953-12-28</a></td><td>03:17</td><td>6</td><td><a href="/tracks//1953-12-28/work.joaquina">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joaquina">Joaquina</a></td><td><a href="/T0370015501">T0370015501</a></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td>02:45</td><td>1</td><td><a href="/tracks//work.joaquina">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joaquina">Joaquina</a></td><td><a href="/T0370015501">T0370015501</a></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td>02:39</td><td>1</td><td><a href="/tracks//work.joaquina">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joaquina">Joaquina</a></td><td><a href="/T0370015501">T0370015501</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/MigueVilla">Miguel Villasboas</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1997">1997</a></td><td>02:41</td><td>1</td><td><a href="/tracks//work.joaquina">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joaquina">Joaquina</a></td><td><a href="/T0370015501">T0370015501</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/RoberFirpo">Roberto Firpo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1952-06-18">1952-06-18</a></td><td>02:42</td><td>4</td><td><a href="/tracks//1952-06-18/work.joaquina">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joaquina">Joaquina</a></td><td><a href="/T0370015501">T0370015501</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/VicenGreco">Vicente Greco</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.joaquina">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joaquina">Joaquina</a></td><td><a href="/T0370015501">T0370015501</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/VicenGreco">Vicente Greco</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1911">1911</a></td><td>03:04</td><td>1</td><td><a href="/tracks//work.joaquina">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joaquina">Joaquina</a></td><td><a href="/T0370015501">T0370015501</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xghdonpafc">Quinteto Don Pancho, dir. Francisco Canaro</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1939-11-29">1939-11-29</a></td><td>02:46</td><td>3</td><td><a href="/tracks//1939-11-29/work.joaquina">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joaquina">Joaquina</a></td><td><a href="/T0370015501">T0370015501</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xghfcanaro">Quinteto Francisco Canaro, dir. Antonio D'Alessandro</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>02:42</td><td>1</td><td><a href="/tracks//work.joaquina">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joaquina">Joaquina</a></td><td><a href="/T0370015501">T0370015501</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xghpirinfc">Quinteto Pirincho, dir. Francisco Canaro</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1955-07-25">1955-07-25</a></td><td>02:49</td><td>2</td><td><a href="/tracks//1955-07-25/work.joaquina">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joaquina">Joaquina</a></td><td><a href="/T0370015501">T0370015501</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrlatubat">La Tubatango</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>02:47</td><td>1</td><td><a href="/tracks//work.joaquina">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jolanta">Jolanta</a></td><td><a href="/"></a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanjDomin">Juanjo Domínguez</a></td><td></td><td></td><td><a class="date" href="/"></a></td><td>02:48</td><td>1</td><td><a href="/tracks//work.jolanta">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jorge_adios">Jorge adiós</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td><a href="/AstorPiazz">Astor Piazzolla</a></td><td></td><td></td><td><a class="date" href="/"></a></td><td>04:04</td><td>1</td><td><a href="/tracks//work.jorge_adios">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jorge_alberto_ruiz">Jorge Alberto Ruiz</a></td><td><a href="/Z0999901971">Z0999901971</a></td><td><a href="/genre.candombe">candombe</a></td><td></td><td></td><td>spa</td><td><a class="date" href="/"></a></td><td>03:29</td><td>1</td><td><a href="/tracks//work.jorge_alberto_ruiz">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jorge_duval">Jorge Duval</a></td><td><a href="/T0370163135">T0370163135</a></td><td><a href="/genre.tango milonga">tango milonga</a></td><td><a href="/AlfreDeang">Alfredo De Angelis</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1950-04-19">1950-04-19</a></td><td>02:53</td><td>1</td><td><a href="/tracks//1950-04-19/work.jorge_duval">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jorge_duval">Jorge Duval</a></td><td><a href="/T0370163135">T0370163135</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/EdgarDonat">Edgardo Donato</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1950-08-14">1950-08-14</a></td><td>02:19</td><td>4</td><td><a href="/tracks//1950-08-14/work.jorge_duval">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jornada_campera">Jornada campera</a></td><td><a href="/T0370122614">T0370122614</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/OsvalFrese">Osvaldo Fresedo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1923-11-07">1923-11-07</a></td><td>03:04</td><td>2</td><td><a href="/tracks//1923-11-07/work.jornada_campera">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jorobeta">Jorobeta</a></td><td><a href="/T0370157531">T0370157531</a></td><td><a href="/genre.tango">tango</a></td><td></td><td><a href="/AgustMagal">Agustín Magaldi</a>, <a href="/PedroNodaa">Pedro Noda</a></td><td>spa</td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.jorobeta">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jorobeta">Jorobeta</a></td><td><a href="/T0370157531">T0370157531</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrvvorqbb">-unspecified orchestra-</a></td><td><a href="/AgustMagal">Agustín Magaldi</a></td><td>spa</td><td><a class="date" href="/1933-10-03">1933-10-03</a></td><td>03:09</td><td>6</td><td><a href="/tracks//1933-10-03/work.jorobeta">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jose_el_cuchiyero">José "El Cuchiyero"</a></td><td><a href="/T0416926992">T0416926992</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/AlejaMelin">Daniel Melingo</a></td><td><a href="/AlejaMelin">Daniel Melingo</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>01:43</td><td>1</td><td><a href="/tracks//work.jose_el_cuchiyero">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jose_marmol_y_tarija">José Mármol y Tarija</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.jose_marmol_y_tarija">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jose_marmol_y_tarija">José Marmol y Tarija</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td><a href="/JuancCacer">Juan Carlos Cáceres</a></td><td></td><td></td><td><a class="date" href="/"></a></td><td>02:42</td><td>1</td><td><a href="/tracks//work.jose_marmol_y_tarija">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jose_marmol_y_tarija">José Mármol y Tarija</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td><a href="/JuancCacer">Juan Carlos Cáceres</a></td><td><a href="/JuancCacer">Juan Carlos Cáceres</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>02:42</td><td>1</td><td><a href="/tracks//work.jose_marmol_y_tarija">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joselito">Joselito</a></td><td><a href="/"></a></td><td><a href="/genre.paso doble">paso doble</a></td><td><a href="/RoberFirpo">Roberto Firpo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1922">1922</a></td><td></td><td>1</td><td><a href="/tracks//work.joselito">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jota_japonesa">Jota japonesa</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.jota_japonesa">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jotica_mia">Jotica mía</a></td><td><a href="/"></a></td><td><a href="/genre.jota">jota</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td>02:54</td><td>1</td><td><a href="/tracks//work.jotica_mia">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joue_contre_joue">Joue contre joue</a></td><td><a href="/"></a></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.joue_contre_joue">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joven_engrupido">Joven engrupido</a></td><td><a href="/Z0999901266">Z0999901266</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/AntonBonav">Antonio Bonavena</a></td><td></td><td></td><td><a class="date" href="/1930">1930</a></td><td></td><td>1</td><td><a href="/tracks//work.joven_engrupido">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joven_engrupido">Joven engrupido</a></td><td><a href="/Z0999901266">Z0999901266</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/AntonBonav">Antonio Bonavena</a></td><td></td><td></td><td><a class="date" href="/1931">1931</a></td><td>03:04</td><td>1</td><td><a href="/tracks//work.joven_engrupido">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joven_engrupido">Joven engrupido</a></td><td><a href="/Z0999901266">Z0999901266</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/AntonBonav">Antonio Bonavena</a></td><td><a href="/AntonBugli">Antonio Buglione</a></td><td>spa</td><td><a class="date" href="/1931">1931</a></td><td>03:05</td><td>1</td><td><a href="/tracks//work.joven_engrupido">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joya_perdida">Joya perdida</a></td><td><a href="/"></a></td><td><a href="/genre.tango">tango</a></td><td><a href="/RoberFirpo">Roberto Firpo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1922">1922</a></td><td></td><td>1</td><td><a href="/tracks//work.joya_perdida">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.joyita_de_arrabal">Joyita de arrabal</a></td><td><a href="/"></a></td><td><a href="/genre.tango">tango</a></td><td><a href="/RoberFirpo">Roberto Firpo</a></td><td><a href="/TeofiIbane">Teófilo Ibáñez</a></td><td>spa</td><td><a class="date" href="/1928-03-15">1928-03-15</a></td><td>02:55</td><td>1</td><td><a href="/tracks//1928-03-15/work.joyita_de_arrabal">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juan_carlos">Juan Carlos</a></td><td><a href="/"></a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanfMagli">Juan Félix Maglio</a></td><td></td><td></td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.juan_carlos">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juan_compas">Juan Compás</a></td><td><a href="/T0371098406">T0371098406</a></td><td><a href="/genre.milonga">milonga</a></td><td><a href="/JuanaDarie">Juan D'Arienzo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1971-11-26">1971-11-26</a></td><td>01:40</td><td>2</td><td><a href="/tracks//1971-11-26/work.juan_compas">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juan_copete">Juan Copete</a></td><td><a href="/"></a></td><td><a href="/genre.tango">tango</a></td><td><a href="/EnriqAless">Enrique Carmelo Alessio</a></td><td><a href="/AlberDeluc">Alberto Castillo</a></td><td>spa</td><td><a class="date" href="/1946">1946</a></td><td>02:55</td><td>2</td><td><a href="/tracks//work.juan_copete">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juan_de_los_santos_arena">Juan de los santos arena</a></td><td><a href="/"></a></td><td><a href="/genre.estilo">estilo</a></td><td></td><td><a href="/IgnacCorsi">Ignacio Corsini</a></td><td>spa</td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.juan_de_los_santos_arena">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juan_el_pescador">Juan el pescador</a></td><td><a href="/"></a></td><td><a href="/genre.cumbia">cumbia</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td>02:30</td><td>1</td><td><a href="/tracks//work.juan_el_pescador">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juan_manuel">Juan Manuel</a></td><td><a href="/T0370015556">T0370015556</a></td><td><a href="/genre.milonga federal">milonga federal</a></td><td><a href="/PedroMaffi">Pedro Maffia</a></td><td><a href="/FelixGutie">Félix Gutiérrez</a></td><td>spa</td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.juan_manuel">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juan_manuel">Juan Manuel</a></td><td><a href="/T0370015556">T0370015556</a></td><td><a href="/genre.">?</a></td><td><a href="/PedroMaffi">Pedro Maffia</a></td><td><a href="/FelixGutie">Félix Gutiérrez</a></td><td>spa</td><td><a class="date" href="/1934">1934</a></td><td>02:59</td><td>6</td><td><a href="/tracks//work.juan_manuel">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juan_manuel">Juan Manuel</a></td><td><a href="/T0370015556">T0370015556</a></td><td><a href="/genre.milonga">milonga</a></td><td><a href="/xgrvvgitbb">-unspecified guitars-</a></td><td><a href="/CarloPerez">Charlo</a></td><td>spa</td><td><a class="date" href="/1934-11-09">1934-11-09</a></td><td>02:46</td><td>2</td><td><a href="/tracks//1934-11-09/work.juan_manuel">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juan_manuel">Juan Manuel</a></td><td><a href="/T0370015556">T0370015556</a></td><td><a href="/genre.milonga">milonga</a></td><td><a href="/xgrvvgitbb">-unspecified guitars-</a></td><td><a href="/CarloPerez">Charlo</a>, <a href="/xgvvchorbb">-choir-</a></td><td>spa</td><td><a class="date" href="/1934-11-09">1934-11-09</a></td><td>02:45</td><td>1</td><td><a href="/tracks//1934-11-09/work.juan_manuel">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juan_palomo">Juan Palomo</a></td><td><a href="/T0370239410">T0370239410</a></td><td><a href="/genre.milonga">milonga</a></td><td><a href="/EnriqRodri">Enrique Rodríguez</a></td><td><a href="/FernaReyes">Fernando Reyes</a>, <a href="/RicarHerre">Ricardo Herrera</a></td><td>spa</td><td><a class="date" href="/1946-05-22">1946-05-22</a></td><td>02:24</td><td>2</td><td><a href="/tracks//1946-05-22/work.juan_palomo">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juan_porteno">Juan porteño</a></td><td><a href="/T0370347140">T0370347140</a></td><td><a href="/genre.tango">tango</a></td><td></td><td><a href="/LeoneRiver">Edmundo Rivero</a></td><td>spa</td><td><a class="date" href="/1955">1955</a></td><td>02:46</td><td>1</td><td><a href="/tracks//work.juan_porteno">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juan_porteno">Juan porteño</a></td><td><a href="/T0370347140">T0370347140</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/CayetDisar">Carlos Di Sarli</a></td><td><a href="/MarioCorra">Mario Pomar</a></td><td>spa</td><td><a class="date" href="/1955-01-21">1955-01-21</a></td><td>03:08</td><td>6</td><td><a href="/tracks//1955-01-21/work.juan_porteno">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juan_porteno">Juan porteño</a></td><td><a href="/T0370347140">T0370347140</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JoaquDorey">Joaquín Do Reyes</a></td><td></td><td></td><td><a class="date" href="/1955">1955</a></td><td>03:07</td><td>2</td><td><a href="/tracks//work.juan_porteno">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juan_porteno">Juan porteño</a></td><td><a href="/T0370347140">T0370347140</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrvvgitbb">-unspecified guitars-</a></td><td><a href="/LeoneRiver">Edmundo Rivero</a></td><td>spa</td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.juan_porteno">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juan_pueblo">Juan Pueblo</a></td><td><a href="/T0370453761">T0370453761</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/OsvalPugli">Osvaldo Pugliese</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1981-07-29">1981-07-29</a></td><td>03:14</td><td>3</td><td><a href="/tracks//1981-07-29/work.juan_pueblo">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juan_sin_alma_john_the_apache">Juan sin alma (John, the apache)</a></td><td><a href="/"></a></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.juan_sin_alma_john_the_apache">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juan_tango">Juan Tango</a></td><td><a href="/T0370218077">T0370218077</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/AnibaTroil">Aníbal Troilo</a></td><td><a href="/FloreRuiza">Floreal Ruíz</a></td><td>spa</td><td><a class="date" href="/1945-05-29">1945-05-29</a></td><td>03:07</td><td>8</td><td><a href="/tracks//1945-05-29/work.juan_tango">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juan_tango">Juan Tango</a></td><td><a href="/T0370218077">T0370218077</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/EmiliSitan">Emilio Balcarce</a></td><td><a href="/AlberDeluc">Alberto Castillo</a></td><td>spa</td><td><a class="date" href="/1944-11-28">1944-11-28</a></td><td>03:18</td><td>7</td><td><a href="/tracks//1944-11-28/work.juan_tango">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juana_milonga_senores">Juana milonga señores</a></td><td><a href="/T0370367922">T0370367922</a></td><td><a href="/genre.milonga">milonga</a></td><td><a href="/AlfreDeang">Alfredo De Angelis</a></td><td><a href="/CarloDante">Carlos Dante</a>, <a href="/OscarMoret">Oscar Larroca</a></td><td>spa</td><td><a class="date" href="/1955-11-02">1955-11-02</a></td><td>02:27</td><td>1</td><td><a href="/tracks//1955-11-02/work.juana_milonga_senores">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juana_rebenque">Juana Rebenque</a></td><td><a href="/T0374147860">T0374147860</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/GuillRicoa">Guillermo Rico</a></td><td>spa</td><td><a class="date" href="/1946-02-27">1946-02-27</a></td><td>02:48</td><td>2</td><td><a href="/tracks//1946-02-27/work.juana_rebenque">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juancito">Juancito</a></td><td><a href="/"></a></td><td><a href="/genre.electro">electro</a></td><td></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>03:33</td><td>1</td><td><a href="/tracks//work.juancito">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juancito_el_vendedor_i_got">Juancito el vendedor | i got</a></td><td><a href="/"></a></td><td><a href="/genre.fox trot">fox trot</a></td><td><a href="/OsvalFrese">Osvaldo Fresedo</a></td><td><a href="/RicarRuiza">Ricardo Ruiz</a></td><td>spa</td><td><a class="date" href="/1940--1942">1940--1942</a></td><td></td><td>1</td><td><a href="/tracks//work.juancito_el_vendedor_i_got">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juancito_el_vendedor">Juancito, el vendedor</a></td><td><a href="/"></a></td><td><a href="/genre.fox trot">fox trot</a></td><td><a href="/OsvalFrese">Osvaldo Fresedo</a></td><td><a href="/RicarRuiza">Ricardo Ruiz</a></td><td>spa</td><td><a class="date" href="/1940--1942">1940--1942</a></td><td>02:29</td><td>1</td><td><a href="/tracks//work.juancito_el_vendedor">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juanillo">Juanillo</a></td><td><a href="/T0370081416">T0370081416</a></td><td><a href="/genre.paso doble">paso doble</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/ErnesFamaa">Ernesto Famá</a></td><td>spa</td><td><a class="date" href="/1932-08-12">1932-08-12</a></td><td>02:51</td><td>3</td><td><a href="/tracks//1932-08-12/work.juanillo">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juanita">Juanita</a></td><td><a href="/T0700882967">T0700882967</a></td><td><a href="/genre.vals">vals</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/CarloPerez">Charlo</a></td><td>spa</td><td><a class="date" href="/1929-04-17">1929-04-17</a></td><td>03:00</td><td>2</td><td><a href="/tracks//1929-04-17/work.juanita">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juanita">Juanita</a></td><td><a href="/"></a></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td>ron</td><td><a class="date" href="/"></a></td><td>03:16</td><td>1</td><td><a href="/tracks//work.juanita">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juanita_jeannine">Juanita (Jeannine)</a></td><td><a href="/T0700882967">T0700882967</a></td><td><a href="/genre.vals">vals</a></td><td><a href="/xgrvictora">Orquesta Típica Victor</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1929-03-07">1929-03-07</a></td><td>03:06</td><td>2</td><td><a href="/tracks//1929-03-07/work.juanita_jeannine">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juanita_sadness_of_may">Juanita (Sadness of May) (ジャニータ（五月の哀愁))</a></td><td><a href="/"></a></td><td><a href="/genre.tango">tango</a></td><td></td><td>-</td><td>zxx</td><td><a class="date" href="/1941">1941</a></td><td>03:30</td><td>1</td><td><a href="/tracks//work.juanita_sadness_of_may">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juanito_laguna_ayuda_a_su_madre">Juanito Laguna ayuda a su madre</a></td><td><a href="/T0371059492">T0371059492</a></td><td><a href="/genre.">?</a></td><td><a href="/AstorPiazz">Astor Piazzolla</a></td><td><a href="/MariaBalta">Amelita Baltar</a></td><td></td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.juanito_laguna_ayuda_a_su_madre">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.judas">Judas</a></td><td><a href="/T0370172498">T0370172498</a></td><td><a href="/genre.tango">tango</a></td><td></td><td><a href="/VicenFaliv">Héctor Mauré</a></td><td>spa</td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.judas">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.judas">Judas</a></td><td><a href="/T0370172498">T0370172498</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaDarie">Juan D'Arienzo</a></td><td><a href="/MarioAlvar">Mario Bustos</a></td><td>spa</td><td><a class="date" href="/1959-11-12">1959-11-12</a></td><td>03:30</td><td>2</td><td><a href="/tracks//1959-11-12/work.judas">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.judas">Judas</a></td><td><a href="/T0370172498">T0370172498</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaDarie">Juan D'Arienzo</a></td><td><a href="/VicenFaliv">Héctor Mauré</a></td><td>spa</td><td><a class="date" href="/1942-12-29">1942-12-29</a></td><td>02:57</td><td>7</td><td><a href="/tracks//1942-12-29/work.judas">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juera_guay">Juera guay!</a></td><td><a href="/T0370015578">T0370015578</a></td><td><a href="/genre.cancion campera">canción campera</a></td><td><a href="/xgrvvgitbb">-unspecified guitars-</a></td><td><a href="/IgnacCorsi">Ignacio Corsini</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>03:58</td><td>2</td><td><a href="/tracks//work.juera_guay">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/AlfreGobbh">Alfredo J. Gobbi</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1947-07-30">1947-07-30</a></td><td>02:47</td><td>10</td><td><a href="/tracks//1947-07-30/work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/AnibaArias">Anibal Arias</a>, <a href="/OsvalMonte">Osvaldo José Montes</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>02:47</td><td>1</td><td><a href="/tracks//work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/ArmanPuntu">Armando Pontier</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>02:17</td><td>1</td><td><a href="/tracks//work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/DonatRacci">Donato Racciatti</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1952-04-16">1952-04-16</a></td><td>02:35</td><td>1</td><td><a href="/tracks//1952-04-16/work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/EnriqRodri">Enrique Rodríguez</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1941-09-24">1941-09-24</a></td><td>02:58</td><td>3</td><td><a href="/tracks//1941-09-24/work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/EnriqRodri">Enrique Rodríguez</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1951-04-20">1951-04-20</a></td><td>02:37</td><td>1</td><td><a href="/tracks//1951-04-20/work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/EnriqRodri">Enrique Rodríguez</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1951-04-26">1951-04-26</a></td><td>02:34</td><td>1</td><td><a href="/tracks//1951-04-26/work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/AngelOrtiz">Ciriaco Ortiz</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1951">1951</a></td><td>02:22</td><td>2</td><td><a href="/tracks//work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/AngelOrtiz">Ciriaco Ortiz</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1951-08-14">1951-08-14</a></td><td>02:23</td><td>1</td><td><a href="/tracks//1951-08-14/work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td>02:36</td><td>1</td><td><a href="/tracks//work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaDarie">Juan D'Arienzo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>02:25</td><td>5</td><td><a href="/tracks//work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaDarie">Juan D'Arienzo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1937--1955">1937--1955</a></td><td>03:00</td><td>1</td><td><a href="/tracks//work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370001049">T0370001049</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaDarie">Juan D'Arienzo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1937-10-29">1937-10-29</a></td><td>02:33</td><td>14</td><td><a href="/tracks//1937-10-29/work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaDarie">Juan D'Arienzo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1955-06-10">1955-06-10</a></td><td>03:09</td><td>11</td><td><a href="/tracks//1955-06-10/work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanbGuido">Juan Bautista Guido</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1927-07-12">1927-07-12</a></td><td>02:49</td><td>15</td><td><a href="/tracks//1927-07-12/work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JulioDecar">Julio De Caro</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1930">1930</a></td><td>03:19</td><td>11</td><td><a href="/tracks//work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/OsvalFrese">Osvaldo Fresedo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1927-11-22">1927-11-22</a></td><td>02:59</td><td>4</td><td><a href="/tracks//1927-11-22/work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/OsvalPugli">Osvaldo Pugliese</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>02:44</td><td>4</td><td><a href="/tracks//work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/OsvalPugli">Osvaldo Pugliese</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1947-08-19">1947-08-19</a></td><td>02:43</td><td>6</td><td><a href="/tracks//1947-08-19/work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/OsvalPugli">Osvaldo Pugliese</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1989">1989</a></td><td>03:12</td><td>1</td><td><a href="/tracks//work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/RafaeRossa">Rafael Rossi</a></td><td><a href="/xyvvmalebb">-unspecified male-</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>03:23</td><td>1</td><td><a href="/tracks//work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/RoberFirpo">Roberto Firpo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1919">1919</a></td><td>02:45</td><td>1</td><td><a href="/tracks//work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/RoberFirpo">Roberto Firpo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1927-05-19">1927-05-19</a></td><td>02:53</td><td>4</td><td><a href="/tracks//1927-05-19/work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/VictoDamar">Victor D'Amario</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1951-06-19">1951-06-19</a></td><td>02:48</td><td>5</td><td><a href="/tracks//1951-06-19/work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xghpirinfc">Quinteto Pirincho, dir. Francisco Canaro</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1952-04-07">1952-04-07</a></td><td>02:58</td><td>4</td><td><a href="/tracks//1952-04-07/work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrcrrntes">Orquesta Típica Corrientes</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1960">1960</a></td><td>02:44</td><td>1</td><td><a href="/tracks//work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrlsmucha">Los muchachos de antes</a></td><td></td><td></td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jueves">Jueves</a></td><td><a href="/T0370015590">T0370015590</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrvictora">Orquesta Típica Victor</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1934-06-01">1934-06-01</a></td><td>02:33</td><td>8</td><td><a href="/tracks//1934-06-01/work.jueves">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jugando_al_amor">Jugando al amor</a></td><td><a href="/T0370015603">T0370015603</a></td><td><a href="/genre.polca">polca</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/DominMaida">Roberto Maida</a></td><td>spa</td><td><a class="date" href="/1937-09-28">1937-09-28</a></td><td>02:34</td><td>1</td><td><a href="/tracks//1937-09-28/work.jugando_al_amor">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jugando_con_tango">Jugando con tango</a></td><td><a href="/"></a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrpglpdrz">Orquesta Puglia-Pedroza</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>03:24</td><td>1</td><td><a href="/tracks//work.jugando_con_tango">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jugando_de_mensual">Jugando de mensual</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.jugando_de_mensual">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jugando_jugando">Jugando, jugando</a></td><td><a href="/T0370216695">T0370216695</a></td><td><a href="/genre.vals">vals</a></td><td></td><td><a href="/PieroFonta">Hugo del Carril</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>03:14</td><td>1</td><td><a href="/tracks//work.jugando_jugando">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jugando_jugando">Jugando, jugando</a></td><td><a href="/T0370216695">T0370216695</a></td><td><a href="/genre.vals">vals</a></td><td><a href="/AtiliBruni">Atilio Bruni</a></td><td><a href="/PieroFonta">Hugo del Carril</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>03:17</td><td>2</td><td><a href="/tracks//work.jugando_jugando">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jugando_jugando">Jugando, jugando</a></td><td><a href="/T0370216695">T0370216695</a></td><td><a href="/genre.vals">vals</a></td><td><a href="/FrancLomut">Francisco Lomuto</a></td><td><a href="/CarloGalar">Carlos Galarce</a></td><td>spa</td><td><a class="date" href="/1944-12-13">1944-12-13</a></td><td>02:43</td><td>2</td><td><a href="/tracks//1944-12-13/work.jugando_jugando">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jugando_jugando">Jugando... jugando</a></td><td><a href="/T0370216695">T0370216695</a></td><td><a href="/genre.vals">vals</a></td><td><a href="/MigueCaloa">Miguel Caló</a></td><td><a href="/RaulaBeron">Raúl Berón</a></td><td>spa</td><td><a class="date" href="/1944-08-28">1944-08-28</a></td><td>02:13</td><td>9</td><td><a href="/tracks//1944-08-28/work.jugando_jugando">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juglar_de_espana">Juglar de España</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td></td><td><a href="/SusanRinal">Susana Rinaldi</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>03:53</td><td>1</td><td><a href="/tracks//work.juglar_de_espana">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jugo_de_tomate_frio_la_muerte_del_angel">Jugo de tomate frio / la muerte del angel</a></td><td><a href="/"></a></td><td><a href="/genre.rock">rock</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td>04:14</td><td>1</td><td><a href="/tracks//work.jugo_de_tomate_frio_la_muerte_del_angel">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juguete">Juguete</a></td><td><a href="/T0374134754">T0374134754</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaDarie">Juan D'Arienzo</a></td><td><a href="/CarloDante">Carlos Dante</a></td><td>spa</td><td><a class="date" href="/1928">1928</a></td><td>02:42</td><td>3</td><td><a href="/tracks//work.juguete">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juguete_de_amor">Juguete de amor</a></td><td><a href="/Z0999900714">Z0999900714</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/OsvalFrese">Osvaldo Fresedo</a></td><td><a href="/ErnesFamaa">Ernesto Famá</a></td><td>spa</td><td><a class="date" href="/1928-03-06">1928-03-06</a></td><td>02:46</td><td>1</td><td><a href="/tracks//1928-03-06/work.juguete_de_amor">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juguete_de_placer">Juguete de placer</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td></td><td><a href="/CharlGarde">Carlos Gardel</a></td><td>spa</td><td><a class="date" href="/1926">1926</a></td><td></td><td>2</td><td><a href="/tracks//work.juguete_de_placer">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juguete_de_placer">Juguete de placer</a></td><td><a href="/T0370122783">T0370122783</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrvvgitbb">-unspecified guitars-</a></td><td><a href="/CharlGarde">Carlos Gardel</a></td><td>spa</td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.juguete_de_placer">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juguete_rabioso">Juguete rabioso</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td></td><td><a href="/xxvvfemabb">-unspecified female-</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>03:45</td><td>1</td><td><a href="/tracks//work.juguete_rabioso">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juguetona">Juguetona</a></td><td><a href="/"></a></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1927-03-26">1927-03-26</a></td><td>02:44</td><td>1</td><td><a href="/tracks//1927-03-26/work.juguetona">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jujena">Jujeña</a></td><td><a href="/T0370015658">T0370015658</a></td><td><a href="/genre.tonada">tonada</a></td><td></td><td><a href="/CharlGarde">Carlos Gardel</a></td><td>spa</td><td><a class="date" href="/1920--1921">1920--1921</a></td><td></td><td>1</td><td><a href="/tracks//work.jujena">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jujena">Jujeña</a></td><td><a href="/T0370015658">T0370015658</a></td><td><a href="/genre.tonada">tonada</a></td><td></td><td><a href="/CharlGarde">Carlos Gardel</a></td><td>spa</td><td><a class="date" href="/1921">1921</a></td><td></td><td>1</td><td><a href="/tracks//work.jujena">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jujena">Jujeña</a></td><td><a href="/T0370015658">T0370015658</a></td><td><a href="/genre.">?</a></td><td></td><td><a href="/CharlGarde">Carlos Gardel</a></td><td>spa</td><td><a class="date" href="/1933-09-18">1933-09-18</a></td><td></td><td>3</td><td><a href="/tracks//1933-09-18/work.jujena">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jujena">Jujeña</a></td><td><a href="/"></a></td><td><a href="/genre.zamba">zamba</a></td><td></td><td><a href="/EmiliRamil">Emilio Ramil</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>02:52</td><td>1</td><td><a href="/tracks//work.jujena">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jujena">Jujeña</a></td><td><a href="/T0370015658">T0370015658</a></td><td><a href="/genre.tonada">tonada</a></td><td><a href="/AngelRiver">Ángel Domingo Riverol</a>, <a href="/DominVivas">Domingo Julio Vivas</a>, <a href="/GuillBarbi">Guillermo Barbieri</a>, <a href="/HoracPetto">Horacio Pettorossi</a></td><td><a href="/CharlGarde">Carlos Gardel</a></td><td>spa</td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.jujena">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julepe_en_la_tierra">Julepe en la tierra</a></td><td><a href="/T0420961530">T0420961530</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/AlejaMelin">Daniel Melingo</a></td><td><a href="/AlejaMelin">Daniel Melingo</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>04:29</td><td>1</td><td><a href="/tracks//work.julepe_en_la_tierra">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td>zxx</td><td><a class="date" href="/"></a></td><td>03:02</td><td>1</td><td><a href="/tracks//work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td></td><td><a href="/RositQuiro">Rosita Quiroga</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>03:21</td><td>2</td><td><a href="/tracks//work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td></td><td><a href="/RositQuiro">Rosita Quiroga</a></td><td>spa</td><td><a class="date" href="/1920--1930">1920--1930</a></td><td>03:17</td><td>1</td><td><a href="/tracks//work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td></td><td><a href="/RositQuiro">Rosita Quiroga</a></td><td>spa</td><td><a class="date" href="/1932">1932</a></td><td></td><td>2</td><td><a href="/tracks//work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/EdgarDonat">Edgardo Donato</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1950-12-01">1950-12-01</a></td><td>03:03</td><td>6</td><td><a href="/tracks//1950-12-01/work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/EduarPerey">Eduardo Pereyra</a></td><td><a href="/RositQuiro">Rosita Quiroga</a></td><td>spa</td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/EduarPerey">Eduardo Pereyra</a></td><td><a href="/RositQuiro">Rosita Quiroga</a></td><td>spa</td><td><a class="date" href="/1924">1924</a></td><td>03:18</td><td>4</td><td><a href="/tracks//work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>04:32</td><td>1</td><td><a href="/tracks//work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/GraciGomez">Graciano Gómez</a></td><td><a href="/NellyHunte">Nina Miranda</a></td><td>spa</td><td><a class="date" href="/1950">1950</a></td><td>03:04</td><td>5</td><td><a href="/tracks//work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td></td><td>-</td><td>zxx</td><td><a class="date" href="/2009">2009</a></td><td>02:02</td><td>1</td><td><a href="/tracks//work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/OsvalFrese">Osvaldo Fresedo</a></td><td><a href="/BlancMoone">Blanca Mooney</a></td><td>spa</td><td><a class="date" href="/1959-01-26">1959-01-26</a></td><td>03:20</td><td>6</td><td><a href="/tracks//1959-01-26/work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/OsvalFrese">Osvaldo Fresedo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>02:18</td><td>5</td><td><a href="/tracks//work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/OsvalFrese">Osvaldo Fresedo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1923">1923</a></td><td>03:13</td><td>1</td><td><a href="/tracks//work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/OsvalFrese">Osvaldo Fresedo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1945-11-19">1945-11-19</a></td><td>02:21</td><td>2</td><td><a href="/tracks//1945-11-19/work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgglsasejc">Cuarteto típico Los ases</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1942-04-21">1942-04-21</a></td><td>03:00</td><td>3</td><td><a href="/tracks//1942-04-21/work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xghangelbl">Quinteto Ángel</a></td><td>-</td><td>zxx</td><td><a class="date" href="/2012-07-11">2012-07-11</a></td><td>03:04</td><td>2</td><td><a href="/tracks//2012-07-11/work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xghnvoreal">Nuevo Quinteto Real</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>03:08</td><td>1</td><td><a href="/tracks//work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xghrealjjj">Quinteto Real</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>03:01</td><td>3</td><td><a href="/tracks//work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrlstubat">Los Tubatango</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>02:04</td><td>1</td><td><a href="/tracks//work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrvictora">Orquesta Típica Victor</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1927-07-06">1927-07-06</a></td><td>03:12</td><td>9</td><td><a href="/tracks//1927-07-06/work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrvvgitbb">-unspecified guitars-</a></td><td><a href="/RositQuiro">Rosita Quiroga</a></td><td>spa</td><td><a class="date" href="/1927">1927</a></td><td>03:27</td><td>1</td><td><a href="/tracks//work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian">Julián</a></td><td><a href="/T0370015636">T0370015636</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrvvorqbb">-unspecified orchestra-</a></td><td><a href="/LiberLamar">Libertad Lamarque</a></td><td>spa</td><td><a class="date" href="/1923">1923</a></td><td>02:30</td><td>3</td><td><a href="/tracks//work.julian">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian_centeya">Julián Centeya</a></td><td><a href="/T0370152332">T0370152332</a></td><td><a href="/genre.milonga">milonga</a></td><td><a href="/CayetDisar">Carlos Di Sarli</a></td><td><a href="/AlejaAlepo">Alberto Podestá</a></td><td>spa</td><td><a class="date" href="/1942-09-09">1942-09-09</a></td><td>03:02</td><td>8</td><td><a href="/tracks//1942-09-09/work.julian_centeya">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian_centeya">Julián Centeya</a></td><td><a href="/T0370152332">T0370152332</a></td><td><a href="/genre.milonga">milonga</a></td><td><a href="/xgrlsbordp">Las Bordonas</a></td><td><a href="/xyvvmalebb">-unspecified male-</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>02:34</td><td>1</td><td><a href="/tracks//work.julian_centeya">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian_centeya">Julián Centeya</a></td><td><a href="/T0370152332">T0370152332</a></td><td><a href="/genre.milonga">milonga</a></td><td><a href="/xgrvvgitbb">-unspecified guitars-</a></td><td><a href="/EgidiAducc">Alberto Gómez</a></td><td>spa</td><td><a class="date" href="/1941">1941</a></td><td>02:58</td><td>1</td><td><a href="/tracks//work.julian_centeya">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian_centeya">Julián Centeya</a></td><td><a href="/T0370152332">T0370152332</a></td><td><a href="/genre.milonga">milonga</a></td><td></td><td><a href="/EgidiAducc">Alberto Gómez</a></td><td>spa</td><td><a class="date" href="/1929--1944">1929--1944</a></td><td>03:00</td><td>1</td><td><a href="/tracks//work.julian_centeya">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julian_navarro">Julián Navarro</a></td><td><a href="/T0370122794">T0370122794</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/AgustIrust">Agustín Irusta</a></td><td>spa</td><td><a class="date" href="/1927-07-20">1927-07-20</a></td><td>02:53</td><td>3</td><td><a href="/tracks//1927-07-20/work.julian_navarro">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julie">Julie</a></td><td><a href="/T0370406022">T0370406022</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaDarie">Juan D'Arienzo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1957-06-29">1957-06-29</a></td><td>02:42</td><td>8</td><td><a href="/tracks//1957-06-29/work.julie">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julie">Julie</a></td><td><a href="/T0370406022">T0370406022</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/OsvalPugli">Osvaldo Pugliese</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1958-01-16">1958-01-16</a></td><td>03:22</td><td>6</td><td><a href="/tracks//1958-01-16/work.julie">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julienne">Julienne</a></td><td><a href="/T0370122807">T0370122807</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrcrrntes">Orquesta Típica Corrientes</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1980">1980</a></td><td>02:52</td><td>1</td><td><a href="/tracks//work.julienne">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julienne">Julienne</a></td><td><a href="/T0370122807">T0370122807</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrvictora">Orquesta Típica Victor</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1927-08-01">1927-08-01</a></td><td>02:52</td><td>6</td><td><a href="/tracks//1927-08-01/work.julienne">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julieta">Julieta</a></td><td><a href="/T0373598630">T0373598630</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanfMagli">Juan Félix Maglio</a></td><td></td><td>spa</td><td><a class="date" href="/1927-04-25">1927-04-25</a></td><td>02:46</td><td>1</td><td><a href="/tracks//1927-04-25/work.julieta">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julieta_y_romeo">Julieta y Romeo</a></td><td><a href="/T0370774438">T0370774438</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaDarie">Juan D'Arienzo</a></td><td><a href="/JoseaDatto">Armando Laborde</a></td><td>spa</td><td><a class="date" href="/1965-09-02">1965-09-02</a></td><td></td><td>2</td><td><a href="/tracks//1965-09-02/work.julieta_y_romeo">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julio">Julio</a></td><td><a href="/"></a></td><td><a href="/genre.vals">vals</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.julio">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.julito">Julito</a></td><td><a href="/"></a></td><td><a href="/genre.">?</a></td><td><a href="/AntonStamp">Atilio Stampone</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>03:42</td><td>1</td><td><a href="/tracks//work.julito">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.junada">Junada</a></td><td><a href="/T0370030231">T0370030231</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/FloriSasso">Florindo Sassone</a></td><td><a href="/AlfreMazzo">Roberto Chanel</a></td><td>spa</td><td><a class="date" href="/1949-07-06">1949-07-06</a></td><td>03:57</td><td>6</td><td><a href="/tracks//1949-07-06/work.junada">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juntando_amores">Juntando amores</a></td><td><a href="/"></a></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1935-12-03">1935-12-03</a></td><td>02:34</td><td>1</td><td><a href="/tracks//1935-12-03/work.juntando_amores">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juntito_al_jaguel">Juntito al jagüel</a></td><td><a href="/"></a></td><td><a href="/genre.ranchera">ranchera</a></td><td><a href="/AdolfCarab">Adolfo Carabelli</a></td><td><a href="/CarloPerez">Charlo</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>02:19</td><td>1</td><td><a href="/tracks//work.juntito_al_jaguel">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juntito_al_jaguel">Juntito al jagüel</a></td><td><a href="/"></a></td><td><a href="/genre.ranchera">ranchera</a></td><td><a href="/AdolfCarab">Adolfo Carabelli</a></td><td><a href="/CarloPerez">Charlo</a></td><td>spa</td><td><a class="date" href="/1933-07-25">1933-07-25</a></td><td>02:25</td><td>2</td><td><a href="/tracks//1933-07-25/work.juntito_al_jaguel">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.junto_a_la_aurora">Junto a la Aurora</a></td><td><a href="/Z0002460680">Z0002460680</a></td><td><a href="/genre.electro">electro</a></td><td><a href="/xgrotrsars">Otros Aires</a></td><td>-</td><td>zxx</td><td><a class="date" href="/"></a></td><td>03:15</td><td>1</td><td><a href="/tracks//work.junto_a_la_aurora">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.junto_a_las_piedras">Junto a Las Piedras</a></td><td><a href="/T0374142387">T0374142387</a></td><td><a href="/genre.electro">electro</a></td><td><a href="/xgrotrsars">Otros Aires</a></td><td><a href="/xyvvmalebb">-unspecified male-</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>03:41</td><td>1</td><td><a href="/tracks//work.junto_a_las_piedras">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.junto_a_mi_china">Junto a mi China</a></td><td><a href="/T0370763442">T0370763442</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaDarie">Juan D'Arienzo</a></td><td><a href="/JoseaDatto">Armando Laborde</a>, <a href="/UbaldSanti">Osvaldo Ramos</a></td><td>spa</td><td><a class="date" href="/1965-09-27">1965-09-27</a></td><td></td><td>2</td><td><a href="/tracks//1965-09-27/work.junto_a_mi_china">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.junto_a_tu_corazon">Junto a tu corazón</a></td><td><a href="/T0370179580">T0370179580</a></td><td><a href="/genre.tango">tango</a></td><td></td><td><a href="/SusanAlder">Rosaura Silvestre</a></td><td>spa</td><td><a class="date" href="/1995">1995</a></td><td>03:48</td><td>1</td><td><a href="/tracks//work.junto_a_tu_corazon">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.junto_a_tu_corazon">Junto a tu corazón</a></td><td><a href="/T0370179580">T0370179580</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/EduarRovir">Eduardo Rovira</a></td><td><a href="/AlfrePerez">Alfredo del Río</a></td><td></td><td><a class="date" href="/"></a></td><td>03:22</td><td>1</td><td><a href="/tracks//work.junto_a_tu_corazon">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.junto_a_tu_corazon">Junto a tu corazón</a></td><td><a href="/T0370179580">T0370179580</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JosefGarci">José García</a></td><td><a href="/AlfreRojas">Alfredo Rojas</a></td><td>spa</td><td><a class="date" href="/1942-07-27">1942-07-27</a></td><td>03:03</td><td>9</td><td><a href="/tracks//1942-07-27/work.junto_a_tu_corazon">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.junto_a_tu_corazon">Junto a tu corazón</a></td><td><a href="/T0370179580">T0370179580</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgjmilongu">Sexteto Milonguero</a></td><td></td><td>spa</td><td><a class="date" href="/"></a></td><td>02:30</td><td>1</td><td><a href="/tracks//work.junto_a_tu_corazon">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.junto_a_tu_corazon_hoy_como_ayer">Junto a tu corazón (Hoy como ayer)</a></td><td><a href="/T0370179580">T0370179580</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/CayetDisar">Carlos Di Sarli</a></td><td><a href="/AlejaAlepo">Alberto Podestá</a></td><td>spa</td><td><a class="date" href="/1942-06-23">1942-06-23</a></td><td>03:05</td><td>6</td><td><a href="/tracks//1942-06-23/work.junto_a_tu_corazon_hoy_como_ayer">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.junto_al_mar">Junto al mar</a></td><td><a href="/T0370122852">T0370122852</a></td><td><a href="/genre.vals">vals</a></td><td><a href="/xgrlsprvnc">Los Provincianos</a></td><td><a href="/LuisaDiaza">Luis Díaz</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>02:22</td><td>1</td><td><a href="/tracks//work.junto_al_mar">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.junto_al_mar">Junto al mar</a></td><td><a href="/T0370122852">T0370122852</a></td><td><a href="/genre.vals">vals</a></td><td><a href="/xgrlsprvnc">Los Provincianos</a></td><td><a href="/LuisaDiaza">Luis Díaz</a></td><td>spa</td><td><a class="date" href="/1932-05-18">1932-05-18</a></td><td>02:44</td><td>1</td><td><a href="/tracks//1932-05-18/work.junto_al_mar">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.junto_al_mar">Junto al mar</a></td><td><a href="/T0370122852">T0370122852</a></td><td><a href="/genre.vals">vals</a></td><td><a href="/xgrvvorqbb">-unspecified orchestra-</a></td><td><a href="/MerceSimon">Mercedes Simone</a></td><td>spa</td><td><a class="date" href="/1932-09-08">1932-09-08</a></td><td>02:34</td><td>1</td><td><a href="/tracks//1932-09-08/work.junto_al_mar">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.junto_al_parana">Junto al Paraná</a></td><td><a href="/"></a></td><td><a href="/genre.zamba">zamba</a></td><td></td><td><a href="/MagdaNiled">Imperio Argentina</a></td><td></td><td><a class="date" href="/1930--1936">1930--1936</a></td><td>02:31</td><td>1</td><td><a href="/tracks//work.junto_al_parana">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jurame">Jurame</a></td><td><a href="/"></a></td><td><a href="/genre."></a></td><td></td><td><a href="/LiberLamar">Libertad Lamarque</a></td><td>spa</td><td><a class="date" href="/"></a></td><td>03:04</td><td>1</td><td><a href="/tracks//work.jurame">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jurame_promise_love">Júrame (Promise, love)</a></td><td><a href="/"></a></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td>spa</td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.jurame_promise_love">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juramento">Juramento</a></td><td><a href="/Z0999901446">Z0999901446</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/EdgarDonat">Edgardo Donato</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1930">1930</a></td><td>02:45</td><td>4</td><td><a href="/tracks//work.juramento">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juramento">Juramento</a></td><td><a href="/Z0999900940">Z0999900940</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/EduarBianc">Eduardo Bianco</a></td><td></td><td></td><td><a class="date" href="/1928">1928</a></td><td>02:49</td><td>1</td><td><a href="/tracks//work.juramento">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juramento">Juramento</a></td><td><a href="/T0370040860">T0370040860</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/AidaeFalco">Ada Falcón</a></td><td>spa</td><td><a class="date" href="/1933-04-28">1933-04-28</a></td><td>02:43</td><td>3</td><td><a href="/tracks//1933-04-28/work.juramento">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juramento">Juramento</a></td><td><a href="/T0370040860">T0370040860</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/ErnesFamaa">Ernesto Famá</a></td><td>spa</td><td><a class="date" href="/1933-04-17">1933-04-17</a></td><td>03:20</td><td>3</td><td><a href="/tracks//1933-04-17/work.juramento">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juramento">Juramento</a></td><td><a href="/T0370040860">T0370040860</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/ErnesFamaa">Ernesto Famá</a></td><td>spa</td><td><a class="date" href="/1933-04-28">1933-04-28</a></td><td>03:20</td><td>1</td><td><a href="/tracks//1933-04-28/work.juramento">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juramento">Juramento</a></td><td><a href="/T0464010954">T0464010954</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancMaqui">Francisco Maquiera</a></td><td><a href="/RicarFaria">Ricardo Farias</a></td><td>spa</td><td><a class="date" href="/1941">1941</a></td><td>02:37</td><td>1</td><td><a href="/tracks//work.juramento">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juramentos">Juramentos</a></td><td><a href="/Z0999901267">Z0999901267</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/MinotDicic">Minotti Di Cicco</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1930">1930</a></td><td>02:58</td><td>1</td><td><a href="/tracks//work.juramentos">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juraste_por_tu_madre">Juraste por tu madre</a></td><td><a href="/Z0999901268">Z0999901268</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/EnriqMacie">Enrique Maciel</a>, <a href="/JosemAguil">José María Aguilar</a></td><td><a href="/AgustMagal">Agustín Magaldi</a></td><td>spa</td><td><a class="date" href="/1925-09-18">1925-09-18</a></td><td></td><td>1</td><td><a href="/tracks//1925-09-18/work.juraste_por_tu_madre">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juraste_por_tu_madre">Juraste por tu madre</a></td><td><a href="/Z0999901268">Z0999901268</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrvvgitbb">-unspecified guitars-</a></td><td><a href="/AgustMagal">Agustín Magaldi</a></td><td>spa</td><td><a class="date" href="/1925">1925</a></td><td>03:06</td><td>1</td><td><a href="/tracks//work.juraste_por_tu_madre">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juro">Juro</a></td><td><a href="/Z0999901269">Z0999901269</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/AngelOrtiz">Ciriaco Ortiz</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1936">1936</a></td><td>02:57</td><td>1</td><td><a href="/tracks//work.juro">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juro">Juro</a></td><td><a href="/Z0999901269">Z0999901269</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/AngelOrtiz">Ciriaco Ortiz</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1936-08-05">1936-08-05</a></td><td>02:53</td><td>1</td><td><a href="/tracks//1936-08-05/work.juro">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justicia_baturra">Justicia baturra</a></td><td><a href="/T0416452986">T0416452986</a></td><td><a href="/genre.paso doble">paso doble</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/ErnesFamaa">Ernesto Famá</a></td><td>spa</td><td><a class="date" href="/1933">1933</a></td><td>03:39</td><td>1</td><td><a href="/tracks//work.justicia_baturra">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justicia_baturra">Justicia baturra</a></td><td><a href="/T0416452986">T0416452986</a></td><td><a href="/genre.paso doble">paso doble</a></td><td><a href="/xgrvvorqbb">-unspecified orchestra-</a></td><td><a href="/MerceSimon">Mercedes Simone</a></td><td>spa</td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.justicia_baturra">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justicia_criolla">Justicia criolla</a></td><td><a href="/T0370122896">T0370122896</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/AlfreDeang">Alfredo De Angelis</a></td><td><a href="/CarloDante">Carlos Dante</a></td><td>spa</td><td><a class="date" href="/1946-11-07">1946-11-07</a></td><td>03:06</td><td>6</td><td><a href="/tracks//1946-11-07/work.justicia_criolla">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justicia_criolla">Justicia criolla</a></td><td><a href="/T0370122896">T0370122896</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1927">1927</a></td><td>03:11</td><td>1</td><td><a href="/tracks//work.justicia_criolla">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justicia_criolla">Justicia criolla</a></td><td><a href="/T0370122896">T0370122896</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1927-11-16">1927-11-16</a></td><td>03:12</td><td>2</td><td><a href="/tracks//1927-11-16/work.justicia_criolla">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justicia_criolla">Justicia criolla</a></td><td><a href="/T0370122896">T0370122896</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancPraca">Francisco Pracánico</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1926">1926</a></td><td>03:04</td><td>3</td><td><a href="/tracks//work.justicia_criolla">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justicia_criolla">Justicia criolla</a></td><td><a href="/T0370122896">T0370122896</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/ItaloGoyec">Italo Goyeche</a></td><td></td><td></td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.justicia_criolla">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justicia_criolla">Justicia criolla</a></td><td><a href="/T0370122896">T0370122896</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/OsvalFrese">Osvaldo Fresedo</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1927-03-15">1927-03-15</a></td><td>03:01</td><td>1</td><td><a href="/tracks//1927-03-15/work.justicia_criolla">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justicia_criolla">Justicia criolla</a></td><td><a href="/T0370122896">T0370122896</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrvvgitbb">-unspecified guitars-</a></td><td><a href="/ItaloGoyec">Italo Goyeche</a></td><td>spa</td><td><a class="date" href="/1926">1926</a></td><td>02:49</td><td>1</td><td><a href="/tracks//work.justicia_criolla">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justo_a_tiempo">Justo a tiempo</a></td><td><a href="/T0373189140">T0373189140</a></td><td><a href="/genre.">?</a></td><td></td><td></td><td></td><td><a class="date" href="/"></a></td><td>03:45</td><td>1</td><td><a href="/tracks//work.justo_a_tiempo">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justo_el_31">Justo el 31</a></td><td><a href="/T0370015692">T0370015692</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaDarie">Juan D'Arienzo</a></td><td><a href="/MarioAlvar">Mario Bustos</a></td><td>spa</td><td><a class="date" href="/1958-12-17">1958-12-17</a></td><td>02:41</td><td>11</td><td><a href="/tracks//1958-12-17/work.justo_el_31">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justo_el_31">Justo el 31</a></td><td><a href="/T0370015692">T0370015692</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/RicarBrign">Ricardo Luis Brignolo</a></td><td></td><td></td><td><a class="date" href="/1929--1932">1929--1932</a></td><td>02:53</td><td>1</td><td><a href="/tracks//work.justo_el_31">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justo_el_31">Justo el 31</a></td><td><a href="/T0370015692">T0370015692</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/RicarBrign">Ricardo Luis Brignolo</a></td><td><a href="/LuisaDiaza">Luis Díaz</a></td><td>spa</td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.justo_el_31">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justo_el_31">Justo el 31</a></td><td><a href="/T0370015692">T0370015692</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/RicarBrign">Ricardo Luis Brignolo</a></td><td><a href="/LuisaDiaza">Luis Díaz</a></td><td>spa</td><td><a class="date" href="/1929--1932">1929--1932</a></td><td>02:55</td><td>1</td><td><a href="/tracks//work.justo_el_31">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justo_el_31">Justo el 31!..</a></td><td><a href="/T0370015692">T0370015692</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrvvgitbb">-unspecified guitars-</a></td><td><a href="/AlberVilaa">Alberto Vila</a></td><td>spa</td><td><a class="date" href="/"></a></td><td></td><td>1</td><td><a href="/tracks//work.justo_el_31">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justo_el_treinta_y_uno">Justo el treinta y uno</a></td><td><a href="/T0370015692">T0370015692</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/AlberVilaa">Alberto Vila</a></td><td></td><td></td><td><a class="date" href="/1930">1930</a></td><td>02:13</td><td>1</td><td><a href="/tracks//work.justo_el_treinta_y_uno">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justo_el_treinta_y_uno">Justo el treinta y uno</a></td><td><a href="/T0370015692">T0370015692</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/CarloPerez">Charlo</a></td><td>spa</td><td><a class="date" href="/1930-10-15">1930-10-15</a></td><td>03:01</td><td>1</td><td><a href="/tracks//1930-10-15/work.justo_el_treinta_y_uno">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justo_el_treinta_y_uno">Justo el treinta y uno</a></td><td><a href="/T0370015692">T0370015692</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancRotun">Francisco Rotundo</a></td><td></td><td></td><td><a class="date" href="/"></a></td><td>02:55</td><td>1</td><td><a href="/tracks//work.justo_el_treinta_y_uno">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justo_el_treinta_y_uno">Justo el treinta y uno</a></td><td><a href="/T0370015692">T0370015692</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancRotun">Francisco Rotundo</a></td><td><a href="/JulioSosav">Julio Sosa</a></td><td>spa</td><td><a class="date" href="/1953-12-14">1953-12-14</a></td><td>02:54</td><td>14</td><td><a href="/tracks//1953-12-14/work.justo_el_treinta_y_uno">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justo_el_treinta_y_uno">Justo el treinta y uno</a></td><td><a href="/T0370015692">T0370015692</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/HectoStamp">Héctor Stamponi</a></td><td><a href="/AnaaaLucia">Tania</a></td><td>spa</td><td><a class="date" href="/1948-07-01">1948-07-01</a></td><td>02:51</td><td>1</td><td><a href="/tracks//1948-07-01/work.justo_el_treinta_y_uno">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justo_el_treinta_y_uno">Justo el treinta y uno</a></td><td><a href="/T0370015692">T0370015692</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/VictoCaste">Alberto Castellano</a></td><td><a href="/AnaaaLucia">Tania</a></td><td>spa</td><td><a class="date" href="/1930--1932">1930--1932</a></td><td></td><td>1</td><td><a href="/tracks//work.justo_el_treinta_y_uno">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justo_el_treinta_y_uno">Justo el treinta y uno</a></td><td><a href="/T0370015692">T0370015692</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrvictora">Orquesta Típica Victor</a></td><td><a href="/HugowFrede">Carlos Lafuente</a></td><td>spa</td><td><a class="date" href="/1930-11-03">1930-11-03</a></td><td>02:59</td><td>4</td><td><a href="/tracks//1930-11-03/work.justo_el_treinta_y_uno">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justo_el_treinta_y_uno">Justo el treinta y uno</a></td><td><a href="/T0370015692">T0370015692</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/xgrvictora">Orquesta Típica Victor</a></td><td><a href="/HugowFrede">Carlos Lafuente</a></td><td>spa</td><td><a class="date" href="/1930-11-27">1930-11-27</a></td><td>02:54</td><td>1</td><td><a href="/tracks//1930-11-27/work.justo_el_treinta_y_uno">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justo_el_treinta_y_uno">Justo el treinta y uno</a></td><td><a href="/T0370015692">T0370015692</a></td><td><a href="/genre.tango">tango</a></td><td></td><td><a href="/AnaaaLucia">Tania</a></td><td></td><td><a class="date" href="/1930">1930</a></td><td>02:02</td><td>1</td><td><a href="/tracks//work.justo_el_treinta_y_uno">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.justo_un_ano">Justo un año</a></td><td><a href="/T0370431847">T0370431847</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaDarie">Juan D'Arienzo</a></td><td><a href="/MarioAlvar">Mario Bustos</a></td><td>spa</td><td><a class="date" href="/1958-11-12">1958-11-12</a></td><td>02:57</td><td>5</td><td><a href="/tracks//1958-11-12/work.justo_un_ano">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juventud">Juventud</a></td><td><a href="/"></a></td><td><a href="/genre.marcha">marcha</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/DominMaida">Roberto Maida</a></td><td>spa</td><td><a class="date" href="/1937-05-26">1937-05-26</a></td><td>02:45</td><td>1</td><td><a href="/tracks//1937-05-26/work.juventud">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juventud">Juventud</a></td><td><a href="/T0464663486">T0464663486</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancLomut">Francisco Lomuto</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1930-04-25">1930-04-25</a></td><td>02:52</td><td>6</td><td><a href="/tracks//1930-04-25/work.juventud">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juventud">Juventud</a></td><td><a href="/T0464663486">T0464663486</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/GuillBarbi">Guillermo Barbieri</a>, <a href="/JosemAguil">José María Aguilar</a></td><td><a href="/CharlGarde">Carlos Gardel</a></td><td>spa</td><td><a class="date" href="/1930-03-20">1930-03-20</a></td><td>02:32</td><td>6</td><td><a href="/tracks//1930-03-20/work.juventud">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juventud">Juventud</a></td><td><a href="/T0370040962">T0370040962</a></td><td><a href="/genre.tango">tango</a></td><td><a href="/PedroMaffi">Pedro Maffia</a></td><td>-</td><td>zxx</td><td><a class="date" href="/1929">1929</a></td><td>02:56</td><td>2</td><td><a href="/tracks//work.juventud">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juz_nigdy">Już nigdy</a></td><td><a href="/T9059703503">T9059703503</a></td><td><a href="/genre.tango">tango</a></td><td></td><td><a href="/ZygmuMalin">Zygmunt Malinowski</a></td><td>pol</td><td><a class="date" href="/"></a></td><td>03:18</td><td>1</td><td><a href="/tracks//work.juz_nigdy">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.juz_taki_jestem_zimny_dran">Już taki jestem zimny drań</a></td><td><a href="/T9059256938">T9059256938</a></td><td><a href="/genre.fox trot">fox trot</a></td><td></td><td><a href="/MieczFogie">Mieczysław Fogg</a></td><td>pol</td><td><a class="date" href="/"></a></td><td>02:00</td><td>1</td><td><a href="/tracks//work.juz_taki_jestem_zimny_dran">info</a></td></tr>
+<tr  class="performance"><td><a href="/work.jyra_jyra">Jyra Jyra</a></td><td><a href="/T0370030559">T0370030559</a></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td>ron</td><td><a class="date" href="/"></a></td><td>02:45</td><td>1</td><td><a href="/tracks//work.jyra_jyra">info</a></td></tr>
+
+	</tbody>	
+	</table>
+
+</div></div></div></main>
+<footer>
+<div class="ti_footer">
+<div class="ti_footer_inner">
+<section class="all_left"><h2>Feedback</h2>
+<form id="contactform" method="post" action="/performances/J#feedbackanchor">
+<div id="contactform_div">
+<table><tr>
+<td><a id="feedbackanchor">&zwnj;</a><input type="hidden" name="request" value="tango.info/performances/J"
+ /><textarea onfocus='this.select()'  name="msg_content" rows="4" cols="55">Type feedback here. Add email address if you want an answer. Please do not ask about local tango activities. All we know is on the website.</textarea></td>
+</tr>
+<tr><td>Antispamcode:<code>s49</code>
+	enter code: <input type="text" name="ascode" id="ascode" size="2"  />  <input type="submit" value="submit" /></td>
+</tr></table>
+</div></form>
+</section><section class="all_center"><h2>Languages</h2><ul id="lang_sel" class="ti_functions_html_string.php"><li><a href="/bul" title="български" hreflang="bg-BG">bul</a></li><li><a href="/cat" title="català" hreflang="ca-ES">cat</a></li><li><a href="/ces" title="čeština" hreflang="cs-CZ">ces</a></li><li><a href="/dan" title="dansk" hreflang="da-DK">dan</a></li><li><a href="/deu" title="deutsch" hreflang="de-DE">deu</a></li><li><a href="/ell" title="ελληνικά" hreflang="el-GR">ell</a></li><li><span title="english">eng</span></li><li><a href="/est" title="eesti" hreflang="ee-EE">est</a></li><li><a href="/fra" title="français" hreflang="fr-FR">fra</a></li><li><a href="/fin" title="suomi" hreflang="fi-FI">fin</a></li><li><a href="/hun" title="magyar" hreflang="hu-HU">hun</a></li><li><a href="/hrv" title="hrvatski" hreflang="hr-HR">hrv</a></li><li><a href="/ita" title="italiano" hreflang="it-IT">ita</a></li><li><a href="/lav" title="latviešu" hreflang="lv-LV">lav</a></li><li><a href="/lit" title="lietuviškai" hreflang="lt-LT">lit</a></li><li><a href="/mlt" title="malti" hreflang="mt-MT">mlt</a></li><li><a href="/nld" title="nederlands" hreflang="nl-NL">nld</a></li><li><a href="/nob" title="bokmål" hreflang="nb-NO">nob</a></li><li><a href="/pol" title="polski" hreflang="pl-PL">pol</a></li><li><a href="/por" title="português" hreflang="pt-PT">por</a></li><li><a href="/ron" title="română" hreflang="ro-RO">ron</a></li><li><a href="/rus" title="русский" hreflang="ru-RU">rus</a></li><li><a href="/slk" title="slovenčina" hreflang="sk-SK">slk</a></li><li><a href="/slv" title="slovenščina" hreflang="sl-SI">slv</a></li><li><a href="/spa" title="español" hreflang="es-ES">spa</a></li><li><a href="/srp" title="српски" hreflang="sr-RS">srp</a></li><li><a href="/swe" title="svenska" hreflang="sv-SE">swe</a></li><li><a href="/tur" title="türkçe" hreflang="tr-TR">tur</a></li><li><a href="/ukr" title="украї́нська" hreflang="uk-UA">ukr</a></li><li><a href="/languages">...</a></li></ul></section><section class="all_right"><h2>Site info</h2><ul id="site_menu"><li><a href="/tangoinfo/eng">home</a></li><li><a href="/tangoinfo/eng/contact">contact</a></li><li><a href="/tangoinfo/eng/credits">credits</a></li><li><a href="/tangoinfo/eng/donate">donate</a></li><li><a href="/tangoinfo/eng/standards">standards</a></li><li><a href="/tangoinfo/eng/statistics">statistics</a></li><li><a href="/tangoinfo/eng/subsites">subsites</a></li><li><a href="/tangoinfo/eng/disclaimer">disclaimer</a></li></ul></section><section class="page_info"><h2>Page info</h2>2017-03-18 03:16:37<a href="http://validator.w3.org/check?uri=https%3A%2F%2Ftango.info%2Fperformances%2FJ" title="HTML Validator">/</a><span title="time to generate the page">0.8933<abbr title="seconds">s</abbr></span><a href="http://jigsaw.w3.org/css-validator/validator?uri=https://tango.info/performances/J" title="CSS Validator">.</a></section></div></div></footer>
+<script type="text/javascript" src="/x/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="/x/js/jquery.tablesorter.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() 
+		{ 
+	    	$('.table-autosort').tablesorter(); 
+		} 
+	); 
+	$(document).ready(function() 
+		{ 
+	    	$('table.sortable').tablesorter(); 
+		} 
+	); 
+</script>
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="/x/piwik/latest/piwik/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+        g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+
+</script>
+<noscript><p><img src="/x/piwik/latest/piwik/piwik.php?idsite=1" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+	
+	</body></html>

@@ -1,5 +1,10 @@
 package au.com.thoughtpatterns.dj.disco.tangoinfo;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,6 +15,7 @@ import java.util.Set;
 import org.jsoup.Connection;
 import org.jsoup.Connection.Method;
 import org.jsoup.Jsoup;
+import org.jsoup.helper.DataUtil;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
@@ -19,6 +25,7 @@ import org.jsoup.select.NodeTraversor;
 import org.jsoup.select.NodeVisitor;
 
 import au.com.thoughtpatterns.core.util.Logger;
+import au.com.thoughtpatterns.core.util.Resources;
 import au.com.thoughtpatterns.core.util.SystemException;
 import au.com.thoughtpatterns.core.util.Util;
 
@@ -252,7 +259,148 @@ public class TangoInfo {
 		TINT key = d.key();
 		data.put(key, d);
 	}
+	
+	public List<Work> fetchWorks() {
+		List<Work> out = new ArrayList<>();
+		for (char letter = 'A'; letter <= 'Z'; letter++) {
+			fetchWorks(Character.toString(letter), out);
+		}
+		return out;
+	}
+	
+	private void fetchWorks(String letter, List<Work> out) {
+		
+		log.debug("Fetching works for " + letter);
+		
+		String url0 = "https://tango.info/works";
+		
+		try {
+			/*
+			String url = url0 + "/" + letter;
+			Connection conn = Jsoup.connect(url).header("Accept-Encoding", "gzip");
+			conn.method(Method.POST);
+			Document doc = conn.get();
+			*/
+			
+			URL f = new URL("file:tangoinfo/works/" + letter);
+			Document doc = loadDoc(f);
+			
+			// log.debug("Read " + doc);
+			
+			Elements rows = doc.select("#works tbody tr");
 
+			if (rows.size() < 1) {
+				log.error("Unparseable response from tango.info: " + doc);
+				return;
+			}
+			
+			for (Element row : rows) {
+				
+				Elements tds = row.select("td");
+				
+				if (tds.size() == 12) {
+					
+					Work w = new Work();
+					
+					w.title = tds.get(0).text();
+					w.genre = tds.get(2).text();
+					w.composer = tds.get(3).text();
+					w.letrista = tds.get(4).text();
+					w.tiwc = tds.get(6).text();
+
+					out.add(w);
+				}
+			}
+
+		} catch (Exception ex) {
+			throw new SystemException(ex);
+		}
+
+	}
+	
+	public static class Work {
+		
+		String title;
+		String genre;
+		String composer;
+		String letrista;
+		String tiwc;
+		
+		public String toString() {
+			return title + " - " + composer + ", lyr. " + letrista;
+		}
+		
+	}
+	
+	public List<Performance> fetchPerformances() {
+		List<Performance> out = new ArrayList<>();
+		for (char letter = 'A'; letter <= 'Z'; letter++) {
+			fetchPerformances(Character.toString(letter), out);
+		}
+		return out;
+	}
+	
+	private void fetchPerformances(String letter, List<Performance> out) {
+		
+		try {
+			URL f = new URL("file:tangoinfo/performances/" + letter);
+			Document doc = loadDoc(f);
+
+			// log.debug("Read " + doc.outerHtml());
+			
+			Elements rows = doc.select("tr.performance");
+
+			log.debug("Fetching works for " + letter + " : " + rows.size() + " rows");
+
+			if (rows.size() < 1) {
+				log.info("Unparseable response from tango.info");
+				return;
+			}
+
+			
+			for (Element row : rows) {
+				
+				Elements tds = row.select("td");
+				
+				Performance w = new Performance();
+				
+				w.title = tds.get(0).text();
+				w.tiwc = tds.get(1).text();
+				w.genre = tds.get(2).text();
+				w.orchestra = tds.get(3).text();
+				w.vocalist = tds.get(4).text();
+				w.date = tds.get(6).text();
+				w.duration = tds.get(7).text();
+
+				out.add(w);
+			}
+
+		} catch (Exception ex) {
+			throw new SystemException(ex);
+		}
+
+	}
+	
+	private Document loadDoc(URL url) throws IOException {
+		InputStream is = url.openStream();
+		Document doc = DataUtil.load(is, "utf8", url.toString());
+		return doc;
+	}
+	
+	
+	public static class Performance {
+		
+		String title;
+		String tiwc;
+		String genre;
+		String orchestra;
+		String vocalist;
+		String date;
+		String duration;
+		
+	}
+
+	
 	public Metadata getMetadata(String tin, int discno, int trackno) {
 		
 		loadPending();

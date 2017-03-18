@@ -8,6 +8,7 @@ import au.com.thoughtpatterns.djs.util.ProcessExec
 import au.com.thoughtpatterns.core.json.JsonyObject
 import au.com.thoughtpatterns.core.json.AJsonyObject
 import au.com.thoughtpatterns.djs.util.Log
+import au.com.thoughtpatterns.djs.disco.tangoinfo.Data
 
 @SerialVersionUID(3L)
 class MusicFile(private val file0: File, val lib: Library) extends MusicContainer with DesktopCompat with Serializable {
@@ -194,6 +195,11 @@ class MusicFile(private val file0: File, val lib: Library) extends MusicContaine
       strategy.json.put(file, toJson(path))
     }
 
+  }
+  
+  def lookupComposer : Option[String] = {
+    val p = toApproxPerformance
+    Data.composer(p.title, p.artist, p.genre)
   }
   
   // ------------------------

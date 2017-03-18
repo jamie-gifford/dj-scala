@@ -1,0 +1,1921 @@
+<!DOCTYPE html><html lang="en"><head>
+<title> Works - Argentine Tango - tango.info</title>
+<meta charset="UTF-8" />
+<meta name="robots" content="NOODP" />
+<meta name="description" content="Tango.info since 2004: music, CDs, events, festivals, shoes, composers, lyricists, singers, teachers, DJs, videos" />
+<meta name="keywords" content=" Works - Argentine Tango - tango.info" />
+<meta name="author" content="Tobias Conradi" />
+<meta name="referrer" content="origin" />
+<meta name=viewport content="width=device-width, initial-scale=1" />
+<link rel="home" href="/" />
+<link rel="author" href="/tangoinfo/" />
+<link rel="image_src" href="/x/graphics/logos/ti.u.tango.info.300x200.jpg" />
+<link rel="icon" sizes="192x192" href="/x/graphics/logos/tango.info.1062x1062.ti.noto.900-fff.192x192.png">
+<link rel="search" type="application/opensearchdescription+xml" title="tango.info" href="/x/xml/search.xml" />
+<style>/*html5*/
+article, section, aside, hgroup, nav, header, footer, figure, figcaption {display: block;}
+*, *:before, *:after {box-sizing: border-box;}
+/********** SITE WIDE - UNSORTED **********/
+html {/*allways show scrollbars*/
+	overflow-y: scroll;
+	line-height:1.4em;
+	height:100%;
+}
+/********** SITE WIDE - FONT, FONT SIZES **********/
+
+html,input{
+	font-family: "Noto Sans", "helvetica", "Arial", "Tahoma", sans-serif;
+}
+textarea,pre, code, tt, kbd, samp, {
+	font-family: 'Noto Mono', monospace,Courier;
+}
+
+/* font-family */
+main,footer,td,tr,table,p,input,
+h1,h2,h3,h4,h5{
+	line-height:2em;
+}
+
+body {
+	font-size: 90%;
+	min-height:100%;
+}
+
+.ti_logo_and_sitename {	
+	font-size:1.5em;
+	display: inline-block;
+	margin-top: 3px;
+	}
+
+h1{font-size:2em;}
+h2{font-size:1.5em;}
+h3{font-size:1.17em;}
+h4{font-size:1em;}
+h5{font-size:.83em;}
+h6{font-size:.67em;}
+a{
+	text-decoration:none;
+}
+a:hover{
+	text-decoration:underline;
+}
+footer h2{
+	font-size: 100%;
+}
+/********** SITE WIDE - MARGIN BORDR PADDING **********/
+body,table,tr,td,th,img,h1,h2,h3,h4,h5,p,form {
+	margin:0;
+	border:0;
+	padding:0;
+}
+h1,h2,h3,h4,h5{
+	_margin:8px 0px;
+	clear:both;
+}
+abbr {
+	border:0;
+}
+table,tr,td{
+	border-collapse:collapse;
+}
+td {
+	vertical-align:top;
+}
+.nowrap{/*for IE "--" in tables; and for date col*/
+	white-space: nowrap;
+}
+
+div.leaflet-control-attribution a{
+	color:#333;
+}
+div.leaflet-control-attribution {
+	font-size:9px;
+}
+div.leaflet-control-attribution{
+	line-height:12px;
+}
+hr {
+	border:0;
+	height:1px;
+}
+
+div.pre{
+	white-space:pre;
+}
+
+/********** SITE WIDE - POSITIONING **********/
+.clear_both{
+	clear:both;
+	height:0;
+}
+
+body > header > div,
+body > nav > div,
+body > main > div,
+body > footer > div{
+	width:100%;
+	max-width:1002px;
+	margin:auto;
+	
+}
+
+/*ensure the boxes contain their content, and don't collapse*/
+body > header:after,
+body > nav:after,
+body > main:after,
+body > footer:after {
+    content:"";
+    display:table;
+    clear:both;
+}
+
+header{
+    position: fixed;
+    width: 100%;
+    z-index: 99999;
+}
+body > nav {
+	padding-top:33px;
+}
+
+div.content_inner,
+aside{
+	float:left;
+}
+
+div#site_name_and_search,
+.aside_on div.content_inner{
+	max-width:690px;
+}
+
+div.ti_header_inner{
+    _margin-left:4px;
+    _margin-right:4px;
+    _border-bottom:1px solid #ccc;
+    position: relative;//so ti_user can be position:absolute
+    
+}
+div.ti_footer_inner{
+    _margin-left:2px;
+    _margin-right:2px;
+    border-top:1px solid #ccc;
+}
+
+footer div > section{
+	float:left;
+	width:300px;
+	margin:10px;
+}
+footer section.page_info a{
+	_margin:2px;
+}
+
+ul#lang_sel,
+ul#site_menu{
+	display:inline;
+	list-style:none;
+	padding:0;
+}
+ul#lang_sel li,
+ul#site_menu li{
+	float:left;
+	_display:inline;
+	margin:2px 3px;
+}
+ul#lang_sel li a,
+ul#lang_sel li span{
+	display:block;
+	width:2.2em;
+	text-align:center;
+}
+
+ul#site_menu li a{
+	display:block;
+	width:140px;
+	text-align:center;
+}
+
+div.content td{
+	text-align:left;
+}
+div#wide_menu,
+div.content_inner {
+	margin: 0px 0px 10px 2px;
+	/* https://tango.info/tracks/work.la_cumparsita
+	 is wider than 652
+	 and last column would not be shown if width=652
+	 so change from width: to min-width:
+	 
+	 */
+	min-width:690px;
+}
+div#wide_menu{ 
+/* has a border, therefore reduce width*/
+	width:650px;
+}
+
+.nav_main_subsite a{
+ _display:block;
+ margin-left:2px;
+ margin-right:2px;
+}
+
+header div#ti_user{
+	_margin-right:6px;
+	display:inline-block;
+	_float:right;
+	width:150px;
+	_margin-left:6px;
+	position:absolute;
+	top:0;
+	right:0px;
+	_background-color:#ddd;
+	padding:1px;
+}
+
+header span.tangoinfo{
+	_padding:2px 8px;
+}
+
+#all_top .all_left{
+	width:26px;
+}
+/* Remove "#all_top" so the rule is applied in the wiki too */
+.ti_logo{
+	font-weight:800;
+}
+
+#all_top
+#all_top span.datetime{
+	margin-top:8px;
+}
+#all_top .datetime{
+	float:right;
+	margin-right:10px;
+}
+
+.all_inner{
+	margin:0px 10px;
+}
+
+/* search */
+form.search {
+	display:inline;
+}
+
+form.main_search {
+	width:390px;
+	float:right;
+	display:inline-block;
+	margin:0 2px;
+}
+form.main_search div{
+	float:left;
+	width:100%;
+
+}
+form.main_search input.text{
+	background-color:#f9f9f9;
+	width:340px;
+	float:left;
+	_padding:1px;
+	font-size:16px;
+	_margin-bottom:3px;/*Tahoma font had the letters gqyjp outside the visible area*/
+	line-height:22px;/*Tahoma font had the letters gqyjp outside the visible area*/
+	_border-radius: 5px;
+	_margin:2px;
+	border:1px #ccc solid;
+	padding:0 0 0 2px;
+
+}
+form.main_search input.ti_search_button{
+	width:36px;
+	height:24px;
+	_background-color:#04c;
+	_color:#04c;
+	overflow:hidden;
+	float:right;
+	_margin-left:8px;
+	_margin-top:4px;
+	_background: url(https://tango.info/x/tango-icon-theme-0.8.1/22x22/actions/system-search.png);
+	_border:none;
+	padding:0;
+	_text-indent:-9999px;
+	_cursor: pointer;
+	_font-size:0;
+}
+div#all_middle{
+	clear:both;
+}
+/* div content */
+div.content{
+	min-height:250px;
+	min-height:300px;
+	text-align:left;
+	float:left;
+}
+
+/************ SITE WIDE - COLORS **************/
+html {
+	_background-color:#eee;
+	color:#222;
+}
+.exdate{
+	color:#c00;
+}
+a{
+	color:#06c;
+}
+header{
+	background-color:#fff;
+	_background-color:rgba(0,0,0,0.8);
+	_color:#eee;
+	padding-top:3px;
+	_box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 15px 25px -12px rgba(0, 0, 0, 0.5);
+	_border-bottom:3px solid #900;
+
+}
+header span.tangoinfo{
+	_background-color:#900;
+	_color:#eee;
+}
+header span.tangoinfo a{
+	_color:#eee;
+	_border-bottom:2px solid #c00;
+}
+body > header a,
+_body > nav a{
+	_color:#eee;
+}
+
+body > nav{
+	_background-color:#444;
+	_background-color:rgba(0,0,0,0.8);
+	_color:#eee;
+	_border-bottom:1px solid #ddd;
+	_box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2);
+}
+body > nav > div{
+	border-bottom:1px solid #ddd;
+}
+
+body > footer{
+	_background-color:#444;
+}
+
+/************infobox*************************************/
+
+div.content table.infobox {
+	width:300px;
+	overflow:hidden;
+	able-layout: fixed;
+}
+
+table.infobox th{
+	background-color: #e6e6e6;
+}
+
+table.infobox tbody{
+	width:300px;
+	overflow:hidden;
+}
+table.infobox td{
+	overflow: hidden;
+}
+table.infobox td.key{
+	width:80px;
+}
+table.infobox td.col1{
+	width:120px;
+	padding-right:5px;
+}
+table.infobox td.col2{
+	width:200px;
+}
+table.infobox tr.section td{
+	width:300px;
+	font-weight:700;
+	border-top:1px solid #ddd;
+}
+table.infobox tr.section {
+	font-weight:700;
+}
+table.infobox tr.i300x50 td{
+	padding:0;
+	border-top:0;
+}
+table.infobox th,
+table.infobox td{
+	padding:2px 5px 2px 5px;
+}
+
+table.infobox tr.i300x50 td{
+	padding:0;
+	border-top:0;
+}
+
+/* END infobox **********************/
+
+/* filterbox **********************/
+table.filterbox td{
+	border-top:1px solid #ddd;
+}
+/* END filterbox **********************/
+
+/********** TABLE LISTING *******************/
+table.listing{
+	border-spacing:0;
+	width:100%;
+}
+table.listing td,
+table.listing th {
+	text-align:left;
+	padding:2px 5px 2px 5px;
+}
+table.listing th.info{
+	width:2.2em;
+}
+table.listing tr th {
+	background-color: #ddd;
+}
+table.listing td {
+	border-top:1px solid #ccc;
+}
+
+table.listing tr.selected td {
+	background-color:#ddd;/*same tint
+	e.g. https://tango.info/08427328131100-1-14
+	*/
+}
+
+table.listing tr:hover td {
+	background-color:#e6e6e6;
+}
+
+/*videos*/
+table.listing td.thumbnail{
+	text-align:center;
+
+}
+
+/*user*/
+table.listing td span.editor_first {
+	text-align:right;
+	display:block;
+	float:right;
+}
+
+table.listing tr td span.editor_first a{
+	font-family:"Courier New", Courier, monospace;
+}
+div.content table#events_today td{
+	/*height:50px;min!height via 300x50 image or its placeholder*/
+	padding:2px;
+}
+
+table.listing th.datetime,
+table.listing td.datetime{
+	width:94px;/*one iso date ca 66px*/
+}
+table.listing td.location{
+	width:220px;
+}
+table.listing td.summary{
+	width:220px;
+}
+
+table.listing td.i300x50{
+	width:310px;
+	padding-right:0;
+	padding-left:0;
+	padding-top:0;
+}
+table.listing td.i300x50 div.i300x50{
+	width:300px;
+	height:50px;
+	padding-right:5px;
+	padding-left:5px;
+}
+table.listing td.info{
+	text-align:right;
+	width:20px;
+}
+
+table.listing td.geo{
+	width:180px;
+}
+
+table.listing td.side_num,
+table.listing td.track_num,
+table.listing td.qty{
+	text-align:right;
+}
+table.listing tr td a sub{
+	margin-left:-3px;
+}
+
+.pagetype-event .wikirender_outer{
+	clear:both;
+}
+.pagetype-event .wikirender{
+	border:1px solid #333;
+	border-left:0;
+	border-right:0;
+}
+.subsitetype-city_p #map{
+	width:300px;
+}
+
+.pagetype-event #map{
+	width:300px;
+}
+
+.subsitetype-city_p #all_middle .calendar{
+	width:300px;
+	float:left;
+}
+.pagetype-event .wikirender .toc,
+.pagetype-event .wikirender .ti_event{
+	display:none;
+}
+.pagetype-event .wikirender pre{
+	font-size:120%;
+}
+.pagetype-tinp .listing td{
+	_height:40px;
+}
+
+.pagetype-event table.infobox,
+.pagetype-tinp table.infobox{
+	float:left;
+}
+
+div.image_and_right_info {
+	float:right;
+	width:300px;
+	_border:5px solid #0ff;
+}
+.category-cookies table.listing textarea{
+	width:300px;
+}
+.category-cookies table.listing td{
+	width:50%;
+}
+
+#VideoPlayback{
+	width:480px; height:360px;
+}
+#ytplayer{
+	width:640px;
+	height:390px;
+}
+
+/*pagetype work*/
+div.pre_lyrics_outer{
+	float:left;
+}
+div.lyrics_outer{
+	float:left;
+}
+
+div.content table#events_today td.desc div.desc{
+	overflow: hidden
+}
+
+/* jquery.tablesort */
+//@import url(x-table-mattkruse-com.css);
+table.sortable th{
+	padding-left:16px;
+}
+table.sortable th.headerSortUp { 
+    background-image: url(https://tango.info/x/gif/js-table-sort/01_ascending.gif); 
+    background-color: #66c;
+    color:#fff;
+}
+table.sortable th.headerSortUp a,
+table.sortable th.headerSortDown a{
+    color:#fff;
+}
+table.sortable th.headerSortDown { 
+    background-image: url(https://tango.info/x/gif/js-table-sort/01_descending.gif); 
+    background-color: #04c;
+    color:#fff; 
+} 
+table.sortable th.header { 
+    background-image: url(https://tango.info/x/gif/js-table-sort/01_unsorted.gif);     
+    cursor: pointer; 
+    background-repeat: no-repeat; 
+    background-position: center right; 
+}
+
+/******** END TABLE LISTING ***********/
+
+/*location code*/
+.ti_venue_code{
+	background-color:#333;
+	border:1px solid #000;
+	text-align:center;
+	display:block;
+	width:22px;
+	float:left;
+	line-height:22px;
+	font-size:12px;
+	color:#fff;
+	border-radius:3px;
+}
+.map .ti_venue_code{
+	/*top left rounded to indicate position*/
+	border-radius:3px;
+}
+.t_venue_code:before,
+.t_venue_code:after
+{
+	content: ' ';
+}
+.ti_venue_code_outer{
+	background-color:#000;
+}
+.date{
+	white-space:nowrap;
+	min-width:10ex;
+}
+
+/*aside*/
+aside{
+	margin-left:8px;/*IE*/
+	/*margin:auto;*/
+	width:300px;
+	margin-right:2px;
+}
+/*marketing*/
+div#a2 {
+	width:300px;
+	margin-left:10px;
+	margin-right:10px;
+}
+
+aside div.wh300x50{
+	background-color:#f9f9f9;
+}
+aside div.wh300x50 div.inner{
+	text-align:center;
+	vertical-align:middle;
+	display:table-cell;
+	vertical-align:middle;
+	width:300px;
+	height:50px;
+}
+aside div.wh300x50 a{
+	font-size:200%;
+}
+
+.aimages{
+	line-height:0;
+}
+.au {
+	margin:2px auto;
+}
+tr.ai_top{
+	border-bottom:2px solid #ddd;
+}
+tr.ai_top a.ti_label_link {
+	float:left;
+}
+tr.ai_top div.au {
+	float:left;
+}
+/*sitenotice*/
+div#ti_sitenotice{
+	width:100%;
+	text-align:center;
+}
+
+/*************wide menu**********************/
+/*
+for subsites: city_p, festivals_p
+*/
+div#wide_menu{
+	float:left;
+	background-color:#ccc;
+	border:1px solid #ccc;
+	border-top:0;
+	border-radius: 0 0 9px 9px;
+}
+
+div#wide_menu table.main_menu{
+	width:330px;
+	border-radius: 9px;
+	border-collapse:separate;
+	margin-right:10px;
+}
+div#wide_menu table.main_menu td{
+	width:150px;
+}
+/*see also main_menu*/
+div#wide_menu ul {
+	list-style: none;
+	padding:0px 0px 0px 0px;
+	margin:3px 0px 3px 0px;
+	display:inline;
+}
+div#wide_menu ul ul{
+	padding:0px 0px 0px 0px;
+	margin:0px 0px 2px 0px;
+}
+div#wide_menu li {
+	margin-top:2px;
+	display:inline;
+}
+
+div#wide_menu li li{
+	margin-top:0;
+}
+
+div#wide_menu li li{
+	margin-left:0;
+}
+
+html>body div#wide_menu ul li a,
+html>body div#wide_menu ul li span{
+	width: auto;/*for non-IE*/
+}
+
+div#wide_menu a.active, 
+div#wide_menu a:hover{
+	background-color:#ddd;
+}
+/****************end wide menu****************/
+/****main_menu used for subsite city_p******************************/
+table.main_menu td{
+	padding:2px;
+}
+.main_menu ul {
+	list-style: none;
+	padding:0px 0px 0px 0px;
+	margin:3px 0px 3px 0px;
+	display:inline;
+}
+.main_menu ul ul{
+	padding:0px 0px 0px 0px;
+	margin:0px 0px 2px 0px;
+}
+.main_menu li {
+	margin-top:2px;
+	display:inline-block;
+}
+
+.main_menu li li{
+	margin-top:0;
+}
+
+.main_menu li li{
+	_padding-left:12px;
+	margin-left:0;
+}
+
+
+    .main_menu ul li ul{
+        min-width: 120px; /* Set width of the dropdown */
+        background: #eee;
+        color:#000;
+        display: none;
+        position: absolute;
+        z-index: 999;
+        
+        _top:16px;
+        margin:0;padding:0;
+    }
+    .main_menu ul li ul li{
+    	border:1px solid #ddd;
+    	margin:0;
+    	padding:0;
+    }
+    .main_menu ul li ul li a{
+    	_width:100%;
+    	
+    	margin:4px 4px 4px 5px;
+    	_padding:4px;
+    	display:block;
+    }
+    .main_menu ul li:hover ul{
+        display: block;	/* Display the dropdown */
+    }
+    .main_menu ul li ul li{
+        display: block;
+    }
+
+/*********subsite festivals_p***************/
+#wide_menu div.nav_countries {
+	width:648px;
+	line-height:10px;
+	margin:auto;
+	/*	text-align:center;*/
+}
+body.subsitetype-festivals_p nav .inner table#f_count_table {
+	width:100%;
+}
+
+body.subsitetype-festivals_p nav .inner table#f_count_table td
+/* make availabe for tango.info/festivals*/
+{
+	text-align:center;
+}
+
+/*********subsite reliquias***************/
+/* reliquias */
+/* COLOR="#B13551" */
+body.subsitetype-reliquias {
+	background-color:#FEF3C6;
+
+}
+.subsitetype-reliquias header {
+	background-color:#B13551;
+	color:#fff;
+	_border-bottom:16px solid #74AD60;
+}
+.subsitetype-reliquias div#wide_menu {
+	background-color:#74AD60;
+	color:#fff;
+}
+.subsitetype-reliquias #all_top .all_center{
+	margin-left:30px;
+}
+.subsitetype-reliquias header a{
+	color:#fff;
+}
+
+.subsitetype-reliquias h1{
+	margin:0px;
+	padding:5px;
+}
+
+.subsitetype-reliquias div#content{
+	margin:4px;
+	background-color:#FEF3C6;
+}
+
+.subsitetype-reliquias div#bottom{
+	background-color:#B13551;
+	font-size:80%;
+}
+.subsitetype-reliquias div#bottom,
+.subsitetype-reliquias div#bottom a{
+	color:#fff;
+	text-decoration:none;
+}
+
+
+.subsitetype-reliquias td {
+	vertical-align:top;
+}
+
+.subsitetype-reliquias img {
+	border:#B13551 solid 1px; 
+}
+
+.subsitetype-reliquias img.gallery,
+.subsitetype-reliquias div.gallery,
+.subsitetype-reliquias a.gallery{
+	border:0px;margin:0px;padding:0px;
+}
+
+html body.subsitetype-reliquias table#all_middle td.all_right li.active ul li a.active{
+	background-color:#B13551;
+	color:#fff;
+}
+
+.subsitetype-reliquias .logo {
+	font-size:7mm;
+	font-weight:800;
+	color:#fff;
+}
+.subsitetype-reliquias img.home_reliquias{
+	width:300px;
+}
+
+.subsitetype-reliquias table.all {
+	background-color:#FEF3C6;
+	border-spacing:0mm;
+}
+
+.subsitetype-reliquias table.all tr.row2 {
+	background-color:#FEF3C6;
+	
+}
+
+.subsitetype-reliquias header{
+	background-color:#B13551;
+	border-bottom:5px solid #74AD60;
+}
+
+.subsitetype-reliquias table.all td.all_left{
+	idth:160px;
+}
+.subsitetype-reliquias table#all_middle td.all_center{
+	order-left:16px solid #74AD60;
+	border-right:16px solid #74AD60;
+	width:*;
+}
+.subsitetype-reliquias table.all td.all_right{
+	width:320px;
+}
+
+
+.subsitetype-reliquias table.all tr.row2 td.all_left{
+	order-top:16px solid #74AD60;
+	border-bottom:16px solid #74AD60;
+	padding:8px;
+}
+
+.subsitetype-reliquias table.all tr.row2 td.all_left ul{
+	ist-style:none;
+	margin:1mm;
+	padding-left:16px;
+}
+
+.subsitetype-reliquias table.all tr.row2 td.col2{
+	order-top:16px solid #74AD60;
+	border-bottom:16px solid #74AD60;
+
+}
+.subsitetype-reliquias table.all tr.row2 td.all_right{
+	order-top:16px solid #74AD60;
+	border-bottom:16px solid #74AD60;
+
+}
+
+.subsitetype-reliquias table.all tr.row3 td.all_left{
+	background-color:#B13551;
+}
+
+
+.subsitetype-reliquias table.all a.active,
+.subsitetype-reliquias table.all li.active a.active{
+	background-color:#B13551;
+	color:#fff;
+}
+
+.subsitetype-reliquias table.all_middle li.active ul li a.active{
+	background-color:#B13551;
+	olor:#fff;
+}
+
+.subsitetype-reliquias table.listing td {
+	padding:5px;
+	border-color:#B13551;
+}
+.subsitetype-reliquias .track_num{
+	font-weight:700;
+	font-size:110%;
+	text-align:right;
+}
+.subsitetype-reliquias .track_name{
+	text-transform:ppercase;
+	color:#B13551;
+	font-weight:700;
+}
+.subsitetype-reliquias .track_genr{
+	text-transform:capitalize;
+	font-weight:700;
+	font-size:80%;
+}
+.subsitetype-reliquias .track_dura{
+	font-size:80%;
+}
+
+
+
+/****************** TABLE CALENDAR ********************/
+/*not the real calender, this is the days of the year table*/
+#all_middle td.all_right table.calendar{
+	margin-left:8px;
+	margin-right:2px;
+	
+	/*there is a rule table width 100% that interferes
+	if the table is to the right hand, making it the full 310px*/
+	width:300px;
+}
+
+/* used for subsite city_p */
+table.calendar{
+	width:300px;
+	border-radius: 9px;
+	margin-top:2px;
+	border-spacing:0;
+}
+table#all_top table.calendar{
+	float:right;
+	width:300px;
+}
+table.calendar th {
+	text-align:center;
+	border-bottom:1px solid #ccc;
+}
+table.calendar td {
+	text-align:center;
+}
+
+
+
+/* rmv double border that occur due to collpase.:separate*/
+td + td {
+border-left-width: 0;
+}
+
+tr + tr + tr td {
+border-top-width: 0;
+}
+
+table.calendar td.actday,
+table.calendar tr.actweek{
+	background-color:#ddd;
+}
+table.calendar td.actday a,
+table.calendar tr.actweek a{
+    _color:#04c;
+}
+table.calendar tr.weekinner td a{
+	display:block;
+	width:30px;
+	text-align:center;
+}
+table.calendar tr.weekinner td.week a{
+	width:26px;
+}
+table.calendar tr.weekinner td.weeknumber a{
+	width:40px;
+}
+/* col width*/
+table.calendar th.day {
+	width:30px;
+}
+table.calendar th.week {
+	width:40px;
+}
+table.calendar th.month {
+	width:50px;
+}
+
+
+/*************img*****************/
+/*class cannot start numeric, thus prefix with wh (width, height)*/
+.wh50x50{width:50px;height:50px;}
+.wh300x50{width:300px;height:50px;}
+.wh300x100{width:300px;height:100px;}
+.wh300x150{width:300px;height:150px;}
+.wh300x200{width:300px;height:200px;}
+.wh300x250{width:300px;height:250px;}
+.wh300x300{width:300px;height:300px;}
+.wh300x475{width:300px;height:475px;}
+
+img {
+	border:#999 solid 0px; 
+}
+img.gallery,div.gallery,a.gallery{
+	border:0;
+	margin:0;
+	padding:0;
+}
+img.location300x200{
+	width:300px;
+}
+img.place300x200{
+	width:300px;
+	height:200px;
+	float:right;
+}
+img.person300x300{
+	float:right;
+	width:300px;
+}
+img.video_thumbnail{
+	border:0;
+	height:50px;
+}
+img.noborder{
+	border:0;
+}
+img.product50x50left{
+	width:50px;
+	float:left;
+}
+img.map_locator{
+	float:right;
+	border:0;
+	margin:2px;
+}
+#picline img{
+	width:75px;
+}
+.face-list{
+	width:50px
+}
+div.imgcontainer img.map_locator{
+	width:300px;
+}
+div.imgcontainer{
+	width:300px;
+	float:right;
+}
+img.flag{
+	width:18px;
+	height:12px;
+}
+a.product_in_list img{
+	width:50px;
+	border:0;
+}
+
+div.box300{
+	width:300px;
+	float:left;
+	margin-right:5px;
+}
+
+table#locations img.location, /* e.g. https://tango.info/berlin/venues */
+.listing td.location img.location,
+.listing td.location div.location_no_img{
+	width:75px;
+	height:50px;
+	float:left;
+	margin-right:2px;
+}
+
+/**********map******************/
+#map_large, .map_large{
+	width:100%;
+	height:400px;
+}
+#map {
+	float:left;
+	height:300px;
+	width:100%;
+}
+/*,
+body.pagetype-event #map*/
+body.pagetype-location10 #map
+{
+	width:300px;
+}
+#map .tooltip{
+	background-color:#fff;
+	border:1px solid #000;
+	xpadding:1px;
+	font-size:80%;
+}
+.ti_event_marker{
+	_background-color:#f00;
+	width:8px;
+	height:8px;
+	border-radius:4px;
+	border:1px solid #000;
+}
+
+/***********gmap********************/
+/*maybe only temporary*/
+
+body.category-gmap #map{
+	height:512px;
+	width:100%;
+}
+body.subsitetype-gmap #map{
+	height:512px;
+	width:100%;
+}
+
+/************************** import from city_p ********************/
+/*some www.tango.info rules are deleted when found in city_p */
+
+.vertical {
+	writing-mode: tb-rl;
+}
+span.editor_first{
+	margin:0px 8px 0px 8px;
+}
+
+.events_from_wiki td.geo {
+	width:155px;
+	overflow:hidden;
+}
+.events_from_wiki td.geo .ti_location_name{
+	display: block; 
+	margin-left: 2.7em;
+}
+
+table.vidlist td.thumbnail{
+	width:67px;
+}
+
+.person_base_data{
+	height:302px;
+}
+
+/* end city_p */
+
+/**************tango.info************************/
+body.category-tangoinfo div#menu {
+	float:left;
+	width:300px;
+	margin-left:8px;
+}
+
+body.category-tangoinfo div#menu ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+body.category-tangoinfo div#menu ul a{
+	display:block;
+	width:290px;
+	border-top:1px dotted #000;
+	font-size:110%;
+	font-weight:800;
+	text-decoration:none;
+	padding:3px;
+}
+body.category-tangoinfo div#menu ul a:hover,div#menu ul a:focus{
+	background-color:#ccc;
+
+}
+
+a.head:active {
+	background-color:#ccc;
+	color:#009;
+}
+a.head:hover {
+	background-color:#ccc;
+	color:#009;
+	text-decoration:none;
+}
+
+.active {
+	font-weight:800;
+	font-style:italic;
+}
+
+td.thumbnail{
+	width:72px;
+}
+/*.op, div.middle, .bottom,
+main div.content table{
+	width:100%;
+}*/
+div#sidebar{
+	width:300px;
+	overflow:hidden;
+	margin:auto;
+}
+
+div.subsubline{
+	padding-left:5px;
+	display:block;
+	background-color:#9c9;
+	border-right:1px solid #696;
+	border-bottom:1px solid #696;
+	border-top:1px solid #cfc;
+	border-left:1px solid #cfc;
+	color:#222;
+}
+
+/* middle */
+
+ul#supermenu{
+	/*order:1px solid #0f0;*/
+	padding:0;
+	margin:0;
+}
+
+#nav_h2{
+	white-space:normal;
+}
+.nav_cats {
+	
+}
+.nav_cats a,
+#nav_h2{
+	width:168px;
+	display:block;
+}
+td.nav_cats{
+	width:170px;
+}
+.nav_cats a{
+	margin-bottom:1px;
+	/*adding:2px 10px 2px 2px;*/
+}
+div.nav_cats{
+	border-top:1px dotted #f33;
+	width:168px;
+}
+
+div.content #tangohead td{
+	width:99%;
+	text-align:center;
+}
+
+table.tango_events td.wday{
+	text-align:left;
+	padding-bottom:1px;
+	font-size:100%;
+	font-weight:600;
+	border-top:1px solid #f33;
+}
+
+img.flag, 
+ul#supermenu img, 
+ul.l5 li img,
+.content #links_listing img {
+	border:1px solid #666;
+	height:12px;
+	margin-right:5px;
+	margin-left:3px;
+	margin-top:1px;
+}
+
+.zero{
+	border:0;
+	margin:0;
+}
+
+/*********contactform****************/
+form#contactform textarea{
+	width:300px;
+}
+form#contactform code{
+	font-weight:800;
+	font-size:120%;
+}
+form#contactform textarea,
+form#contactform input {
+	color:#222;
+	border-color:#ccc;
+}
+
+form#contactform{
+	margin:0px 0px 0px 0px;
+}
+form#contactform input, 
+form#contactform select{
+	display:inline;
+}
+
+/****END contactform****************/
+
+/* ------------- middle ------------- */ 
+/*iv.middleside,*/
+.middle form textarea,
+ul#supermenu a,
+ul#supermenu span,
+.middle form input{
+	margin:0;
+	padding:1px 3px;
+	border:0;
+	padding:0;
+
+	vertical-align:top;
+	text-align:left;
+	display:block;
+}
+
+.middle form textarea {
+	border-top:1px solid #300;
+	border-left:1px solid #300;
+	border-right:1px solid #900;
+	border-bottom:1px solid #900;
+}
+.middle form input, 
+.middle form select,
+.middle form textarea {
+	background-color:#600;
+	color:#f33;
+	margin:1px;
+	display:inline;
+}
+/* ------------- menu/middleleft ------------- */ 
+ul#supermenu{
+	width:168px;
+	padding-left:2px;
+}
+ul#supermenu a,
+ul#supermenu span{
+	width:166px;
+}
+
+.m3a,.m4a,.m4sa,.m5a,.m6a,
+div#postcode .active {
+	padding:1px;
+	padding-left:3px;
+	padding-right:3px;
+	margin:0;
+}
+
+
+ul#supermenu .m4s,ul#supermenu .m4sa  {
+	display:block;
+	width:110px;
+}
+ul#supermenu div.cities{
+	margin-left:10px;
+}
+ul#supermenu div.cities a{
+	margin-left:0;
+	width:170px;
+	padding:0;
+}
+div#postcode{
+	margin:0;
+}
+
+/* ----- END -------- menu/middleleft ------------- */ 
+
+/* -- middlecenter -- */
+.content .l5,
+.content .l6,
+.content .l7 {
+	/*adding-left:9px;*/
+}
+.content .l4ww a{
+	display:block;
+}
+.content .l4ww td{
+	width:33%;
+}
+
+div.l5{
+	margin-right:6px;
+}
+div.l5,div.l6,div.l7   {
+	margin-left:6px;
+	padding-left:9px;
+	padding-bottom:10px;
+
+}
+div.l5 ,div.l6 , div.l7  {
+	border-left:1px solid #f33;
+	border-bottom:4px;
+}
+
+.middle form , 
+div#links_special/*,
+div#links_listing*/{
+	border-top:1px dotted #f33;
+	padding:1px;
+}
+
+
+/*extra*/
+table#dictionary td {width:50%;}
+
+
+div.nav_lang,
+div.nav_cats
+{
+	border-top-style:solid;
+}
+
+/* products */
+.product_img{
+	width:300px;
+}
+.product_img_back{
+	max-width:390px;
+}
+.product_info{
+	min-height:162px;
+	margin-bottom:5px;
+}
+
+table.products tr.product td{
+	xpadding:0;
+
+}
+table.products tr.product td a{
+	margin:0;
+
+}
+table.products img{
+	width:50px;
+	height:50px;
+	border:0;
+}
+table.products tr.product ul{
+	margin-top:2px;
+	margin-bottom:2px;
+}
+
+.index_page_main_content section{
+	_max-width:300px;
+	float:left;
+	margin:5px;
+	width:150px;
+}
+.index_page_main_content ul{
+	list-style: none;
+	padding:0;
+	margin:0;
+}
+
+.place_base_data{
+	height:202px;
+}
+	
+ul.first_letters,
+ul.first_letters li,
+ul.first_letters li a,
+ul#supermenu li ul.first_letters li a,
+ul#supermenu span#postcode a
+{
+	display:inline;
+	padding-left:2px;
+	margin:0;
+}
+
+ul.first_letters li,
+ul.first_letters li a,
+ul#supermenu li ul.first_letters li a,
+ul#supermenu span#postcode a
+{
+	width:10px;/*IEwould otherwise ignore inlinestatemant for a and li*/
+}
+
+ul#supermenu span#postcode a{
+	padding:1px 4px;
+}
+
+@media screen and (max-width: 980px) {
+	body > header > div,
+	#all_middle,
+	#all_middle_contact,
+	body > footer > div{
+		max-width:980px;
+	}
+
+	form.main_search{width:300px;}
+	form.main_search input.text{width:250px;}
+	
+	div#wide_menu,
+	div.content_inner{
+		min-width:320px;
+	}
+	.subsitetype-city_p #map {
+    	width: 300px;
+	}
+
+
+}</style>
+</head><body  class="category-works pagetype-cat.works-first_letter" ><header><div class="inner"><div class="ti_header_inner"><div id="site_name_and_search"><span class="ti_logo_and_sitename"><img src="/x/graphics/logos/tango.info.1062x1062.ti.noto.900-fff.192x192.png" style="
+    height: 16px;
+    margin: 0 5px;
+"><span class="ti_sitename"><span class="tangoinfo"><a href="/" title="tango.info"><span class="ti_tango">tango</span><span class="ti_dot">.</span><span class="ti_info">info</span></a></span></span></span><form action="/" method="get" id="main_search" class="search main_search" >    <div>
+    <input class="text" type="text" name="q" id="q" value=""
+        /><input class="ti_search_button" type="submit" value="info"/>
+    </div>
+    </form></div><div id="ti_user"><a class="ti_user" href="/wiki/log_in">log in</a></div></div></div></header><nav>
+</nav>
+<main><div class="inner ">
+<div class="content"><div class="content_inner"><h1><a href="/works">Works</a>: J</h1>
+
+<table class="listing sortable" id="works"><thead><tr>
+		<th>Title</th>
+		<th>Alt. title(s)</th>
+		<th>Genre</th>
+		<th>Composer(s)</th>
+		<th>Lyricist(s)</th><th>Date</th>
+		<th><acronym title="Tango Info Musical Work Code">TIWC</acronym></th>
+		<th>Perf qty</th>
+		<th>Track qty</th>
+		<th>Video qty</th>
+		<th>PD</th>
+		<th>info</th>
+		</tr></thead><tbody><tr><td><a href="/Z0999990934">J'Ai Pleuré Sur Tes Pas</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a href="/Z0999990934">Z0999990934</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990934">0</a></td><td></td><td><a href="/Z0999990934">info</a></td></tr>
+<tr><td><a href="/Z0999990935">J'aime Tes Grands Yeux</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/CesarBixio">Cesare Andrea Bixio</a></td><td></td><td></td><td><a href="/Z0999990935">Z0999990935</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990935">0</a></td><td></td><td><a href="/Z0999990935">info</a></td></tr>
+<tr><td><a href="/Z0999909593">J'attends</a></td><td>Se fue sin decirme adiós</td><td><a href="/genre."></a></td><td><a href="/AstorPiazz">Astor Piazzolla</a></td><td></td><td></td><td><a href="/Z0999909593">Z0999909593</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999909593">0</a></td><td></td><td><a href="/Z0999909593">info</a></td></tr>
+<tr><td><a href="/Z0999909248">J'Oublie</a></td><td>Oblivion</td><td><a href="/genre."></a></td><td><a href="/AstorPiazz">Astor Piazzolla</a></td><td></td><td></td><td><a href="/Z0999909248">Z0999909248</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999909248">0</a></td><td></td><td><a href="/Z0999909248">info</a></td></tr>
+<tr><td><a href="/Z0999909249">J'Oublie</a></td><td>Oblivion</td><td><a href="/genre."></a></td><td><a href="/AstorPiazz">Astor Piazzolla</a>, <a href="/AngelTaren">Angela Tarenzi</a></td><td></td><td></td><td><a href="/Z0999909249">Z0999909249</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999909249">0</a></td><td></td><td><a href="/Z0999909249">info</a></td></tr>
+<tr><td><a href="/Z0999909250">J'Oublie </a></td><td></td><td><a href="/genre."></a></td><td><a href="/AstorPiazz">Astor Piazzolla</a></td><td></td><td></td><td><a href="/Z0999909250">Z0999909250</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999909250">0</a></td><td></td><td><a href="/Z0999909250">info</a></td></tr>
+<tr><td><a href="/Z0999990936">J'y suis jamais allé</a></td><td></td><td><a href="/genre.vals">vals</a></td><td><a href="/YannpTiers">Yann Tiersen</a></td><td>-</td><td></td><td><a href="/Z0999990936">Z0999990936</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990936">0</a></td><td></td><td><a href="/Z0999990936">info</a></td></tr>
+<tr><td><a href="/Z0999905225">Ja kocham cię, Madame</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/FritzGrund">Fred Grundland</a>, <a href="/MauriCohen">Michael Carr</a></td><td><a href="/AndrzWlast">Andrzej Włast</a></td><td></td><td><a href="/Z0999905225">Z0999905225</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905225">0</a></td><td></td><td><a href="/Z0999905225">info</a></td></tr>
+<tr><td><a href="/T9059236678">Ja mam czas ja poczekam</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/MieczMierz">Mieczysław Mierzejewski</a></td><td><a href="/EmanuSzlec">Emanuel Szlechter</a></td><td><a href="/1934">1934</a></td><td><a href="/T9059236678">T9059236678</a></td><td>1</td><td>4</td><td><a href="/videos/T9059236678">2</a></td><td>A</td><td><a href="/T9059236678">info</a></td></tr>
+<tr><td><a href="/Z0999905226">Ja mam! Ty masz! On będzie miał 508</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/WiktoKrupi">Wiktor Krupiński</a></td><td></td><td></td><td><a href="/Z0999905226">Z0999905226</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905226">0</a></td><td></td><td><a href="/Z0999905226">info</a></td></tr>
+<tr><td><a href="/Z0999905227">Ja panią gdzieś widziałem</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td><a href="/JozefLipsk">Józef Lipski</a>, <a href="/WladySzlen">Władysław Szlengel</a></td><td></td><td><a href="/Z0999905227">Z0999905227</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905227">0</a></td><td></td><td><a href="/Z0999905227">info</a></td></tr>
+<tr><td><a href="/Z0999905228">Ja panią znam</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/WladyDanil">Władysław Daniłowski</a></td><td><a href="/MieczFogie">Mieczysław Fogg</a></td><td></td><td><a href="/Z0999905228">Z0999905228</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905228">0</a></td><td></td><td><a href="/Z0999905228">info</a></td></tr>
+<tr><td><a href="/Z0999990937">Ja schdu pisma</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a href="/Z0999990937">Z0999990937</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990937">0</a></td><td></td><td><a href="/Z0999990937">info</a></td></tr>
+<tr><td><a href="/Z0999905229">Ja śpiewam piosenki</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/OscarDedio">Juan de Dios Filiberto</a></td><td><a href="/JuliaTuwim">Julian Tuwim</a></td><td></td><td><a href="/Z0999905229">Z0999905229</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905229">0</a></td><td></td><td><a href="/Z0999905229">info</a></td></tr>
+<tr><td><a href="/Z0999905230">Ja wiem</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JanaaErnst">Jan Ernst</a></td><td><a href="/WiktoBudzy">Wiktor Budzyński</a></td><td><a href="/1934">1934</a></td><td><a href="/Z0999905230">Z0999905230</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905230">0</a></td><td></td><td><a href="/Z0999905230">info</a></td></tr>
+<tr><td><a href="/Z0999905231">Ja wiem, że ciebie dla mnie szkoda</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/MariaCiesl">Maria Cieślakówna</a></td><td><a href="/JanmaHesch">Marian Hemar</a></td><td></td><td><a href="/Z0999905231">Z0999905231</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905231">0</a></td><td></td><td><a href="/Z0999905231">info</a></td></tr>
+<tr><td><a href="/Z0999905232">Ja znam cię tyle lat</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JozefHaftm">Józef Haftman</a></td><td><a href="/TadeuZerom">Tadeusz Żeromski</a></td><td></td><td><a href="/Z0999905232">Z0999905232</a></td><td>1</td><td>1</td><td><a href="/videos/Z0999905232">0</a></td><td>C</td><td><a href="/Z0999905232">info</a></td></tr>
+<tr><td><a href="/Z0000001562">Ja, ja, ja</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JulioDecar">Julio De Caro</a></td><td><a href="/EnriqCadic">Enrique Cadícamo</a></td><td></td><td><a href="/Z0000001562">Z0000001562</a></td><td>2</td><td>4</td><td><a href="/videos/Z0000001562">0</a></td><td></td><td><a href="/Z0000001562">info</a></td></tr>
+<tr><td><a href="/Z0999911164">Jacinto Chiclana</a></td><td></td><td><a href="/genre.milonga">milonga</a></td><td><a href="/AstorPiazz">Astor Piazzolla</a></td><td><a href="/JorgeBorge">Jorge Luis Borges</a></td><td></td><td><a href="/Z0999911164">Z0999911164</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999911164">0</a></td><td></td><td><a href="/Z0999911164">info</a></td></tr>
+<tr><td><a href="/Z0001062550">Jacinto Piedra</a></td><td></td><td><a href="/genre."></a></td><td></td><td></td><td></td><td><a href="/Z0001062550">Z0001062550</a></td><td>0</td><td>0</td><td><a href="/videos/Z0001062550">0</a></td><td></td><td><a href="/Z0001062550">info</a></td></tr>
+<tr><td><a href="/T0370481392">Jacinto Retinto</a></td><td></td><td><a href="/genre."></a></td><td><a href="/SebasPiana">Sebastián Piana</a></td><td><a href="/MariaCarne">Luis Mario</a></td><td></td><td><a href="/T0370481392">T0370481392</a></td><td>0</td><td>0</td><td><a href="/videos/T0370481392">0</a></td><td></td><td><a href="/T0370481392">info</a></td></tr>
+<tr><td><a href="/Z0999990938">Jacinto Vera</a></td><td></td><td><a href="/genre.candombe">candombe</a></td><td></td><td></td><td></td><td><a href="/Z0999990938">Z0999990938</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990938">0</a></td><td></td><td><a href="/Z0999990938">info</a></td></tr>
+<tr><td><a href="/T0373453032">Jack the Ripper</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/AlejaMelin">Daniel Melingo</a></td><td><a href="/LuisaAlpos">Luis Alposta</a></td><td><a href="/1998">1998</a></td><td><a href="/T0373453032">T0373453032</a></td><td>1</td><td>1</td><td><a href="/videos/T0373453032">0</a></td><td></td><td><a href="/T0373453032">info</a></td></tr>
+<tr><td><a href="/Z0999990939">Jacob and the Angel</a></td><td></td><td><a href="/genre."></a></td><td></td><td>-</td><td></td><td><a href="/Z0999990939">Z0999990939</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990939">0</a></td><td></td><td><a href="/Z0999990939">info</a></td></tr>
+<tr><td><a href="/T0370122410">Jacobo</a></td><td></td><td><a href="/genre."></a></td><td><a href="/ArmanTagin">Armando Tagini</a>, <a href="/AngelOrtiz">Ciriaco Ortiz</a></td><td></td><td></td><td><a href="/T0370122410">T0370122410</a></td><td>0</td><td>0</td><td><a href="/videos/T0370122410">0</a></td><td></td><td><a href="/T0370122410">info</a></td></tr>
+<tr><td><a href="/Z0999901782">Jacqueline</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a href="/Z0999901782">Z0999901782</a></td><td>1</td><td>3</td><td><a href="/videos/Z0999901782">0</a></td><td></td><td><a href="/Z0999901782">info</a></td></tr>
+<tr><td><a href="/Z0999905233">Jak całować?</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/MichaBrajt">Michał Brajtman</a></td><td><a href="/WiktoKrupi">Wiktor Krupiński</a></td><td></td><td><a href="/Z0999905233">Z0999905233</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905233">0</a></td><td></td><td><a href="/Z0999905233">info</a></td></tr>
+<tr><td><a href="/Z0999905234">Jak cicho</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/PawelSilby">Paweł Silby</a></td><td><a href="/BolesWasow">Bolesław Żegota</a></td><td></td><td><a href="/Z0999905234">Z0999905234</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905234">0</a></td><td>A</td><td><a href="/Z0999905234">info</a></td></tr>
+<tr><td><a href="/Z0999905235">Jak ciebie nazwać mam</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/WaldeMacis">Waldemar Valdi</a></td><td><a href="/AleksRymki">Aleksander Rymkiewicz</a></td><td></td><td><a href="/Z0999905235">Z0999905235</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905235">0</a></td><td></td><td><a href="/Z0999905235">info</a></td></tr>
+<tr><td><a href="/Z0999905236">Jak cień</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JakubKagan">Jakub Kagan</a></td><td><a href="/ZbignMacie">Zbigniew Maciejowski</a></td><td></td><td><a href="/Z0999905236">Z0999905236</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905236">0</a></td><td>C</td><td><a href="/Z0999905236">info</a></td></tr>
+<tr><td><a href="/T9059239053">Jak dawniej</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JananKozlo">Jan Anastazy Kozłowski</a></td><td><a href="/ZbignMacie">Zbigniew Maciejowski</a></td><td><a href="/1934">1934</a></td><td><a href="/T9059239053">T9059239053</a></td><td>0</td><td>0</td><td><a href="/videos/T9059239053">1</a></td><td></td><td><a href="/T9059239053">info</a></td></tr>
+<tr><td><a href="/Z0999905237">Jak dawniej</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/WaldeMacis">Waldemar Valdi</a></td><td><a href="/LeopoLewin">Leopold Lewin</a></td><td></td><td><a href="/Z0999905237">Z0999905237</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905237">0</a></td><td></td><td><a href="/Z0999905237">info</a></td></tr>
+<tr><td><a href="/Z0999905238">Jak drogie są wspomnienia</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/AlfreScher">Fred Scher</a></td><td><a href="/EmanuSzlec">Emanuel Szlechter</a></td><td></td><td><a href="/Z0999905238">Z0999905238</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905238">0</a></td><td>A</td><td><a href="/Z0999905238">info</a></td></tr>
+<tr><td><a href="/Z0999905239">Jak gdyby nigdy nic</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/AlfreScher">Fred Scher</a></td><td><a href="/JerzyRybaa">Jerzy Ryba</a></td><td><a href="/1936">1936</a></td><td><a href="/Z0999905239">Z0999905239</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905239">1</a></td><td>A</td><td><a href="/Z0999905239">info</a></td></tr>
+<tr><td><a href="/Z0999905240">Jak kochać to namiętnie</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/HenryWarsz">Henryk Wars</a></td><td><a href="/JanwiLesma">Jan Brzechwa</a></td><td><a href="/1931">1931</a></td><td><a href="/Z0999905240">Z0999905240</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905240">1</a></td><td></td><td><a href="/Z0999905240">info</a></td></tr>
+<tr><td><a href="/Z0999905241">Jak sen</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/AdamsLewan">Adam Stanislaw Lewandowski</a></td><td><a href="/AndrzWlast">Andrzej Włast</a></td><td><a href="/1937">1937</a></td><td><a href="/Z0999905241">Z0999905241</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905241">1</a></td><td>A</td><td><a href="/Z0999905241">info</a></td></tr>
+<tr><td><a href="/Z0999905242">Jak sen, jak baśń nasza miłość</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/ZygmuLewan">Zygmunt Lewandowski</a></td><td><a href="/AndrzWlast">Andrzej Włast</a></td><td></td><td><a href="/Z0999905242">Z0999905242</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905242">1</a></td><td>A</td><td><a href="/Z0999905242">info</a></td></tr>
+<tr><td><a href="/Z0999905243">Jak się przypomni</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JankrMarko">Jan Markowski</a></td><td><a href="/AleksAnton">Aleksander Antoniewicz</a></td><td></td><td><a href="/Z0999905243">Z0999905243</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905243">0</a></td><td></td><td><a href="/Z0999905243">info</a></td></tr>
+<tr><td><a href="/T9059241417">Jak trudno jest zapomnieć</a></td><td></td><td><a href="/genre.tango slowfox">tango-slowfox</a></td><td><a href="/HenryWarsz">Henryk Wars</a></td><td><a href="/JerzyGlejg">Jerzy Jurandot</a></td><td></td><td><a href="/T9059241417">T9059241417</a></td><td>0</td><td>0</td><td><a href="/videos/T9059241417">1</a></td><td></td><td><a href="/T9059241417">info</a></td></tr>
+<tr><td><a href="/Z0999905244">Jak ty mój śnie</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/MikloBrods">Miklós Brodszky</a></td><td><a href="/LudwiSzmar">Ludwik Szmaragd</a></td><td></td><td><a href="/Z0999905244">Z0999905244</a></td><td>1</td><td>1</td><td><a href="/videos/Z0999905244">0</a></td><td></td><td><a href="/Z0999905244">info</a></td></tr>
+<tr><td><a href="/Z0999905245">Jak w serenadzie</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/AntonBuzuk">Antoni Buzuk</a></td><td><a href="/BogumKuron">Bogumił Kuroń</a></td><td></td><td><a href="/Z0999905245">Z0999905245</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905245">0</a></td><td></td><td><a href="/Z0999905245">info</a></td></tr>
+<tr><td><a href="/Z0999905246">Jak w tej piosence</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/BroniWasia">Bronisław Wasiak</a></td><td><a href="/MariaKralk">Marian Kralkowski</a></td><td></td><td><a href="/Z0999905246">Z0999905246</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905246">0</a></td><td></td><td><a href="/Z0999905246">info</a></td></tr>
+<tr><td><a href="/Z0999905247">Jak we wschodniej bajce</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/FannyGordo">Fanny Gordon</a></td><td><a href="/JuliaMaszy">Julian Krzewiński</a>, <a href="/LeopoTrzeb">Leopold Brodziński</a></td><td></td><td><a href="/Z0999905247">Z0999905247</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905247">0</a></td><td></td><td><a href="/Z0999905247">info</a></td></tr>
+<tr><td><a href="/T9059241951">Jak za dawnych lat</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/HenryWarsz">Henryk Wars</a></td><td><a href="/AndrzWlast">Andrzej Włast</a>, <a href="/JerzyGlejg">Jerzy Jurandot</a></td><td><a href="/1935">1935</a></td><td><a href="/T9059241951">T9059241951</a></td><td>0</td><td>0</td><td><a href="/videos/T9059241951">0</a></td><td></td><td><a href="/T9059241951">info</a></td></tr>
+<tr><td><a href="/T0350001409">Jalisco nunca pierde</a></td><td></td><td><a href="/genre.paso doble">paso doble</a></td><td><a href="/LorenBarce">Lorenzo Barcelata</a></td><td><a href="/ErnesCorta">Ernesto Cortázar</a></td><td></td><td><a href="/T0350001409">T0350001409</a></td><td>1</td><td>1</td><td><a href="/videos/T0350001409">0</a></td><td>C</td><td><a href="/T0350001409">info</a></td></tr>
+<tr><td><a href="/T0003692247">Jalousie</a></td><td>Celos</td><td><a href="/genre.tango">tango</a></td><td><a href="/JacobGadea">Jacob Gade</a></td><td>-</td><td></td><td><a href="/T0003692247">T0003692247</a></td><td>21</td><td>23</td><td><a href="/videos/T0003692247">0</a></td><td></td><td><a href="/T0003692247">info</a></td></tr>
+<tr><td><a href="/Z0999905248">Jalousie</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JacobGadea">Jacob Gade</a></td><td><a href="/ZygmuKawec">Zygmunt Kawecki</a></td><td></td><td><a href="/Z0999905248">Z0999905248</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905248">0</a></td><td></td><td><a href="/Z0999905248">info</a></td></tr>
+<tr><td><a href="/Z0999900525">Jamás</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/GuiljPicho">Ivo Pelay</a></td><td></td><td><a href="/Z0999900525">Z0999900525</a></td><td>2</td><td>2</td><td><a href="/videos/Z0999900525">0</a></td><td></td><td><a href="/Z0999900525">info</a></td></tr>
+<tr><td><a href="/Z0999990940">Jamás</a></td><td></td><td><a href="/genre.estilo">estilo</a></td><td><a href="/CharlGarde">Carlos Gardel</a>, <a href="/JosefRazza">José Razzano</a></td><td><a href="/CharlGarde">Carlos Gardel</a>, <a href="/JosefRazza">José Razzano</a></td><td></td><td><a href="/Z0999990940">Z0999990940</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990940">0</a></td><td></td><td><a href="/Z0999990940">info</a></td></tr>
+<tr><td><a href="/Z0999901607">Jamás en la vida</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/VicenSpina">Vicente Spina</a></td><td><a href="/CeledFlore">Celedonio Flores</a></td><td></td><td><a href="/Z0999901607">Z0999901607</a></td><td>1</td><td>1</td><td><a href="/videos/Z0999901607">0</a></td><td></td><td><a href="/Z0999901607">info</a></td></tr>
+<tr><td><a href="/Z0000001564">Jamás impedirás</a></td><td></td><td><a href="/genre.vals peruano">vals peruano</a></td><td></td><td></td><td></td><td><a href="/Z0000001564">Z0000001564</a></td><td>0</td><td>0</td><td><a href="/videos/Z0000001564">0</a></td><td></td><td><a href="/Z0000001564">info</a></td></tr>
+<tr><td><a href="/T0370844248">Jamás lo vas a saber</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/ManueSuche">Manuel Sucher</a></td><td><a href="/AbelmAznar">Abel Aznar</a></td><td></td><td><a href="/T0370844248">T0370844248</a></td><td>3</td><td>7</td><td><a href="/videos/T0370844248">1</a></td><td></td><td><a href="/T0370844248">info</a></td></tr>
+<tr><td><a href="/T0370320152">Jamás me olvidarás</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JoseaSalaa">José Sala</a></td><td><a href="/CarloBahra">Carlos Bahr</a></td><td></td><td><a href="/T0370320152">T0370320152</a></td><td>2</td><td>4</td><td><a href="/videos/T0370320152">0</a></td><td></td><td><a href="/T0370320152">info</a></td></tr>
+<tr><td><a href="/T0370015443">Jamás podré olvidarte</a></td><td></td><td><a href="/genre.vals">vals</a></td><td><a href="/JulioDecar">Julio De Caro</a></td><td></td><td></td><td><a href="/T0370015443">T0370015443</a></td><td>1</td><td>1</td><td><a href="/videos/T0370015443">0</a></td><td></td><td><a href="/T0370015443">info</a></td></tr>
+<tr><td><a href="/T0370192509">Jamás retornarás</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/OsmarMader">Osmar Maderna</a></td><td><a href="/MigueCaloa">Miguel Caló</a></td><td></td><td><a href="/T0370192509">T0370192509</a></td><td>3</td><td>12</td><td><a href="/videos/T0370192509">1</a></td><td></td><td><a href="/T0370192509">info</a></td></tr>
+<tr><td><a href="/T0370046835">Jamás te olvidaré</a></td><td></td><td><a href="/genre.vals">vals</a></td><td><a href="/AlfreMaren">Alfredo Marengo</a></td><td><a href="/AlfreMaren">Alfredo Marengo</a></td><td></td><td><a href="/T0370046835">T0370046835</a></td><td>1</td><td>1</td><td><a href="/videos/T0370046835">0</a></td><td></td><td><a href="/T0370046835">info</a></td></tr>
+<tr><td><a href="/Z0999914396">Jamás vendrás a mí</a></td><td></td><td><a href="/genre.vals">vals</a></td><td><a href="/GabriClaus">Gabriel Clausi</a></td><td><a href="/JosemContu">José María Contursi</a></td><td></td><td><a href="/Z0999914396">Z0999914396</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999914396">0</a></td><td></td><td><a href="/Z0999914396">info</a></td></tr>
+<tr><td><a href="/Z0999902095">Jana</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a href="/Z0999902095">Z0999902095</a></td><td>1</td><td>1</td><td><a href="/videos/Z0999902095">0</a></td><td></td><td><a href="/Z0999902095">info</a></td></tr>
+<tr><td><a href="/Z0999990941">Jane Avril</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td>-</td><td></td><td><a href="/Z0999990941">Z0999990941</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990941">0</a></td><td></td><td><a href="/Z0999990941">info</a></td></tr>
+<tr><td><a href="/T0350001829">Janitzio</a></td><td></td><td><a href="/genre.vals">vals</a></td><td><a href="/AgustLaraa">Agustín Lara</a></td><td><a href="/AgustLaraa">Agustín Lara</a></td><td></td><td><a href="/T0350001829">T0350001829</a></td><td>1</td><td>1</td><td><a href="/videos/T0350001829">0</a></td><td></td><td><a href="/T0350001829">info</a></td></tr>
+<tr><td><a href="/T0373820075">Japonesita</a></td><td></td><td><a href="/genre."></a></td><td><a href="/SalvaMeric">Salvador Merico</a></td><td><a href="/AtiliSuppa">Atilio Supparo</a></td><td></td><td><a href="/T0373820075">T0373820075</a></td><td>0</td><td>0</td><td><a href="/videos/T0373820075">0</a></td><td>A</td><td><a href="/T0373820075">info</a></td></tr>
+<tr><td><a href="/Z0999901535">Japonesita</a></td><td></td><td><a href="/genre.shimmy cancion">shimmy canción</a></td><td><a href="/AntonBonav">Antonio Bonavena</a></td><td><a href="/AntonBonav">Antonio Bonavena</a></td><td></td><td><a href="/Z0999901535">Z0999901535</a></td><td>4</td><td>6</td><td><a href="/videos/Z0999901535">0</a></td><td></td><td><a href="/Z0999901535">info</a></td></tr>
+<tr><td><a href="/T0370437049">Japotangueando</a></td><td></td><td><a href="/genre.milonga">milonga</a></td><td><a href="/BrunoVenne">Armando Bruno</a></td><td><a href="/FederSanie">Juan De La Calle</a></td><td></td><td><a href="/T0370437049">T0370437049</a></td><td>0</td><td>0</td><td><a href="/videos/T0370437049">0</a></td><td></td><td><a href="/T0370437049">info</a></td></tr>
+<tr><td><a href="/T0372386634">Jaque mate</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/ErnesBaffa">Ernesto Baffa</a></td><td>-</td><td></td><td><a href="/T0372386634">T0372386634</a></td><td>0</td><td>0</td><td><a href="/videos/T0372386634">0</a></td><td></td><td><a href="/T0372386634">info</a></td></tr>
+<tr><td><a href="/T0372980761">Jaque mate</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/CarloLazza">Carlos Ángel Lázzari</a></td><td>-</td><td></td><td><a href="/T0372980761">T0372980761</a></td><td>1</td><td>1</td><td><a href="/videos/T0372980761">0</a></td><td></td><td><a href="/T0372980761">info</a></td></tr>
+<tr><td><a href="/Z0001277412">Jaque mate</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JavieLeone">Javier Leone</a></td><td><a href="/JavieLeone">Javier Leone</a></td><td><a href="/2011">2011</a></td><td><a href="/Z0001277412">Z0001277412</a></td><td>0</td><td>0</td><td><a href="/videos/Z0001277412">0</a></td><td></td><td><a href="/Z0001277412">info</a></td></tr>
+<tr><td><a href="/T0370015454">Jarangón</a></td><td></td><td><a href="/genre.marcha">marcha</a></td><td><a href="/EnriqRodri">Enrique Rodríguez</a></td><td><a href="/EnriqCadic">Enrique Cadícamo</a></td><td></td><td><a href="/T0370015454">T0370015454</a></td><td>1</td><td>1</td><td><a href="/videos/T0370015454">0</a></td><td></td><td><a href="/T0370015454">info</a></td></tr>
+<tr><td><a href="/Z0999918544">Jardín de amor</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JoseaDecar">José De Caro</a></td><td></td><td></td><td><a href="/Z0999918544">Z0999918544</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999918544">0</a></td><td></td><td><a href="/Z0999918544">info</a></td></tr>
+<tr><td><a href="/Z0999910615">Jardín de las rosas</a></td><td></td><td><a href="/genre.vals">vals</a></td><td><a href="/SamueCastr">Samuel Castriota</a></td><td>-</td><td></td><td><a href="/Z0999910615">Z0999910615</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999910615">0</a></td><td>C</td><td><a href="/Z0999910615">info</a></td></tr>
+<tr><td><a href="/Z0999909251">Jardines de África</a></td><td></td><td><a href="/genre."></a></td><td><a href="/AstorPiazz">Astor Piazzolla</a></td><td></td><td></td><td><a href="/Z0999909251">Z0999909251</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999909251">0</a></td><td></td><td><a href="/Z0999909251">info</a></td></tr>
+<tr><td><a href="/T9059244358">Jaśminy</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/HenryGolda">Henryk Gold</a></td><td><a href="/AndrzWlast">Andrzej Włast</a></td><td></td><td><a href="/T9059244358">T9059244358</a></td><td>0</td><td>0</td><td><a href="/videos/T9059244358">2</a></td><td>A</td><td><a href="/T9059244358">info</a></td></tr>
+<tr><td><a href="/Z0999918286">Jaula de oro</a></td><td></td><td><a href="/genre."></a></td><td></td><td></td><td></td><td><a href="/Z0999918286">Z0999918286</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999918286">0</a></td><td></td><td><a href="/Z0999918286">info</a></td></tr>
+<tr><td><a href="/Z0999900061">Jaulita de oro</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/MarioZoppi">Mario Battistella</a></td><td></td><td></td><td><a href="/Z0999900061">Z0999900061</a></td><td>1</td><td>5</td><td><a href="/videos/Z0999900061">0</a></td><td></td><td><a href="/Z0999900061">info</a></td></tr>
+<tr><td><a href="/T0372705162">Javier se llamará</a></td><td></td><td><a href="/genre."></a></td><td><a href="/ErnesLacha">Mario Valdez</a></td><td><a href="/WilsoDecar">Wilson A. De Caro</a></td><td></td><td><a href="/T0372705162">T0372705162</a></td><td>0</td><td>0</td><td><a href="/videos/T0372705162">0</a></td><td></td><td><a href="/T0372705162">info</a></td></tr>
+<tr><td><a href="/T0373364705">Jazmín</a></td><td></td><td><a href="/genre.vals">vals</a></td><td><a href="/RamirGallo">Ramiro Gallo</a></td><td><a href="/RamirGallo">Ramiro Gallo</a></td><td></td><td><a href="/T0373364705">T0373364705</a></td><td>0</td><td>0</td><td><a href="/videos/T0373364705">0</a></td><td></td><td><a href="/T0373364705">info</a></td></tr>
+<tr><td><a href="/Z0999916582">Jazmín</a></td><td></td><td><a href="/genre.cancion">canción</a></td><td><a href="/JosepArena">José Arenas</a></td><td></td><td></td><td><a href="/Z0999916582">Z0999916582</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999916582">0</a></td><td></td><td><a href="/Z0999916582">info</a></td></tr>
+<tr><td><a href="/Z0999902066">Jazmín de amor</a></td><td></td><td><a href="/genre."></a></td><td><a href="/AntonScata">Antonio Scatasso</a></td><td></td><td></td><td><a href="/Z0999902066">Z0999902066</a></td><td>2</td><td>2</td><td><a href="/videos/Z0999902066">0</a></td><td></td><td><a href="/Z0999902066">info</a></td></tr>
+<tr><td><a href="/Z0999901534">Jazmín del país</a></td><td></td><td><a href="/genre.vals">vals</a></td><td></td><td><a href="/FrancBranc">Francisco Brancatti</a></td><td></td><td><a href="/Z0999901534">Z0999901534</a></td><td>1</td><td>2</td><td><a href="/videos/Z0999901534">0</a></td><td></td><td><a href="/Z0999901534">info</a></td></tr>
+<tr><td><a href="/Z0001212890">Jazmín otoñal</a></td><td></td><td><a href="/genre.vals">vals</a></td><td><a href="/NestoBasur">Néstor Basurto</a>, <a href="/SergiZabal">Sergio Zabala</a></td><td><a href="/AlejaSzwar">Alejandro Szwarcman</a></td><td></td><td><a href="/Z0001212890">Z0001212890</a></td><td>0</td><td>0</td><td><a href="/videos/Z0001212890">0</a></td><td></td><td><a href="/Z0001212890">info</a></td></tr>
+<tr><td><a href="/T0370182663">Jazmín Simón</a></td><td></td><td><a href="/genre.milonga">milonga</a></td><td><a href="/SebasPiana">Sebastián Piana</a></td><td><a href="/OvidiGonza">Cátulo Castillo</a></td><td></td><td><a href="/T0370182663">T0370182663</a></td><td>4</td><td>6</td><td><a href="/videos/T0370182663">0</a></td><td></td><td><a href="/T0370182663">info</a></td></tr>
+<tr><td><a href="/T0373212588">Jazmines</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/CloriGatti">Clorinda Esther Gatti</a>, <a href="/PabloZapat">Pablo Zapata</a></td><td><a href="/CloriGatti">Clorinda Esther Gatti</a>, <a href="/PabloZapat">Pablo Zapata</a></td><td></td><td><a href="/T0373212588">T0373212588</a></td><td>0</td><td>0</td><td><a href="/videos/T0373212588">0</a></td><td></td><td><a href="/T0373212588">info</a></td></tr>
+<tr><td><a href="/Z0000142537">Jazmines prisioneros</a></td><td></td><td><a href="/genre."></a></td><td><a href="/OsvalLarre">Osvaldo Larrea</a></td><td><a href="/AndreOrtiz">Andrés Ortiz</a></td><td></td><td><a href="/Z0000142537">Z0000142537</a></td><td>0</td><td>0</td><td><a href="/videos/Z0000142537">0</a></td><td></td><td><a href="/Z0000142537">info</a></td></tr>
+<tr><td><a href="/Z0000534817">Je chante</a></td><td></td><td><a href="/genre."></a></td><td></td><td><a href="/EnriqCadic">Enrique Cadícamo</a></td><td></td><td><a href="/Z0000534817">Z0000534817</a></td><td>0</td><td>0</td><td><a href="/videos/Z0000534817">0</a></td><td></td><td><a href="/Z0000534817">info</a></td></tr>
+<tr><td><a href="/T0030109308">Je cherche après Titine</a></td><td>Titina | Yo busco a mi pebeta</td><td><a href="/genre.fox trot">fox trot</a></td><td><a href="/FerdiNique">Leo Daniderff</a></td><td>-</td><td></td><td><a href="/T0030109308">T0030109308</a></td><td>1</td><td>1</td><td><a href="/videos/T0030109308">0</a></td><td>C</td><td><a href="/T0030109308">info</a></td></tr>
+<tr><td><a href="/Z0999909069">Je meurs ou je m'attache</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/RoberEngel">Rico Truxillo</a></td><td>-</td><td></td><td><a href="/Z0999909069">Z0999909069</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999909069">0</a></td><td></td><td><a href="/Z0999909069">info</a></td></tr>
+<tr><td><a href="/Z0999901264">Je n'ai pas de guitare</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a href="/Z0999901264">Z0999901264</a></td><td>1</td><td>1</td><td><a href="/videos/Z0999901264">0</a></td><td></td><td><a href="/Z0999901264">info</a></td></tr>
+<tr><td><a href="/Z0999909070">Je n'ai plus d'amour</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a href="/Z0999909070">Z0999909070</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999909070">0</a></td><td></td><td><a href="/Z0999909070">info</a></td></tr>
+<tr><td><a href="/T0030109955">Je n'peux pas vivre sans amour</a></td><td>Yo no puedo vivir sin amor</td><td><a href="/genre.fox trot">fox trot</a></td><td><a href="/GastoGabar">Gaston Gabaroche</a></td><td><a href="/FrancPruvo">Fred Pearly</a></td><td></td><td><a href="/T0030109955">T0030109955</a></td><td>0</td><td>0</td><td><a href="/videos/T0030109955">0</a></td><td></td><td><a href="/T0030109955">info</a></td></tr>
+<tr><td><a href="/Z0999909071">Je ne veux que toi</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a href="/Z0999909071">Z0999909071</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999909071">0</a></td><td></td><td><a href="/Z0999909071">info</a></td></tr>
+<tr><td><a href="/Z0999918168">Je pense a toi</a></td><td></td><td><a href="/genre.vals">vals</a></td><td></td><td>-</td><td></td><td><a href="/Z0999918168">Z0999918168</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999918168">0</a></td><td></td><td><a href="/Z0999918168">info</a></td></tr>
+<tr><td><a href="/Z0999990942">Je t'aime</a></td><td></td><td><a href="/genre."></a></td><td></td><td></td><td></td><td><a href="/Z0999990942">Z0999990942</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990942">0</a></td><td></td><td><a href="/Z0999990942">info</a></td></tr>
+<tr><td><a href="/Z0999913293">Je te dirai</a></td><td>Yo te diré</td><td><a href="/genre.foxtrot">foxtrot</a></td><td></td><td></td><td></td><td><a href="/Z0999913293">Z0999913293</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999913293">0</a></td><td></td><td><a href="/Z0999913293">info</a></td></tr>
+<tr><td><a href="/Z0999901265">Je vous aime plus que tout</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a href="/Z0999901265">Z0999901265</a></td><td>1</td><td>1</td><td><a href="/videos/Z0999901265">0</a></td><td></td><td><a href="/Z0999901265">info</a></td></tr>
+<tr><td><a href="/Z0999901082">Jeanette</a></td><td>Jeannette</td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanfMagli">Juan Félix Maglio</a></td><td></td><td></td><td><a href="/Z0999901082">Z0999901082</a></td><td>4</td><td>4</td><td><a href="/videos/Z0999901082">0</a></td><td>C</td><td><a href="/Z0999901082">info</a></td></tr>
+<tr><td><a href="/Z0999902118">Jeanne</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanfMagli">Juan Félix Maglio</a></td><td></td><td></td><td><a href="/Z0999902118">Z0999902118</a></td><td>2</td><td>3</td><td><a href="/videos/Z0999902118">0</a></td><td>C</td><td><a href="/Z0999902118">info</a></td></tr>
+<tr><td><a href="/Z0000210923">Jeanne y Paul</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/AstorPiazz">Astor Piazzolla</a></td><td>-</td><td></td><td><a href="/Z0000210923">Z0000210923</a></td><td>5</td><td>5</td><td><a href="/videos/Z0000210923">0</a></td><td></td><td><a href="/Z0000210923">info</a></td></tr>
+<tr><td><a href="/Z0999902120">Jeannette</a></td><td></td><td><a href="/genre.fox trot">fox trot</a></td><td></td><td></td><td></td><td><a href="/Z0999902120">Z0999902120</a></td><td>1</td><td>2</td><td><a href="/videos/Z0999902120">0</a></td><td></td><td><a href="/Z0999902120">info</a></td></tr>
+<tr><td><a href="/Z0999912844">Jeannette</a></td><td>Juanita</td><td><a href="/genre.vals">vals</a></td><td><a href="/ArmanTagin">Armando Tagini</a>, <a href="/VenanClaus">Venancio Clauso</a></td><td><a href="/ArmanTagin">Armando Tagini</a>, <a href="/VenanClaus">Venancio Clauso</a></td><td></td><td><a href="/Z0999912844">Z0999912844</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999912844">0</a></td><td></td><td><a href="/Z0999912844">info</a></td></tr>
+<tr><td><a href="/T0700882967">Jeannine, I dream of lilac time</a></td><td>Juanita</td><td><a href="/genre.vals">vals</a></td><td><a href="/NathaShilk">Nathaniel Shilkret</a></td><td><a href="/LouisGilbe">L. Wolfe Gilbert</a></td><td></td><td><a href="/T0700882967">T0700882967</a></td><td>2</td><td>4</td><td><a href="/videos/T0700882967">0</a></td><td></td><td><a href="/T0700882967">info</a></td></tr>
+<tr><td><a href="/Z0999905249">Jeden kwiat</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td><a href="/JaninGillo">Janina Gillowa</a></td><td></td><td><a href="/Z0999905249">Z0999905249</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905249">0</a></td><td></td><td><a href="/Z0999905249">info</a></td></tr>
+<tr><td><a href="/Z0999905250">Jedna droga</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/AaronHekel">Albert Harris</a></td><td><a href="/AaronHekel">Albert Harris</a></td><td><a href="/1944">1944</a></td><td><a href="/Z0999905250">Z0999905250</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905250">1</a></td><td></td><td><a href="/Z0999905250">info</a></td></tr>
+<tr><td><a href="/T9059245340">Jedna jedyna</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/HenryWarsz">Henryk Wars</a></td><td><a href="/EmanuSzlec">Emanuel Szlechter</a></td><td></td><td><a href="/T9059245340">T9059245340</a></td><td>0</td><td>0</td><td><a href="/videos/T9059245340">1</a></td><td>A</td><td><a href="/T9059245340">info</a></td></tr>
+<tr><td><a href="/Z0999905251">Jednego serca chcę</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/MieczHoher">Mieczysław Hoherman</a></td><td><a href="/JerzyGlejg">Jerzy Jurandot</a></td><td></td><td><a href="/Z0999905251">Z0999905251</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905251">0</a></td><td></td><td><a href="/Z0999905251">info</a></td></tr>
+<tr><td><a href="/Z0999905252">Jedno spojrzenie</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/StaniJasin">Stanisław Jan Jasiński</a></td><td><a href="/HenryMisie">Henryk Misiek</a></td><td></td><td><a href="/Z0999905252">Z0999905252</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905252">0</a></td><td></td><td><a href="/Z0999905252">info</a></td></tr>
+<tr><td><a href="/Z0999905253">Jedź do Santa Fe</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/HenryGolda">Henryk Gold</a></td><td><a href="/JanwiLesma">Jan Brzechwa</a></td><td></td><td><a href="/Z0999905253">Z0999905253</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905253">0</a></td><td></td><td><a href="/Z0999905253">info</a></td></tr>
+<tr><td><a href="/Z0999905254">Jedziem, panie Zielonka!</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/BolesMucma">Bolesław Mucman</a></td><td><a href="/JozefLipsk">Józef Lipski</a>, <a href="/WladySzlen">Władysław Szlengel</a></td><td></td><td><a href="/Z0999905254">Z0999905254</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905254">0</a></td><td>C</td><td><a href="/Z0999905254">info</a></td></tr>
+<tr><td><a href="/Z0000209667">Jefe y conductor</a></td><td></td><td><a href="/genre."></a></td><td><a href="/AngefConde">Ángel F. Condercuri</a></td><td><a href="/AngefConde">Ángel F. Condercuri</a></td><td></td><td><a href="/Z0000209667">Z0000209667</a></td><td>0</td><td>0</td><td><a href="/videos/Z0000209667">0</a></td><td></td><td><a href="/Z0000209667">info</a></td></tr>
+<tr><td><a href="/Z0000580436">Jeru</a></td><td></td><td><a href="/genre."></a></td><td></td><td></td><td></td><td><a href="/Z0000580436">Z0000580436</a></td><td>0</td><td>0</td><td><a href="/videos/Z0000580436">0</a></td><td></td><td><a href="/Z0000580436">info</a></td></tr>
+<tr><td><a href="/Z0999905255">Jesień</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JankrMarko">Jan Markowski</a>, <a href="/JozefKonow">Józef Konowalski</a></td><td><a href="/AlinaPawlo">Alina Pawłowicz</a></td><td></td><td><a href="/Z0999905255">Z0999905255</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905255">0</a></td><td></td><td><a href="/Z0999905255">info</a></td></tr>
+<tr><td><a href="/Z0999905256">Jesienna piosenka</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JakubKagan">Jakub Kagan</a></td><td><a href="/MichaTyszk">Michał Tyszkiewicz</a></td><td></td><td><a href="/Z0999905256">Z0999905256</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905256">0</a></td><td>C</td><td><a href="/Z0999905256">info</a></td></tr>
+<tr><td><a href="/Z0999905257">Jesienne astry</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/AdamaLencz">Adam Lenczowski</a></td><td><a href="/JuliaMaszy">Julian Krzewiński</a></td><td></td><td><a href="/Z0999905257">Z0999905257</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905257">0</a></td><td></td><td><a href="/Z0999905257">info</a></td></tr>
+<tr><td><a href="/Z0999905258">Jesienne marzenia</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/ZygmuBialo">Zygmunt Białostocki</a></td><td><a href="/WalerRudni">Walery Jastrzębiec-Rudnicki</a></td><td></td><td><a href="/Z0999905258">Z0999905258</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905258">0</a></td><td>C</td><td><a href="/Z0999905258">info</a></td></tr>
+<tr><td><a href="/Z0999905259">Jesienne mgły</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/AntonBuzuk">Antoni Buzuk</a></td><td><a href="/JaninGillo">Janina Gillowa</a></td><td></td><td><a href="/Z0999905259">Z0999905259</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905259">0</a></td><td></td><td><a href="/Z0999905259">info</a></td></tr>
+<tr><td><a href="/T8031058433">Jesienne róże</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/ArturGolda">Artur Gold</a></td><td><a href="/AndrzWlast">Andrzej Włast</a></td><td></td><td><a href="/T8031058433">T8031058433</a></td><td>2</td><td>5</td><td><a href="/videos/T8031058433">6</a></td><td>CA</td><td><a href="/T8031058433">info</a></td></tr>
+<tr><td><a href="/Z0999990943">Jesli Bóg istnieje</a></td><td></td><td><a href="/genre."></a></td><td><a href="/GoranBrego">Goran Bregović</a></td><td></td><td></td><td><a href="/Z0999990943">Z0999990943</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990943">0</a></td><td></td><td><a href="/Z0999990943">info</a></td></tr>
+<tr><td><a href="/Z0999905260">Jeśli miła jest ci moja pieszczota</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/HenryHosso">Henryk Hosson</a></td><td><a href="/AnnamPietr">Hanka Ordonówna</a></td><td></td><td><a href="/Z0999905260">Z0999905260</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905260">0</a></td><td></td><td><a href="/Z0999905260">info</a></td></tr>
+<tr><td><a href="/Z0999905261">Jeśli pić - to do dna</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/ZygmuBialo">Zygmunt Białostocki</a></td><td><a href="/WalerRudni">Walery Jastrzębiec-Rudnicki</a></td><td></td><td><a href="/Z0999905261">Z0999905261</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905261">0</a></td><td>C</td><td><a href="/Z0999905261">info</a></td></tr>
+<tr><td><a href="/Z0999905262">Jeśli zostać, to na zawsze</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/WladyDanil">Władysław Daniłowski</a></td><td><a href="/JanmaHesch">Marian Hemar</a></td><td><a href="/1933">1933</a></td><td><a href="/Z0999905262">Z0999905262</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905262">0</a></td><td></td><td><a href="/Z0999905262">info</a></td></tr>
+<tr><td><a href="/Z0999905263">Jest tylko jedna miłość</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/SandoRozsn">Sándor Rozsnyai</a></td><td><a href="/ZenonFried">Zenon Friedwald</a></td><td></td><td><a href="/Z0999905263">Z0999905263</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905263">3</a></td><td>C</td><td><a href="/Z0999905263">info</a></td></tr>
+<tr><td><a href="/Z0999905264">Jestem sam</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/WaclaSzube">Wacław Szuberski</a></td><td><a href="/ArkadPolon">Arkadiusz Połoński</a></td><td></td><td><a href="/Z0999905264">Z0999905264</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905264">0</a></td><td></td><td><a href="/Z0999905264">info</a></td></tr>
+<tr><td><a href="/Z0999905265">Jesteś bez serca</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/ArturGolda">Artur Gold</a></td><td><a href="/AndrzWlast">Andrzej Włast</a></td><td><a href="/1937">1937</a></td><td><a href="/Z0999905265">Z0999905265</a></td><td>1</td><td>1</td><td><a href="/videos/Z0999905265">1</a></td><td>CA</td><td><a href="/Z0999905265">info</a></td></tr>
+<tr><td><a href="/Z0999990944">Jesús de Nazareth</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JosefGarci">José García</a></td><td></td><td></td><td><a href="/Z0999990944">Z0999990944</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990944">0</a></td><td></td><td><a href="/Z0999990944">info</a></td></tr>
+<tr><td><a href="/Z0000193604">Jesús negro</a></td><td></td><td><a href="/genre.candombe">candombe</a></td><td><a href="/ErnesRossi">Tití Rossi</a>, <a href="/SalusVarel">Héctor Varela</a></td><td></td><td></td><td><a href="/Z0000193604">Z0000193604</a></td><td>1</td><td>2</td><td><a href="/videos/Z0000193604">0</a></td><td></td><td><a href="/Z0000193604">info</a></td></tr>
+<tr><td><a href="/Z0999918973">Jettatore</a></td><td></td><td><a href="/genre.vals">vals</a></td><td></td><td></td><td></td><td><a href="/Z0999918973">Z0999918973</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999918973">0</a></td><td></td><td><a href="/Z0999918973">info</a></td></tr>
+<tr><td><a href="/T8004668741">Jetzat</a></td><td></td><td><a href="/genre.fox trot">fox trot</a></td><td><a href="/PeterLudwi">Peter Ludwig</a></td><td>-</td><td></td><td><a href="/T8004668741">T8004668741</a></td><td>0</td><td>0</td><td><a href="/videos/T8004668741">0</a></td><td></td><td><a href="/T8004668741">info</a></td></tr>
+<tr><td><a href="/Z0999909252">Jeux du theatre</a></td><td></td><td><a href="/genre."></a></td><td><a href="/AstorPiazz">Astor Piazzolla</a></td><td>-</td><td></td><td><a href="/Z0999909252">Z0999909252</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999909252">0</a></td><td></td><td><a href="/Z0999909252">info</a></td></tr>
+<tr><td><a href="/Z0999911318">Jilguerito criollo</a></td><td></td><td><a href="/genre.poema evocativo">poema evocativo</a></td><td><a href="/CeledFlore">Celedonio Flores</a></td><td><a href="/CeledFlore">Celedonio Flores</a></td><td></td><td><a href="/Z0999911318">Z0999911318</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999911318">0</a></td><td></td><td><a href="/Z0999911318">info</a></td></tr>
+<tr><td><a href="/Z0999917221">Jingles de jabón Federal</a></td><td></td><td><a href="/genre.jingle">jingle</a></td><td><a href="/RodolSciam">Rodolfo Sciammarella</a></td><td></td><td></td><td><a href="/Z0999917221">Z0999917221</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999917221">0</a></td><td></td><td><a href="/Z0999917221">info</a></td></tr>
+<tr><td><a href="/T0370122590">Jirón de pampa</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/PascuMazze">Pascual Domingo Mazzeo</a></td><td><a href="/EnriqDizeo">Enrique Dizeo</a></td><td></td><td><a href="/T0370122590">T0370122590</a></td><td>0</td><td>0</td><td><a href="/videos/T0370122590">0</a></td><td>C</td><td><a href="/T0370122590">info</a></td></tr>
+<tr><td><a href="/T0370203103">Jirón de suburbio</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/VictoBrana">Victor Braña</a></td><td><a href="/EnriqGaudi">Enrique Miguel Gaudino</a></td><td></td><td><a href="/T0370203103">T0370203103</a></td><td>1</td><td>4</td><td><a href="/videos/T0370203103">0</a></td><td></td><td><a href="/T0370203103">info</a></td></tr>
+<tr><td><a href="/Z0000054933">Jirones del alma</a></td><td>Girones del alma</td><td><a href="/genre.vals">vals</a></td><td><a href="/CarloMacch">Carlos Macchi</a></td><td></td><td></td><td><a href="/Z0000054933">Z0000054933</a></td><td>0</td><td>0</td><td><a href="/videos/Z0000054933">0</a></td><td>C</td><td><a href="/Z0000054933">info</a></td></tr>
+<tr><td><a href="/Z0999990945">Jo</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td>-</td><td></td><td><a href="/Z0999990945">Z0999990945</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990945">0</a></td><td></td><td><a href="/Z0999990945">info</a></td></tr>
+<tr><td><a href="/Z0999905266">Joanna</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancMakla">Franciszek Maklakiewicz</a></td><td><a href="/ZbignDrabi">Zbigniew Drabik</a></td><td></td><td><a href="/Z0999905266">Z0999905266</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905266">0</a></td><td>CA</td><td><a href="/Z0999905266">info</a></td></tr>
+<tr><td><a href="/T0370015501">Joaquina</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaBerga">Juan Bergamino</a></td><td>-</td><td></td><td><a href="/T0370015501">T0370015501</a></td><td>17</td><td>40</td><td><a href="/videos/T0370015501">0</a></td><td></td><td><a href="/T0370015501">info</a></td></tr>
+<tr><td><a href="/Z0999918069">Jockey Club</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td>-</td><td></td><td><a href="/Z0999918069">Z0999918069</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999918069">0</a></td><td></td><td><a href="/Z0999918069">info</a></td></tr>
+<tr><td><a href="/Z0999990946">Johnny Johnson Medley</a></td><td></td><td><a href="/genre."></a></td><td></td><td></td><td></td><td><a href="/Z0999990946">Z0999990946</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990946">0</a></td><td></td><td><a href="/Z0999990946">info</a></td></tr>
+<tr><td><a href="/T0370501420">Johnny, Johnny</a></td><td></td><td><a href="/genre."></a></td><td><a href="/AnsefAieta">Anselmo F. Aieta</a></td><td></td><td></td><td><a href="/T0370501420">T0370501420</a></td><td>0</td><td>0</td><td><a href="/videos/T0370501420">0</a></td><td></td><td><a href="/T0370501420">info</a></td></tr>
+<tr><td><a href="/Z0999905267">Jola, Jola!</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/ZygmuBialo">Zygmunt Białostocki</a></td><td><a href="/AleksJelli">Aleksander Jan Jellin</a></td><td></td><td><a href="/Z0999905267">Z0999905267</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905267">0</a></td><td>C</td><td><a href="/Z0999905267">info</a></td></tr>
+<tr><td><a href="/Z0999905268">Jonny</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/FriedHolla">Fritz Holländer</a></td><td><a href="/TymotProku">Tymoteusz Ortym</a></td><td></td><td><a href="/Z0999905268">Z0999905268</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905268">0</a></td><td></td><td><a href="/Z0999905268">info</a></td></tr>
+<tr><td><a href="/Z0999909482">Jorge adiós</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/AstorPiazz">Astor Piazzolla</a></td><td>-</td><td></td><td><a href="/Z0999909482">Z0999909482</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999909482">0</a></td><td></td><td><a href="/Z0999909482">info</a></td></tr>
+<tr><td><a href="/Z0999901971">Jorge Alberto Ruiz</a></td><td></td><td><a href="/genre.candombe">candombe</a></td><td></td><td></td><td></td><td><a href="/Z0999901971">Z0999901971</a></td><td>1</td><td>1</td><td><a href="/videos/Z0999901971">0</a></td><td></td><td><a href="/Z0999901971">info</a></td></tr>
+<tr><td><a href="/T0370163135">Jorge Duval</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/AlfreDeang">Alfredo De Angelis</a></td><td></td><td></td><td><a href="/T0370163135">T0370163135</a></td><td>2</td><td>5</td><td><a href="/videos/T0370163135">0</a></td><td></td><td><a href="/T0370163135">info</a></td></tr>
+<tr><td><a href="/Z0999990947">Jorge Newbery</a></td><td></td><td><a href="/genre.estilo">estilo</a></td><td><a href="/CharlGarde">Carlos Gardel</a>, <a href="/JosefRazza">José Razzano</a></td><td><a href="/CharlGarde">Carlos Gardel</a>, <a href="/JosefRazza">José Razzano</a></td><td></td><td><a href="/Z0999990947">Z0999990947</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990947">0</a></td><td></td><td><a href="/Z0999990947">info</a></td></tr>
+<tr><td><a href="/Z0999909253">Jorge, adiós</a></td><td>Se potessi ancora</td><td><a href="/genre."></a></td><td><a href="/AstorPiazz">Astor Piazzolla</a></td><td></td><td></td><td><a href="/Z0999909253">Z0999909253</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999909253">0</a></td><td></td><td><a href="/Z0999909253">info</a></td></tr>
+<tr><td><a href="/Z0999918342">Jorgelina</a></td><td></td><td><a href="/genre."></a></td><td></td><td></td><td></td><td><a href="/Z0999918342">Z0999918342</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999918342">0</a></td><td></td><td><a href="/Z0999918342">info</a></td></tr>
+<tr><td><a href="/T0370122614">Jornada campera</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/NicolBlois">Nicolás Salvador Blois</a></td><td>-</td><td></td><td><a href="/T0370122614">T0370122614</a></td><td>1</td><td>2</td><td><a href="/videos/T0370122614">0</a></td><td></td><td><a href="/T0370122614">info</a></td></tr>
+<tr><td><a href="/Z0999911371">Jornalero</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a href="/Z0999911371">Z0999911371</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999911371">0</a></td><td></td><td><a href="/Z0999911371">info</a></td></tr>
+<tr><td><a href="/T0370157531">Jorobeta</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/AgustMagal">Agustín Magaldi</a>, <a href="/PedroNodaa">Pedro Noda</a></td><td><a href="/CarloAttwe">Claudio Frollo</a></td><td></td><td><a href="/T0370157531">T0370157531</a></td><td>2</td><td>7</td><td><a href="/videos/T0370157531">0</a></td><td></td><td><a href="/T0370157531">info</a></td></tr>
+<tr><td><a href="/T0370501431">José Antonio</a></td><td></td><td><a href="/genre.vals">vals</a></td><td><a href="/IsabeGrand">Isabel Granda</a></td><td><a href="/IsabeGrand">Isabel Granda</a></td><td></td><td><a href="/T0370501431">T0370501431</a></td><td>0</td><td>0</td><td><a href="/videos/T0370501431">0</a></td><td></td><td><a href="/T0370501431">info</a></td></tr>
+<tr><td><a href="/T0416926992">José El cuchillero</a></td><td>José El cuchiyero</td><td><a href="/genre."></a></td><td><a href="/AlejaMelin">Daniel Melingo</a></td><td><a href="/AlejaMelin">Daniel Melingo</a></td><td></td><td><a href="/T0416926992">T0416926992</a></td><td>1</td><td>1</td><td><a href="/videos/T0416926992">0</a></td><td></td><td><a href="/T0416926992">info</a></td></tr>
+<tr><td><a href="/T0370040826">José Julián</a></td><td></td><td><a href="/genre."></a></td><td><a href="/JosefRazza">José Razzano</a>, <a href="/SaulaSalin">Saúl Salinas</a></td><td><a href="/JosefRazza">José Razzano</a>, <a href="/SaulaSalin">Saúl Salinas</a></td><td></td><td><a href="/T0370040826">T0370040826</a></td><td>0</td><td>0</td><td><a href="/videos/T0370040826">0</a></td><td></td><td><a href="/T0370040826">info</a></td></tr>
+<tr><td><a href="/T0372985631">Josefina, Josefina</a></td><td></td><td><a href="/genre."></a></td><td><a href="/OsvalLarre">Osvaldo Larrea</a>, <a href="/GilbeCasci">Gilberto Casciani</a></td><td><a href="/OsvalLarre">Osvaldo Larrea</a>, <a href="/GilbeCasci">Gilberto Casciani</a></td><td></td><td><a href="/T0372985631">T0372985631</a></td><td>0</td><td>0</td><td><a href="/videos/T0372985631">0</a></td><td></td><td><a href="/T0372985631">info</a></td></tr>
+<tr><td><a href="/T8019785571">Joshua</a></td><td></td><td><a href="/genre.fox trot">fox trot</a></td><td><a href="/PeterLudwi">Peter Ludwig</a></td><td>-</td><td></td><td><a href="/T8019785571">T8019785571</a></td><td>0</td><td>0</td><td><a href="/videos/T8019785571">0</a></td><td></td><td><a href="/T8019785571">info</a></td></tr>
+<tr><td><a href="/T0372267236">Jota ene</a></td><td></td><td><a href="/genre."></a></td><td><a href="/ErnesLacha">Mario Valdez</a>, <a href="/SantiCorre">Santiago Correa</a>, <a href="/CarloGiamp">Carlos Giampé</a></td><td><a href="/ErnesLacha">Mario Valdez</a>, <a href="/SantiCorre">Santiago Correa</a>, <a href="/CarloGiamp">Carlos Giampé</a></td><td></td><td><a href="/T0372267236">T0372267236</a></td><td>0</td><td>0</td><td><a href="/videos/T0372267236">0</a></td><td></td><td><a href="/T0372267236">info</a></td></tr>
+<tr><td><a href="/Z0999901266">Joven engrupido</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a href="/Z0999901266">Z0999901266</a></td><td>3</td><td>3</td><td><a href="/videos/Z0999901266">0</a></td><td></td><td><a href="/Z0999901266">info</a></td></tr>
+<tr><td><a href="/Z0999909072">Jovencito</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/AngelBurli">Angelo Burli</a>, <a href="/YvespPuech">Yves Puech</a></td><td>-</td><td></td><td><a href="/Z0999909072">Z0999909072</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999909072">0</a></td><td></td><td><a href="/Z0999909072">info</a></td></tr>
+<tr><td><a href="/Z0999917344">Juan</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/RicarBruno">Ricardo Bruno</a></td><td><a href="/RicarBruno">Ricardo Bruno</a></td><td></td><td><a href="/Z0999917344">Z0999917344</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999917344">0</a></td><td></td><td><a href="/Z0999917344">info</a></td></tr>
+<tr><td><a href="/Z0999918049">Juan Carlos</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a href="/Z0999918049">Z0999918049</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999918049">0</a></td><td></td><td><a href="/Z0999918049">info</a></td></tr>
+<tr><td><a href="/T0371098406">Juan Compás</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/MariaMaldo">María Josefina Maldonado</a></td><td>-</td><td></td><td><a href="/T0371098406">T0371098406</a></td><td>1</td><td>2</td><td><a href="/videos/T0371098406">0</a></td><td></td><td><a href="/T0371098406">info</a></td></tr>
+<tr><td><a href="/Z0999990948">Juan Copete</a></td><td></td><td><a href="/genre."></a></td><td></td><td></td><td></td><td><a href="/Z0999990948">Z0999990948</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990948">0</a></td><td></td><td><a href="/Z0999990948">info</a></td></tr>
+<tr><td><a href="/Z0999990949">Juan de Dios</a></td><td></td><td><a href="/genre."></a></td><td><a href="/ArmanBalio">Armando Baliotti</a></td><td><a href="/SantiAdami">Santiago Luis D. Adamini</a></td><td></td><td><a href="/Z0999990949">Z0999990949</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990949">0</a></td><td></td><td><a href="/Z0999990949">info</a></td></tr>
+<tr><td><a href="/T0370870828">Juan el artista</a></td><td></td><td><a href="/genre."></a></td><td><a href="/EnriqCadic">Enrique Cadícamo</a>, <a href="/AngelDagos">Ángel D'Agostino</a></td><td></td><td></td><td><a href="/T0370870828">T0370870828</a></td><td>0</td><td>0</td><td><a href="/videos/T0370870828">0</a></td><td></td><td><a href="/T0370870828">info</a></td></tr>
+<tr><td><a href="/T0371605945">Juan el famoso</a></td><td></td><td><a href="/genre."></a></td><td><a href="/EnriqCadic">Enrique Cadícamo</a></td><td><a href="/EnriqCadic">Enrique Cadícamo</a></td><td></td><td><a href="/T0371605945">T0371605945</a></td><td>0</td><td>0</td><td><a href="/videos/T0371605945">0</a></td><td></td><td><a href="/T0371605945">info</a></td></tr>
+<tr><td><a href="/Z0999990950">Juan el serio</a></td><td></td><td><a href="/genre."></a></td><td><a href="/ArmanPuntu">Armando Pontier</a></td><td><a href="/CarloBahra">Carlos Bahr</a></td><td></td><td><a href="/Z0999990950">Z0999990950</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990950">0</a></td><td></td><td><a href="/Z0999990950">info</a></td></tr>
+<tr><td><a href="/T0370015556">Juan Manuel</a></td><td></td><td><a href="/genre.candombe">candombe</a></td><td><a href="/SebasPiana">Sebastián Piana</a></td><td><a href="/HomerManzi">Homero Manzi</a></td><td></td><td><a href="/T0370015556">T0370015556</a></td><td>4</td><td>10</td><td><a href="/videos/T0370015556">0</a></td><td></td><td><a href="/T0370015556">info</a></td></tr>
+<tr><td><a href="/T0370239410">Juan Palomo</a></td><td></td><td><a href="/genre.milonga">milonga</a></td><td><a href="/EnriqRodri">Enrique Rodríguez</a></td><td><a href="/CarloGoico">Carlos Goicoechea</a>, <a href="/RogelCordo">Rogelio Cordone</a></td><td></td><td><a href="/T0370239410">T0370239410</a></td><td>1</td><td>2</td><td><a href="/videos/T0370239410">0</a></td><td></td><td><a href="/T0370239410">info</a></td></tr>
+<tr><td><a href="/T0370347140">Juan Porteño</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/CayetDisar">Carlos Di Sarli</a></td><td><a href="/HectoMarco">Héctor Marcó</a></td><td></td><td><a href="/T0370347140">T0370347140</a></td><td>4</td><td>10</td><td><a href="/videos/T0370347140">0</a></td><td></td><td><a href="/T0370347140">info</a></td></tr>
+<tr><td><a href="/T0370453761">Juan Pueblo</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/IsmaeSpita">Ismael Spitalnik</a></td><td>-</td><td></td><td><a href="/T0370453761">T0370453761</a></td><td>1</td><td>3</td><td><a href="/videos/T0370453761">0</a></td><td></td><td><a href="/T0370453761">info</a></td></tr>
+<tr><td><a href="/Z0001355373">Juan sin cielo</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td><a href="/MatiaMauri">Matías Mauricio</a></td><td></td><td><a href="/Z0001355373">Z0001355373</a></td><td>0</td><td>0</td><td><a href="/videos/Z0001355373">0</a></td><td></td><td><a href="/Z0001355373">info</a></td></tr>
+<tr><td><a href="/Z0999915308">Juan Sin Ropa</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/AntonCipol">Antonino Cipolla</a></td><td><a href="/FrancBasta">Francisco Antonio Bastardi</a></td><td></td><td><a href="/Z0999915308">Z0999915308</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999915308">0</a></td><td></td><td><a href="/Z0999915308">info</a></td></tr>
+<tr><td><a href="/T0370218077">Juan Tango</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/SebasPiana">Sebastián Piana</a>, <a href="/PedroMaffi">Pedro Maffia</a>, <a href="/OvidiGonza">Cátulo Castillo</a></td><td></td><td></td><td><a href="/T0370218077">T0370218077</a></td><td>2</td><td>15</td><td><a href="/videos/T0370218077">0</a></td><td></td><td><a href="/T0370218077">info</a></td></tr>
+<tr><td><a href="/Z0999990951">Juan tango</a></td><td></td><td><a href="/genre."></a></td><td></td><td></td><td></td><td><a href="/Z0999990951">Z0999990951</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990951">0</a></td><td></td><td><a href="/Z0999990951">info</a></td></tr>
+<tr><td><a href="/T0370367922">Juana milonga señores</a></td><td></td><td><a href="/genre.milonga">milonga</a></td><td><a href="/HipolCaron">Hipólito Caron</a>, <a href="/OscarMoret">Oscar Larroca</a></td><td><a href="/HipolBened">Hipólito Oneca</a></td><td></td><td><a href="/T0370367922">T0370367922</a></td><td>1</td><td>1</td><td><a href="/videos/T0370367922">0</a></td><td></td><td><a href="/T0370367922">info</a></td></tr>
+<tr><td><a href="/T0374147860">Juana Rebenque</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/LuisaRicca">Luis Riccardi</a></td><td><a href="/EnriqCadic">Enrique Cadícamo</a></td><td></td><td><a href="/T0374147860">T0374147860</a></td><td>1</td><td>2</td><td><a href="/videos/T0374147860">0</a></td><td></td><td><a href="/T0374147860">info</a></td></tr>
+<tr><td><a href="/T0370437094">Juana Tango</a></td><td></td><td><a href="/genre."></a></td><td><a href="/AlfreNavar">Alfredo Navarrine</a></td><td><a href="/JulioNavar">Julio Plácido Navarrine</a></td><td></td><td><a href="/T0370437094">T0370437094</a></td><td>0</td><td>0</td><td><a href="/videos/T0370437094">0</a></td><td></td><td><a href="/T0370437094">info</a></td></tr>
+<tr><td><a href="/T0371149437">Juancito caminador</a></td><td></td><td><a href="/genre."></a></td><td></td><td><a href="/RaulaGonza">Raúl González Tuñón</a></td><td></td><td><a href="/T0371149437">T0371149437</a></td><td>0</td><td>0</td><td><a href="/videos/T0371149437">0</a></td><td></td><td><a href="/T0371149437">info</a></td></tr>
+<tr><td><a href="/Z0999990952">Juancito de la ribera</a></td><td></td><td><a href="/genre."></a></td><td></td><td></td><td><a href="/1915">1915</a></td><td><a href="/Z0999990952">Z0999990952</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990952">0</a></td><td></td><td><a href="/Z0999990952">info</a></td></tr>
+<tr><td><a href="/T0370081416">Juanillo</a></td><td></td><td><a href="/genre.paso doble">paso doble</a></td><td><a href="/AntonSured">Antonio Sureda</a></td><td><a href="/GeronSured">Gerónimo Sureda</a></td><td></td><td><a href="/T0370081416">T0370081416</a></td><td>1</td><td>3</td><td><a href="/videos/T0370081416">0</a></td><td></td><td><a href="/T0370081416">info</a></td></tr>
+<tr><td><a href="/T0370431814">Juanita</a></td><td></td><td><a href="/genre."></a></td><td><a href="/AnselAieta">Anselmo A. Aieta</a>, <a href="/JuancCacca">Juan Carlos Caviello</a></td><td></td><td></td><td><a href="/T0370431814">T0370431814</a></td><td>0</td><td>0</td><td><a href="/videos/T0370431814">0</a></td><td></td><td><a href="/T0370431814">info</a></td></tr>
+<tr><td><a href="/Z0999916376">Juanita</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/RicarGonza">Ricardo González</a></td><td>-</td><td></td><td><a href="/Z0999916376">Z0999916376</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999916376">0</a></td><td></td><td><a href="/Z0999916376">info</a></td></tr>
+<tr><td><a href="/T0370826848">Juanita la popular</a></td><td></td><td><a href="/genre."></a></td><td><a href="/EnriqCadic">Enrique Cadícamo</a></td><td><a href="/EnriqCadic">Enrique Cadícamo</a></td><td></td><td><a href="/T0370826848">T0370826848</a></td><td>0</td><td>0</td><td><a href="/videos/T0370826848">0</a></td><td></td><td><a href="/T0370826848">info</a></td></tr>
+<tr><td><a href="/T0371059492">Juanito Laguna ayuda a su madre</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/AstorPiazz">Astor Piazzolla</a></td><td><a href="/HoracFerre">Horacio Arturo Ferrer</a></td><td></td><td><a href="/T0371059492">T0371059492</a></td><td>1</td><td>1</td><td><a href="/videos/T0371059492">0</a></td><td></td><td><a href="/T0371059492">info</a></td></tr>
+<tr><td><a href="/T0373658480">Juárez es el tango</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/DanicGarci">Daniel Claudio García</a></td><td><a href="/MariaDemar">María José Demare</a></td><td></td><td><a href="/T0373658480">T0373658480</a></td><td>0</td><td>0</td><td><a href="/videos/T0373658480">0</a></td><td></td><td><a href="/T0373658480">info</a></td></tr>
+<tr><td><a href="/Z0999990953">Jubilate mañana</a></td><td></td><td><a href="/genre.milonga">milonga</a></td><td><a href="/GabriClaus">Gabriel Clausi</a></td><td><a href="/RodolLagoa">Alberto Lago</a></td><td></td><td><a href="/Z0999990953">Z0999990953</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990953">0</a></td><td></td><td><a href="/Z0999990953">info</a></td></tr>
+<tr><td><a href="/T0370172498">Judas</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/CarloMarch">Carlos Marchisio</a></td><td><a href="/CarmeSanti">Carmelo Santiago</a></td><td></td><td><a href="/T0370172498">T0370172498</a></td><td>3</td><td>10</td><td><a href="/videos/T0370172498">1</a></td><td></td><td><a href="/T0370172498">info</a></td></tr>
+<tr><td><a href="/Z0999990954">Judia</a></td><td></td><td><a href="/genre."></a></td><td><a href="/OsvalPugli">Osvaldo Pugliese</a></td><td></td><td></td><td><a href="/Z0999990954">Z0999990954</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990954">0</a></td><td></td><td><a href="/Z0999990954">info</a></td></tr>
+<tr><td><a href="/Z0999910558">Jué un domingo en los Corrales</a></td><td></td><td><a href="/genre.poema lunfardo">poema lunfardo</a></td><td></td><td></td><td></td><td><a href="/Z0999910558">Z0999910558</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999910558">0</a></td><td></td><td><a href="/Z0999910558">info</a></td></tr>
+<tr><td><a href="/T0371102554">Juego de damas</a></td><td></td><td><a href="/genre."></a></td><td><a href="/DanteAmica">Dante Amicarelli</a>, <a href="/HoracSalga">Horacio Salgán</a></td><td>-</td><td></td><td><a href="/T0371102554">T0371102554</a></td><td>0</td><td>0</td><td><a href="/videos/T0371102554">0</a></td><td></td><td><a href="/T0371102554">info</a></td></tr>
+<tr><td><a href="/Z0000030138">Juego limpio</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td></td><td></td><td><a href="/Z0000030138">Z0000030138</a></td><td>0</td><td>0</td><td><a href="/videos/Z0000030138">0</a></td><td></td><td><a href="/Z0000030138">info</a></td></tr>
+<tr><td><a href="/Z0999990955">Juego limpio</a></td><td></td><td><a href="/genre."></a></td><td><a href="/AdriaDelfi">Sacri Delfino</a></td><td></td><td></td><td><a href="/Z0999990955">Z0999990955</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990955">0</a></td><td></td><td><a href="/Z0999990955">info</a></td></tr>
+<tr><td><a href="/T0373922178">Juego sucio</a></td><td></td><td><a href="/genre."></a></td><td><a href="/ErnesLacha">Mario Valdez</a></td><td></td><td></td><td><a href="/T0373922178">T0373922178</a></td><td>0</td><td>0</td><td><a href="/videos/T0373922178">0</a></td><td></td><td><a href="/T0373922178">info</a></td></tr>
+<tr><td><a href="/T0372527133">Juegos del por qué</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td><a href="/IsmaeVarel">Héctor Negro</a></td><td></td><td><a href="/T0372527133">T0372527133</a></td><td>0</td><td>0</td><td><a href="/videos/T0372527133">0</a></td><td></td><td><a href="/T0372527133">info</a></td></tr>
+<tr><td><a href="/T0370015578">Juera guay!</a></td><td></td><td><a href="/genre.cancion campera">canción campera</a></td><td><a href="/SantiRocca">Santiago Hipólito Rocca</a></td><td><a href="/SantiRocca">Santiago Hipólito Rocca</a></td><td></td><td><a href="/T0370015578">T0370015578</a></td><td>1</td><td>2</td><td><a href="/videos/T0370015578">0</a></td><td></td><td><a href="/T0370015578">info</a></td></tr>
+<tr><td><a href="/T0370015590">Jueves</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/RafaeRossa">Rafael Rossi</a>, <a href="/UdeliToran">Udelino Toranzo</a></td><td>-</td><td></td><td><a href="/T0370015590">T0370015590</a></td><td>28</td><td>117</td><td><a href="/videos/T0370015590">0</a></td><td></td><td><a href="/T0370015590">info</a></td></tr>
+<tr><td><a href="/Z0999990956">Jugando</a></td><td></td><td><a href="/genre.vals">vals</a></td><td></td><td><a href="/MigueCaloa">Miguel Caló</a></td><td></td><td><a href="/Z0999990956">Z0999990956</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990956">0</a></td><td></td><td><a href="/Z0999990956">info</a></td></tr>
+<tr><td><a href="/T0370015603">Jugando al amor</a></td><td></td><td><a href="/genre.polca">polca</a></td><td><a href="/JuanaCanar">Juan Canaro</a></td><td><a href="/CarloPesce">Carlos Pesce</a></td><td></td><td><a href="/T0370015603">T0370015603</a></td><td>1</td><td>1</td><td><a href="/videos/T0370015603">0</a></td><td></td><td><a href="/T0370015603">info</a></td></tr>
+<tr><td><a href="/Z0999918050">Jugando con fuego</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuancHowar">Juan Carlos Howard</a></td><td><a href="/HectoMarco">Héctor Marcó</a></td><td></td><td><a href="/Z0999918050">Z0999918050</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999918050">0</a></td><td></td><td><a href="/Z0999918050">info</a></td></tr>
+<tr><td><a href="/T0464062187">Jugando con tango</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/EdgarPedro">Edgardo Pedrosa</a></td><td>-</td><td></td><td><a href="/T0464062187">T0464062187</a></td><td>0</td><td>0</td><td><a href="/videos/T0464062187">0</a></td><td></td><td><a href="/T0464062187">info</a></td></tr>
+<tr><td><a href="/T0370216695">Jugando jugando</a></td><td></td><td><a href="/genre.vals">vals</a></td><td><a href="/MigueCaloa">Miguel Caló</a></td><td><a href="/OscarRubis">Oscar Rubens</a></td><td></td><td><a href="/T0370216695">T0370216695</a></td><td>4</td><td>14</td><td><a href="/videos/T0370216695">0</a></td><td></td><td><a href="/T0370216695">info</a></td></tr>
+<tr><td><a href="/Z0999990957">Jugar con fuego</a></td><td></td><td><a href="/genre."></a></td><td><a href="/MariaMarti">Mariano Mores</a></td><td></td><td></td><td><a href="/Z0999990957">Z0999990957</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990957">0</a></td><td></td><td><a href="/Z0999990957">info</a></td></tr>
+<tr><td><a href="/T0371319195">Jugaremos</a></td><td></td><td><a href="/genre."></a></td><td><a href="/BernaMitni">Chico Novarro</a></td><td><a href="/RenefSilva">Federico Silva</a></td><td></td><td><a href="/T0371319195">T0371319195</a></td><td>0</td><td>0</td><td><a href="/videos/T0371319195">0</a></td><td></td><td><a href="/T0371319195">info</a></td></tr>
+<tr><td><a href="/T0374134754">Juguete</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/SalvaGrupi">Salvador Grupillo</a>, <a href="/NicolPrima">Nicolás O. Primani</a></td><td><a href="/LuisaRubis">Luis Rubistein</a></td><td></td><td><a href="/T0374134754">T0374134754</a></td><td>1</td><td>3</td><td><a href="/videos/T0374134754">0</a></td><td></td><td><a href="/T0374134754">info</a></td></tr>
+<tr><td><a href="/Z0999918455">Juguete</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/SantiGramm">Tito Ferrari</a></td><td></td><td><a href="/2004">2004</a></td><td><a href="/Z0999918455">Z0999918455</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999918455">0</a></td><td></td><td><a href="/Z0999918455">info</a></td></tr>
+<tr><td><a href="/Z0999900714">Juguete de amor</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a href="/Z0999900714">Z0999900714</a></td><td>1</td><td>1</td><td><a href="/videos/Z0999900714">0</a></td><td></td><td><a href="/Z0999900714">info</a></td></tr>
+<tr><td><a href="/T0370122783">Juguete de placer</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/OvidiGonza">Cátulo Castillo</a></td><td><a href="/JoseaGonza">José González Castillo (Juan de León)</a></td><td></td><td><a href="/T0370122783">T0370122783</a></td><td>2</td><td>2</td><td><a href="/videos/T0370122783">0</a></td><td>A</td><td><a href="/T0370122783">info</a></td></tr>
+<tr><td><a href="/T0373704654">Juguete rabioso</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/HoracEstol">Acho Estol</a></td><td><a href="/HoracEstol">Acho Estol</a></td><td></td><td><a href="/T0373704654">T0373704654</a></td><td>0</td><td>0</td><td><a href="/videos/T0373704654">0</a></td><td></td><td><a href="/T0373704654">info</a></td></tr>
+<tr><td><a href="/T0373114410">Jugueteando</a></td><td></td><td><a href="/genre."></a></td><td><a href="/FrancMosqu">Paco Berón</a></td><td>-</td><td></td><td><a href="/T0373114410">T0373114410</a></td><td>0</td><td>0</td><td><a href="/videos/T0373114410">0</a></td><td></td><td><a href="/T0373114410">info</a></td></tr>
+<tr><td><a href="/T0370015658">Jujeña</a></td><td></td><td><a href="/genre.tonada">tonada</a></td><td><a href="/CharlGarde">Carlos Gardel</a>, <a href="/JosefRazza">José Razzano</a></td><td><a href="/CharlGarde">Carlos Gardel</a>, <a href="/JosefRazza">José Razzano</a></td><td></td><td><a href="/T0370015658">T0370015658</a></td><td>4</td><td>6</td><td><a href="/videos/T0370015658">0</a></td><td></td><td><a href="/T0370015658">info</a></td></tr>
+<tr><td><a href="/Z0999918202">Jujuy</a></td><td></td><td><a href="/genre."></a></td><td></td><td></td><td></td><td><a href="/Z0999918202">Z0999918202</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999918202">0</a></td><td></td><td><a href="/Z0999918202">info</a></td></tr>
+<tr><td><a href="/Z0999918941">Jujuy</a></td><td></td><td><a href="/genre.vals">vals</a></td><td><a href="/AndreChaza">Andrés Chazarreta</a></td><td></td><td></td><td><a href="/Z0999918941">Z0999918941</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999918941">0</a></td><td></td><td><a href="/Z0999918941">info</a></td></tr>
+<tr><td><a href="/T0420961530">Julepe en la tierra</a></td><td></td><td><a href="/genre."></a></td><td><a href="/AlejaMelin">Daniel Melingo</a></td><td><a href="/AlejaMelin">Daniel Melingo</a></td><td></td><td><a href="/T0420961530">T0420961530</a></td><td>1</td><td>1</td><td><a href="/videos/T0420961530">0</a></td><td></td><td><a href="/T0420961530">info</a></td></tr>
+<tr><td><a href="/T0370015636">Julián</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/EdgarDonat">Edgardo Donato</a></td><td><a href="/JoselPaniz">José Luis Panizza</a></td><td><a href="/1924">1924</a></td><td><a href="/T0370015636">T0370015636</a></td><td>23</td><td>60</td><td><a href="/videos/T0370015636">0</a></td><td>A</td><td><a href="/T0370015636">info</a></td></tr>
+<tr><td><a href="/T0370152332">Julián Centeya</a></td><td>Me llaman Julián Centeya | Me llamo Julián Centeya | Me llamo Julián Centella</td><td><a href="/genre.milonga">milonga</a></td><td><a href="/JoseaCanet">José Canet</a></td><td><a href="/AmletVergi">Julián Centeya</a></td><td></td><td><a href="/T0370152332">T0370152332</a></td><td>4</td><td>11</td><td><a href="/videos/T0370152332">0</a></td><td></td><td><a href="/T0370152332">info</a></td></tr>
+<tr><td><a href="/Z0999917432">Julián Centeya</a></td><td></td><td><a href="/genre.poema lunfardo">poema lunfardo</a></td><td></td><td></td><td></td><td><a href="/Z0999917432">Z0999917432</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999917432">0</a></td><td></td><td><a href="/Z0999917432">info</a></td></tr>
+<tr><td><a href="/Z0999917696">Julián Centeya</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a href="/Z0999917696">Z0999917696</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999917696">0</a></td><td></td><td><a href="/Z0999917696">info</a></td></tr>
+<tr><td><a href="/T0372173879">Julián de abajo</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/ErnesLacha">Mario Valdez</a></td><td><a href="/IsmaeVarel">Héctor Negro</a></td><td></td><td><a href="/T0372173879">T0372173879</a></td><td>0</td><td>0</td><td><a href="/videos/T0372173879">0</a></td><td></td><td><a href="/T0372173879">info</a></td></tr>
+<tr><td><a href="/T0370122794">Julián Navarro</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/BartoVacar">Alberto Vacarezza</a></td><td></td><td><a href="/T0370122794">T0370122794</a></td><td>1</td><td>3</td><td><a href="/videos/T0370122794">0</a></td><td></td><td><a href="/T0370122794">info</a></td></tr>
+<tr><td><a href="/Z0999918749">Julián Pardales</a></td><td></td><td><a href="/genre.milonga">milonga</a></td><td><a href="/JavieMazze">Javier Mazzea</a>, <a href="/RoberVidal">Roberto Vidal</a>, <a href="/AngelCicch">Ángel Cicchetti</a></td><td><a href="/RoberVidal">Roberto Vidal</a>, <a href="/AngelCicch">Ángel Cicchetti</a></td><td></td><td><a href="/Z0999918749">Z0999918749</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999918749">0</a></td><td></td><td><a href="/Z0999918749">info</a></td></tr>
+<tr><td><a href="/T0371351722">Julián Tango</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/RoberRufin">Roberto Rufino</a></td><td><a href="/EarleFerna">Roberto Giménez</a>, <a href="/CarloJonss">Carlos Agustin Jonsson</a></td><td></td><td><a href="/T0371351722">T0371351722</a></td><td>0</td><td>0</td><td><a href="/videos/T0371351722">0</a></td><td></td><td><a href="/T0371351722">info</a></td></tr>
+<tr><td><a href="/T0370406022">Julie</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/EnriqAless">Enrique Carmelo Alessio</a>, <a href="/CarloLazza">Carlos Ángel Lázzari</a></td><td></td><td></td><td><a href="/T0370406022">T0370406022</a></td><td>2</td><td>14</td><td><a href="/videos/T0370406022">0</a></td><td></td><td><a href="/T0370406022">info</a></td></tr>
+<tr><td><a href="/T0370122807">Julienne</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/NicolPrima">Nicolás O. Primani</a></td><td>-</td><td></td><td><a href="/T0370122807">T0370122807</a></td><td>2</td><td>7</td><td><a href="/videos/T0370122807">0</a></td><td></td><td><a href="/T0370122807">info</a></td></tr>
+<tr><td><a href="/T0373598630">Julieta</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JoseaDicle">José Di Clemente</a></td><td><a href="/JoseaDicle">José Di Clemente</a></td><td></td><td><a href="/T0373598630">T0373598630</a></td><td>1</td><td>1</td><td><a href="/videos/T0373598630">0</a></td><td></td><td><a href="/T0373598630">info</a></td></tr>
+<tr><td><a href="/T0370774438">Julieta y Romeo</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/CarloLazza">Carlos Ángel Lázzari</a>, <a href="/AngelGatti">Ángel Gatti</a></td><td><a href="/JuanaPolit">Juan Polito</a></td><td></td><td><a href="/T0370774438">T0370774438</a></td><td>1</td><td>2</td><td><a href="/videos/T0370774438">0</a></td><td></td><td><a href="/T0370774438">info</a></td></tr>
+<tr><td><a href="/Z0999918509">Julieta y Romeo</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaPolit">Juan Polito</a>, <a href="/CarloLazza">Carlos Ángel Lázzari</a>, <a href="/AngelGatti">Ángel Gatti</a></td><td><a href="/CarloLazza">Carlos Ángel Lázzari</a>, <a href="/AngelGatti">Ángel Gatti</a></td><td></td><td><a href="/Z0999918509">Z0999918509</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999918509">0</a></td><td></td><td><a href="/Z0999918509">info</a></td></tr>
+<tr><td><a href="/T8019785504">Juliette</a></td><td></td><td><a href="/genre.rumba">rumba</a></td><td><a href="/PeterLudwi">Peter Ludwig</a></td><td>-</td><td></td><td><a href="/T8019785504">T8019785504</a></td><td>0</td><td>0</td><td><a href="/videos/T8019785504">0</a></td><td></td><td><a href="/T8019785504">info</a></td></tr>
+<tr><td><a href="/Z0999913475">Julio César</a></td><td></td><td><a href="/genre.poema lunfardo">poema lunfardo</a></td><td></td><td></td><td></td><td><a href="/Z0999913475">Z0999913475</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999913475">0</a></td><td></td><td><a href="/Z0999913475">info</a></td></tr>
+<tr><td><a href="/T0370149066">Julio de Caro</a></td><td>Tu violín</td><td><a href="/genre."></a></td><td><a href="/JosefTravi">José Francisco Traviglia</a></td><td><a href="/ArmanTagin">Armando Tagini</a></td><td></td><td><a href="/T0370149066">T0370149066</a></td><td>1</td><td>2</td><td><a href="/videos/T0370149066">0</a></td><td></td><td><a href="/T0370149066">info</a></td></tr>
+<tr><td><a href="/Z0999915841">Julio!</a></td><td></td><td><a href="/genre.poema lunfardo">poema lunfardo</a></td><td></td><td></td><td></td><td><a href="/Z0999915841">Z0999915841</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999915841">0</a></td><td></td><td><a href="/Z0999915841">info</a></td></tr>
+<tr><td><a href="/T0370030231">Junada</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/ArmanPuntu">Armando Pontier</a></td><td><a href="/AngelDiros">Ángel Di Rosa</a></td><td></td><td><a href="/T0370030231">T0370030231</a></td><td>1</td><td>6</td><td><a href="/videos/T0370030231">0</a></td><td></td><td><a href="/T0370030231">info</a></td></tr>
+<tr><td><a href="/Z0999918642">Juntando amores</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/MariaGodar">María Isolina Godard</a></td><td></td><td></td><td><a href="/Z0999918642">Z0999918642</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999918642">0</a></td><td>C</td><td><a href="/Z0999918642">info</a></td></tr>
+<tr><td><a href="/Z0999914060">Juntemos nuestras alas</a></td><td></td><td><a href="/genre.cancion">canción</a></td><td><a href="/MigueBarco">Miguel Ángel Barcos</a>, <a href="/SoniaUrsin">Sonia Ursini</a></td><td></td><td></td><td><a href="/Z0999914060">Z0999914060</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999914060">0</a></td><td></td><td><a href="/Z0999914060">info</a></td></tr>
+<tr><td><a href="/T0370578598">Juntitos vos y yo</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/WenceCinos">Wenceslao Domingo Cinosi</a></td><td><a href="/CarloRusso">Carlos Antonio Russo</a></td><td></td><td><a href="/T0370578598">T0370578598</a></td><td>0</td><td>0</td><td><a href="/videos/T0370578598">0</a></td><td></td><td><a href="/T0370578598">info</a></td></tr>
+<tr><td><a href="/T0464575254">Junto a Bach en Leipzig</a></td><td></td><td><a href="/genre."></a></td><td><a href="/NestlVazch">Nestor Vaz</a></td><td></td><td></td><td><a href="/T0464575254">T0464575254</a></td><td>0</td><td>0</td><td><a href="/videos/T0464575254">0</a></td><td></td><td><a href="/T0464575254">info</a></td></tr>
+<tr><td><a href="/Z0002460680">Junto a la Aurora</a></td><td></td><td><a href="/genre."></a></td><td></td><td></td><td></td><td><a href="/Z0002460680">Z0002460680</a></td><td>1</td><td>1</td><td><a href="/videos/Z0002460680">0</a></td><td></td><td><a href="/Z0002460680">info</a></td></tr>
+<tr><td><a href="/T0374142387">Junto a las piedras</a></td><td></td><td><a href="/genre."></a></td><td><a href="/MigueDigen">Miguel Di Genova</a></td><td></td><td></td><td><a href="/T0374142387">T0374142387</a></td><td>1</td><td>1</td><td><a href="/videos/T0374142387">0</a></td><td></td><td><a href="/T0374142387">info</a></td></tr>
+<tr><td><a href="/T0421648250">Junto a las piedras</a></td><td></td><td><a href="/genre."></a></td><td><a href="/MigueDigen">Miguel Di Genova</a></td><td></td><td></td><td><a href="/T0421648250">T0421648250</a></td><td>0</td><td>0</td><td><a href="/videos/T0421648250">0</a></td><td></td><td><a href="/T0421648250">info</a></td></tr>
+<tr><td><a href="/T0370763442">Junto a mi china</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/CayetPugli">Cayetano Puglisi</a></td><td><a href="/ArmanCerem">Armando Cereminati</a></td><td></td><td><a href="/T0370763442">T0370763442</a></td><td>1</td><td>2</td><td><a href="/videos/T0370763442">0</a></td><td></td><td><a href="/T0370763442">info</a></td></tr>
+<tr><td><a href="/T0370957031">Junto a mi china</a></td><td></td><td><a href="/genre."></a></td><td></td><td></td><td></td><td><a href="/T0370957031">T0370957031</a></td><td>0</td><td>0</td><td><a href="/videos/T0370957031">0</a></td><td></td><td><a href="/T0370957031">info</a></td></tr>
+<tr><td><a href="/Z0999990958">Junto a ti</a></td><td></td><td><a href="/genre."></a></td><td></td><td><a href="/GabinCoria">Gabino Coria Peñaloza</a></td><td></td><td><a href="/Z0999990958">Z0999990958</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990958">0</a></td><td></td><td><a href="/Z0999990958">info</a></td></tr>
+<tr><td><a href="/T0370179580">Junto a tu corazón</a></td><td>Hoy como ayer</td><td><a href="/genre.tango">tango</a></td><td><a href="/EnriqFranc">Enrique Francini</a>, <a href="/HectoStamp">Héctor Stamponi</a></td><td><a href="/JosemContu">José María Contursi</a></td><td><a href="/1940">1940</a></td><td><a href="/T0370179580">T0370179580</a></td><td>5</td><td>18</td><td><a href="/videos/T0370179580">5</a></td><td></td><td><a href="/T0370179580">info</a></td></tr>
+<tr><td><a href="/T0370122852">Junto al mar</a></td><td></td><td><a href="/genre.vals">vals</a></td><td><a href="/LucioDagos">Lucio Antonio D'Agostino</a></td><td><a href="/VicenPlane">Vicente Planells del Campo</a></td><td></td><td><a href="/T0370122852">T0370122852</a></td><td>3</td><td>3</td><td><a href="/videos/T0370122852">0</a></td><td></td><td><a href="/T0370122852">info</a></td></tr>
+<tr><td><a href="/Z0999915698">Junto al palenque</a></td><td></td><td><a href="/genre.ranchera">ranchera</a></td><td><a href="/LuisaMotto">Luis Mottolese</a></td><td></td><td></td><td><a href="/Z0999915698">Z0999915698</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999915698">0</a></td><td></td><td><a href="/Z0999915698">info</a></td></tr>
+<tr><td><a href="/Z0999919115">Junto al piano</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a href="/Z0999919115">Z0999919115</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999919115">0</a></td><td></td><td><a href="/Z0999919115">info</a></td></tr>
+<tr><td><a href="/T0370826928">Junto al río</a></td><td></td><td><a href="/genre."></a></td><td><a href="/AnsefAieta">Anselmo F. Aieta</a></td><td><a href="/AnsefAieta">Anselmo F. Aieta</a></td><td></td><td><a href="/T0370826928">T0370826928</a></td><td>0</td><td>0</td><td><a href="/videos/T0370826928">0</a></td><td></td><td><a href="/T0370826928">info</a></td></tr>
+<tr><td><a href="/Z0999915855">Juntos</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/OscarCasta">Oscar Castagniaro</a></td><td><a href="/MarioSotoa">Mario Soto</a></td><td></td><td><a href="/Z0999915855">Z0999915855</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999915855">0</a></td><td></td><td><a href="/Z0999915855">info</a></td></tr>
+<tr><td><a href="/T0426039317">Juntos como ayer</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/RodrdFlore">Rodrigo Flores</a></td><td><a href="/NormaMonte">Norma Montenegro</a></td><td></td><td><a href="/T0426039317">T0426039317</a></td><td>0</td><td>0</td><td><a href="/videos/T0426039317">0</a></td><td></td><td><a href="/T0426039317">info</a></td></tr>
+<tr><td><a href="/T0371294608">Juntos en la vida</a></td><td></td><td><a href="/genre."></a></td><td><a href="/JulioDecar">Julio De Caro</a></td><td></td><td></td><td><a href="/T0371294608">T0371294608</a></td><td>0</td><td>0</td><td><a href="/videos/T0371294608">0</a></td><td></td><td><a href="/T0371294608">info</a></td></tr>
+<tr><td><a href="/T0370755762">Juntos frente al mundo</a></td><td></td><td><a href="/genre."></a></td><td><a href="/MariaMarti">Mariano Mores</a></td><td></td><td></td><td><a href="/T0370755762">T0370755762</a></td><td>0</td><td>0</td><td><a href="/videos/T0370755762">0</a></td><td></td><td><a href="/T0370755762">info</a></td></tr>
+<tr><td><a href="/Z0999917004">Juntos otra vez</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td><a href="/JustoThomp">Justo Ricardo Thompson</a></td><td></td><td><a href="/Z0999917004">Z0999917004</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999917004">0</a></td><td></td><td><a href="/Z0999917004">info</a></td></tr>
+<tr><td><a href="/T0370040860">Juramento</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/FrancCanar">Francisco Canaro</a></td><td><a href="/LuiscAmado">Luis César Amadori</a></td><td></td><td><a href="/T0370040860">T0370040860</a></td><td>3</td><td>7</td><td><a href="/videos/T0370040860">0</a></td><td></td><td><a href="/T0370040860">info</a></td></tr>
+<tr><td><a href="/T0464010954">Juramento</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JosemLorep">José María Lorenzo Perez</a></td><td><a href="/GerarAdroh">Gerardo Adroher</a></td><td></td><td><a href="/T0464010954">T0464010954</a></td><td>1</td><td>1</td><td><a href="/videos/T0464010954">0</a></td><td></td><td><a href="/T0464010954">info</a></td></tr>
+<tr><td><a href="/Z0999900940">Juramento</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/EduarBianc">Eduardo Bianco</a></td><td></td><td></td><td><a href="/Z0999900940">Z0999900940</a></td><td>1</td><td>1</td><td><a href="/videos/Z0999900940">0</a></td><td></td><td><a href="/Z0999900940">info</a></td></tr>
+<tr><td><a href="/Z0999901446">Juramento</a></td><td></td><td><a href="/genre.tango">tango</a></td><td></td><td></td><td></td><td><a href="/Z0999901446">Z0999901446</a></td><td>1</td><td>4</td><td><a href="/videos/Z0999901446">0</a></td><td></td><td><a href="/Z0999901446">info</a></td></tr>
+<tr><td><a href="/Z0999990959">Juramento</a></td><td></td><td><a href="/genre."></a></td><td></td><td></td><td></td><td><a href="/Z0999990959">Z0999990959</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990959">0</a></td><td></td><td><a href="/Z0999990959">info</a></td></tr>
+<tr><td><a href="/Z0999901267">Juramentos</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/GraciDeleo">Graciano De Leone</a></td><td></td><td></td><td><a href="/Z0999901267">Z0999901267</a></td><td>1</td><td>1</td><td><a href="/videos/Z0999901267">0</a></td><td></td><td><a href="/Z0999901267">info</a></td></tr>
+<tr><td><a href="/Z0999901268">Juraste por tu madre</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/EduarPerey">Eduardo Pereyra</a></td><td><a href="/JuanmVelic">Juan Miguel Velich</a></td><td></td><td><a href="/Z0999901268">Z0999901268</a></td><td>2</td><td>2</td><td><a href="/videos/Z0999901268">0</a></td><td></td><td><a href="/Z0999901268">info</a></td></tr>
+<tr><td><a href="/Z0999901269">Juro</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/AngelOrtiz">Ciriaco Ortiz</a></td><td><a href="/LuisaRubis">Luis Rubistein</a></td><td></td><td><a href="/Z0999901269">Z0999901269</a></td><td>2</td><td>2</td><td><a href="/videos/Z0999901269">0</a></td><td></td><td><a href="/Z0999901269">info</a></td></tr>
+<tr><td><a href="/T0416452986">Justicia baturra</a></td><td></td><td><a href="/genre.paso doble">paso doble</a></td><td><a href="/JoseaRuizd">José Ruiz de Azagra Sanz</a>, <a href="/TeodoGutie">Teodoro Gutiérrez Fernández</a>, <a href="/JoaquMotaa">Joaquín Mota</a></td><td><a href="/JoseaRuizd">José Ruiz de Azagra Sanz</a></td><td></td><td><a href="/T0416452986">T0416452986</a></td><td>2</td><td>2</td><td><a href="/videos/T0416452986">0</a></td><td></td><td><a href="/T0416452986">info</a></td></tr>
+<tr><td><a href="/T0370122896">Justicia criolla</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/RafaeYorio">Rafael Iriarte</a></td><td><a href="/FrancBranc">Francisco Brancatti</a></td><td><a href="/1925">1925</a></td><td><a href="/T0370122896">T0370122896</a></td><td>7</td><td>15</td><td><a href="/videos/T0370122896">0</a></td><td></td><td><a href="/T0370122896">info</a></td></tr>
+<tr><td><a href="/T0372888102">Justicia criolla</a></td><td></td><td><a href="/genre."></a></td><td></td><td></td><td><a href="/1897">1897</a></td><td><a href="/T0372888102">T0372888102</a></td><td>0</td><td>0</td><td><a href="/videos/T0372888102">0</a></td><td></td><td><a href="/T0372888102">info</a></td></tr>
+<tr><td><a href="/Z0999990960">Justicia maldita</a></td><td></td><td><a href="/genre."></a></td><td><a href="/OscarVazqu">Oscar Vázquez</a></td><td></td><td></td><td><a href="/Z0999990960">Z0999990960</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999990960">0</a></td><td></td><td><a href="/Z0999990960">info</a></td></tr>
+<tr><td><a href="/T0464007428">Justino nomás</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaBauer">Juan Baüer (Firpito)</a></td><td><a href="/AntonCasci">Antonio Casciani</a></td><td></td><td><a href="/T0464007428">T0464007428</a></td><td>0</td><td>0</td><td><a href="/videos/T0464007428">0</a></td><td></td><td><a href="/T0464007428">info</a></td></tr>
+<tr><td><a href="/Z0999916862">Justito a las seis</a></td><td></td><td><a href="/genre.vals">vals</a></td><td></td><td></td><td></td><td><a href="/Z0999916862">Z0999916862</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999916862">0</a></td><td></td><td><a href="/Z0999916862">info</a></td></tr>
+<tr><td><a href="/T0373189140">Justo a tiempo</a></td><td></td><td><a href="/genre."></a></td><td><a href="/SaulaCosen">Saúl Cosentino</a></td><td><a href="/BernaMitni">Chico Novarro</a></td><td></td><td><a href="/T0373189140">T0373189140</a></td><td>1</td><td>1</td><td><a href="/videos/T0373189140">0</a></td><td></td><td><a href="/T0373189140">info</a></td></tr>
+<tr><td><a href="/T0370015692">Justo el treinta y uno</a></td><td>Justo el 31 | Justo el trenta y uno</td><td><a href="/genre.tango">tango</a></td><td><a href="/EnriqDisce">Enrique Santos Discépolo</a></td><td><a href="/EnriqDisce">Enrique Santos Discépolo</a>, <a href="/RaimuRadae">Ray Rada</a></td><td><a href="/1930">1930</a></td><td><a href="/T0370015692">T0370015692</a></td><td>14</td><td>40</td><td><a href="/videos/T0370015692">0</a></td><td></td><td><a href="/T0370015692">info</a></td></tr>
+<tr><td><a href="/Z0999919089">Justo hoy</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/PascuMamon">Pascual 'Cholo' Mamone</a></td><td></td><td></td><td><a href="/Z0999919089">Z0999919089</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999919089">0</a></td><td></td><td><a href="/Z0999919089">info</a></td></tr>
+<tr><td><a href="/T0370431847">Justo un año</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/MigueBucin">Miguel Bucino</a></td><td><a href="/MigueBucin">Miguel Bucino</a></td><td></td><td><a href="/T0370431847">T0370431847</a></td><td>1</td><td>5</td><td><a href="/videos/T0370431847">0</a></td><td></td><td><a href="/T0370431847">info</a></td></tr>
+<tr><td><a href="/Z0999905269">Jutro zapomnisz</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/ZygmuWiehl">Zygmunt Wiehler</a></td><td><a href="/WiktoKrupi">Wiktor Krupiński</a></td><td></td><td><a href="/Z0999905269">Z0999905269</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905269">0</a></td><td>A</td><td><a href="/Z0999905269">info</a></td></tr>
+<tr><td><a href="/T0370040962">Juventud</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/OsvalPugli">Osvaldo Pugliese</a></td><td><a href="/EduarMoren">Eduardo Moreno</a></td><td></td><td><a href="/T0370040962">T0370040962</a></td><td>1</td><td>2</td><td><a href="/videos/T0370040962">0</a></td><td></td><td><a href="/T0370040962">info</a></td></tr>
+<tr><td><a href="/T0464663486">Juventud</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JuanaBauer">Juan Baüer (Firpito)</a></td><td><a href="/RoberAubri">Roberto Aubriot Barboza</a></td><td><a href="/1929">1929</a></td><td><a href="/T0464663486">T0464663486</a></td><td>2</td><td>12</td><td><a href="/videos/T0464663486">0</a></td><td></td><td><a href="/T0464663486">info</a></td></tr>
+<tr><td><a href="/Z0999912729">Juventud del cuarenta</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JorgeArduh">Jorge Arduh</a></td><td></td><td></td><td><a href="/Z0999912729">Z0999912729</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999912729">0</a></td><td></td><td><a href="/Z0999912729">info</a></td></tr>
+<tr><td><a href="/Z0999905270">Już dziś nie płaczę</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/ZygmuWiehl">Zygmunt Wiehler</a></td><td><a href="/WalerRudni">Walery Jastrzębiec-Rudnicki</a></td><td></td><td><a href="/Z0999905270">Z0999905270</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905270">0</a></td><td></td><td><a href="/Z0999905270">info</a></td></tr>
+<tr><td><a href="/Z0999905271">Już nic nie zostało z miłości twej</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/ErwinHents">Erwin Hentschel</a></td><td><a href="/AndrzWlast">Andrzej Włast</a></td><td></td><td><a href="/Z0999905271">Z0999905271</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905271">0</a></td><td></td><td><a href="/Z0999905271">info</a></td></tr>
+<tr><td><a href="/Z0999905272">Już nie kocham cię</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/HenryGolda">Henryk Gold</a></td><td><a href="/AndrzWlast">Andrzej Włast</a></td><td></td><td><a href="/Z0999905272">Z0999905272</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905272">0</a></td><td></td><td><a href="/Z0999905272">info</a></td></tr>
+<tr><td><a href="/T9059256370">Już nie mogę dłużej kryć</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/HenryWarsz">Henryk Wars</a></td><td><a href="/JerzyGlejg">Jerzy Jurandot</a></td><td></td><td><a href="/T9059256370">T9059256370</a></td><td>0</td><td>0</td><td><a href="/videos/T9059256370">0</a></td><td></td><td><a href="/T9059256370">info</a></td></tr>
+<tr><td><a href="/Z0999905273">Już nie zrozumiesz</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/MieczGuzaw">Mieczysław Guzawer</a></td><td><a href="/WaclaStepi">Wacław Stępień</a></td><td></td><td><a href="/Z0999905273">Z0999905273</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905273">0</a></td><td></td><td><a href="/Z0999905273">info</a></td></tr>
+<tr><td><a href="/T9059703503">Już nigdy</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/JerzyPeter">Jerzy Petersburski</a></td><td><a href="/AndrzWlast">Andrzej Włast</a></td><td></td><td><a href="/T9059703503">T9059703503</a></td><td>1</td><td>1</td><td><a href="/videos/T9059703503">5</a></td><td>A</td><td><a href="/T9059703503">info</a></td></tr>
+<tr><td><a href="/Z0999905274">Już nigdy nie uwierzę</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/WladyEiger">Władysław Eiger</a></td><td><a href="/ZenonFried">Zenon Friedwald</a></td><td></td><td><a href="/Z0999905274">Z0999905274</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905274">0</a></td><td></td><td><a href="/Z0999905274">info</a></td></tr>
+<tr><td><a href="/Z0999905275">Już odchodzę na zawsze</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/AntonScata">Antonio Scatasso</a></td><td><a href="/MichaTyszk">Michał Tyszkiewicz</a></td><td></td><td><a href="/Z0999905275">Z0999905275</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905275">0</a></td><td></td><td><a href="/Z0999905275">info</a></td></tr>
+<tr><td><a href="/Z0999905276">Już się prześnił sen o miłości</a></td><td></td><td><a href="/genre.tango">tango</a></td><td><a href="/WladyDanil">Władysław Daniłowski</a></td><td><a href="/TomaaRunow">Konrad Tom</a></td><td></td><td><a href="/Z0999905276">Z0999905276</a></td><td>0</td><td>0</td><td><a href="/videos/Z0999905276">0</a></td><td></td><td><a href="/Z0999905276">info</a></td></tr>
+<tr><td><a href="/T9059256938">Już taki jestem zimny drań</a></td><td></td><td><a href="/genre.fox trot">fox trot</a></td><td><a href="/HenryWarsz">Henryk Wars</a></td><td><a href="/JerzyZymsa">Jerzy Nel</a>, <a href="/LudwiKalus">Ludwik Starski</a></td><td></td><td><a href="/T9059256938">T9059256938</a></td><td>1</td><td>1</td><td><a href="/videos/T9059256938">0</a></td><td></td><td><a href="/T9059256938">info</a></td></tr>
+</tbody></table>
+
+</div></div></div></main>
+<footer>
+<div class="ti_footer">
+<div class="ti_footer_inner">
+<section class="all_left"><h2>Feedback</h2>
+<form id="contactform" method="post" action="/works/J#feedbackanchor">
+<div id="contactform_div">
+<table><tr>
+<td><a id="feedbackanchor">&zwnj;</a><input type="hidden" name="request" value="tango.info/works/J"
+ /><textarea onfocus='this.select()'  name="msg_content" rows="4" cols="55">Type feedback here. Add email address if you want an answer. Please do not ask about local tango activities. All we know is on the website.</textarea></td>
+</tr>
+<tr><td>Antispamcode:<code>s49</code>
+	enter code: <input type="text" name="ascode" id="ascode" size="2"  />  <input type="submit" value="submit" /></td>
+</tr></table>
+</div></form>
+</section><section class="all_center"><h2>Languages</h2><ul id="lang_sel" class="ti_functions_html_string.php"><li><a href="/bul" title="български" hreflang="bg-BG">bul</a></li><li><a href="/cat" title="català" hreflang="ca-ES">cat</a></li><li><a href="/ces" title="čeština" hreflang="cs-CZ">ces</a></li><li><a href="/dan" title="dansk" hreflang="da-DK">dan</a></li><li><a href="/deu" title="deutsch" hreflang="de-DE">deu</a></li><li><a href="/ell" title="ελληνικά" hreflang="el-GR">ell</a></li><li><span title="english">eng</span></li><li><a href="/est" title="eesti" hreflang="ee-EE">est</a></li><li><a href="/fra" title="français" hreflang="fr-FR">fra</a></li><li><a href="/fin" title="suomi" hreflang="fi-FI">fin</a></li><li><a href="/hun" title="magyar" hreflang="hu-HU">hun</a></li><li><a href="/hrv" title="hrvatski" hreflang="hr-HR">hrv</a></li><li><a href="/ita" title="italiano" hreflang="it-IT">ita</a></li><li><a href="/lav" title="latviešu" hreflang="lv-LV">lav</a></li><li><a href="/lit" title="lietuviškai" hreflang="lt-LT">lit</a></li><li><a href="/mlt" title="malti" hreflang="mt-MT">mlt</a></li><li><a href="/nld" title="nederlands" hreflang="nl-NL">nld</a></li><li><a href="/nob" title="bokmål" hreflang="nb-NO">nob</a></li><li><a href="/pol" title="polski" hreflang="pl-PL">pol</a></li><li><a href="/por" title="português" hreflang="pt-PT">por</a></li><li><a href="/ron" title="română" hreflang="ro-RO">ron</a></li><li><a href="/rus" title="русский" hreflang="ru-RU">rus</a></li><li><a href="/slk" title="slovenčina" hreflang="sk-SK">slk</a></li><li><a href="/slv" title="slovenščina" hreflang="sl-SI">slv</a></li><li><a href="/spa" title="español" hreflang="es-ES">spa</a></li><li><a href="/srp" title="српски" hreflang="sr-RS">srp</a></li><li><a href="/swe" title="svenska" hreflang="sv-SE">swe</a></li><li><a href="/tur" title="türkçe" hreflang="tr-TR">tur</a></li><li><a href="/ukr" title="украї́нська" hreflang="uk-UA">ukr</a></li><li><a href="/languages">...</a></li></ul></section><section class="all_right"><h2>Site info</h2><ul id="site_menu"><li><a href="/tangoinfo/eng">home</a></li><li><a href="/tangoinfo/eng/contact">contact</a></li><li><a href="/tangoinfo/eng/credits">credits</a></li><li><a href="/tangoinfo/eng/donate">donate</a></li><li><a href="/tangoinfo/eng/standards">standards</a></li><li><a href="/tangoinfo/eng/statistics">statistics</a></li><li><a href="/tangoinfo/eng/subsites">subsites</a></li><li><a href="/tangoinfo/eng/disclaimer">disclaimer</a></li></ul></section><section class="page_info"><h2>Page info</h2>2017-03-18 03:34:31<a href="http://validator.w3.org/check?uri=https%3A%2F%2Ftango.info%2Fworks%2FJ" title="HTML Validator">/</a><span title="time to generate the page">0.6638<abbr title="seconds">s</abbr></span><a href="http://jigsaw.w3.org/css-validator/validator?uri=https://tango.info/works/J" title="CSS Validator">.</a></section></div></div></footer>
+<script type="text/javascript" src="/x/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="/x/js/jquery.tablesorter.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() 
+		{ 
+	    	$('.table-autosort').tablesorter(); 
+		} 
+	); 
+	$(document).ready(function() 
+		{ 
+	    	$('table.sortable').tablesorter(); 
+		} 
+	); 
+</script>
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="/x/piwik/latest/piwik/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+        g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+
+</script>
+<noscript><p><img src="/x/piwik/latest/piwik/piwik.php?idsite=1" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+	
+	</body></html>
