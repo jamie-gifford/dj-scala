@@ -66,7 +66,7 @@ abstract class PlaylistFile(private val file0: File, val lib : Library) extends 
     if (rerooted != tracks) {
       val old = saveToString
       tracks0 = rerooted
-      Log.info("Rewrite playlist " + file + "\nfrom \n" + old + "to\n" + saveToString)
+      Log.info("Rewrite playlist " + file);
       true
     } else {
       false
@@ -115,7 +115,7 @@ abstract class PlaylistFile(private val file0: File, val lib : Library) extends 
       val old = saveToString
       lib.markDirty()
       tracks0 = adjusted
-      Log.info("Rewrite playlist from \n" + old + "\nto\n" + saveToString)
+      Log.info("Rewrite playlist " + file);
       return true
     } else {
       return false
