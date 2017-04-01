@@ -15,10 +15,25 @@ object Library_Test {
 
   def main(args: Array[String]) {
 
-    val l = Library.load(new File("/home/djs/replica-dj/library.djs"))
-    
-    l.update()
+     val l = Library.load(new File("/home/djs/replica-dj/library.djs"))
+  //  val l = Library.load(new File("/home/djs/tmp/sound.djs"))
 
+    //l.add(new File("/home/djs/tmp/sound"));
+    
+ //   val b = l.m.title("Blue")
+    
+ //   println(b)
+    
+ //   b.synchroniseComposer
+    
+//    println(l.m)
+
+
+    
+    		 l.update()
+//    l.m.synchronise
+    
+    /*
     val x = l.m.tvm
 
     var already = 0
@@ -50,7 +65,7 @@ object Library_Test {
     println("Already " + already)
 
     x.synchroniseComposer
-    
+    */
     l.write()
     
     /*

@@ -104,6 +104,14 @@ public class Lltag implements ITag {
 
             Set<String> keys = new HashSet<>();
             
+            // There is confusion about "DESCRIPTION" and "COMMENT".
+            // Seems like COMMENT is the right tag now but "DESCRIPTION" was used
+            // in the past. So read from either, with preference for COMMENT,
+            // and write to COMMENT (erasing DESCRIPTION)
+            
+            String comment = null;
+            String description = null;
+            
             for (String line : lines) {
                 line = line.trim();
                 int index = line.indexOf('=');
@@ -169,7 +177,10 @@ public class Lltag implements ITag {
                 		break;
                     	
                     case "DESCRIPTION":
-                        setComment(value);
+                    	description = value;
+                        break;
+                    case "COMMENT":
+                    	comment = value;
                         break;
                     case "REPLAYGAIN_TRACK_GAIN":
                     	setRGGain(value);
@@ -182,6 +193,12 @@ public class Lltag implements ITag {
                         break;
                     }
 
+                }
+                
+                if (comment != null) {
+                	setComment(comment);
+                } else if (description != null) {
+                	setComment(description);
                 }
             }
 
@@ -391,7 +408,7 @@ public class Lltag implements ITag {
 		update("GENRE", getGenre());
 		update("DATE", getYear());
 		update("FMPS_RATING", getRating() != -1 ? "" + getRating() : null);
-		update("DESCRIPTION", getComment());
+		update("COMMENT", getComment());
 		if (getBPM() != null) {
 			update("BPM", getBPM().toString());
 		}
@@ -406,6 +423,10 @@ public class Lltag implements ITag {
 
 		for (Entry e : entries) {
 			if (e.value == null) {
+				continue;
+			}
+			// Skip "DESCRIPTION", this is now COMMENT
+			if ("DESCRIPTION".equals(e.key)) {
 				continue;
 			}
 

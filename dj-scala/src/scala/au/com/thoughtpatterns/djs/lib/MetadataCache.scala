@@ -154,17 +154,34 @@ object MetadataCache {
       // But refuse to do so if we are missing a title (as a safety net in case lltag has failed)
       
       val tag = new TagFactory().getTag(file);
+
+      // Tag write - to be kept in synch with Metadata fields
+      // ----------------------------
+      
+      //  title: String,
       tag.setTitle(md.title)
+      //  artist: String,
       tag.setArtist(md.artist)
-      tag.setComposer(md.composer)
+      //  album: String,
       tag.setAlbum(md.album)
+      //  year: RecordingDate,
       tag.setYear(md.year)
+      //  comment: String,
       tag.setComment(md.comment)
+      //  genre: String,
       tag.setGenre(md.genre)
+      //  track: Int,
       tag.setTrack(md.track)
+      //  rating: Option[Double],
       md.rating match { case Some(x) => tag.setRating(x) case _ =>  }
+      //  bpm:  Option[Double] = None,
       md.bpm match { case Some(x) => tag.setBPM(x) case _ =>  }
+      //  rg: Option[ReplayGainData] = None,
       md.rg match { case Some(x) => { tag.setRGGain(x.gain); tag.setRGPeak(x.peak); } case _ => }
+      //  composer: String = null
+      tag.setComposer(md.composer)
+
+      // ------------------------------
       
       tag.write()
       file.setLastModified(mdTs)
@@ -194,33 +211,64 @@ object MetadataCache {
     }
   }
   
+  /**
+   * JSON write - to be kept in synch with Metadata fields.
+   */
   def writeMdFile(cmd: CachedMetadata, mdFile: File): Unit = {
 		val json = new AJsonyObject();
 		val md = cmd.m
+
+		// -----------------------------------
+    //  title: String,
 		json.set("title", md.title);
-		json.set("artist", md.artist);
-		json.set("composer", md.composer);
-		json.set("album", md.album);
+
+		//  artist: String,
+    json.set("artist", md.artist);
+
+    //  album: String,
+    json.set("album", md.album);
+
+    //  year: RecordingDate,
 		if (md.year != null) {
 			json.set("date", md.year.toString()); 
 		}
+
+		//  comment: String,
+		json.set("comment", md.comment);
+
+    //  genre: String,
 		json.set("genre", md.genre);
+
+		//  track: Int 
+		
+		ScalaBugHelper.setJsony(json, "track", md.track);
+		
+    //  rating: Option[Double],
 		md.rating match {
 		  case Some(x) => json.set("rating", x)
 		  case _ => 
 		}
-		md.bpm match {
+
+		//  bpm:  Option[Double] = None,
+    md.bpm match {
 		  case Some(x) => json.set("bpm", x)
 		  case _ => 
 		}
-		md.rg match {
+
+    //  rg: Option[ReplayGainData] = None,
+    md.rg match {
 		  case Some(x) => {
 		    json.set("rg_gain", x.gain)
 		    json.set("rg_peak", x.peak)
 		  }
 		  case None =>
 		}
-		
+
+    //  composer: String = null
+    json.set("composer", md.composer);
+
+		// -----------------------------------
+
 		Log.info("Writing " + mdFile)
 		val mdw = new FileWriter(mdFile);
 		mdw.write(json.toJson());

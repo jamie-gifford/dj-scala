@@ -2,6 +2,9 @@ package au.com.thoughtpatterns.djs.lib
 
 import au.com.thoughtpatterns.djs.util.RecordingDate
 
+/**
+ * If the fields here change, the mdFile json caching code in MetadataCache needs to be updated too.
+ */
 @SerialVersionUID(1L)
 case class Metadata(
   title: String,

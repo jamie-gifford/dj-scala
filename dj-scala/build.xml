@@ -82,6 +82,10 @@
                 <exclude name="**/*.java"/>
                 <exclude name="**/*.scala"/>
             </fileset>
+            <fileset dir="${dj_basedir}/src/scala">
+                <exclude name="**/*.java"/>
+                <exclude name="**/*.scala"/>
+            </fileset>
         </copy>
     	
     	<mkdir dir="${dj_lib}"/>
