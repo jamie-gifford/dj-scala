@@ -29,7 +29,7 @@ public class Lltag implements ITag {
 	}
 
 	private List<Entry> entries = new ArrayList<>();
-
+	
 	private List<Entry> updated = new ArrayList<>();
 
 	private File file;
@@ -119,15 +119,15 @@ public class Lltag implements ITag {
                     String key = line.substring(0, index);
                     String value = line.substring(index + 1);
 
+                    if (keys.contains(key)) {
+                        continue;
+                    }
+                    
                     Entry e = new Entry();
                     e.key = key;
                     e.value = value;
                     
                     entries.add(e);
-                    
-                    if (keys.contains(key)) {
-                        continue;
-                    }
                     
                     keys.add(key);
                     
