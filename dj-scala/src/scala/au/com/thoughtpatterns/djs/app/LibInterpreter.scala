@@ -11,6 +11,7 @@ import java.io.BufferedReader
 import java.io.PrintWriter
 import au.com.thoughtpatterns.djs.webapp.DJSession
 import au.com.thoughtpatterns.djs.webapp.Desktop
+import au.com.thoughtpatterns.djs.clementine.Clementine
 
 class LibInterpreter(val library: Library, val input: Option[BufferedReader], val output: PrintWriter)
   extends ILoop(input, output) {
@@ -46,6 +47,7 @@ class LibInterpreter(val library: Library, val input: Option[BufferedReader], va
     bindVal("l", library)
     bindVal("m", library.music)
     bindVal("q", new Player(library))
+    bindVal("clem", new Clementine());
     
     bindVal("audacious", PlayerInterfaceFactory.useAudacious _);
     bindVal("clementine", PlayerInterfaceFactory.useClementine _);

@@ -11,24 +11,30 @@ class NameFixer(music: ManagedMusic) {
   
   val perfMap = (performances map { x => ( x -> x ) }).toMap
   
-  def find = {
-    
-    val result = for (m <- music; 
+  val find = (for (m <- music; 
          p = m.toApproxPerformance.toSpanishPerformance;
          p2 = perfMap.get(p);
          q <- p2;
          if q.title.toString() != p.title.toString()
-         ) yield ( m -> q )
-        
+         ) yield ( m -> q )).toSeq.toMap
+
+  def preview : ManagedMusic = {
     var i = 0;
-    for (x <- result; md <- x._1.md) {
+    for (x <- find.keys; md <- x.md; perf <- find.get(x)) {
       i = i + 1
-      println((i) + ": " + md.title + " => " + x._2.title + " (" + md.artist + ")")
-      //fix(x._1, x._2)
+      println((i) + ": " + md.title + " => " + perf.title + " (" + md.artist + ")")
     }
+    music.filtre { x => find.keySet.contains(x) }
   }
 
-  def fix(m: MusicFile, p: SpanishPerformance) = {
+  def rename : ManagedMusic = {
+    for (x <- find; md <- x._1.md) {
+      fix(x._1, x._2)
+    }
+    music.filtre { x => find.keySet.contains(x) }
+  }
+  
+  private def fix(m: MusicFile, p: SpanishPerformance) = {
     if (m.file.exists) {
       m.md match {
         case Some(md) => {
@@ -43,7 +49,5 @@ class NameFixer(music: ManagedMusic) {
 
     this
   }
-
-  
   
 }

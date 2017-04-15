@@ -688,6 +688,15 @@ abstract class ManagedMusic(
   def noRG : ManagedMusic = this.require(x => {
       x.rg == null || x.rg.isEmpty
   })
+  
+  def previewTitles : ManagedMusic = {
+    val fixer = new NameFixer(this)
+    fixer.preview
+  }
+  def fixTitles : ManagedMusic = {
+    val fixer = new NameFixer(this)
+    fixer.rename
+  }
 
   // ---------------
   // Dump to CSV

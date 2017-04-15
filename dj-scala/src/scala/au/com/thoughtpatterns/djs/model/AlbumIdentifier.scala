@@ -4,6 +4,7 @@ import au.com.thoughtpatterns.djs.disco.Types.TiAlbumSide
 import au.com.thoughtpatterns.djs.disco.Types.TINT
 
 import scala.collection.JavaConversions._
+import au.com.thoughtpatterns.djs.util.Log
 
 case class Item(track: Option[Integer], artist: String, title: String)
 
@@ -31,6 +32,10 @@ class AlbumIdentifier(items: List[Item]) {
       val s = score(as, false)
       as -> s
     }).toMap 
+    
+    val XXX = albums.toList.get(0)
+    Log.info("Identify against " + scores.keySet.size + " albums...")
+    
     scores.keys.toList.sortBy({scores.getOrElse(_, 0d)})
   }
 

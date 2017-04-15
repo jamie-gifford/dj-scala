@@ -10,8 +10,6 @@ object NameFixer_Test {
 
     val f = new NameFixer(l.m.tvm.byTitle)
     
-    f.find
-    
     //println(found)
   }
     

@@ -528,6 +528,10 @@ Refactorings
  
    * synchronise with tango.info to last n days (based on TIN=XXX;SIDE=S) comments
 
+   m.previewTitles, m.fixTitles
+ 
+   * update track titles to match case, accents from tango.info
+
 Playlist
 
    p.transcribeToRTF

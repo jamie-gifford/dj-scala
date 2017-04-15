@@ -4,14 +4,15 @@ import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.mortbay.log.Log;
-
 import au.com.thoughtpatterns.core.util.Resources;
 import au.com.thoughtpatterns.core.util.SystemException;
+import au.com.thoughtpatterns.core.util.Util;
 import au.com.thoughtpatterns.djs.lib.MusicFile;
 import au.com.thoughtpatterns.djs.lib.PlaylistFile;
 
@@ -64,6 +65,11 @@ public class Clementine implements PlayerInterface {
 		}
 		
 		return null;
+	}		
+
+	public String getMetadata(int i) throws Exception {
+		String md = dbus("/TrackList", "GetMetadata", "" + i);
+		return md;
 	}		
 
 	public int getLength() throws Exception {
@@ -121,6 +127,67 @@ public class Clementine implements PlayerInterface {
 
 		String out = new String(data);
 		return out;
+	}
+	
+	public static class Song {
+		
+		public String url;
+		public String artist;
+		public String title;
+		public String album;
+		public Integer track;
+		public Integer seconds;	
+		
+		public String toString() {
+			return title + ", " + artist + ", " + album;
+		}
+		
+	}
+	
+	public List<Song> getTracks() throws Exception {
+		
+		int length = getLength();
+		List<Song> out = new ArrayList<>();
+		
+		for (int i = 0; i < length; i++) {
+			String md = getMetadata(i);
+			
+			Map<String, String> meta = metadata(md);
+			
+			Song s = new Song();
+			s.album = meta.get("album");
+			s.artist = meta.get("artist");
+			s.title = meta.get("title");
+			s.track = parseInt(meta.get("tracknumber"));
+			s.seconds = parseInt(meta.get("time"));
+			s.url = meta.get("location");
+					
+			out.add(s);
+		}
+		
+		return out;
+	}
+	
+	private Map<String, String> metadata(String md) {
+		String[] lines = md.split("\n");
+		Pattern p = Pattern.compile("^([^:]+): (.*)");
+		Map<String, String> out = new HashMap<>();
+		for (String line : lines) {
+			Matcher m = p.matcher(line);
+			if (m.matches()) {
+				String key = m.group(1);
+				String val = m.group(2);
+				out.put(key,  val);
+			}
+		}
+		return out;
+	}
+	
+	private Integer parseInt(String in) {
+		if (Util.empty(in)) {
+			return null;
+		}
+		return Integer.parseInt(in);
 	}
 
 }

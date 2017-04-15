@@ -33,6 +33,13 @@ class Synchroniser(lib: Library, list: ManagedMusic) {
       (tin, side)
     }
 
+    for (
+      m <- list;
+      md <- m.md) {
+      Log.info(md + ": " + m.extraProps.getOrElse("ti_last_update", "2000-01-01"));
+    }
+
+    
     val update = for (
       m <- list;
       md <- m.md;

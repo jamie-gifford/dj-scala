@@ -57,6 +57,14 @@ public class TangoInfo {
 			this.trackNo = trackNo;
 		}
 		
+		public static TINT parse(String str) {
+			String[] bits = str.split("-");
+			String tinp = bits[0];
+			int discNo = Integer.parseInt(bits[1]);
+			int trackNo = Integer.parseInt(bits[2]);
+			return new TINT(tinp, discNo, trackNo);
+		}
+		
 		public String toString() {
 			return tinp + "-" + discNo + "-" + trackNo;
 		}
@@ -380,7 +388,60 @@ public class TangoInfo {
 		}
 
 	}
+
+	public List<Track> fetchTracks() {
+		List<Track> out = new ArrayList<>();
+		for (char letter = 'A'; letter <= 'Z'; letter++) {
+			fetchTracks(Character.toString(letter), out);
+		}
+		return out;
+	}
 	
+	private void fetchTracks(String letter, List<Track> out) {
+		
+		try {
+			URL f = new URL("file:tangoinfo/tracks/" + letter);
+			Document doc = loadDoc(f);
+
+			// log.debug("Read " + doc.outerHtml());
+			
+			Elements rows = doc.select("table.listing.sortable tbody tr");
+
+			log.debug("Fetching tracks for " + letter + " : " + rows.size() + " rows");
+
+			if (rows.size() < 1) {
+				log.info("Unparseable response from tango.info");
+				return;
+			}
+
+			
+			for (Element row : rows) {
+				
+				Elements tds = row.select("td");
+				
+				Performance w = new Performance();
+				
+				w.title = tds.get(1).text();
+				w.tiwc = tds.get(2).text();
+				w.genre = tds.get(3).text();
+				w.orchestra = tds.get(4).text();
+				w.vocalist = tds.get(5).text();
+				w.date = tds.get(7).text();
+				w.duration = tds.get(8).text();
+
+				Track t = new Track();
+				t.perf = w;
+				t.tint = TINT.parse(tds.get(9).text());
+				
+				out.add(t);
+			}
+
+		} catch (Exception ex) {
+			throw new SystemException(ex);
+		}
+
+	}
+
 	private Document loadDoc(URL url) throws IOException {
 		InputStream is = url.openStream();
 		Document doc = DataUtil.load(is, "utf8", url.toString());
@@ -398,6 +459,12 @@ public class TangoInfo {
 		String date;
 		String duration;
 		
+	}
+
+	public static class Track {
+		
+		Performance perf;
+		TINT tint;
 	}
 
 	

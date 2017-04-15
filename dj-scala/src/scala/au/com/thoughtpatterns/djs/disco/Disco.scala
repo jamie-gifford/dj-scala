@@ -23,6 +23,8 @@ import au.com.thoughtpatterns.djs.disco.Types.parseTINT
 import au.com.thoughtpatterns.djs.lib
 import au.com.thoughtpatterns.djs.lib.Library
 import au.com.thoughtpatterns.djs.util.RecordingDate
+import au.com.thoughtpatterns.core.util.Resources
+import java.io.InputStreamReader
 
 @SerialVersionUID(1L)
 class Disco(lib: Option[Library], factories: List[Disco.EquivalenceFactory] = List()) extends Serializable {
@@ -315,7 +317,13 @@ object Disco {
     }
 
     lazy val tiTracks = {
-      val rows = (new CsvUtils()).fromCsv(new FileReader("ti-tracks.csv"))
+      
+      val in = getClass.getClassLoader.getResource("au/com/thoughtpatterns/djs/disco/tangoinfo/tangotracks.csv").openStream();
+      val reader = new InputStreamReader(in)
+      
+      val rows = (new CsvUtils()).fromCsv(reader)
+      reader.close()
+
       for {
         row <- rows.toList
         maybe = parseTINT(row(7))
@@ -323,6 +331,7 @@ object Disco {
       } yield {
         TiTrack(row(0), row(2), TiArtist(row(3), cleanVoc(row(4))), RecordingDate.parse(row(5)), maybe.get)
       }
+      
     }
 
     lazy val tintMap: Map[TINT, TiTrack] = (for { t <- tiTracks } yield { (t.tint, t) }).toMap
