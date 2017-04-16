@@ -33,7 +33,7 @@ public class Track implements Serializable {
     }
     
     public Performance toSong() {
-    	Performance s = new Performance(title, getArtist(), genre, year);
+    	Performance s = new Performance(title, getArtist(), genre, getYear());
         return s;
     }
     

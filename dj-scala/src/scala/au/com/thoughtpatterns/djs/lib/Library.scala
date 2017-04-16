@@ -532,6 +532,11 @@ Refactorings
  
    * update track titles to match case, accents from tango.info
 
+   m.identify, m.applyIdentify
+
+   * use Bayes model to identify tracks, write candidates to /tmp/identify.csv; or read /tmp/identify.csv with 
+     marked accepted tracks and apply to files.
+
 Playlist
 
    p.transcribeToRTF

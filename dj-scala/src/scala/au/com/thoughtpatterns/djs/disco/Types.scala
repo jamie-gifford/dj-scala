@@ -35,6 +35,19 @@ object Types extends Serializable {
       case _ => Some(TINT(tin, Integer.parseInt(side), Integer.parseInt(track)))
     }
   }
+  
+  def parseArtist(str: String) : TiArtist = {
+    if (str == null) {
+      TiArtist(null, null)
+    } else {
+      val bits = str.split(", voc.");
+      if (bits.length == 1) {
+        TiArtist(str, null)
+      } else {
+        TiArtist(bits(0), bits(1))
+      }
+    }
+  }
 
   private val YYYY = "([0-9]{4})?.*".r
   

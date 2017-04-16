@@ -1,9 +1,9 @@
 package au.com.thoughtpatterns.dj.disco.tangoinfo;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -126,19 +126,19 @@ public class Tracks implements Serializable {
         return ps;
     }
 
-    public static Tracks load(File file) {
+    public static Tracks load(Reader reader) {
 
         try {
             CsvUtils csv = new CsvUtils();
-            List<String[]> rows = csv.fromCsv(new FileReader(file));
-
+            List<String[]> rows = csv.fromCsv(reader);
+            
             Tracks perfs = new Tracks();
             
             for (String[] row : rows) {
                 Track p = new Track();
                 int i = 0;
                 p.title = row[i++];
-                p.tiwc = row[i++];
+                p.tiwc = row[i++]; 
                 p.genre = row[i++];
                 p.orchestra = row[i++];
                 p.vocalists = row[i++];
@@ -152,6 +152,12 @@ public class Tracks implements Serializable {
             
         } catch (Exception ex) {
             throw new SystemException(ex);
+        } finally {
+        	try {
+        		reader.close();
+        	} catch (IOException ex) {
+        		throw new SystemException(ex);
+        	}
         }
 
     }

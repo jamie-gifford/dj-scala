@@ -17,9 +17,8 @@ object Library_Test {
 
   def main(args: Array[String]) {
 
-    
-     //val l = Library.load(new File("/home/djs/replica-dj/library.djs"))
-     
+     val l = Library.load(new File("/home/djs/tmp/sound.djs"))
+
      //val clem = new Clementine();
      
      //val tracks = clem.getTracks();

@@ -22,6 +22,7 @@ import com.tutego.jrtf.RtfText
 import com.tutego.jrtf.RtfPara
 import scala.collection.JavaConverters._
 import com.tutego.jrtf.RtfHeader
+import au.com.thoughtpatterns.djs.model.PerformanceIdentifier
 
 trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with Formatter {
 
@@ -717,6 +718,49 @@ abstract class ManagedMusic(
     pw.close()
 
   }
+
+  // ---------------
+  // Model-based identification
+  
+  
+  def identify(artist: Option[String]) : ManagedMusic = {
+    
+    val identifier = new PerformanceIdentifier(artist)
+    
+    val out = new File("/tmp/identified.csv")
+    
+    identifier.save(this, out)
+    
+    Log.info("Wrote data to " + out)
+    
+    this
+  }
+  
+  def applyIdentify() : ManagedMusic = {
+    
+    val identifier = new PerformanceIdentifier(None)
+    val in = new File("/tmp/identified.csv")
+    
+    val map = identifier.load(in)
+    
+    for (m <- iterator; file = m.file; if (map.keySet.contains(file))) {
+      val perf = map.getOrElse(file, null)
+      val tag = new TagFactory().getTag(m.file)
+      tag.setArtist(perf.artist.toString)
+      tag.setTitle(perf.title)
+      tag.setGenre(perf.genre)
+      if (perf.year != null) {
+        tag.setYear(perf.year)
+      }
+      tag.write()
+      m.update()
+      
+    } 
+    
+    this
+  }
+
+  
   
   // -------------
   // Misc
@@ -1032,7 +1076,7 @@ abstract class ManagedPlaylists(val lib: Library)
     
     ManagedMusic(lib, list)
   }
-
+  
 }
 
 object ManagedPlaylists {

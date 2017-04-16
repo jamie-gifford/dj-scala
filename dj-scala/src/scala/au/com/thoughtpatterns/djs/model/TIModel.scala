@@ -13,13 +13,15 @@ import au.com.thoughtpatterns.djs.lib.Performance
 import scala.collection.JavaConversions._
 import au.com.thoughtpatterns.dj.disco.tangoinfo.Track
 import au.com.thoughtpatterns.djs.disco.Types.TINT
+import java.io.Reader
+import java.io.InputStreamReader
 
 
 @SerialVersionUID(1L)
-class TIModel(tracksFile: File) extends Serializable {
+class TIModel(tracksReader: Reader) extends Serializable {
 
-  val tracks = Tracks.load(tracksFile)
-  private val perfs = tracks.toSongs().toSet
+  val tracks = Tracks.load(tracksReader)
+  val perfs = tracks.toSongs().toSet
 
   private val albumsByTin = (for (a <- tracks.getAlbums()) yield (a.getTin() -> a)) toMap
     
@@ -100,21 +102,22 @@ object TIModel {
     if (model == null) {
 
       model = {
-        val tiTracks = new File("ti-tracks.csv");
-        val cacheName = "." + tiTracks.getName() + ".model";
-        val modelFile = new File(tiTracks.getParentFile(), cacheName);
+        val cacheName = ".tangotracks.csv.model";
+        val modelFile = new File(cacheName);
 
         def load(f: File): TIModel = {
+          Log.info("Loading model cache from " + f + "...");
           val ois = new ObjectInputStream(new FileInputStream(f));
           try {
             return ois.readObject().asInstanceOf[TIModel];
           } finally {
+            Log.info("...loaded");
             ois.close();
           }
         }
 
         val loadCache = Try(
-          if (modelFile.exists() && modelFile.lastModified() > tiTracks.lastModified())
+          if (modelFile.exists())
             Some(load(modelFile))
           else
             None);
@@ -122,8 +125,11 @@ object TIModel {
         loadCache match {
           case Success(Some(cache)) => cache
           case _ => {
-            val model = new TIModel(tiTracks);
+            val in = getClass.getClassLoader.getResource("au/com/thoughtpatterns/djs/disco/tangoinfo/tangotracks.csv").openStream();
+            val reader = new InputStreamReader(in);
+            val model = new TIModel(reader);
             model.save(modelFile)
+            in.close();
             model;
           }
         }
