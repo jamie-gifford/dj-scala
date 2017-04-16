@@ -15,6 +15,7 @@ import au.com.thoughtpatterns.dj.disco.tangoinfo.Track
 import au.com.thoughtpatterns.djs.disco.Types.TINT
 import java.io.Reader
 import java.io.InputStreamReader
+import au.com.thoughtpatterns.djs.disco.Types.SpanishWord
 
 
 @SerialVersionUID(1L)
@@ -35,8 +36,23 @@ class TIModel(tracksReader: Reader) extends Serializable {
   private val titles = perfs map { p => tokenise(p.title) }
   private val artists = perfs map { p => tokenise(p.artist) }
 
+  class ArtistModel(universe: Iterable[Iterable[SpanishWord]]) extends Bayes(universe) {
+
+    val exceptions = Set("Orquesta", "Típica").map { new SpanishWord(_) }
+
+    override def ratio(word: SpanishWord) : Double = {
+      
+      if (exceptions.contains(word)) {
+        1d
+      } else {
+        super.ratio(word)
+      }
+    }
+
+  }
+  
   val titleModel = new Bayes(titles)
-  val artistModel = new Bayes(artists)
+  val artistModel = new ArtistModel(artists)
 
   def calcRatio(title0: String, artist0: String, title1: String, artist1: String) = {
     val t0 = tokenise(title0).toList
@@ -52,6 +68,9 @@ class TIModel(tracksReader: Reader) extends Serializable {
 
   lazy val titleMap = perfs map { p => (p -> tokenise(p.title).toList) } toMap
   lazy val artistMap = perfs map { p => (p -> tokenise(p.artist).toList) } toMap
+  
+  lazy val artistNames = perfs map { p => p.artist } toSet
+  lazy val artistNamesMap = artistNames map { a => (a -> tokenise(a).toList) } toMap
 
   def identify(title: String, artist: String): List[Performance] = {
     val t0 = tokenise(title).toList
@@ -73,6 +92,22 @@ class TIModel(tracksReader: Reader) extends Serializable {
     val sorted = perfs.toList.sortWith({ ratio(_) > ratio(_) })
     sorted
   }
+  
+  def identifyArtist(artist: String): Map[String, Double] = {
+    
+    val a0 = tokenise(artist).toList
+
+    val ratios = artistNames map {
+      a =>
+        {
+          val a1 = artistNamesMap.getOrElse(a, List.empty)
+          val likelihood = artistModel.likelihood(a0, a1) 
+          a -> likelihood
+        }
+    } toMap
+
+    ratios
+  }
 
   def save(f: File) {
     try {
@@ -87,7 +122,7 @@ class TIModel(tracksReader: Reader) extends Serializable {
   import au.com.thoughtpatterns.djs.disco.Types.SpanishWord
 
   def tokenise(input: String): Set[SpanishWord] = {
-    val tokens = (if (input == null) "" else input).split("\\W").toSet
+    val tokens = (if (input == null) "" else input).split("[^\\p{IsAlphabetic}0-9]").toSet
     tokens map { new SpanishWord(_) }
   }
 

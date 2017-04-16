@@ -23,6 +23,7 @@ import com.tutego.jrtf.RtfPara
 import scala.collection.JavaConverters._
 import com.tutego.jrtf.RtfHeader
 import au.com.thoughtpatterns.djs.model.PerformanceIdentifier
+import au.com.thoughtpatterns.djs.clementine.Analyzer
 
 trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with Formatter {
 
@@ -759,8 +760,17 @@ abstract class ManagedMusic(
     
     this
   }
-
   
+  def newToXSPF : ManagedMusic = {
+    val anal = new Analyzer(lib)
+    val xspf = anal.newToXSPF
+    val file = new File("/tmp/new.xspf")
+    val w = new FileWriter(file)
+    w.write(xspf)
+    w.close()
+    Log.info("Wrote to " + file)
+    this
+  }
   
   // -------------
   // Misc

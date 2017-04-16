@@ -5,7 +5,7 @@ class Bayes[T](universe: Iterable[Iterable[T]]) extends Serializable {
 
   val u : Double = universe.size
   
-  lazy val ratios = {
+  private lazy val ratios = {
     val words = (for (sentence <- universe.toList; word <- sentence) yield word)
     val wordGroups = words.toList.groupBy(x => x)
     val wordCount = (for ((w, list) <- wordGroups) yield (w, list.size))

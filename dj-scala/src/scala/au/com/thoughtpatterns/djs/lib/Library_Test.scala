@@ -12,13 +12,18 @@ import au.com.thoughtpatterns.djs.disco.Disco
 import au.com.thoughtpatterns.djs.clementine.Player
 import java.util.Date
 import au.com.thoughtpatterns.djs.clementine.Clementine
+import au.com.thoughtpatterns.djs.clementine.Analyzer
 
 object Library_Test {
 
   def main(args: Array[String]) {
 
-     val l = Library.load(new File("/home/djs/tmp/sound.djs"))
+     val l = Library.load(new File("/home/djs/replica-dj/library.djs"))
 
+     val anal = new Analyzer(l)
+     
+     anal.test
+     
      //val clem = new Clementine();
      
      //val tracks = clem.getTracks();
