@@ -24,6 +24,7 @@ import scala.collection.JavaConverters._
 import com.tutego.jrtf.RtfHeader
 import au.com.thoughtpatterns.djs.model.PerformanceIdentifier
 import au.com.thoughtpatterns.djs.clementine.Analyzer
+import au.com.thoughtpatterns.djs.disco.Disco
 
 trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with Formatter {
 
@@ -770,6 +771,23 @@ abstract class ManagedMusic(
     w.close()
     Log.info("Wrote to " + file)
     this
+  }
+  
+  def wrong : ManagedMusic = {
+    
+    val info = Disco.TangoInfo;
+    val m = info.tiTracks.groupBy { x => x.toPerformance.perf.toLibPerformance }
+
+    val tvm = Set("tango", "vals", "milonga")
+
+    val availTvm = m.keySet filter { p => p.artist != null && !p.artist.startsWith("null") && tvm.contains(p.genre) }
+
+    val already = this.approxPerfs.toSet
+
+    val wrong = already -- availTvm
+    
+    this.filter { x => wrong.contains(x.toPerformance.toApproxPerformance) }
+
   }
   
   // -------------
