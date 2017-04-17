@@ -13,6 +13,7 @@ class AlbumIdentifier(items: List[Item]) {
   val model = TIModel()
 
   def score(a: TiAlbumSide, remember: Boolean) = {
+
     val ratios = for (
       item <- items;
       trackNo <- item.track;
@@ -20,23 +21,30 @@ class AlbumIdentifier(items: List[Item]) {
         case TiAlbumSide(tin, side) => model.getTrack(TINT(tin, side, trackNo))
       }
     ) yield {
-      model.calcRatio(item.title, item.artist, t.title, t.orchestra)
+      if (t == null) {
+        // Album does not have that track
+        0d
+      } else {
+        model.calcRatio(item.title, item.artist, t.title, t.orchestra)
+      }
     }
     ratios.foldLeft(1d)(_ * _)
   }
 
   def identify: List[TiAlbumSide] = {
     val albums = model.tracks.getAlbums()
-    val scores = (for (a <- albums; sides = a.getSides(); side <- 1 until sides) yield {
+    
+    Log.info(s"Model has ${albums.size} albums")
+    
+    val scores = (for (a <- albums; sides = a.getSides(); side <- 1 to sides) yield {
       val as = TiAlbumSide(a.getTin(), side)
       val s = score(as, false)
       as -> s
     }).toMap 
     
-    val XXX = albums.toList.get(0)
     Log.info("Identify against " + scores.keySet.size + " albums...")
     
-    scores.keys.toList.sortBy({scores.getOrElse(_, 0d)})
+    scores.keys.toList.sortBy({-scores.getOrElse(_, 0d)})
   }
 
 }
