@@ -222,6 +222,24 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
 
     if (mine > 0) mine else if (exactRating > 0) exactRating else approxRating
   }
+  
+  /**
+   * Given a music file, get BPM if available (might be from other instance of same performance)
+   */
+  def findBPM(m: MusicFile) = {
+    def b(m: MusicFile): Double = m.md match {
+      case Some(md) => md.bpm match { case Some(r) => r case _ => 0 }
+      case _ => 0
+    }
+
+    val mine = b(lib.resolve(m))
+
+    val exact = music groupBy { _.toPerformance }
+    val exacts = exact.getOrElse(m.toPerformance, Nil).map(b(_))
+    val exactBpm = exacts.toList.max
+
+    if (mine > 0) mine else if (exactBpm > 0) exactBpm else 0
+  }
 
   /**
    * Get the "best" discography known (using approximate performances)

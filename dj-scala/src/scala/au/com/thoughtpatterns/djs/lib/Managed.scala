@@ -619,6 +619,29 @@ abstract class ManagedMusic(
     this
   }
 
+  def reburn = {
+    for (m <- this) {
+      m.md match {
+        case Some(md) => {
+          if (md.bpm.getOrElse(0) == 0) {
+            val bpm = lib.findBPM(m)
+
+            if (bpm > 0) {
+              // Apply rating to MusicFile
+              val tag = new TagFactory().getTag(m.file)
+              tag.setBPM(bpm)
+              tag.write()
+              m.update()
+            }
+
+          }
+        }
+        case None => {}
+      }
+    }
+    
+  }
+  
   def prune = {
     for (m <- this; if m.file.exists) {
       m.md match {
