@@ -6,9 +6,19 @@ object NameFixer_Test {
   
   def main(args: Array[String]) {
 
-    val l = Library.load(new File("/home/djs/replica-dj/library.djs"))
+    val l = Library.load(new File("/home/djs/tmp/sound.djs"))
 
-    val f = new NameFixer(l.m.tvm.byTitle)
+    val r = l.m;
+    
+    println("Looking at " + r.size + " items");
+    
+    val f = new NameGuesser(r)
+    
+    f.preview
+    
+    f.rename
+    
+    //l.m.print
     
     //println(found)
   }
