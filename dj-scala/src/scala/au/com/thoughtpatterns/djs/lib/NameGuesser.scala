@@ -34,7 +34,8 @@ class NameGuesser(music: ManagedMusic) {
     val sp = new SpanishWord2(w);
     val candidates = inverse.getOrElse(sp, Set());
     val candidates2 = inverse2.getOrElse(Title(sp, genre), Set());
-    
+
+    /*
     println(sp + " against " + inverse.keys.size + " gives " + candidates.size + " candidates");
     println(sp + " against " + inverse.keys.size + " gives " + candidates2.size + " candidates2");
 
@@ -44,16 +45,24 @@ class NameGuesser(music: ManagedMusic) {
     for (c <- candidates2) {
       println("-- 2 - " + c)
     }
-    
-    if (candidates2.size == 1) {
-      return candidates2.headOption
+    */
+
+    val candidate = {
+      if (candidates2.size == 1) {
+        candidates2.headOption
+      } else if (candidates.size == 1) {
+        candidates.headOption
+      } else {
+        None
+      }
     }
     
-    if (candidates.size == 1) {
-      return candidates.headOption
-    } else {
+    // only return candidate if it is different to input
+    if (candidate.isEmpty || (candidate.get.title.toString() == w && candidate.get.genre == genre)) {
       return None
     }
+    
+    return candidate
   }
   
   val find = (for (m <- music; 
@@ -65,7 +74,7 @@ class NameGuesser(music: ManagedMusic) {
     var i = 0;
     for (x <- find.keys; md <- x.md; title <- find.get(x)) {
       i = i + 1
-      println((i) + ": " + md.title + " => " + title + " (" + md.artist + ")")
+      println((i) + ": Retag (" + md.title + ", " + md.genre + ") => " + title + " [" + md.artist + "]")
     }
     music.filtre { x => find.keySet.contains(x) }
   }
