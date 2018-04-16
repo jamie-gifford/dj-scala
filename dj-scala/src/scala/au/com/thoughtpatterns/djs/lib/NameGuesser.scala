@@ -2,7 +2,7 @@ package au.com.thoughtpatterns.djs.lib
 
 import au.com.thoughtpatterns.djs.disco.Disco
 import au.com.thoughtpatterns.djs.tag.TagFactory
-import au.com.thoughtpatterns.djs.disco.Types.SpanishWord
+import au.com.thoughtpatterns.djs.disco.Types.SpanishWord2
 
 /**
  * For performances by modern orchestras which are not in the discography yet.
@@ -11,7 +11,7 @@ import au.com.thoughtpatterns.djs.disco.Types.SpanishWord
  */
 class NameGuesser(music: ManagedMusic) {
 
-  case class Title(title: SpanishWord, genre: String)
+  case class Title(title: SpanishWord2, genre: String)
   
   // Discography
   val sperformances = Disco.TangoInfo.performances
@@ -22,7 +22,7 @@ class NameGuesser(music: ManagedMusic) {
   val perf = sperformances map 
     { _.perf.toLibPerformance } filter
     { p => tvm.contains(p.genre) } map
-    { p => Title(new SpanishWord(p.title), p.genre) }
+    { p => Title(new SpanishWord2(p.title), p.genre) }
   
   // By title
   val inverse = perf groupBy { p => p.title};
@@ -31,7 +31,7 @@ class NameGuesser(music: ManagedMusic) {
   val inverse2 = perf groupBy { p => Title(p.title, p.genre) };
     
   def convert(w : String, genre: String) : Option[Title] = {
-    val sp = new SpanishWord(w);
+    val sp = new SpanishWord2(w);
     val candidates = inverse.getOrElse(sp, Set());
     val candidates2 = inverse2.getOrElse(Title(sp, genre), Set());
     

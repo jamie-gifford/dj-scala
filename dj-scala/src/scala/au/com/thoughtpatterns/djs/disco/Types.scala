@@ -69,5 +69,24 @@ object Types extends Serializable {
     override def toString = word
   }
 
+  /**
+   * Like SpanishWord except "ñ", "n" are identified
+   */
+  @SerialVersionUID(1L)
+  class SpanishWord2(val word0: String) extends Serializable {
+
+    val word = word0.replaceAll("ñ", "n").replaceAll("Ñ", "N")
+    
+    val key = spanish.getCollationKey(if (word == null) { "" } else { word } ).toByteArray().toList
+
+    override val hashCode = key.foldLeft(0)((a, b) => (a * 257 + b) % 65537)
+
+    override def equals(other: Any) = other match {
+      case w: SpanishWord2 => key == w.key
+      case _ => false
+    }
+
+    override def toString = word0
+  }
    
 }

@@ -724,6 +724,16 @@ abstract class ManagedMusic(
     fixer.rename
   }
 
+  def previewGuesses : ManagedMusic = {
+    val fixer = new NameGuesser(this)
+    fixer.preview
+  }
+  def fixGuesses : ManagedMusic = {
+    val fixer = new NameGuesser(this)
+    fixer.rename
+  }
+
+  
   // ---------------
   // Dump to CSV
 
