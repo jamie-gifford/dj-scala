@@ -7,4 +7,6 @@ bin
 .cache-*
 *.djs
 .metadata2
+.*.model
+.vendor-data
 
