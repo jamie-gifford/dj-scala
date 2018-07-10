@@ -2,8 +2,6 @@ package au.com.thoughtpatterns.dj.disco.tangoinfo;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +23,6 @@ import org.jsoup.select.NodeTraversor;
 import org.jsoup.select.NodeVisitor;
 
 import au.com.thoughtpatterns.core.util.Logger;
-import au.com.thoughtpatterns.core.util.Resources;
 import au.com.thoughtpatterns.core.util.SystemException;
 import au.com.thoughtpatterns.core.util.Util;
 
@@ -177,10 +174,15 @@ public class TangoInfo {
 			String url = BASE_URL;
 			
 			Connection conn = Jsoup.connect(url);
+			conn.timeout(30000);
 			
 			conn.method(Method.POST);
 			conn.data("track_references", refs);
 			conn.data("format_string", format);
+			
+			log.debug("Connecting (POST) to " + url);
+			log.debug("track_references=" + refs);
+			log.debug("format_string=" + format);
 			
 			Document doc = conn.get();
 

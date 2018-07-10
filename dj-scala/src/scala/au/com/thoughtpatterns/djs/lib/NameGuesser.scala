@@ -35,18 +35,6 @@ class NameGuesser(music: ManagedMusic) {
     val candidates = inverse.getOrElse(sp, Set());
     val candidates2 = inverse2.getOrElse(Title(sp, genre), Set());
 
-    /*
-    println(sp + " against " + inverse.keys.size + " gives " + candidates.size + " candidates");
-    println(sp + " against " + inverse.keys.size + " gives " + candidates2.size + " candidates2");
-
-    for (c <- candidates) {
-      println("-- 1 - " + c)
-    }
-    for (c <- candidates2) {
-      println("-- 2 - " + c)
-    }
-    */
-
     val candidate = {
       if (candidates2.size == 1) {
         candidates2.headOption

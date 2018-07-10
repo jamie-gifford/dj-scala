@@ -9,6 +9,7 @@ object NameFixer_Test {
     val l = Library.load(new File("/home/djs/tmp/sound.djs"))
 
     val r = l.m;
+    //val r = l.m.title("Arrabalera");
     
     println("Looking at " + r.size + " items");
     
@@ -16,7 +17,7 @@ object NameFixer_Test {
     
     f.preview
     
-    f.rename
+    //f.rename
     
     //l.m.print
     
