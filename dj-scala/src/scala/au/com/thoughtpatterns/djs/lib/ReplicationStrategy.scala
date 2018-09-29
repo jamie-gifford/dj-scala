@@ -87,12 +87,14 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
     val targetFile = target.file;
 
     targetFile.getParentFile().mkdirs()
+    
+    val compression = targetCompression(m)
 
     val cmd =
       if (suffix(targetFile) != suffix(src))
         if (suffix(targetFile).toLowerCase() == "ogg")
           //          List("avconv", "-y", "-i", src.getAbsolutePath(), "-c", "libvorbis", "-q", "5", targetFile.getAbsolutePath())
-          List("ffmpeg", "-y", "-i", src.getAbsolutePath(), "-acodec", "libvorbis", "-aq", "6", targetFile.getAbsolutePath())
+          List("ffmpeg", "-y", "-i", src.getAbsolutePath(), "-acodec", "libvorbis", "-aq", "" + compression, targetFile.getAbsolutePath())
         else
           List("avconv", "-y", "-i", src.getAbsolutePath(), targetFile.getAbsolutePath())
       else
@@ -111,6 +113,9 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
 
     targetFile.setLastModified(src.lastModified)
   }
+  
+  // Default compression is 6, this can be overridden in subclasses.
+  def targetCompression(m: MusicFile): Integer = 6;
   
   def transcodeTags(m: MusicFile, src: File, target: Target) {
     val targetFile = target.file;
@@ -205,7 +210,7 @@ object ReplicationStrategy {
   /**
    * Replication strategy that compresses everything to Ogg except stuff marked as noCompress
    */
-  class DJ(from: Path, to: Path, noCompress: Set[File]) extends ReplicationStrategy(from, to) {
+  class DJ(from: Path, to: Path, noCompress: Set[File], compressHard: Set[File]) extends ReplicationStrategy(from, to) {
 
     def target(src: File, dest: File) = {
       if (isLossless(dest) && !noCompress.contains(src))
@@ -225,6 +230,15 @@ object ReplicationStrategy {
             Log.info("Deleted " + ogg)
           }
         }
+      }
+    }
+    
+    override def targetCompression(m: MusicFile): Integer = {
+      val f = m.file
+      if (compressHard.contains(f)) {
+        return 1;
+      } else {
+        return 6;
       }
     }
 

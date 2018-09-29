@@ -136,8 +136,14 @@ trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with 
       var z = md.rating match { case Some(x) if x >= 0.4 => true case _ => false }
       z
     })
-    val okayFiles = (okay.map { x => x.file }).toSet
-    val x = new ReplicationStrategy.DJ(new File(from).toPath(), new File(to).toPath(), okayFiles)
+    val good = m.minRating(0.4)
+    val bad = m \ m.minRating(0.3)
+    val weird = m \ m.tvm \ m.path("cortina")
+    val compressHard = bad || weird
+    val goodFiles = (good.map { x => x.file }).toSet
+    val compressHardFiles = (compressHard.map { x => x.file }).toSet
+    
+    val x = new ReplicationStrategy.DJ(new File(from).toPath(), new File(to).toPath(), goodFiles, compressHardFiles)
     
     replicate(from, to, x)
     this
