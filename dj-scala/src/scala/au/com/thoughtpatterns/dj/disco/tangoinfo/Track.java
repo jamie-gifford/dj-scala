@@ -37,4 +37,8 @@ public class Track implements Serializable {
         return s;
     }
     
+    public String toString() {
+    	return title + ", " + orchestra + ", " + vocalists + ", " + perfDate;
+    }
+    
 }

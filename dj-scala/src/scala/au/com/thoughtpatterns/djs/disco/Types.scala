@@ -3,7 +3,11 @@ package au.com.thoughtpatterns.djs.disco
 @SerialVersionUID(1L)
 object Types extends Serializable {
 
-  case class TiAlbumSide(tin: String, side: Integer)
+  case class TiAlbumSide(tin: String, side: Integer) {
+    override def toString : String = {
+      return "[" + tin + "," + side + "]";
+    }
+  }
   case class TiArtist(orchestra: String, vocalist: String) {
     override def toString : String = {
       if (vocalist == null || vocalist == "-" || vocalist == "0") 
