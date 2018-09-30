@@ -137,9 +137,15 @@ trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with 
       z
     })
     val good = m.minRating(0.4)
-    val bad = m \ m.minRating(0.3)
-    val weird = m \ m.tvm \ m.path("cortina")
-    val compressHard = bad || weird
+    
+    /*
+    val bad = m \ m.minRating(0.3) \ m.path("cortina")
+    val weird = m \ m.tvm \ m.path("cortina") \ m.artist("Oscar Aleman")
+		*/
+    // val compressHard = m \ m.path("cortina") \ m.unrated \ m.minRating(0.3)
+
+    val compressHard = m.title("DUMMY NOT SURE WHAT TO COMPRESS HARD")
+    
     val goodFiles = (good.map { x => x.file }).toSet
     val compressHardFiles = (compressHard.map { x => x.file }).toSet
     
