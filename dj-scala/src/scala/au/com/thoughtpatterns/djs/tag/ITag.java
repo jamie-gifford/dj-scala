@@ -15,6 +15,7 @@ public interface ITag {
     String getRGGain();
     String getRGPeak();
     String getComposer();
+    String getGroup();
     
     RecordingDate getYear();
     int getTrack();
@@ -33,6 +34,7 @@ public interface ITag {
     void setRGGain(String g);
     void setRGPeak(String p);
     void setComposer(String composer);
+    void setGroup(String group);
     
     String getSignature();
     

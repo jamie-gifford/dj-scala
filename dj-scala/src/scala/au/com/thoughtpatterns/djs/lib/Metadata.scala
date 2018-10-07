@@ -17,7 +17,8 @@ case class Metadata(
   rating: Option[Double],
   bpm:  Option[Double] = None,
   rg: Option[ReplayGainData] = None,
-  composer: String = null
+  composer: String = null,
+  group: String = null
   ) extends Serializable {
   
   def toPerformance = Performance(title, artist, genre, year)

@@ -58,6 +58,8 @@ public class Lltag implements ITag {
 
 	private String composer;
 	
+	private String group;
+	
 	private boolean toUpperCase = false;
 
 	public Lltag(File aFile, boolean aToUpperCase) throws IOException {
@@ -187,6 +189,9 @@ public class Lltag implements ITag {
                     	break;
                     case "REPLAYGAIN_TRACK_PEAK":
                     	setRGPeak(value);
+                    	break;
+                    case "CONTENT GROUP":
+                    	setGroup(value);
                     	break;
                     	
                     default:
@@ -331,6 +336,16 @@ public class Lltag implements ITag {
 		composer = c;
 	}
 
+	@Override
+	public String getGroup() {
+		return group;
+	}
+
+	@Override
+	public void setGroup(String group) {
+		this.group = group;
+	}
+
 	private void update(String key, Object value0) {
 		if (value0 == null) {
 			return;
@@ -409,6 +424,7 @@ public class Lltag implements ITag {
 		update("DATE", getYear());
 		update("FMPS_RATING", getRating() != -1 ? "" + getRating() : null);
 		update("COMMENT", getComment());
+		update("CONTENT GROUP", getGroup());
 		if (getBPM() != null) {
 			update("BPM", getBPM().toString());
 		}
