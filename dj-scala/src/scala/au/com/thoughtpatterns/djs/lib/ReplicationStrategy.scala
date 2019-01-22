@@ -16,6 +16,8 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
 
   import ReplicationStrategy.Target
 
+  def forceReencode : Boolean
+  
   /**
    * Map src file to JSON representation
    */
@@ -91,7 +93,7 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
     val compression = targetCompression(m)
 
     val cmd =
-      if (suffix(targetFile) != suffix(src) || true) // force conversion
+      if (suffix(targetFile) != suffix(src) || forceReencode) // force conversion
         if (suffix(targetFile).toLowerCase() == "ogg")
           //          List("avconv", "-y", "-i", src.getAbsolutePath(), "-c", "libvorbis", "-q", "5", targetFile.getAbsolutePath())
           List("ffmpeg", "-y", "-i", src.getAbsolutePath(), "-acodec", "libvorbis", "-aq", "" + compression, targetFile.getAbsolutePath())
@@ -177,6 +179,7 @@ object ReplicationStrategy {
 
   class Identity(from: Path, to: Path) extends ReplicationStrategy(from, to) {
     def target(src: File, dest: File) = Target(dest, this)
+    def forceReencode = false
   }
 
   /**
@@ -190,6 +193,8 @@ object ReplicationStrategy {
       else
         Target(dest, this)
     }
+
+    def forceReencode = true
 
   }
 
@@ -205,6 +210,8 @@ object ReplicationStrategy {
         Target(dest, this)
     }
 
+    def forceReencode = true
+
   }
 
   /**
@@ -212,6 +219,8 @@ object ReplicationStrategy {
    */
   class DJ(from: Path, to: Path, noCompress: Set[File], compressHard: Set[File]) extends ReplicationStrategy(from, to) {
 
+    def forceReencode = false
+    
     def target(src: File, dest: File) = {
       if (isLossless(dest) && !noCompress.contains(src))
         Target(rename(dest, "ogg"), this)
@@ -249,6 +258,8 @@ object ReplicationStrategy {
    * according to artist/track
    */
   class Share(lib: Library, from: Path, to: Path) extends ReplicationStrategy(from, to) {
+
+    def forceReencode = true
 
     def target(src: File, dest: File) = {
       if (isMusic(dest))
