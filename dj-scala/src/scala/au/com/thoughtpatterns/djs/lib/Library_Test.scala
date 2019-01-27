@@ -44,6 +44,8 @@ object Library_Test {
     
     val milongas = l.p.path("public")
     val tandas = l.p.path("Jamie")
+    
+    l.m.toSet.groupBy { f: MusicFile => f.md.get.group }
         
     println("Checking " + tt.size + " TangoInfo tracks against " + l.m.size + " library tracks")
     
