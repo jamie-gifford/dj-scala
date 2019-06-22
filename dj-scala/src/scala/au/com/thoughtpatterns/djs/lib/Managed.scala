@@ -351,6 +351,30 @@ abstract class ManagedMusic(
   }
 
   /**
+   * Send contents to clementine but maintain current track if it is present 
+   */
+  def q2() {
+    val player = PlayerInterfaceFactory.getPlayer()
+    val current = player.getCurrentTrack
+    var idx = -1;
+    var i = 0;
+    
+    for (m <- this) {
+      val u = m.file.toURL
+      if (idx < 0 && current != null && u.toString == current.toString) {
+        idx = i;
+      }
+      i = i + 1;      
+    }
+    
+    q()
+
+    if (idx > 0) {
+      player.setCurrentIndex(idx, current)
+    }
+  }
+  
+  /**
    * Make suggestions based on given set of playlists (tandas)
    */
   def suggest(tandas: ManagedPlaylists) = (tandas.containing(this).indirectContents \ this).music
@@ -586,6 +610,44 @@ abstract class ManagedMusic(
       false
     })
 
+  def harmonyCmp(key: MusicKey) : (Metadata, Metadata) => Boolean = {
+    def dist(z: Metadata) = {
+      if (z.group == null) 99 else MusicKey(z.group).fifths2(key);
+    }
+
+    return (x, y) => {
+      val dx = dist(x)
+      val dy = dist(y)
+      if (dx - dy < 0) false else true
+    }
+  }
+    
+  def byHarmony(key: MusicKey, padding: ManagedMusic) : ManagedMusic = {
+    
+    val list = new MutableList[MusicFile]
+    
+    val sorted = srt(harmonyCmp(key))
+    
+    var current = 0;
+    for (m <- sorted) {
+      val z = m.md.get;
+      val n : Integer = if (z.group == null) 99 else MusicKey(z.group).fifths(key);
+      
+      // System.out.println(key + " cmp " + z.group + " has n=" + n + " on " + z.title) 
+      
+      if (current != n) {
+        for (tr <- padding.indirectContents) {
+          val m = lib.resolve(tr); 
+          list += m;
+        }
+      }
+      current = n;
+      list += m;
+    }
+    
+    ManagedMusic(lib, list)
+  }
+    
   def byRating = srt((x, y) => x.rating.getOrElse(0d) < y.rating.getOrElse(0d))
   
   def byBpm = srt((x, y) => x.bpm.getOrElse(0d) < y.bpm.getOrElse(0d))

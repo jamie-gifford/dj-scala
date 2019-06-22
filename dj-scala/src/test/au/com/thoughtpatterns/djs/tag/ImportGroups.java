@@ -1,5 +1,18 @@
 package au.com.thoughtpatterns.djs.tag;
 
+/**
+ * From .mixxx/mixxxdb.sqlite, 
+ * 
+ * 
+
+select 
+library.id, library.key, library.title,  library.artist, track_locations.location
+from library join track_locations on library.id = track_locations.id
+where key is not null and key <> ''
+
+
+ */
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -12,8 +25,7 @@ import au.com.thoughtpatterns.core.json.JsonyParser;
 import au.com.thoughtpatterns.core.util.CsvUtils;
 import au.com.thoughtpatterns.core.util.Logger;
 import au.com.thoughtpatterns.core.util.SystemException;
-
-import com.sun.xml.internal.bind.v2.schemagen.Util;
+import au.com.thoughtpatterns.core.util.Util;
 
 public class ImportGroups {
 
@@ -76,7 +88,11 @@ public class ImportGroups {
 		
 		String group = md.getCast("group", String.class);
 		
-		if (Util.equal(group, key)) {
+		if (Util.equals(group, key)) {
+			return;
+		}
+		
+		if (! Util.empty(group)) {
 			return;
 		}
 		

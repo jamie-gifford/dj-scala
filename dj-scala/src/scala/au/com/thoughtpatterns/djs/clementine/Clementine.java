@@ -44,7 +44,6 @@ public class Clementine implements PlayerInterface {
 
 			dbus("/TrackList", "AddTrack", location, "true");
 
-			
 		} catch (Exception ex) {
 		}
 
@@ -92,6 +91,39 @@ public class Clementine implements PlayerInterface {
 		return i;
 	}
 	
+	@Override
+	public void setCurrentIndex(int i) throws Exception {
+		dbus("/TrackList", "PlayTrack", "" + i);
+	}
+	
+	@Override
+	public void setCurrentIndex(int i, URL checkUrl) throws Exception {
+		
+		long start = System.currentTimeMillis();
+		while (true) {
+			
+			boolean okay = Util.equals(getCurrentIndex(), i) && Util.equals(checkUrl, getCurrentTrack());
+			if (okay) {
+				break;
+			}
+			
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException ex) {
+				
+			}
+			
+			setCurrentIndex(i);
+			
+			long now = System.currentTimeMillis();
+			if (now - start > 5000) {
+				break;
+			}
+			
+		}
+		
+	}
+	
 	public URL getCurrentTrack() {
 		
 		try {
@@ -126,6 +158,7 @@ public class Clementine implements PlayerInterface {
 		byte[] data = Resources.readByteArray(stdout);
 
 		String out = new String(data);
+		
 		return out;
 	}
 	

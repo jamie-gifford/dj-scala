@@ -8,6 +8,7 @@ import scala.Option.option2Iterable
 import au.com.thoughtpatterns.djs.lib.Library
 import au.com.thoughtpatterns.djs.lib.ManagedMusic
 import au.com.thoughtpatterns.djs.lib.MusicFile
+import au.com.thoughtpatterns.djs.lib.MusicKey
 
 class Player(val lib: Library) {
 
@@ -19,6 +20,14 @@ class Player(val lib: Library) {
   def q = {
     val url = ext.getCurrentTrack()
     ManagedMusic(lib, Some(toMusic(url)))
+  }
+  
+  /**
+   * Fetch current key
+   */
+  def key : MusicKey = {
+    val group = q.m.head.md.get.group
+    return MusicKey(group)
   }
   
   /**

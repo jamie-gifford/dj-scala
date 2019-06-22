@@ -13,6 +13,8 @@ public interface PlayerInterface {
 	public URL getTrackLocation(int i) throws Exception;	
 	public int getLength() throws Exception;
 	public Integer getCurrentIndex()  throws Exception;
+	public void setCurrentIndex(int i) throws Exception;
+	public void setCurrentIndex(int i, URL checkUrl) throws Exception;
 	
 	public URL getCurrentTrack();
 }

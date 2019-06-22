@@ -37,6 +37,16 @@ public class Audacious implements PlayerInterface {
 	}
 
 	@Override
+	public void setCurrentIndex(int i) throws Exception {
+		throw new SystemException("unimplemented");
+	}
+
+	@Override
+	public void setCurrentIndex(int i, URL checkUrl) throws Exception {
+		throw new SystemException("unimplemented");
+	}
+
+	@Override
 	public URL getCurrentTrack() {
 		try {
 			String filename = audtool("current-song-filename");
