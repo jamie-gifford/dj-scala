@@ -13,7 +13,7 @@ case class Metadata(
   year: RecordingDate,
   comment: String,
   genre: String,
-  track: Int,
+  track: Int, 
   rating: Option[Double],
   bpm:  Option[Double] = None,
   rg: Option[ReplayGainData] = None,

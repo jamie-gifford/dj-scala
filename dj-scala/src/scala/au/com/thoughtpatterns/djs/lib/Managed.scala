@@ -292,6 +292,10 @@ abstract class ManagedMusic(
   def unrated = require(_.rating.getOrElse(-1d) == -1)
 
   def rated = require(_.rating.getOrElse(-1d) != -1)
+  
+  def keyed = require(_.group != null)  
+    
+
 
   /**
    * Find duplicates inside this list
