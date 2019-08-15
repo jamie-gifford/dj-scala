@@ -510,6 +510,10 @@ Managed collection functions
   repl      : replicate using "Ogg" strategy, good for phone. 
               eg tandas.repl("/media/Orange/Music", "/media/Orange/replica")
 
+  replShare   : replicate using "MP3" strategy, renaming files to simple format and stripping tags. 
+              Good for exports. 
+              eg tandas.replShare("/media/Orange/Music", "/tmp/export")
+
   replDJ    : replicate using "DJ" strategy (ie, compress to Ogg if less than two stars).
               Good for additional DJ rigs
               eg l.replDJ("/media/Orange/Music", "/home/djs/replica-dj/Music")
