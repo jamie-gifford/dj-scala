@@ -23,6 +23,7 @@ case class Metadata(
   
   def toPerformance = Performance(title, artist, genre, year)
   def toApproxPerformance = Performance(title, artist, genre, if (year != null) year.approx else null)
+  def orq = artist.replaceAll(" voc\\..*", "");
   
 }
 

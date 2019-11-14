@@ -279,6 +279,7 @@ abstract class ManagedMusic(
   def title(title: String) = require(_.title.toLowerCase.contains(title.toLowerCase))
   def composer(composer: String) = require(_.composer.toLowerCase.contains(composer.toLowerCase))
   
+  def tuned = require(_.group != null)
 
   def yearRange(from: Int, to: Int) = require(
     x =>
