@@ -784,6 +784,12 @@ abstract class ManagedMusic(
     empty
   }
   
+  def fetchLetras: ManagedMusic = {
+    for (m <- this) m.letra
+    this
+  }
+  
+  
   def hasRG : ManagedMusic = this.require(x => {
       x.rg != null && ! x.rg.isEmpty
   })

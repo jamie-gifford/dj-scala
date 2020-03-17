@@ -198,8 +198,7 @@ public class TangoInfo {
 			Element element = textareas.get(0);
 
 			FormattingVisitor formatter = new FormattingVisitor();
-			NodeTraversor traversor = new NodeTraversor(formatter);
-			traversor.traverse(element);
+			NodeTraversor.traverse(formatter, element);
 
 			String out = formatter.toString();
 
@@ -340,6 +339,32 @@ public class TangoInfo {
 			return title + " - " + composer + ", lyr. " + letrista;
 		}
 		
+	}
+	
+	public String toTodoTangoWorkUrl(String tiwc) throws IOException {
+		
+		// 
+		
+		String url = "https://tango.info/" + tiwc;
+		Connection conn = Jsoup.connect(url);
+		
+		conn.userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+		conn.referrer("http://www.google.com");
+		conn.timeout(30000);
+		
+		Document doc = conn.get();
+
+		Elements links = doc.select("td:contains(Todotango.com work number:) + td > a[href] ");
+
+		if (links.size() < 1) {
+			log.error("Unparseable response from tango.info: " + doc);
+			return null;
+		}
+		
+		Element link = links.get(0);
+		String href = link.attr("href").toString();
+
+		return href;
 	}
 	
 	public List<Performance> fetchPerformances() {

@@ -9,6 +9,7 @@ import au.com.thoughtpatterns.core.json.JsonyObject
 import au.com.thoughtpatterns.core.json.AJsonyObject
 import au.com.thoughtpatterns.djs.util.Log
 import au.com.thoughtpatterns.djs.disco.tangoinfo.Data
+import au.com.thoughtpatterns.dj.disco.tangoinfo.Letras
 
 @SerialVersionUID(3L)
 class MusicFile(private val file0: File, val lib: Library) extends MusicContainer with DesktopCompat with Serializable {
@@ -113,7 +114,56 @@ class MusicFile(private val file0: File, val lib: Library) extends MusicContaine
       case _ => 
     }
   }
+
+  /**
+   * "Passive" method which will use locally available letras only.
+   */
+  def letra : Option[String] = {
+    
+    val out = md match {
+      case Some(m) => {
+        if (m.composer == null) {
+          None 
+        } else {
+          val title = m.title.replaceFirst(" +\\[.*", "");  
+          val filename = title + ", com. " + m.composer;
+          val l = MusicFile.letras.getLetraFile(filename);
+          if (l == null) None else Some(l)
+        }
+      }
+      case None => {
+        None
+      }
+    }
+      
+    return out;
+  }
   
+  def hasLetra : Boolean = letra.isDefined 
+  
+  /**
+   * "Active" method which will attempt to fetch from tango.info and todotango
+   */
+  def fetchLetra : Option[String] = {
+    
+    val out = md match {
+      case Some(m) => {
+        if (m.composer == null) {
+          None 
+        } else {
+          val bits = m.composer.split(", let\\. ");
+          val composer = bits(0);
+          val letrista = if (bits.length >= 2) bits(1) else null;
+          val l = MusicFile.letras.getLetra(m.title, m.genre, composer, null)
+          if (l == null) None else Some(l)
+        }
+      }
+      case None => {
+        None
+      }
+    }
+    return out;
+  }
   
   type Props = Map[String, String]
 
@@ -243,6 +293,9 @@ class MusicFile(private val file0: File, val lib: Library) extends MusicContaine
 }
 
 object MusicFile {
+  
+  val letras = new Letras();
+  
   object CommentHelper {
     private val kv = "([-_a-zA-Z0-9]+)=([^; \\s]+);?(.*)".r;
 

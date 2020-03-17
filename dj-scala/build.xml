@@ -1,4 +1,3 @@
-
 <project name="dj" default="dj_app">
 	<import file="../core/build.xml"/>
 	<dirname property="dj_basedir" file="${ant.file.dj}"/>
@@ -23,7 +22,7 @@
         <file name="${dj_basedir}/../core/library/jetty-6.1.4rc1.jar"/>
         <file name="${dj_basedir}/../core/library/jetty-util-6.1.4rc1.jar"/>
         <file name="${dj_basedir}/../core/build/lib/thoughtpatterns_core.jar"/>
-        <file name="${dj_basedir}/library/jsoup-1.7.2.jar"/>
+        <file name="${dj_basedir}/library/jsoup-1.13.1.jar"/>
         <file name="${dj_basedir}/library/jline-1.0.jar"/>
         <file name="${dj_basedir}/library/beatroot-dj.jar"/>
         <file name="${dj_basedir}/library/jrtf-0.7.jar"/>
