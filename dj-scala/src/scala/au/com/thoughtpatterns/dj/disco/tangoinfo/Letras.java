@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -84,12 +85,12 @@ public class Letras {
 		file.getParentFile().mkdirs();
 		if (file.exists()) {
 			ensureLinks(g);
-			String str = Resources.readString(new FileReader(file));
+			Reader r = new FileReader(file);
+			String str = Resources.readString(r);
+			r.close();
 			return str;
 		}
 
-		if (true) return null;
-		
 		String url = ti.toTodoTangoWorkUrl(g.tiwc);
 		
 		if (url == null) {
@@ -142,7 +143,9 @@ public class Letras {
 			return null;
 		}
 		try {
-			String out = Resources.readString(new FileReader(file));
+			Reader r = new FileReader(file);
+			String out = Resources.readString(r);
+			r.close();
 			return out;
 		} catch (IOException ex) {
 			return null;
