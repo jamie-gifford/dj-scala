@@ -111,7 +111,9 @@ object MetadataCache {
     if (mdTs >= ts) {
       // MD file is up to date
       
-      (new JsonyParser()).parse(new FileReader(mdFile)) match {
+      val r = new FileReader(mdFile);
+      
+      (new JsonyParser()).parse(r) match {
         case json : JsonyObject => 
 
           md = Metadata(
@@ -131,6 +133,8 @@ object MetadataCache {
 
         case _ =>
       }
+      
+      r.close();
       
     } else {
       val tag = new TagFactory().getTag(file);
