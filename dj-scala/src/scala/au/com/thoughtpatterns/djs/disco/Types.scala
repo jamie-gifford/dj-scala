@@ -44,7 +44,7 @@ object Types extends Serializable {
     if (str == null) {
       TiArtist(null, null)
     } else {
-      val bits = str.split(", voc.");
+      val bits = str.split(", voc. ");
       if (bits.length == 1) {
         TiArtist(str, null)
       } else {
