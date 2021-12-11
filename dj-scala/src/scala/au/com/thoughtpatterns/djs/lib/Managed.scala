@@ -131,13 +131,13 @@ trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with 
   /**
    * Replicate library, compressing to Ogg anthing with either no rating or rating less than 2 stars
    */
-  def replDJ(from: String, to:String) = {
+  def replDJ(from: String, to: String) = {
     val okay = m.require(md => {
       var z = md.rating match { case Some(x) if x >= 0.4 => true case _ => false }
       z
     })
     val good = m.minRating(0.4)
-    
+
     /*
     val bad = m \ m.minRating(0.3) \ m.path("cortina")
     val weird = m \ m.tvm \ m.path("cortina") \ m.artist("Oscar Aleman")
@@ -145,16 +145,16 @@ trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with 
     // val compressHard = m \ m.path("cortina") \ m.unrated \ m.minRating(0.3)
 
     val compressHard = m.title("DUMMY NOT SURE WHAT TO COMPRESS HARD")
-    
+
     val goodFiles = (good.map { x => x.file }).toSet
     val compressHardFiles = (compressHard.map { x => x.file }).toSet
-    
+
     val x = new ReplicationStrategy.DJ(new File(from).toPath(), new File(to).toPath(), goodFiles, compressHardFiles)
-    
+
     replicate(from, to, x)
     this
   }
-  
+
   /**
    * Replicate music files in library, renaming to artist/title and transcoding to MP3
    */
@@ -163,7 +163,6 @@ trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with 
     replicate(from, to, x)
     this
   }
-  
 
 }
 
@@ -244,7 +243,7 @@ object ManagedContainers {
 }
 
 abstract class ManagedMusic(
-  val lib: Library) extends Managed[MusicFile, ManagedMusic] with DesktopCompat {
+    val lib: Library) extends Managed[MusicFile, ManagedMusic] with DesktopCompat {
 
   // TODO figure out how to get this conversion visible to users of ManagedMusic.
   implicit def iterableToManagedMusic(i: Iterable[MusicFile]): ManagedMusic =
@@ -278,7 +277,7 @@ abstract class ManagedMusic(
   def genre(genre: String) = require(_.genre == genre)
   def title(title: String) = require(_.title.toLowerCase.contains(title.toLowerCase))
   def composer(composer: String) = require(_.composer.toLowerCase.contains(composer.toLowerCase))
-  
+
   def yearRange(from: Int, to: Int) = require(
     x =>
       RecordingDate.year(from - 1) < x.year &&
@@ -291,10 +290,8 @@ abstract class ManagedMusic(
   def unrated = require(_.rating.getOrElse(-1d) == -1)
 
   def rated = require(_.rating.getOrElse(-1d) != -1)
-  
-  def keyed = require(_.group != null)  
-    
 
+  def keyed = require(_.group != null)
 
   /**
    * Find duplicates inside this list
@@ -323,15 +320,14 @@ abstract class ManagedMusic(
     val perfs = (m map { _.toApproxPerformance.toSpanishPerformance }).iterator.toSet
     filtre({ x => perfs.contains(x.toApproxPerformance.toSpanishPerformance) })
   }
-  
+
   /**
    * Difference with "like"
    */
   def \~(m: ManagedMusic) = {
     val perfs = (m map { _.toApproxPerformance.toSpanishPerformance }).iterator.toSet
-    filtre({ x => ! perfs.contains(x.toApproxPerformance.toSpanishPerformance) })
+    filtre({ x => !perfs.contains(x.toApproxPerformance.toSpanishPerformance) })
   }
-  
 
   /**
    * Send contents to clementine
@@ -354,29 +350,29 @@ abstract class ManagedMusic(
   }
 
   /**
-   * Send contents to clementine but maintain current track if it is present 
+   * Send contents to clementine but maintain current track if it is present
    */
   def q2() {
     val player = PlayerInterfaceFactory.getPlayer()
     val current = player.getCurrentTrack
     var idx = -1;
     var i = 0;
-    
+
     for (m <- this) {
       val u = m.file.toURL
       if (idx < 0 && current != null && u.toString == current.toString) {
         idx = i;
       }
-      i = i + 1;      
+      i = i + 1;
     }
-    
+
     q()
 
     if (idx > 0) {
       player.setCurrentIndex(idx, current)
     }
   }
-  
+
   /**
    * Make suggestions based on given set of playlists (tandas)
    */
@@ -613,7 +609,7 @@ abstract class ManagedMusic(
       false
     })
 
-  def harmonyCmp(key: MusicKey) : (Metadata, Metadata) => Boolean = {
+  def harmonyCmp(key: MusicKey): (Metadata, Metadata) => Boolean = {
     def dist(z: Metadata) = {
       if (z.group == null) 99 else MusicKey(z.group).fifths2(key);
     }
@@ -624,37 +620,36 @@ abstract class ManagedMusic(
       if (dx - dy < 0) false else true
     }
   }
-    
-  def byHarmony(key: MusicKey, padding: ManagedMusic) : ManagedMusic = {
-    
+
+  def byHarmony(key: MusicKey, padding: ManagedMusic): ManagedMusic = {
+
     val list = new MutableList[MusicFile]
-    
+
     val sorted = srt(harmonyCmp(key))
-    
+
     var current = 0;
     for (m <- sorted) {
       val z = m.md.get;
-      val n : Integer = if (z.group == null) 99 else MusicKey(z.group).fifths(key);
-      
+      val n: Integer = if (z.group == null) 99 else MusicKey(z.group).fifths(key);
+
       // System.out.println(key + " cmp " + z.group + " has n=" + n + " on " + z.title) 
-      
+
       if (current != n) {
         for (tr <- padding.indirectContents) {
-          val m = lib.resolve(tr); 
+          val m = lib.resolve(tr);
           list += m;
         }
       }
       current = n;
       list += m;
     }
-    
+
     ManagedMusic(lib, list)
   }
-    
-  def byRating = srt((x, y) => x.rating.getOrElse(0d) < y.rating.getOrElse(0d))
-  
-  def byBpm = srt((x, y) => x.bpm.getOrElse(0d) < y.bpm.getOrElse(0d))
 
+  def byRating = srt((x, y) => x.rating.getOrElse(0d) < y.rating.getOrElse(0d))
+
+  def byBpm = srt((x, y) => x.bpm.getOrElse(0d) < y.bpm.getOrElse(0d))
 
   // -------------------------
   // Refactorings
@@ -682,7 +677,7 @@ abstract class ManagedMusic(
               tag.write()
               m.update()
             }
-
+            
           }
         }
         case None => {}
@@ -716,9 +711,9 @@ abstract class ManagedMusic(
         case None => {}
       }
     }
-    
+
   }
-  
+
   def prune = {
     for (m <- this; if m.file.exists) {
       m.md match {
@@ -751,72 +746,70 @@ abstract class ManagedMusic(
   }
 
   def synchroniseComposer = {
-    
+
     for (m <- this; md <- m.md; if (md.composer == null)) {
       val c = m.lookupComposer
       for (composer <- c) {
-        
+
         val tag = new TagFactory().getTag(m.file)
         tag.setComposer(composer)
         tag.write()
         m.update()
-        
+
       }
     }
-    
+
     this
   }
-  
+
   def fixShortEnds(minEnd: Double): ManagedMusic = {
-    val shorts = this.filtre { m => m.endSilence.isDefined && m.endSilence.get < minEnd - 0.2d}
-    
+    val shorts = this.filtre { m => m.endSilence.isDefined && m.endSilence.get < minEnd - 0.2d }
+
     for (m <- shorts) m.padEndSilence(minEnd - m.endSilence.get)
-    
+
     shorts
   }
-  
+
   def replaygain: ManagedMusic = {
     val empty = this.require(x => {
       x.rg == null || x.rg.isEmpty
     })
-    
+
     for (m <- empty) m.replaygain()
     empty
   }
-  
+
   def fetchLetras: ManagedMusic = {
     for (m <- this) m.letra
     this
   }
-  
-  
-  def hasRG : ManagedMusic = this.require(x => {
-      x.rg != null && ! x.rg.isEmpty
+
+  def hasRG: ManagedMusic = this.require(x => {
+    x.rg != null && !x.rg.isEmpty
   })
-  
-  def noRG : ManagedMusic = this.require(x => {
-      x.rg == null || x.rg.isEmpty
+
+  def noRG: ManagedMusic = this.require(x => {
+    x.rg == null || x.rg.isEmpty
   })
-  
-  def previewTitles : ManagedMusic = {
+
+  def previewTitles: ManagedMusic = {
     val fixer = new NameFixer(this)
     fixer.preview
   }
-  def fixTitles : ManagedMusic = {
+  def fixTitles: ManagedMusic = {
     val fixer = new NameFixer(this)
     fixer.rename
   }
 
-  def previewGuesses : ManagedMusic = {
+  def previewGuesses: ManagedMusic = {
     val fixer = new NameGuesser(this)
     fixer.preview
   }
-  def fixGuesses : ManagedMusic = {
+  def fixGuesses: ManagedMusic = {
     val fixer = new NameGuesser(this)
     fixer.rename
   }
 
-  
   // ---------------
   // Dump to CSV
 
@@ -839,28 +832,27 @@ abstract class ManagedMusic(
 
   // ---------------
   // Model-based identification
-  
-  
-  def identify(artist: Option[String]) : ManagedMusic = {
-    
+
+  def identify(artist: Option[String]): ManagedMusic = {
+
     val identifier = new PerformanceIdentifier(artist)
-    
+
     val out = new File("/tmp/identified.csv")
-    
+
     identifier.save(this, out)
-    
+
     Log.info("Wrote data to " + out)
-    
+
     this
   }
-  
-  def applyIdentify() : ManagedMusic = {
-    
+
+  def applyIdentify(): ManagedMusic = {
+
     val identifier = new PerformanceIdentifier(None)
     val in = new File("/tmp/identified.csv")
-    
+
     val map = identifier.load(in)
-    
+
     for (m <- iterator; file = m.file; if (map.keySet.contains(file))) {
       val perf = map.getOrElse(file, null)
       val tag = new TagFactory().getTag(m.file)
@@ -872,13 +864,13 @@ abstract class ManagedMusic(
       }
       tag.write()
       m.update()
-      
-    } 
-    
+
+    }
+
     this
   }
-  
-  def newToXSPF : ManagedMusic = {
+
+  def newToXSPF: ManagedMusic = {
     val anal = new Analyzer(lib)
     val xspf = anal.newToXSPF
     val file = new File("/tmp/new.xspf")
@@ -888,9 +880,9 @@ abstract class ManagedMusic(
     Log.info("Wrote to " + file)
     this
   }
-  
-  def wrong : ManagedMusic = {
-    
+
+  def wrong: ManagedMusic = {
+
     val info = Disco.TangoInfo;
     val m = info.tiTracks.groupBy { x => x.toPerformance.perf.toLibPerformance }
 
@@ -901,14 +893,14 @@ abstract class ManagedMusic(
     val already = this.approxPerfs.toSet
 
     val wrong = already -- availTvm
-    
+
     this.filter { x => wrong.contains(x.toPerformance.toApproxPerformance) }
 
   }
-  
+
   // -------------
   // Misc
-  
+
   def deleteMdFile() = {
     for (music <- this) {
       music.deleteMdFile()
@@ -932,7 +924,7 @@ object ManagedMusic {
 }
 
 abstract class ManagedPlaylists(val lib: Library)
-  extends Managed[PlaylistFile, ManagedPlaylists] with DesktopCompat {
+    extends Managed[PlaylistFile, ManagedPlaylists] with DesktopCompat {
 
   def absolute = filtre(!_.relative)
 
@@ -966,10 +958,10 @@ abstract class ManagedPlaylists(val lib: Library)
   // -----------------
   // Refactorings
 
-  def adjust() : Boolean = {
+  def adjust(): Boolean = {
     var changed = false
     for (t <- iterator) {
-      
+
       if (t.adjust()) {
         val ts = t.file.lastModified
         t.save
@@ -982,7 +974,7 @@ abstract class ManagedPlaylists(val lib: Library)
     }
     return changed
   }
-  
+
   def relativize() = {
     var changed = false
     for (t <- iterator; if !t.relative) {
@@ -1013,32 +1005,32 @@ abstract class ManagedPlaylists(val lib: Library)
     toJson(x, db)
     this
   }
-  
+
   /**
    * JSON representation
    */
-  def toJson(strategy: ReplicationStrategy) : String = {
-    val p = new StringBuffer() 
-    
+  def toJson(strategy: ReplicationStrategy): String = {
+    val p = new StringBuffer()
+
     def f(file: File) = strategy.json.getOrElse(file, null)
-    
+
     val pl = (for (m <- this) yield f(m.file)).mkString(", \n")
     val music = (for (m <- indirectContents) yield f(m.file)).mkString(", \n")
 
     p
-    .append(" { \"playlists\": [ ").append(pl).append(" ], \n")
-    .append(" \"music\": [ ").append(music).append(" ] }\n");
-    
+      .append(" { \"playlists\": [ ").append(pl).append(" ], \n")
+      .append(" \"music\": [ ").append(music).append(" ] }\n");
+
     p.toString
-    
-  }  
+
+  }
 
   def toJson(strategy: ReplicationStrategy, file: File) {
     val w = new PrintWriter(new FileWriter(file))
     w.print(toJson(strategy))
     w.close()
   }
-  
+
   // ---------------------------
 
   /**
@@ -1049,26 +1041,26 @@ abstract class ManagedPlaylists(val lib: Library)
       m.file.toString()
     }).mkString("\n"))
   }
-  
-  def prettyFormat : String = {
+
+  def prettyFormat: String = {
     // Newline at each genre change
-    
+
     val buff = new StringBuffer
-    
-    var lastGenre : Option[String] = None
-    
+
+    var lastGenre: Option[String] = None
+
     val contents = for (pl <- playlists; tr <- pl.tracks) yield { lib.resolve(tr) }
-    
+
     val mds = for (tr <- contents; md <- tr.md) yield { md }
-    
+
     def toYear(d: RecordingDate) = { if (d != null) d.toYear else "?" }
-    
+
     for (md <- mds) {
-      
+
       val genre = Some(md.genre)
-      val skip = ! genre.equals(lastGenre)
+      val skip = !genre.equals(lastGenre)
       lastGenre = genre
-      
+
       if (skip) {
         buff.append("\n")
       }
@@ -1091,31 +1083,31 @@ abstract class ManagedPlaylists(val lib: Library)
           .append(md.title)
           .append("\n")
       }
-      
+
     }
-    
+
     return buff.toString()
   }
-  
+
   def prettyFormat(file: File) {
     val w = new PrintWriter(new FileWriter(file))
     w.print(prettyFormat)
     w.close()
   }
-  
+
   def prettyFormat(filename: String) {
     prettyFormat(new File(filename))
   }
 
-  def prettyRTF(filename : String, title: Option[String]) {
+  def prettyRTF(filename: String, title: Option[String]) {
     // Newline at each genre change
-    
+
     val rtf = Rtf.rtf()
-    
+
     rtf.header(RtfHeader.font("Bitstream Charter").at(0))
-    
+
     val accum = new MutableList[RtfText]
-    
+
     val paras = new MutableList[RtfPara]
 
     for (t <- title) {
@@ -1124,68 +1116,67 @@ abstract class ManagedPlaylists(val lib: Library)
 
     def flush() {
       val arr = accum.toArray
-      val p = RtfPara.p(arr:_*)
+      val p = RtfPara.p(arr: _*)
       paras += p
       accum.clear()
     }
-    
+
     def text(txt: String) = RtfText.font(0, txt)
-    
-    var lastGenre : Option[String] = None
-    
+
+    var lastGenre: Option[String] = None
+
     val contents = for (pl <- playlists; tr <- pl.tracks) yield { lib.resolve(tr) }
-    
+
     val mds = for (tr <- contents; md <- tr.md) yield { md }
-    
+
     def toYear(d: RecordingDate) = { if (d != null) d.toYear else "?" }
-    
+
     for (md <- mds) {
-      
+
       val genre = Some(md.genre)
-      val skip = ! genre.equals(lastGenre)
+      val skip = !genre.equals(lastGenre)
       lastGenre = genre
-      
+
       if (skip) {
         flush()
       }
 
       val tvm = List("tango", "vals", "milonga").toSet.contains(md.genre)
       if (tvm) {
-        
+
         val line = md.artist + " - " + md.title + " - " + toYear(md.year) + " - " + md.genre
-        
+
         accum += text(line)
         accum += RtfText.lineBreak()
-        
+
       } else {
         val line = md.artist + " - " + md.title
         accum += RtfText.italic(text(line))
         accum += RtfText.lineBreak()
       }
-      
+
     }
-    
+
     flush()
     rtf.section(paras.asJava)
-    
+
     rtf.out(new FileWriter(new File(filename)))
   }
-  
+
   def transcribeToRTF {
     for (m <- this) {
       val single = this.filtre { x => x == m }
       val filename = m.file.getAbsolutePath.replaceAll("\\.[^\\.]+", ".rtf")
       val title = m.file.getName.replaceAll("\\.[^\\.]+", "")
-      
+
       val dest = new File(filename)
-      if (! dest.exists()) {
+      if (!dest.exists()) {
         single.prettyRTF(filename, Some(title))
       }
-      
+
     }
   }
-  
-  
+
   def toTandas(root: File) {
     for (m <- this) {
       val path = m.toTandaFile(lib)
@@ -1203,24 +1194,24 @@ abstract class ManagedPlaylists(val lib: Library)
   }
 
   def expand(padding: ManagedMusic): ManagedMusic = {
-    
+
     val list = new MutableList[MusicFile]
     val size = playlists.indirectContents.size
-    
+
     for (pl <- playlists) {
       for (tr <- pl.indirectContents) {
-        val m = lib.resolve(tr); 
+        val m = lib.resolve(tr);
         list += m;
       }
       for (tr <- padding.indirectContents) {
-        val m = lib.resolve(tr); 
+        val m = lib.resolve(tr);
         list += m;
       }
-    } 
-    
+    }
+
     ManagedMusic(lib, list)
   }
-  
+
 }
 
 object ManagedPlaylists {

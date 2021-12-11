@@ -172,6 +172,7 @@ class MusicFile(private val file0: File, val lib: Library) extends MusicContaine
 
   def read() = {
     md = MetadataCache.get(file)
+    Log.info("read " + file + "; md=" + md);
   }
 
   def write = {
