@@ -870,6 +870,19 @@ abstract class ManagedMusic(
     this
   }
 
+  def updateComposer(): ManagedMusic = {
+    for (m <- iterator; composer <- m.lookupComposer) {
+      val tag = new TagFactory().getTag(m.file)
+      tag.setComposer(composer)
+      tag.write()
+      m.update()
+
+    }
+
+    this
+    
+  }
+  
   def newToXSPF: ManagedMusic = {
     val anal = new Analyzer(lib)
     val xspf = anal.newToXSPF
