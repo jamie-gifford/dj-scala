@@ -31,7 +31,12 @@ class MusicFile(private val file0: File, val lib: Library) extends MusicContaine
   override def metadata = if (md.isDefined) {
     def fmt(s: Any) = if (s != null) s.toString else ""
     val m = md.get
-    List("Title" -> m.title, "Artist" -> m.artist, "Composer" -> m.composer, "Date" -> fmt(m.year), "Genre" -> m.genre, "Rating" -> m.rating.getOrElse(0d).toString)
+    val l = List("Title" -> m.title, "Artist" -> m.artist, "Composer" -> m.composer, "Date" -> fmt(m.year), "Genre" -> m.genre, "Rating" -> m.rating.getOrElse(0d).toString)
+    if (m.rg.isDefined) {
+      l.+:("ReplayGain" -> m.rg.get.gain)
+    } else {
+      l
+    }
   } else {
     List("file" -> file.getAbsolutePath())
   }
