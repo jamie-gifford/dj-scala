@@ -95,8 +95,8 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
     val cmd =
       if (suffix(targetFile) != suffix(src) || forceReencode) // force conversion
         if (suffix(targetFile).toLowerCase() == "ogg")
-          //          List("avconv", "-y", "-i", src.getAbsolutePath(), "-c", "libvorbis", "-q", "5", targetFile.getAbsolutePath())
-          List("ffmpeg", "-y", "-i", src.getAbsolutePath(), "-acodec", "libvorbis", "-aq", "" + compression, targetFile.getAbsolutePath())
+          // List("ffmpeg", "-y", "-i", src.getAbsolutePath(), "-acodec", "libvorbis", "-aq", "" + compression, targetFile.getAbsolutePath())
+          List("sox", src.getAbsolutePath(), targetFile.getAbsolutePath())
         else
           List("avconv", "-y", "-i", src.getAbsolutePath(), targetFile.getAbsolutePath())
       else
