@@ -284,6 +284,7 @@ abstract class ManagedMusic(
         x.year < RecordingDate.year(to + 1))
 
   def tvm = require(md => List("tango", "vals", "milonga").toSet.contains(md.genre))
+  def tvmcompat = require(md => List("tango", "vals", "milonga", "candombe", "tango milonga", "milonga candombe", "milonga tango", "vals canción", "electronic tango", "electronic milonga", "milonga tangueada", "foxtrot", "fox trot").toSet.contains(md.genre))
 
   def minRating(r: Double) = require(_.rating.getOrElse(0d) >= r)
 

@@ -20,18 +20,28 @@ object Library_Test {
 
   def main(args: Array[String]) {
 
-//    val l = Library.load(new File("/home/djs/replica-dj/library5.djs"))
-    		
+    val l = Library.load(new File("/home/djs/replica-dj/library13.djs"))
 
-    val identifier = new PerformanceIdentifier(None)
-    val in = new File("/tmp/identified.csv")
+    val played = l.playlists.path("TALC").indirectContents;
 
-    val map = identifier.load(in)
-
-    val file = new File("/home/djs/replica-dj/Music/ogg/dj/CracklingTunes/CTMM2108FLAC1648/Carlos Di Sarli _ Robert Gale_Di Sarli, Carlos [Orquesta]_Noche de locura (Tango) 03_02_1956 [CT1898-B1].flac");
-    val perf = map.getOrElse(file, null)
-
-    println(perf.artist);
-
+    for (x <- played) {
+      
+      val f = x.file.toString();
+      val m =  x.md.getOrElse(null);
+      val line = List(f,m.title, m.genre, m.artist, m.year);
+      
+      def fix = (x: String) => x.replaceAll("'", "''");
+      
+      // println("\"" + line.mkString("\",\"") + "\"");
+      
+      var s = "update talc_recordings set artist = '" + fix(m.artist) + "', recording_date='" + m.year + "' where title = '" + m.title + "' and genre = '" + m.genre + "';"
+      s = s.replace(", recording_date='null'", "");    
+      
+      println(s);
+      
+    }
+    
+    
+    
   }
 }
