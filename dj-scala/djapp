@@ -1,7 +1,7 @@
 #!/bin/bash
 
-export JAVA_HOME=/usr/local/jdk1.8.0_101/
-export SCALA_HOME=/usr/local/scala-2.11.8/
+export JAVA_HOME=/usr/local/jdk1.8.0_101
+export SCALA_HOME=/usr/local/scala-2.11.8
 export PATH=/usr/local/scala-2.11.8/bin:/usr/local/jdk1.8.0_101/bin:/usr/bin
 
 lib=$SCALA_HOME/lib
@@ -10,7 +10,7 @@ lib=$SCALA_HOME/lib
 
 bootcp=$lib/scala-compiler.jar:$lib/scala-library.jar:$lib/scala-reflect.jar:$lib/jline.jar:$lib/jline-2.12.jar
 
-cp=build/lib/dj.jar:library/beatroot-0.5.8.jar:library/beatroot-dj.jar:library/jline-1.0.jar:library/jrtf-0.7.jar:library/jrtf-0.7-javadoc.jar:library/jrtf-0.7-sources.jar:library/json_simple-1.1.jar:library/jsoup-1.13.1.jar:library/jsoup-1.13.1-sources.jar:library/junit-4.3.1.jar:library/junit-4.3.1-src.jar:library/log4j-1.2.14.jar:library/taglib.jar:lib/thoughtpatterns_core.jar
+cp=build/lib/dj.jar:library/beatroot-0.5.8.jar:library/beatroot-dj.jar:library/jline-1.0.jar:library/jrtf-0.7.jar:library/jrtf-0.7-javadoc.jar:library/jrtf-0.7-sources.jar:library/json_simple-1.1.jar:library/jsoup-1.13.1.jar:library/jsoup-1.13.1-sources.jar:library/junit-4.3.1.jar:library/junit-4.3.1-src.jar:library/log4j-1.2.14.jar:library/taglib.jar:../core/build/lib/thoughtpatterns_core.jar
 
 java -Xbootclasspath/p:$bootcp -cp $cp au.com.thoughtpatterns.djs.app.App $@
 
