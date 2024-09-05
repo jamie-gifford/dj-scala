@@ -50,7 +50,7 @@ public class Clementine implements PlayerInterface {
 	}
 
 	public URL getTrackLocation(int i) throws Exception {
-		String md = dbus("/TrackList", "GetMetadata", "" + i);
+                String md = dbus("/TrackList", "GetMetadata", "" + i);
 		
 		//Pattern loc = Pattern.compile("^location: (.+)$", Pattern.MULTILINE);
 		Pattern loc = Pattern.compile(".*^location: ([^\\n]+)$.*", Pattern.MULTILINE | Pattern.DOTALL);
@@ -124,19 +124,27 @@ public class Clementine implements PlayerInterface {
 		
 	}
 	
-	public URL getCurrentTrack() {
-		
-		try {
-			Integer i = getCurrentIndex();
-			if (i == null) {
-				return null;
-			}
-			return getTrackLocation(i);
-		} catch (Exception ex) {
-			throw new SystemException(ex);
+        public URL getCurrentTrack() {
+            try {
+                String md = dbus("/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Metadata");
 
-		}
-	}
+                Pattern loc = Pattern.compile(".*^xesam:url: ([^\\n]+)$.*", Pattern.MULTILINE | Pattern.DOTALL);
+		Matcher m = loc.matcher(md);
+		
+		if (m.matches()) {
+                    String location = m.group(1);
+
+                    URL url = new URL(location);
+                    return url;
+                } else {
+                    return null;
+                }
+
+
+            } catch (Exception ex) {
+                throw new SystemException(ex);
+            }
+        }
 
 	public static String dbus(String... args) throws Exception {
 
