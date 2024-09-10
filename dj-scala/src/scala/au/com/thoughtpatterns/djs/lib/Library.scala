@@ -183,12 +183,27 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
     p.close()
   }
 
+  private def rel(root: File, f: File) : File = {
+
+    var base = root.getAbsoluteFile
+    if (! base.isDirectory) {
+      base = base.getParentFile.getAbsoluteFile
+    }
+
+    return base.toPath.relativize(f.toPath).toFile
+  }
+
   /**
    * Given a MusicContainer t, return the library-managed version if exists, otherwise
    * return t itself.
    */
   def resolve[T <: MusicContainer](t: T): T = {
-    val r = contents.get(t.file) match {
+    val f = libFile.get match {
+      case base: File => rel(base, t.file)
+      case _ => t.file
+    }
+
+    val r = contents.get(f) match {
       case Some(x: T @unchecked) => x
       case _ => t
     }
