@@ -19,7 +19,8 @@ lib=$SCALA_HOME/lib
 
 bootcp=$lib/scala-compiler.jar:$lib/scala-library.jar:$lib/scala-reflect.jar:$lib/jline.jar:$lib/jline-2.12.jar
 
-cp=$DIR/build/lib/dj.jar:$DIR/library/beatroot-0.5.8.jar:$DIR/library/beatroot-dj.jar:$DIR/library/jline-1.0.jar:$DIR/library/jrtf-0.7.jar:$DIR/library/jrtf-0.7-javadoc.jar:$DIR/library/jrtf-0.7-sources.jar:$DIR/library/json_simple-1.1.jar:$DIR/library/jsoup-1.13.1.jar:$DIR/library/jsoup-1.13.1-sources.jar:$DIR/library/junit-4.3.1.jar:$DIR/library/junit-4.3.1-src.jar:$DIR/library/log4j-1.2.14.jar:$DIR/library/taglib.jar:$DIR/../core/build/lib/thoughtpatterns_core.jar
+cp=$DIR/out/production/dj-scala:$DIR/build/lib/dj.jar:$DIR/library/beatroot-0.5.8.jar:$DIR/library/beatroot-dj.jar:$DIR/library/jline-1.0.jar:$DIR/library/jrtf-0.7.jar:$DIR/library/jrtf-0.7-javadoc.jar:$DIR/library/jrtf-0.7-sources.jar:$DIR/library/json_simple-1.1.jar:$DIR/library/jsoup-1.13.1.jar:$DIR/library/jsoup-1.13.1-sources.jar:$DIR/library/junit-4.3.1.jar:$DIR/library/junit-4.3.1-src.jar:$DIR/library/log4j-1.2.14.jar:$DIR/library/taglib.jar:$DIR/../core/build/lib/thoughtpatterns_core.jar
+
 
 java -Xbootclasspath/p:$bootcp -cp $cp au.com.thoughtpatterns.djs.app.App $@
 
