@@ -43,6 +43,12 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
     dirty0 = true
   }
 
+  def dumpContents : Unit = {
+    for (c <- contents.keys) {
+      Log.info(c.toString());
+    }
+  }
+  
   def add(f: File): Unit = {
     contents.get(f) match {
       case None =>

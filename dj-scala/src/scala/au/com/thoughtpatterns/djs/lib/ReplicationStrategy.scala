@@ -74,6 +74,8 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
   }
 
   protected def target(src: File, dest: File): Target
+  
+  def deleteTarget(src: File): Option[Target] = None
 
   /**
    * Replicate the src file to the dest file. This will involve calculating the target file from the dest
@@ -329,6 +331,32 @@ object ReplicationStrategy {
         Target(rename(dest, "ogg"), this)
       else
         Target(dest, this)
+    }
+
+    override def deleteTarget(src: File) = {
+      val tg = target(src);
+      val other = tg match {
+        case Some(t) => {
+          if (t.file.getName.endsWith(".flac")) {
+            Some(Target(rename(t.file, "ogg"), this));
+          } else if (t.file.getName.endsWith(".ogg")) {
+            Some(Target(rename(t.file, "flac"), this));
+          } else {
+            None
+          }
+        }
+        case _ => None
+      }
+      other match {
+        case Some(s) => {
+          if (s.file.exists) {
+            Some(s)
+          } else {
+            None
+          }
+        }
+        case _ => None
+      }
     }
 
     override def transcode(m: MusicFile, src: File, target: Target) {

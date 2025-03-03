@@ -60,5 +60,6 @@ trait MusicContainer extends Serializable {
   
   def deleteMdFile() {}
   
+  
 }
 

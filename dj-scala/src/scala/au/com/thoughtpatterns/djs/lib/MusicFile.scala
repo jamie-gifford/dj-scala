@@ -252,6 +252,10 @@ class MusicFile(private val file0: File, val lib: Library) extends MusicContaine
       strategy.json.put(file, toJson(path))
     }
 
+    for (target <- strategy.deleteTarget(file)) {
+      target.file.delete()
+      Log.info("Deleted " + target.file)
+    }
   }
   
   def lookupComposer : Option[String] = {
@@ -295,7 +299,7 @@ class MusicFile(private val file0: File, val lib: Library) extends MusicContaine
       mdFile.delete()
     }
   }
-
+  
 }
 
 object MusicFile {
