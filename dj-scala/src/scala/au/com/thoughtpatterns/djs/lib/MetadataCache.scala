@@ -155,7 +155,7 @@ object MetadataCache {
       )
     }
     
-    if (mdTs > ts && md.title != null) {
+    if (mdTs >= ts + 1000l && md.title != null) {
       // File is out of date so update
       // But refuse to do so if we are missing a title (as a safety net in case lltag has failed)
       
@@ -197,8 +197,8 @@ object MetadataCache {
       
     val out = CachedMetadata(md, ts);
 
-    if (! mdFile.exists() || mdTs < ts) {
-      Log.info("MD file is out of date: mdTs = " + new Date(mdTs) + "; file ts = " + new Date(ts));
+    if (! mdFile.exists() || mdTs <= ts - 1000l) {
+      Log.info("MD file is out of date: mdTs = " + new Date(mdTs) + "(" + mdTs + "); file ts = " + new Date(ts) + " (" + ts + ")");
       // Metadata file is out of date so update
       writeMdFile(out, mdFile)
     }

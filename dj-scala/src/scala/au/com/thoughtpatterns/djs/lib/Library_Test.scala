@@ -18,29 +18,40 @@ import au.com.thoughtpatterns.djs.model.PerformanceIdentifier
 
 object Library_Test {
 
+  def str(x: Object) : String = if (x == null) { "" } else { x.toString() }
+
   def main(args: Array[String]) {
 
     val l = Library.load(new File("/home/djs/replica-dj/library13.djs"))
 
-    val played = l.playlists.path("TALC").indirectContents;
+    //val played = l.playlists.path("TALC").indirectContents;
+    val p = l.playlists.path("tvm-2star");
+    val played = p.indirectContents;
 
+    val lines = new Array[Array[String]](played.size);
+      
+    val utils = new CsvUtils();
+
+    
+    var i = -1;
     for (x <- played) {
+      
+      i += 1;
       
       val f = x.file.toString();
       val m =  x.md.getOrElse(null);
-      val line = List(f,m.title, m.genre, m.artist, m.year);
+
+            
       
-      def fix = (x: String) => x.replaceAll("'", "''");
       
-      // println("\"" + line.mkString("\",\"") + "\"");
-      
-      var s = "update talc_recordings set artist = '" + fix(m.artist) + "', recording_date='" + m.year + "' where title = '" + m.title + "' and genre = '" + m.genre + "';"
-      s = s.replace(", recording_date='null'", "");    
-      
-      println(s);
+      val line = Array(str(f),str(m.title), str(m.genre), str(m.artist), str(m.year));
+
+      lines(i) = line;
       
     }
     
+    utils.toCsv(lines);
+    println(utils.getFormattedString);
     
     
   }

@@ -97,7 +97,9 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
         if (suffix(targetFile).toLowerCase() == "ogg")
           // List("ffmpeg", "-y", "-i", src.getAbsolutePath(), "-acodec", "libvorbis", "-aq", "" + compression, targetFile.getAbsolutePath())
           List("sox", src.getAbsolutePath(), targetFile.getAbsolutePath())
-        else
+        else if (suffix(targetFile).toLowerCase() == "m4a") 
+          List("avconv", "-y", "-i", src.getAbsolutePath(), "-acodec", "alac", targetFile.getAbsolutePath())
+        else  
           List("avconv", "-y", "-i", src.getAbsolutePath(), targetFile.getAbsolutePath())
       else
         List("cp", src.getAbsolutePath(), targetFile.getAbsolutePath())
@@ -199,6 +201,54 @@ object ReplicationStrategy {
   }
 
   /**
+   * Replication strategy that encodes everything as Flac. Also replaces | with ‖
+   */
+  class Flac(lib: Library, from: Path, to: Path) extends ReplicationStrategy(from, to) {
+
+    def target(src: File, dest: File) = {
+      if (! isLossless(dest))
+        Target(rename(dest, "flac"), this)
+      else
+        Target(dest, this)
+    }
+
+    def forceReencode = true
+
+    override def image(src: File): Option[File] = {
+
+      if (isMusic(src)) {
+        
+        val m = lib.resolve(src);
+
+        m match {
+          case Some(x: MusicFile) => {
+            
+            x.md match {
+              case Some(md) => {
+
+                val path = Paths.get(md.artist, md.title + ".flac")
+                val dest = to.resolve(path)
+                
+                val destFile = dest.toFile
+                
+                Some(destFile)
+                
+              } 
+              case _ => None
+            }
+            
+          } 
+          case _ => None
+        }
+        
+      } else {
+        None
+      }
+    }
+
+  }
+
+  /**
    * Replication strategy that compresses everything to MP3
    */
   class MP3(from: Path, to: Path) extends ReplicationStrategy(from, to) {
@@ -211,6 +261,59 @@ object ReplicationStrategy {
     }
 
     def forceReencode = true
+
+  }
+
+  /**
+   * Replication strategy that encodes as M4A lossless (alac) and renames files 
+   * to artist/title with Apple compatibility
+   */
+  class M4A(lib: Library, from: Path, to: Path) extends ReplicationStrategy(from, to) {
+
+    def target(src: File, dest: File) = {
+      Target(rename(dest, "m4a"), this)
+    }
+
+    def forceReencode = true
+    
+    def clean(src: String) : String = {
+      if (src == null) 
+        return "";
+      else 
+        return src.replaceAllLiterally("|", "‖").replaceAllLiterally("?", "");
+    }
+
+    override def image(src: File): Option[File] = {
+
+      if (isMusic(src)) {
+        
+        val m = lib.resolve(src);
+
+        m match {
+          case Some(x: MusicFile) => {
+            
+            x.md match {
+              case Some(md) => {
+
+                val path = Paths.get(clean(md.artist), clean(md.title) + ".m4a")
+                val dest = to.resolve(path)
+                
+                val destFile = dest.toFile
+                
+                Some(destFile)
+                
+              } 
+              case _ => None
+            }
+            
+          } 
+          case _ => None
+        }
+        
+      } else {
+        None
+      }
+    }
 
   }
 
