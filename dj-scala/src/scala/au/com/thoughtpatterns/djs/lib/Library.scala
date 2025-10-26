@@ -539,6 +539,10 @@ Managed collection functions
               Good for additional DJ rigs
               eg l.replDJ("/media/Orange/Music", "/home/djs/replica-dj/Music")
 
+  replUpstream : replicate missing music files using copy
+              Good for propagating music files from downstream to upstream
+              eg l.replUpstream("/home/djs/replica-dj/Music", "/media/Orange/Music")
+
 Managed music functions
 
    require  : filter on metadata function

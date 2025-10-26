@@ -22,37 +22,8 @@ object Library_Test {
 
   def main(args: Array[String]) {
 
-    val l = Library.load(new File("/home/djs/replica-dj/library13.djs"))
-
-    //val played = l.playlists.path("TALC").indirectContents;
-    val p = l.playlists.path("tvm-2star");
-    val played = p.indirectContents;
-
-    val lines = new Array[Array[String]](played.size);
-      
-    val utils = new CsvUtils();
-
-    
-    var i = -1;
-    for (x <- played) {
-      
-      i += 1;
-      
-      val f = x.file.toString();
-      val m =  x.md.getOrElse(null);
-
-            
-      
-      
-      val line = Array(str(f),str(m.title), str(m.genre), str(m.artist), str(m.year));
-
-      lines(i) = line;
-      
-    }
-    
-    utils.toCsv(lines);
-    println(utils.getFormattedString);
-    
-    
+    val l = Library.load(new File("/home/djs/tmp/sound.djs"));
+    l.replUpstream("/home/djs/tmp/sound", "/home/djs/tmp/sound2");
+    //l.replFlac("/home/djs/tmp/sound", "/home/djs/tmp/sound2");
   }
 }

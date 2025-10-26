@@ -184,6 +184,15 @@ trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with 
     this
   }
 
+  /**
+   * Replicate music files in library, using upstream strategy
+   */
+  def replUpstream(from: String, to: String) = {
+    val x = new ReplicationStrategy.Upstream(lib, new File(from).toPath(), new File(to).toPath())
+    replicate(from, to, x)
+    this
+  }
+
 }
 
 abstract trait DesktopCompat {

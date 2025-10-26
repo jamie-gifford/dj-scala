@@ -203,7 +203,7 @@ object ReplicationStrategy {
   }
 
   /**
-   * Replication strategy that encodes everything as Flac. Also replaces | with ‖
+   * Replication strategy that encodes everything as Flac. Also replaces | with ‖ and uses directory structure <artist>/<title>
    */
   class Flac(lib: Library, from: Path, to: Path) extends ReplicationStrategy(from, to) {
 
@@ -462,6 +462,36 @@ object ReplicationStrategy {
     }
 
   }
+  
+  /**
+   * Replication strategy for music files only, that copies files unless the destination
+   * already has an ogg or flac file of same name.
+   */
+  class Upstream(lib: Library, from: Path, to: Path) extends ReplicationStrategy(from, to) {
+    
+    def forceReencode = false;
+    
+    def target(src: File, dest: File) = {
+      
+      val ogg = rename(dest, "ogg");
+      val flac = rename(dest, "flac");
 
+      if (dest.exists()) {
+        Target(dest, this)
+      } else if (ogg.exists()) {
+        Target(ogg, this)
+      } else if (flac.exists()) {
+        Target(flac, this)
+      } else {
+        Target(dest, this)
+      }
+    }
+    
+    override def dirtyTarget(src: File): Option[Target] = {
+      image(src) map { target(src, _) } filter {
+        t => ! t.file.exists();
+      }
+    }   
+  }
 }
 
