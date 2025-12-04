@@ -14,6 +14,7 @@ public interface ITag {
     Double getBPM();
     String getRGGain();
     String getRGPeak();
+    Double getTuning();
     String getComposer();
     String getGroup();
     
@@ -34,6 +35,7 @@ public interface ITag {
     void setRGGain(String g);
     void setRGPeak(String p);
     void setComposer(String composer);
+    void setTuning(Double cents);
     void setGroup(String group);
     
     String getSignature();

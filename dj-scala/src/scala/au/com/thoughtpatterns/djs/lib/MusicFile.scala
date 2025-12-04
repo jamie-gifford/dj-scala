@@ -31,7 +31,17 @@ class MusicFile(private val file0: File, val lib: Library) extends MusicContaine
   override def metadata = if (md.isDefined) {
     def fmt(s: Any) = if (s != null) s.toString else ""
     val m = md.get
-    val l = List("Title" -> m.title, "Artist" -> m.artist, "Composer" -> m.composer, "Date" -> fmt(m.year), "Genre" -> m.genre, "Rating" -> m.rating.getOrElse(0d).toString)
+    var l = List(
+        "Title" -> m.title, 
+        "Artist" -> m.artist, 
+        "Composer" -> m.composer, 
+        "Date" -> fmt(m.year), 
+        "Genre" -> m.genre, 
+        "Rating" -> m.rating.getOrElse(0d).toString
+        )
+    if (m.tuning.isDefined) {
+      l = l.+:("Tuning" -> m.tuning.get.toString());
+    }
     if (m.rg.isDefined) {
       l.+:("ReplayGain" -> m.rg.get.gain)
     } else {
@@ -120,6 +130,15 @@ class MusicFile(private val file0: File, val lib: Library) extends MusicContaine
     }
   }
 
+  def tuning(): Unit = {
+    val path = file.getAbsolutePath
+    ProcessExec.exec(List(
+        "set-tuning",
+        path
+        ))
+      update()
+  }
+  
   /**
    * "Passive" method which will use locally available letras only.
    */
@@ -193,6 +212,7 @@ class MusicFile(private val file0: File, val lib: Library) extends MusicContaine
       tag.setTrack(track)
       tag.setRating(rating match { case Some(x) => x case _ => 0 });
       tag.setComposer(composer)
+      m.tuning match { case Some(x) => tag.setTuning(x) case _ => }
 
       tag.write();
 

@@ -127,6 +127,7 @@ object MetadataCache {
             Option(json.getCast("rating", classOf[Double])),
             json.getCast("bpm", classOf[Double]) match { case x if (x > 0) => Some(x) case _ => None },
             rg(json.getCast("rg_gain", classOf[String]), json.getCast("rg_peak", classOf[String])),
+            Option(json.getCast("tuning", classOf[Double])),
             json.getCast("composer", classOf[String]),
             json.getCast("group", classOf[String])
           )
@@ -150,6 +151,7 @@ object MetadataCache {
       tag.getRating() match { case x if (x > 0) => Some(x) case _ => None },
       tag.getBPM() match { case x if x != null => Some(x) case _ => None},
       rg(tag.getRGGain(), tag.getRGPeak()),
+      tag.getTuning() match { case x if (x != null) => Some(x) case _ => None },
       tag.getComposer,
       tag.getGroup()
       )
@@ -188,6 +190,7 @@ object MetadataCache {
       tag.setComposer(md.composer)
       //  group: String = null
       tag.setGroup(md.group)
+      md.tuning match { case Some(x) => tag.setTuning(x) case _ =>  }
 
       // ------------------------------
       
@@ -275,6 +278,13 @@ object MetadataCache {
     //  composer: String = null
     json.set("composer", md.composer);
 
+    md.tuning match {
+      case Some(x) => {
+        json.set("tuning", x)
+      }
+      case None =>
+    }
+    
 		// -----------------------------------
 
 		Log.info("Writing " + mdFile)

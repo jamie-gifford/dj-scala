@@ -17,6 +17,7 @@ case class Metadata(
   rating: Option[Double],
   bpm:  Option[Double] = None,
   rg: Option[ReplayGainData] = None,
+  tuning: Option[Double] = None,
   composer: String = null,
   group: String = null
   ) extends Serializable {

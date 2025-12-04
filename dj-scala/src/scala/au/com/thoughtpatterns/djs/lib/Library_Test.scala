@@ -22,8 +22,11 @@ object Library_Test {
 
   def main(args: Array[String]) {
 
-    val l = Library.load(new File("/home/djs/tmp/sound.djs"));
-    l.replUpstream("/home/djs/tmp/sound", "/home/djs/tmp/sound2");
-    //l.replFlac("/home/djs/tmp/sound", "/home/djs/tmp/sound2");
+    val l = Library.load(new File("/media/djs/Orange/orange-library2.djs"));
+    val tandas = l.p.path("Jamie");
+    
+    tandas.repl("/media/djs/Orange/Music", "/media/djs/Orange/replica");
+    
+    
   }
 }

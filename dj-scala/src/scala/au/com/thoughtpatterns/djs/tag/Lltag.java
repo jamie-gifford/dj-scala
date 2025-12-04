@@ -60,6 +60,8 @@ public class Lltag implements ITag {
 	
 	private String group;
 	
+	private Double tuning;
+	
 	private boolean toUpperCase = false;
 
 	public Lltag(File aFile, boolean aToUpperCase) throws IOException {
@@ -193,6 +195,15 @@ public class Lltag implements ITag {
                     case "CONTENT GROUP":
                     	setGroup(value);
                     	break;
+                    case "TUNING":
+                		Double cents = null;
+                		if (value != null && ! "".equals(value)) {
+                        	try {
+                        		cents = Double.parseDouble(value);
+                        	} catch (Exception ex) {}
+                		}
+                		setTuning(cents);
+                		break;
                     	
                     default:
                         break;
@@ -346,6 +357,14 @@ public class Lltag implements ITag {
 		this.group = group;
 	}
 
+	public Double getTuning() {
+		return tuning;
+	}
+	
+	public void setTuning(Double cents) {
+		this.tuning = cents;
+	}
+	
 	private void update(String key, Object value0) {
 		if (value0 == null) {
 			return;

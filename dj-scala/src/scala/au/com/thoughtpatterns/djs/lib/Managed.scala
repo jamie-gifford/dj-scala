@@ -809,6 +809,15 @@ abstract class ManagedMusic(
     empty
   }
 
+  def tuning: ManagedMusic = {
+    val empty = this.require(x => {
+      x.tuning == null || x.tuning.isEmpty
+    })
+
+    for (m <- empty) m.tuning()
+    empty
+  }
+
   def fetchLetras: ManagedMusic = {
     for (m <- this) m.letra
     this
