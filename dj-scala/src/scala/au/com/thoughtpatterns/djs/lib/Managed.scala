@@ -125,6 +125,10 @@ trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with 
   def replRetune(from: String, to: String) = {
     val x = new ReplicationStrategy.OggRetune(new File(from).toPath(), new File(to).toPath())
     replicate(from, to, x)
+    
+    val db = new File(to, "db.json")
+    toJson(x, db)
+
     this
   }
 
@@ -198,6 +202,32 @@ trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with 
     replicate(from, to, x)
     this
   }
+
+  /**
+   * JSON representation
+   */
+  def toJson(strategy: ReplicationStrategy): String = {
+    val p = new StringBuffer()
+
+    def f(file: File) = strategy.json.getOrElse(file, null)
+
+    val pl = (for (m <- this) yield f(m.file)).mkString(", \n")
+    val music = (for (m <- indirectContents) yield f(m.file)).mkString(", \n")
+
+    p
+      .append(" { \"playlists\": [ ").append(pl).append(" ], \n")
+      .append(" \"music\": [ ").append(music).append(" ] }\n");
+
+    p.toString
+
+  }
+
+  def toJson(strategy: ReplicationStrategy, file: File) {
+    val w = new PrintWriter(new FileWriter(file))
+    w.print(toJson(strategy))
+    w.close()
+  }
+
 
 }
 
@@ -1071,31 +1101,6 @@ abstract class ManagedPlaylists(val lib: Library)
     val db = new File(to, "db.json")
     toJson(x, db)
     this
-  }
-
-  /**
-   * JSON representation
-   */
-  def toJson(strategy: ReplicationStrategy): String = {
-    val p = new StringBuffer()
-
-    def f(file: File) = strategy.json.getOrElse(file, null)
-
-    val pl = (for (m <- this) yield f(m.file)).mkString(", \n")
-    val music = (for (m <- indirectContents) yield f(m.file)).mkString(", \n")
-
-    p
-      .append(" { \"playlists\": [ ").append(pl).append(" ], \n")
-      .append(" \"music\": [ ").append(music).append(" ] }\n");
-
-    p.toString
-
-  }
-
-  def toJson(strategy: ReplicationStrategy, file: File) {
-    val w = new PrintWriter(new FileWriter(file))
-    w.print(toJson(strategy))
-    w.close()
   }
 
   // ---------------------------
