@@ -122,6 +122,12 @@ trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with 
     this
   }
 
+  def replRetune(from: String, to: String) = {
+    val x = new ReplicationStrategy.OggRetune(new File(from).toPath(), new File(to).toPath())
+    replicate(from, to, x)
+    this
+  }
+
   def replIdentity(from: String, to: String) = {
     val x = new ReplicationStrategy.Identity(new File(from).toPath(), new File(to).toPath())
     replicate(from, to, x)
@@ -1051,6 +1057,15 @@ abstract class ManagedPlaylists(val lib: Library)
 
   override def repl(from: String, to: String) = {
     val x = new ReplicationStrategy.Ogg(new File(from).toPath(), new File(to).toPath())
+    replicate(from, to, x)
+    indirectContents.replicate(from, to, x)
+    val db = new File(to, "db.json")
+    toJson(x, db)
+    this
+  }
+
+  override def replRetune(from: String, to: String) = {
+    val x = new ReplicationStrategy.OggRetune(new File(from).toPath(), new File(to).toPath())
     replicate(from, to, x)
     indirectContents.replicate(from, to, x)
     val db = new File(to, "db.json")

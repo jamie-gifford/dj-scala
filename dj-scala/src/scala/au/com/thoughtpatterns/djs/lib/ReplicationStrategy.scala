@@ -94,18 +94,7 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
     
     val compression = targetCompression(m)
 
-    val cmd =
-      if (suffix(targetFile) != suffix(src) || forceReencode) // force conversion
-        if (suffix(targetFile).toLowerCase() == "ogg")
-          // List("ffmpeg", "-y", "-i", src.getAbsolutePath(), "-acodec", "libvorbis", "-aq", "" + compression, targetFile.getAbsolutePath())
-          List("sox", src.getAbsolutePath(), targetFile.getAbsolutePath())
-        else if (suffix(targetFile).toLowerCase() == "m4a") 
-          List("avconv", "-y", "-i", src.getAbsolutePath(), "-acodec", "alac", targetFile.getAbsolutePath())
-        else  
-          List("avconv", "-y", "-i", src.getAbsolutePath(), targetFile.getAbsolutePath())
-      else
-        List("cp", src.getAbsolutePath(), targetFile.getAbsolutePath())
-
+    val cmd = transcodeCmd(m, src, target);
     Log.info("execute " + cmd.mkString(" "));
 
     val l = java.util.Arrays.asList(cmd.toArray: _*)
@@ -118,6 +107,21 @@ abstract class ReplicationStrategy(from: Path, to: Path) {
     transcodeTags(m, src, target)
 
     targetFile.setLastModified(src.lastModified)
+  }
+
+  def transcodeCmd(m: MusicFile, src: File, target: Target) : List[String] = {
+    val targetFile = target.file;
+    val cmd =
+      if (suffix(targetFile) != suffix(src) || forceReencode) // force conversion
+        if (suffix(targetFile).toLowerCase() == "ogg")
+          List("sox", src.getAbsolutePath(), targetFile.getAbsolutePath())
+        else if (suffix(targetFile).toLowerCase() == "m4a") 
+          List("avconv", "-y", "-i", src.getAbsolutePath(), "-acodec", "alac", targetFile.getAbsolutePath())
+        else  
+          List("avconv", "-y", "-i", src.getAbsolutePath(), targetFile.getAbsolutePath())
+      else
+        List("cp", src.getAbsolutePath(), targetFile.getAbsolutePath())
+    return cmd;
   }
   
   // Default compression is 6, this can be overridden in subclasses.
@@ -199,6 +203,34 @@ object ReplicationStrategy {
     }
 
     def forceReencode = true
+
+  }
+
+  /**
+   * Replication strategy that compresses everything to Ogg and retunes tracks according to the tuning parameter
+   */
+  class OggRetune(from: Path, to: Path) extends ReplicationStrategy(from, to) {
+
+    def target(src: File, dest: File) = {
+      if (isLossless(dest))
+        Target(rename(dest, "ogg"), this)
+      else
+        Target(dest, this)
+    }
+
+    def forceReencode = true
+    
+    override def transcodeCmd(m: MusicFile, src: File, target: Target) : List[String] = {
+      val targetFile = target.file;
+      
+      var cents = 0d;
+      if (m.md.isDefined && m.md.getOrElse(null).tuning.isDefined) {
+        cents = m.md.getOrElse(null).tuning.getOrElse(0d);
+      }
+      
+      val cmd = List("sox", src.getAbsolutePath(), targetFile.getAbsolutePath(), "speed", -cents + "c")
+      return cmd;
+    }
 
   }
 
