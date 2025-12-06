@@ -396,6 +396,14 @@ abstract class ManagedMusic(
   }
 
   /**
+   * Intersection with piece
+   */
+  def samePiece(m: ManagedMusic) = {
+    val pieces = (m map { _.toPiece }).iterator.toSet
+    filtre({ x => pieces.contains(x.toPiece)})
+  }
+  
+  /**
    * Send contents to clementine
    */
   def q() {

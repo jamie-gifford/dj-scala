@@ -7,6 +7,7 @@ import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
 import java.io.PrintWriter
 import au.com.thoughtpatterns.core.util.CsvUtils
+import au.com.thoughtpatterns.djs.disco.Fakebook
 import au.com.thoughtpatterns.djs.disco.Disco
 import au.com.thoughtpatterns.djs.disco.Disco.Source
 import au.com.thoughtpatterns.djs.util.Log
@@ -512,6 +513,13 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
     return dirty
   }
   
+  def fakebook : ManagedMusic = {
+    var x = m.tvm.title("---");
+    for (t <- Fakebook.tfb) {
+      x = (x || m.tvm.title(t)).m
+    }
+    return x
+  }
   
   
   def help {
@@ -529,15 +537,18 @@ Managed collection functions
   ||, \\, && : combining operators
 
   repl      : replicate using "Ogg" strategy, good for phone. 
-              eg tandas.repl("/media/Orange/Music", "/media/Orange/replica")
+              eg tandas.repl("/media/Orange/djs/Music", "/media/Orange/replica")
+
+  replRetune : replicate using "Ogg" strategy and retune to 442 Hz. 
+              eg tandas.repl("/media/Orange/djs/Music", "/media/Orange/replica-retuned")
 
   replShare   : replicate using "MP3" strategy, renaming files to simple format and stripping tags. 
               Good for exports. 
-              eg tandas.replShare("/media/Orange/Music", "/tmp/export")
+              eg tandas.replShare("/media/djs/Orange/Music", "/tmp/export")
 
   replDJ    : replicate using "DJ" strategy (ie, compress to Ogg if less than two stars).
               Good for additional DJ rigs
-              eg l.replDJ("/media/Orange/Music", "/home/djs/replica-dj/Music")
+              eg l.replDJ("/media/djs/Orange/Music", "/home/djs/replica-dj/Music")
 
   replUpstream : replicate missing music files using copy
               Good for propagating music files from downstream to upstream

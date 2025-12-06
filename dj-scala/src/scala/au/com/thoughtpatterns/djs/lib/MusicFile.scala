@@ -10,6 +10,7 @@ import au.com.thoughtpatterns.core.json.AJsonyObject
 import au.com.thoughtpatterns.djs.util.Log
 import au.com.thoughtpatterns.djs.disco.tangoinfo.Data
 import au.com.thoughtpatterns.dj.disco.tangoinfo.Letras
+import au.com.thoughtpatterns.djs.disco.Types.SpanishWord
 
 @SerialVersionUID(3L)
 class MusicFile(private val file0: File, val lib: Library) extends MusicContainer with DesktopCompat with Serializable {
@@ -250,6 +251,11 @@ class MusicFile(private val file0: File, val lib: Library) extends MusicContaine
     case None => Performance("none", "none", "none", null)
   }
 
+  def toPiece: Piece = md match {
+    case Some(m) => Piece(new SpanishWord(m.title), m.genre)
+    case None => Piece(new SpanishWord("none"), "none")
+  }
+  
   def extraProps = {
     (if (_extraProps != null) _extraProps else None) match {
       case Some(p) => p
