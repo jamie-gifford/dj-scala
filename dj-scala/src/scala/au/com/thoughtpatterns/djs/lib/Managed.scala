@@ -159,7 +159,34 @@ trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with 
     val goodFiles = (good.map { x => x.file }).toSet
     val compressHardFiles = (compressHard.map { x => x.file }).toSet
 
-    val x = new ReplicationStrategy.DJ(new File(from).toPath(), new File(to).toPath(), goodFiles, compressHardFiles)
+    val x = new ReplicationStrategy.DJ(new File(from).toPath(), new File(to).toPath(), goodFiles, compressHardFiles, false)
+
+    replicate(from, to, x)
+    this
+  }
+
+    /**
+   * Replicate library, compressing to Ogg anthing with either no rating or rating less than 2 stars, and retuning
+   */
+  def replDJRetune(from: String, to: String) = {
+    val okay = m.require(md => {
+      var z = md.rating match { case Some(x) if x >= 0.4 => true case _ => false }
+      z
+    })
+    val good = m.minRating(0.4)
+
+    /*
+    val bad = m \ m.minRating(0.3) \ m.path("cortina")
+    val weird = m \ m.tvm \ m.path("cortina") \ m.artist("Oscar Aleman")
+		*/
+    // val compressHard = m \ m.path("cortina") \ m.unrated \ m.minRating(0.3)
+
+    val compressHard = m.title("DUMMY NOT SURE WHAT TO COMPRESS HARD")
+
+    val goodFiles = (good.map { x => x.file }).toSet
+    val compressHardFiles = (compressHard.map { x => x.file }).toSet
+
+    val x = new ReplicationStrategy.DJ(new File(from).toPath(), new File(to).toPath(), goodFiles, compressHardFiles, true)
 
     replicate(from, to, x)
     this

@@ -550,6 +550,10 @@ Managed collection functions
               Good for additional DJ rigs
               eg l.replDJ("/media/djs/Orange/Music", "/home/djs/replica-dj/Music")
 
+  replDJRetune : replicate using "DJ" strategy (ie, compress to Ogg if less than two stars), *retuning*.
+              Good for additional DJ rigs
+              eg l.replDJRetune("/media/djs/Orange/Music", "/home/djs/replica-dj/Music")
+
   replUpstream : replicate missing music files using copy
               Good for propagating music files from downstream to upstream
               eg l.replUpstream("/home/djs/replica-dj/Music", "/media/Orange/Music")

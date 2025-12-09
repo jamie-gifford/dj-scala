@@ -354,7 +354,7 @@ object ReplicationStrategy {
   /**
    * Replication strategy that compresses everything to Ogg except stuff marked as noCompress
    */
-  class DJ(from: Path, to: Path, noCompress: Set[File], compressHard: Set[File]) extends ReplicationStrategy(from, to) {
+  class DJ(from: Path, to: Path, noCompress: Set[File], compressHard: Set[File], retune: Boolean) extends ReplicationStrategy(from, to) {
 
     def forceReencode = false
     
@@ -414,6 +414,27 @@ object ReplicationStrategy {
       }
     }
 
+    override def transcodeCmd(m: MusicFile, src: File, target: Target) : List[String] = {
+
+      val targetFile = target.file;
+        
+      var cents = 0d;
+      if (m.md.isDefined && m.md.getOrElse(null).tuning.isDefined) {
+        cents = m.md.getOrElse(null).tuning.getOrElse(0d);
+      }
+
+      if (! retune || cents == 0d) {
+
+        return super.transcodeCmd(m, src, target);
+        
+      } else {
+      
+        val cmd = List("sox", "-G", src.getAbsolutePath(), targetFile.getAbsolutePath(), "speed", -cents + "c")
+        return cmd;
+        
+      }
+    }
+    
   }
 
   /**
