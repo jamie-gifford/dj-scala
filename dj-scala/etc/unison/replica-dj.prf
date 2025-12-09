@@ -1,0 +1,27 @@
+root = /home/djs/replica-dj/Music
+root = /media/djs/Orange/Music
+
+path = ogg
+path = playlist-tree
+
+ignore = Name *.ogg
+ignore = Name *.flac
+ignore = Name *.m4a
+ignore = Name *.wav
+ignore = Name *.mp3
+ignore = Name *.aif
+ignore = Name .*
+
+ignore = Name *~
+
+ignore = Name *.m3u
+ignore = Name *.xspf
+ignore = Name *.xml
+
+mountpoint = ogg
+
+times = true
+
+perms = 0
+
+

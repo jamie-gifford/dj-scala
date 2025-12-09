@@ -1,0 +1,29 @@
+def tandas = l.p.path("Jamie")
+
+def t = tandas.containing(q.q)
+
+def s = q.q.suggest(tandas)
+
+def milongas = l.p.path("public").p
+
+def recentMilongas = (l.p.path("public").path("2016")).p
+
+def recent = recentMilongas.indirectContents
+
+def good = tandas.indirectContents.m.tvm
+
+def goody(genre: String, avoid: au.com.thoughtpatterns.djs.lib.ManagedMusic) = (good \ (good ~ avoid)).m.tvm.genre(genre).byRating.byYear.byArtist
+
+def twostar = l.p.path("tvm-2star")
+
+def similar = (t.indirectContents && recent).m
+
+def similarMilongas = recentMilongas.containing(similar)
+
+def replicate = (tandas || milongas || twostar).repl("/media/djs/Orange/Music", "/media/djs/Orange/replica")
+
+def replDJ = l.replDJ("/media/djs/Orange/Music", "/home/djs/replica-dj/Music")
+
+def exportInit = l.exportInitCommands("/tmp/init")
+
+def importInit = l.importCmd("/tmp/init")

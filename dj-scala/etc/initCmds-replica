@@ -1,0 +1,49 @@
+def tandas = l.p.path("Jamie")
+def tandas_t = l.p.path("Jamie/tango")
+def tandas_v = l.p.path("Jamie/vals")
+def tandas_m = l.p.path("Jamie/milonga")
+def tandas_tvm = tandas_t || tandas_v || tandas_m
+
+def t = tandas.containing(q.q)
+
+def s = q.q.suggest(tandas)
+
+def recentMilongas = (l.p.path("public").path("2018") || l.p.path("public").path("2019") || l.p.path("public").path("TSCC")).p
+
+def milongas = (l.p.path("public")).p
+
+def recent = recentMilongas.indirectContents
+
+def good = tandas.indirectContents.m.tvm
+
+def goody(genre: String, avoid: au.com.thoughtpatterns.djs.lib.ManagedMusic) = (good \ (good ~ avoid)).m.tvm.genre(genre).byRating.byYear.byArtist
+
+def similar = (t.indirectContents && recent).m
+
+def similarMilongas = recentMilongas.containing(similar)
+
+def ideas2 = q.q.closure(tandas, 2).byYear
+
+def compat = m.artist(q.q.head.md.get.artist).genre(q.q.head.md.get.genre).minRating(0.4).byYear
+
+def padding = m.path("cortina").title("2 second silence")
+
+def expand = tandas.containing(q.q).expand(padding)
+
+def hmix(m: au.com.thoughtpatterns.djs.lib.ManagedMusic) = m.byHarmony(q.key, padding).q2
+
+def ideash = hmix(compat)
+
+def exportInit = l.exportInitCommands("/tmp/init")
+
+def importInit = l.importCmd("/tmp/init")
+
+def ALL = List("tango", "vals", "milonga").foreach(goody(_, m.genre("nada")).q)
+
+def NEW = List("tango", "vals", "milonga").foreach(goody(_, recent).q)
+
+def canberra = (milongas.path("BASH") || milongas.path("Boliche") || milongas.path("TSCC") || milongas.path("Vacas") || milongas.path("TISP") || milongas.path("2019")).p
+
+def lyrics = println("\n-------------------------------\n" + q.q.head.md.get.title + "\n\n" + q.q.head.letra.getOrElse("-- Letra deconocida --"))
+
+def useNew(m: au.com.thoughtpatterns.djs.lib.ManagedMusic) = m.exchange((l.p.path("playlist-tree/Jamie") || l.p.path("Milongas/public")).p)
