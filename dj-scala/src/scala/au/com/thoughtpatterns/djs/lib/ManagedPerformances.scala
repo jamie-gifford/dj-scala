@@ -87,7 +87,7 @@ trait ManagedPerformances extends Iterable[Performance] with Formatter {
 
   def print {
     println((for (p <- this) yield {
-      format(p)
+      format1(p)
     }).mkString("\n"))
   }
 

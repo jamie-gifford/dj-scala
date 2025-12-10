@@ -16,12 +16,39 @@ import au.com.thoughtpatterns.djs.clementine.Analyzer
 import au.com.thoughtpatterns.djs.disco.tangotunes.TangoTunes
 import au.com.thoughtpatterns.djs.model.PerformanceIdentifier
 
+import java.nio.file.{Paths, Files}
+import java.nio.charset.StandardCharsets
+import scala.collection.mutable.ListBuffer
+
 object Library_Test {
 
   def str(x: Object) : String = if (x == null) { "" } else { x.toString() }
 
   def main(args: Array[String]) {
+    
+    val l = Library.load(new File("/home/djs/replica-dj/library14.djs"));
+    
+    val m = l.m.tvm.require(md => md.tuning.isDefined).require(md => md.year != null && md.year.to == null);
+    
+    var s : List[String] = Nil;
+    
+    for (t <- m; md <- t.md; if md.artist != null; cents <- md.tuning) {
+      
+      //println(md.artist + "\t" + md.year.toYear + "\t" + cents)
+      
+      val x = "{\"artist\": \"" + md.artist.replaceAllLiterally("\"", "\\\"") + "\", \"year\": \"" + md.year.toYear + "\", \"cents\": " + cents + "}";
+      
+      s = s ::: List(x)
+      
+    }
 
+    val json = "[" + s.mkString(",\n") + "]";
+    
+    Files.write(Paths.get("tunings.json"), json.getBytes(StandardCharsets.UTF_8))
+    
+    println(json)
+
+    /*
     val l = Library.load(new File("/media/djs/Orange/orange-library2.djs"));
 
     val tfb = Array(
@@ -647,6 +674,6 @@ object Library_Test {
     
     x.replRetune("/media/djs/Orange/Music", "/media/djs/Orange/replica-tuned");
     
-    
+    */
   }
 }

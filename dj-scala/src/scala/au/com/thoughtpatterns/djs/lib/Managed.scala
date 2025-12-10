@@ -651,7 +651,7 @@ abstract class ManagedMusic(
   def print = {
     println((for (m <- this) yield {
       m.md match {
-        case Some(md) => format(md)
+        case Some(md) => format2(md)
         case None => m.file.toString()
       }
     }).mkString("\n"))
