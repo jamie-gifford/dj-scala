@@ -28,7 +28,9 @@ object Library_Test {
     
     val l = Library.load(new File("/home/djs/replica-dj/library14.djs"));
     
-    val m = l.m.tvm.require(md => md.tuning.isDefined).require(md => md.year != null && md.year.to == null);
+//    val m = l.m.tvm.require(md => md.tuning.isDefined).require(md => md.year != null && md.year.to == null);
+    val m = (l.m.path("TangoTunes") || l.m.path("TangoTimeTravel") || l.m.path("CracklingTunes")).m.require(md => md.tuning.isDefined).require(md => md.year != null && md.year.to == null);
+    //val m = (l.m.path("TangoTunes")).m.require(md => md.tuning.isDefined).require(md => md.year != null && md.year.to == null);
     
     var s : List[String] = Nil;
     
