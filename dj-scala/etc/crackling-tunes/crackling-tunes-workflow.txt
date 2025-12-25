@@ -1,0 +1,48 @@
+Download monthly FLAC zip
+
+Unzip
+
+Convert from 48kHz to 44.1kHz (can use ~/crackling-tunes-resample.sh):
+
+for src in ./* ; do
+    dst=${src%\.flac}-441.flac
+    if [ "$src" != "$dst" ] ; then
+        echo Resampling $src
+        sox "$src" "$dst" rate 44100
+    fi    
+done    
+
+Copy -441.flac files to new directory
+
+Load directory into new djapp library:
+
+djapp -l tmp.djs add <dir>
+
+Run replaygain using djapp: m.replaygain
+
+
+For each artist, use m.artist("Di Sarli").identify(Some("Di Sarli")) and m.applyIdentify
+
+def ident(a: String) = m.artist(a).identify(Some(a))
+
+
+Once identified, run m.updateComposer to write composers.
+
+
+Use Mixxx to calculate keys, and then manually assign them to grouping in Clementine.
+
+
+
+Use dj-tools/bmp to find bpms (localhost:3000)
+
+
+Move into place at /home/djs/replica-dj/Music/ogg/dj/CracklingTunes
+
+
+Run main djapp to import new tracks
+
+
+useNew(q.q) to exchange tracks in tandas and milonga playlists.
+
+
+
