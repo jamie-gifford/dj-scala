@@ -216,8 +216,25 @@ trait Managed[T <: MusicContainer, S <: Managed[T, S]] extends Iterable[T] with 
    * Replicate music files in library, renaming to artist/title and transcoding to MP3
    */
   def replShare(from: String, to: String) = {
-    val x = new ReplicationStrategy.Share(lib, new File(from).toPath(), new File(to).toPath())
+    val x = new ReplicationStrategy.Share(lib, new File(from).toPath(), new File(to).toPath(), false)
     replicate(from, to, x)
+    
+    val db = new File(to, "db.json")
+    toJson(x, db)
+
+    this
+  }
+
+  /**
+   * Replicate music files in library, retuning, renaming to artist/title and transcoding to MP3
+   */
+  def replShareRetune(from: String, to: String) = {
+    val x = new ReplicationStrategy.Share(lib, new File(from).toPath(), new File(to).toPath(), true)
+    replicate(from, to, x)
+    
+    val db = new File(to, "db.json")
+    toJson(x, db)
+
     this
   }
 

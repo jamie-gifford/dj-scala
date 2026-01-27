@@ -220,7 +220,13 @@ class Library(val libFile: Option[File]) extends ManagedContainers with DesktopC
   /**
    * Given a File, return the corresponding MusicContainer 
    */
-  def resolve(f : File) : Option[MusicContainer] = contents.get(f)
+  def resolve(f0 : File) : Option[MusicContainer] = {
+    val f = libFile.get match {
+      case base: File => rel(base, f0)
+      case _ => f0
+    }
+    contents.get(f)
+  }
 
   /**
    * Given a music file, rate it according to equivalent music in library

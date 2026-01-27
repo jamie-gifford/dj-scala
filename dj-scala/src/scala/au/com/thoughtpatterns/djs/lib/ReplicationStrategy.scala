@@ -441,7 +441,7 @@ object ReplicationStrategy {
    * Replication strategy for music files only, that renames transcodes to MP3 and renames files
    * according to artist/track
    */
-  class Share(lib: Library, from: Path, to: Path) extends ReplicationStrategy(from, to) {
+  class Share(lib: Library, from: Path, to: Path, retune: Boolean) extends ReplicationStrategy(from, to) {
 
     def forceReencode = true
 
@@ -513,6 +513,30 @@ object ReplicationStrategy {
      */
     override def transcodeMetadata(m: MusicFile, src: File, target: Target) {
     }
+
+    
+    override def transcodeCmd(m: MusicFile, src: File, target: Target) : List[String] = {
+
+      val targetFile = target.file;
+        
+      var cents = 0d;
+      if (m.md.isDefined && m.md.getOrElse(null).tuning.isDefined) {
+        cents = m.md.getOrElse(null).tuning.getOrElse(0d);
+      }
+
+      if (! retune || cents == 0d) {
+
+        return super.transcodeCmd(m, src, target);
+        
+      } else {
+      
+        val cmd = List("sox", "-G", src.getAbsolutePath(), targetFile.getAbsolutePath(), "speed", -cents + "c")
+        return cmd;
+        
+      }
+    }
+
+    
 
   }
   

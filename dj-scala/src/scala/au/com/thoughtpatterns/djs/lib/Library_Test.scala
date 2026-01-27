@@ -26,8 +26,19 @@ object Library_Test {
 
   def main(args: Array[String]) {
     
-    val l = Library.load(new File("/home/djs/replica-dj/library14.djs"));
+    // wd is /home/djs/replica-dj
     
+    val l = Library.load(new File("library14.djs"));
+    
+    val f = l.m.tvm.title("Felicia");
+    val z = (f.artist("Donato") || f.artist("D'Arienzo")).m;
+    
+    z.m.print
+    
+    //z.replRetune("/home/djs/replica-dj/Music", "/tmp/share2");
+    z.replShareRetune("/home/djs/replica-dj/Music", "/tmp/share2");
+    
+    /*
 //    val m = l.m.tvm.require(md => md.tuning.isDefined).require(md => md.year != null && md.year.to == null);
     val m = (l.m.path("TangoTunes") || l.m.path("TangoTimeTravel") || l.m.path("CracklingTunes")).m.require(md => md.tuning.isDefined).require(md => md.year != null && md.year.to == null);
     //val m = (l.m.path("TangoTunes")).m.require(md => md.tuning.isDefined).require(md => md.year != null && md.year.to == null);
@@ -49,7 +60,7 @@ object Library_Test {
     Files.write(Paths.get("tunings.json"), json.getBytes(StandardCharsets.UTF_8))
     
     println(json)
-
+		*/
     /*
     val l = Library.load(new File("/media/djs/Orange/orange-library2.djs"));
 
