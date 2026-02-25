@@ -1,8 +1,8 @@
 #!/bin/bash
 
-export JAVA_HOME=/usr/local/jdk1.8.0_101
-export SCALA_HOME=/usr/local/scala-2.11.8
-export PATH=/usr/local/scala-2.11.8/bin:/usr/local/jdk1.8.0_101/bin:$PATH
+export JAVA_HOME=/opt/jdk1.8.0_101
+export SCALA_HOME=/opt/scala-2.11.8
+export PATH=/opt/scala-2.11.8/bin:/opt/jdk1.8.0_101/bin:$PATH
 
 echo building core...
 

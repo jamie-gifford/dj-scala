@@ -9,4 +9,9 @@ bin
 .metadata2
 .*.model
 .vendor-data
+/.idea
+*~
+/dj-scala.iml
+/out
+
 
