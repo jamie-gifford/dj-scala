@@ -1,0 +1,8 @@
+{
+    "type": "object",
+    "properties": {
+        "alpha": { "type": "string", "pattern": "^[A-Za-z]*$" }, 
+        "email": { "type": "string", "pattern": "@" }, 
+    }
+    
+}

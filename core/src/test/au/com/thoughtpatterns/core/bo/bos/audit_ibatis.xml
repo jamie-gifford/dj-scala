@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="au.com.thoughtpatterns.core.bo.bos">
+
+  <!-- Use type aliases to avoid typing the full classname every time. -->
+  <typeAlias alias="Audit" type="au.com.thoughtpatterns.core.bo.bos.Audit"/>
+
+  <resultMap id="AuditResult" class="Audit"
+      extends="au.com.thoughtpatterns.core.bo.ManagedObjectResult">
+    <result property="txnUser" column="txn_user"/>
+    <result property="txnName" column="txn_name"/>
+    <result property="txnTimestamp" column="txn_timestamp"/>
+  </resultMap>
+
+  <select id="au.com.thoughtpatterns.core.bo.bos.Audit.load" 
+  		parameterClass="long"
+  		resultMap="AuditResult">
+    select * from test_audit where id = #id#
+  </select>
+   
+  <insert id="au.com.thoughtpatterns.core.bo.bos.Audit.insert" parameterClass="Audit">
+    insert into test_audit (
+      id,
+	  txn_user,
+      txn_timestamp,
+      txn_name
+    ) values (
+      #id#, #txnUser#, #txnTimestamp#, #txnName#
+    )
+  </insert>
+
+  <update id="au.com.thoughtpatterns.core.bo.bos.Audit.update" parameterClass="Audit">
+    update test_audit set
+      txn_user = #txnUser#,
+      txn_timestamp = #txnTimestamp#,
+      txn_name = #txnName#
+    where
+      id = #id#
+  </update>
+  
+  <delete id="au.com.thoughtpatterns.core.bo.bos.Audit.delete" parameterClass="long">
+    delete from test_audit where id = #id#
+  </delete>
+
+</sqlMap>

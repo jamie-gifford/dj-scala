@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="au.com.thoughtpatterns.core.bo.bos">
+
+  <!-- Use type aliases to avoid typing the full classname every time. -->
+  <typeAlias alias="Address" type="au.com.thoughtpatterns.core.bo.bos.Address"/>
+
+  <resultMap id="AddressResult" class="Address"
+      extends="au.com.thoughtpatterns.core.bo.ManagedObjectResult">
+    <result property="streetNumber" column="street_number"/>
+    <result property="streetName" column="street_name"/>
+    <result property="country" column="country"/>
+    <result property="personRel.id" column="person_id"/>
+  </resultMap>
+
+  <select id="au.com.thoughtpatterns.core.bo.bos.Address.load" 
+  		parameterClass="long"
+  		resultMap="AddressResult">
+    select * from test_address where id = #id#
+  </select>
+   
+  <select id="au.com.thoughtpatterns.core.bo.bos.Address.bulkload" 
+  		parameterClass="list"
+  		resultMap="AddressResult">
+    select * from test_address where id in
+	<iterate open="(" close=")" conjunction=",">#[]#</iterate>
+  </select>
+
+  <insert id="au.com.thoughtpatterns.core.bo.bos.Address.insert" parameterClass="Address">
+    insert into test_address (
+      id,
+      street_number,
+      street_name,
+      country,
+      person_id
+    ) values (
+      #id#, #streetNumber#, #streetName#, #country#, #personRel.id#
+    )
+  </insert>
+
+  <update id="au.com.thoughtpatterns.core.bo.bos.Address.update" parameterClass="Address">
+    update test_address set
+      street_number = #streetNumber#,
+      street_name = #streetName#,
+      country = #country#,
+      person_id = #personRel.id#
+    where
+      id = #id#
+  </update>
+  
+  <delete id="au.com.thoughtpatterns.core.bo.bos.Address.delete" parameterClass="long">
+    delete from test_address where id = #id#
+  </delete>
+
+</sqlMap>

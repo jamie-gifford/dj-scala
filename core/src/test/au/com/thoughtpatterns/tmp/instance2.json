@@ -1,0 +1,17 @@
+{
+    "mother": {
+        "given_name": "Jenny",
+        "family_name": "Smith",
+        "age": 44,
+        "hobbies": [
+            {
+                "hobby": "eating",
+                "years_practiced": 44
+            },   
+            {
+                "hobby": "sleeping",
+                "years_practiced": 44
+            }
+        ]
+    }
+}

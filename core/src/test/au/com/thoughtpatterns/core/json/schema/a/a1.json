@@ -1,0 +1,33 @@
+{
+    "type": "object",
+    "properties": {
+        "info": {
+            "type": "object",
+            "properties": {
+                "given_name": { "type": "string" },
+                "family_name": { "type": "string" },
+                "dob": { "type": "string" },
+                
+                "address1": { "type": "string" },
+                "address2": { "type": "string" },
+                "address3": { "type": "string" },
+                "postcode": { "type": "string" },
+                "state": { "type": "string" },
+        
+                "iq": { "type": "integer" },
+                "primary_disability": { "type": "string" },
+                "what_life_is_like_now": { "type": "string" },
+                "what_is_not_working": { "type": "string" }
+            }
+        },
+        "typical_week": {
+            "type": "object", 
+            "properties": {
+                "events": {
+                    "type": "array",
+                    "items": { "$ref": "a2.json#/definitions/event" }
+                }
+            }
+        }
+    }
+}

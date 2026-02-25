@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!--
+   sqlMap for Ibatis, suitable for use by the IbatisBox.
+   
+   This map defines the SQL operations for the au.com.thoughtpatterns.core.bo.bos.Person
+   example PersistentObject.
+   
+   IbatisBox expects to find sqlMap definitions whose ids are the 
+   fully-qualified classname of the persistent class, plus a suffix
+   that relates to the CRUD operation (load, bulkLoad, insert, update, delete).
+   
+   We define the namespace of this sqlMap to be the package name of the 
+   PersistentObject.   
+-->
+<sqlMap namespace="au.com.thoughtpatterns.core.bo.bos">
+
+  <!-- Use type aliases to avoid typing the full classname every time. -->
+  <typeAlias alias="Person" type="au.com.thoughtpatterns.core.bo.bos.Person"/>
+
+  <!-- Define a resultMap that maps the table to the class. This is for 
+       convenience within this sqlMap definition - it's not essential for
+       the IbatisBox.
+       
+       We use the fully-qualified name of the persistent class to identify the
+       map (the use of the namespace above means that we don't have to 
+       explicitly provide the package in the id - Ibatis will do that for
+       us because of the namespace. 
+       
+       Note that we extend a resultMap for ManagedObjectResult, 
+       which has already defined mappings for persistent fields in the 
+       superclass.
+   -->
+  <resultMap id="PersonResult" class="Person"
+      extends="au.com.thoughtpatterns.core.bo.ManagedObjectResult">
+    <result property="givenName" column="given_name"/>
+    <result property="familyName" column="family_name"/>
+    <result property="activityId" column="audit_id"/>
+  </resultMap>
+
+
+  <!-- Define sqlMap entries for each of the CRUD operations -->
+  
+  <!-- IbatisBox uses CLASSNAME.load to load a single object by primary key -->
+  <select id="au.com.thoughtpatterns.core.bo.bos.Person.load" 
+  		parameterClass="long"
+  		resultMap="PersonResult">
+    select * from test_person where id = #id#
+  </select>
+
+  <!-- IbatisBox uses CLASSNAME.bulkLoad to load a bunch of objects by primary key -->
+  <select id="au.com.thoughtpatterns.core.bo.bos.Person.bulkload" 
+  		parameterClass="list"
+  		resultMap="PersonResult">
+    select * from test_person where id in
+    <iterate open="(" close=")" conjunction=",">#[]#</iterate>
+  </select>
+   
+  <!-- IbatisBox uses CLASSNAME.insert to insert an object. The primary key must
+     have been set previously (IbatisBox does this automatically via sequences) -->
+  <insert id="au.com.thoughtpatterns.core.bo.bos.Person.insert" parameterClass="Person">
+    insert into test_person (
+      id,
+      given_name,
+      family_name,
+      audit_id
+    ) values (
+      #id#, #givenName#, #familyName#, #activityId#
+    )
+  </insert>
+
+  <!-- IbatisBox uses CLASSNAME.update to update an object identified by primary key.
+     The activityId is used as an optimistic lock. The IbatisBox will notice if 
+     the number of rows updated is incorrect and throw a VersionException -->
+  <update id="au.com.thoughtpatterns.core.bo.bos.Person.update" parameterClass="Person">
+    update test_person set
+      given_name = #givenName#,
+      family_name = #familyName#,
+      audit_id = #activityId#
+    where
+      id = #id# and audit_id = #loadedActivityId#
+  </update>
+  
+  <!-- IbatisBox uses CLASSNAME.delete to delete an object identified by primary key -->
+  <delete id="au.com.thoughtpatterns.core.bo.bos.Person.delete" parameterClass="long">
+    delete from test_person where id = #id#
+  </delete>
+
+</sqlMap>

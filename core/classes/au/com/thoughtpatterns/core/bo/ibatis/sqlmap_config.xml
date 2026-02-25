@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+  <typeAlias alias="LookupTypeHandler" 
+  	type="au.com.thoughtpatterns.core.bo.ibatis.LookupTypeHandler"/>
+    
+  <typeHandler
+    javaType="au.com.thoughtpatterns.core.util.BusinessDate"
+    callback="au.com.thoughtpatterns.core.bo.ibatis.BusinessDateTypeHandler"/>  
+
+  <typeHandler
+    javaType="au.com.thoughtpatterns.core.util.AusDollar"
+    callback="au.com.thoughtpatterns.core.bo.ibatis.AusDollarTypeHandler"/>  
+
+  <!-- Configure a built-in transaction manager.  If you're using an 
+       app server, you probably want to use its transaction manager 
+       and a managed datasource -->
+  <transactionManager type="EXTERNAL">
+    <dataSource type="au.com.thoughtpatterns.core.bo.ibatis.BoxDataSourceFactory"/>
+  </transactionManager>
+
+  <!-- Our IbatisConfig class will detect this marker string and substitute 
+       a list of sqlMap references at configuration time -->
+  $maps
+
+</sqlMapConfig>

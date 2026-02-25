@@ -1,0 +1,15 @@
+{
+    "definitions": {
+        "event": {
+            "title": "Event",
+            "type": "object",
+            "properties": {
+                "allDay": { "type": "boolean" },
+                "start": { "type": "string" },
+                "end": { "type": "string" },
+                "id": { "type": "string" },
+                "title": { "type": "string" }
+            }
+        }
+    }
+}

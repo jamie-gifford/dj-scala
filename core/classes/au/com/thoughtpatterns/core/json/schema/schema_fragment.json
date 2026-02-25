@@ -1,0 +1,15 @@
+{
+    "definitions": {
+        "person": {
+            "comment": "Person",
+            "type": "object",
+            "properties": {
+                "gender": { "$ref": "#/definitions/gender" }
+            }
+        },
+        "gender": {
+            "comment": "Gender",
+            "enum": [ "male", "female", "other" ]
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "title": "Person",
+    "type": "object",
+    "properties": {
+        "firstName": {
+            "type": "string",
+            "maxLength": 10,
+            "minLength": 1
+        },
+        "lastName": {
+            "type": "string"
+        },
+        "age": {
+            "$ref": "schema_age.json"
+        },
+        "hobbies": {
+            "$ref": "#/etc/list-of-hobbies"
+        }
+    },
+    "required": ["firstName", "lastName"],
+    "etc": {
+        "list-of-hobbies": {
+            "title": "List of hobbies",
+            "type": "array",
+            "items": {
+                "$ref": "#/etc/hobbies"
+            }
+        },
+        "hobbies": {
+            "enum": [ "eating", "drinking", "smoking", "farting" ] 
+        }
+    }
+}

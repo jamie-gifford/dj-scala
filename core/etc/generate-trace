@@ -1,0 +1,359 @@
+#!/usr/bin/perl
+
+# From the output of a mysqldump for a table, 
+# generate an trace table and triggers for DELETE and UPDATE
+
+use strict;
+
+use Getopt::Long;
+
+my $TABLE_PREFIX;
+my $DB;
+my $DB_TRACE;
+my @EXCLUDES;
+my $HELP;
+
+sub usage {
+    print <<EOF;
+Usage: $0 --table-prefix <table prefix> --schema <main schema> [--trace-schema <trace schema>] [--exclude <table> ...] [--exclude <table.col> ... ] < ddl.txt
+
+Example usage (database ti, all tables prefixed by ti_): 
+
+      $0 --table-prefix ti_ --schema ti < ddl.txt
+
+where ddl.txt is created by
+
+      mysqldump -u ti -ppassword --no-data ti > ddl.txt && mysqldump -u ti -ppassword --no-data ti_trace > ddl.txt
+
+EOF
+
+    exit;
+}
+
+GetOptions(
+    "help" => \$HELP,
+    "table-prefix=s" => \$TABLE_PREFIX,
+    "schema=s" => \$DB,
+    "trace-schema=s" => \$DB_TRACE,
+    "exclude=s" => \@EXCLUDES
+) or usage();
+
+
+if ($HELP) {
+    help();
+    exit;
+}
+
+usage() if ! $TABLE_PREFIX || ! $DB;
+
+$DB_TRACE = $DB . "_trace" if ! $DB_TRACE;
+my %EXCLUDES = map { $_ => 1 } @EXCLUDES;
+
+
+# Parse DDL for main schema and trace schema
+my @tables;
+my %tables;
+my %traces;
+my %triggers;
+my %need_trigger;
+
+while (<>) {
+
+    if (/CREATE TABLE \`([^\`]+)\`/i) {
+    	my $table = $1;
+
+        my $accept = $table =~ /^$TABLE_PREFIX/ && ! $EXCLUDES{$table};
+    	next if ! $accept;
+
+        my $data = parseTable($table);
+
+        if ($table =~ /(.+)_trace$/) {
+            $traces{$1} = $data;
+        } else {
+            $tables{$table} = $data;
+            push @tables, $table;
+        }
+    } elsif (/CREATE.* TRIGGER (\`?)([^\` ]+)\1/i) {
+        my $t = $2;
+        $triggers{$t} = $t;
+    }
+
+}
+
+# For each table, find out what needs to be done to the trace table (eg create, alter)
+my @sql;
+
+foreach my $table (@tables) {
+
+    my $trace_exists = defined $traces{$table};
+
+    if (! $trace_exists) {
+        createTrace($table);
+    } else {
+        alterTrace($table);
+    }
+
+
+    # Check that the triggers exist
+    foreach my $s ("_trace_update", "_trace_del") {
+        my $trigger = $table . $s;
+        if (! $triggers{$trigger}) {
+            $need_trigger{$table} = 1;
+        }
+    }
+}
+
+foreach my $table (@tables) {
+    if ($need_trigger{$table}) {
+        generateTriggers($table);
+    }
+}
+
+
+foreach my $sql (@sql) {
+    print $sql;
+}
+
+sub createTrace {
+    my ($table) = @_;
+
+    $need_trigger{$table} = 1;
+
+    my @oldnames = ();
+
+    my @colnames = @{$tables{$table}->{"colnames"}};
+    my %columns = %{$tables{$table}->{"columns"}};
+    my @columns = map { $columns{$_} } @colnames;
+
+    my $columns = join(",\n", @columns);
+
+    my $sql = <<EOF;
+-- -------------------------------------
+-- Trace table for $table
+
+use ${DB_TRACE};
+
+create table ${table}_trace (
+
+  trace_id int(10) not null auto_increment,
+  trace_operation varchar(8) not null,
+  trace_timestamp timestamp null default null,
+
+$columns,
+
+  primary key (trace_id)
+) engine=InnoDB;
+
+EOF
+
+    push @sql, $sql;
+
+}
+
+sub alterTrace {
+    my ($table) = @_;
+
+    my @colnames = @{$tables{$table}->{"colnames"}};
+    my @trace_colnames = @{$traces{$table}->{"colnames"}};
+    
+    # Compute set differences based on keys of hashes
+    my $sub = sub {
+        my ($a, $b) = @_;
+        
+        my %diff;
+        foreach my $x (@{$a}) {
+            $diff{$x} = 1;
+        }
+        foreach my $x (@{$b}) {
+            delete $diff{$x};
+        }
+
+        return keys %diff;
+    };
+
+    my @need_to_add = $sub->(\@colnames, \@trace_colnames);
+
+    @need_to_add = sort @need_to_add;
+
+    my @alters;
+
+    my $index = 0;
+    my %indexes = map { $_ => $index++ } @colnames;
+
+    foreach my $colname (@need_to_add) {
+        my $index = $indexes{$colname};
+        my $after = $colnames[$index - 1];
+        my $column = $tables{$table}->{"columns"}->{$colname};
+        my $sql = <<EOF;
+alter table ${table}_trace add column $column after $after;
+EOF
+        push @alters, $sql;
+
+        $need_trigger{$table} = 1;
+    }
+
+    foreach my $colname (@trace_colnames) {
+        my $column = $tables{$table}->{"columns"}->{$colname};
+        my $current = $traces{$table}->{"columns"}->{$colname};
+
+        if ($column && ($column ne $current)) {
+
+            my $sql = <<EOF;
+alter table ${table}_trace modify column $column; -- before was $current
+EOF
+            push @alters, $sql;
+        }
+    }
+
+    if (scalar(@alters) > 0) {
+
+        my $alters = join("", @alters);
+        my $sql = <<EOF;
+-- -------------------------------------
+-- Trace table for $table (ALTER)
+
+use ${DB_TRACE};
+
+$alters
+EOF
+
+        push @sql, $sql;
+    }
+}
+
+sub generateTriggers {
+    my ($table) = @_;
+
+    my @colnames = @{$tables{$table}->{"colnames"}};
+    my @oldnames = map { "OLD.$_" } @{$tables{$table}->{"colnames"}};
+
+    my $colnames = join(",\n      ", @colnames);
+    my $oldnames = join(",\n      ", @oldnames);
+
+    my @out = <<EOF;
+-- --------------------------------
+-- Triggers for $table
+
+use $DB;
+
+EOF
+    
+    if ($triggers{"${table}_trace_del"}) {
+        push @out, <<EOF;
+drop trigger ${table}_trace_del;
+EOF
+    }
+    if ($triggers{"${table}_trace_update"}) {
+        push @out, <<EOF;
+drop trigger ${table}_trace_update;
+EOF
+    }
+    
+    push @out, <<EOF;
+delimiter #
+
+create trigger ${table}_trace_del before delete on ${DB}.${table} 
+  for each row begin
+    insert into ${DB_TRACE}.${table}_trace 
+    ( 
+
+      trace_operation,
+      trace_timestamp,
+
+      $colnames
+
+    ) values ( 
+
+      'DELETE',
+      now(),
+
+      $oldnames
+
+    );
+  end#
+
+create trigger ${table}_trace_update before update on ${DB}.${table} 
+  for each row begin
+    insert into ${DB_TRACE}.${table}_trace 
+      (
+
+      trace_operation,
+      trace_timestamp,
+
+      $colnames
+
+      ) values (
+
+      'UPDATE',
+      now(),
+
+      $oldnames
+
+      );
+  end#
+
+delimiter ;
+
+EOF
+
+    my $sql = join("", @out);
+    push @sql, $sql;
+}
+
+
+sub parseTable {
+    my ($table) = @_;
+
+    my %columns = ();
+    my @colnames = ();
+
+  COL:
+    while (chomp(my $line = <>)) {
+	if (!($line =~ /^\s+\`([^\`]+)\`/)) {
+	    # Must have gotten to the end of the table
+	    last;
+	}
+
+        my $colname = $1;
+
+        next COL if $EXCLUDES{"${table}.${colname}"};
+
+	push @colnames, $colname;
+
+	# Remove auto_increment if present
+	$line =~ s/auto_increment//i;
+
+	# remove comma at end if present
+	$line =~ s/,$//;
+        
+        $columns{$colname} = $line;
+    }
+
+    my %data = (
+        "table" => $table,
+        "colnames" => \@colnames,
+        "columns" => \%columns,
+    );
+
+    return \%data;
+}
+
+sub help {
+    print <<EOF;
+
+This program takes as standard input schema definitions for both the 
+main schema and the trace schema. It looks for columns and/or tables 
+that need to be added to the trace schema and emits the appropriate SQL
+(either CREATE TABLE or ALTER TABLE).
+
+It also generates the appropriate update and delete triggers.
+
+To generate the input, mysqldump should be run by the root mysql user 
+with the --no-data flag. Running as the root mysql user is important 
+since otherwise trigger definitions are not included in the dump and so 
+this program will not know that they are already defined and hence will
+not emit the appropriate "DROP TRIGGER" commands (there is no "DROP TRIGGER
+IF EXISTS" command in mysql.
+
+EOF
+}

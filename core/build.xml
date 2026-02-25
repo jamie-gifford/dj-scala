@@ -1,0 +1,117 @@
+<project name="core" default="core_regression">
+
+	<dirname property="core_basedir" file="${ant.file.core}"/>
+
+	<filelist id="core_dependency_files"> 
+        <file name="${core_basedir}/library/log4j-1.2.14.jar"/>
+        <file name="${core_basedir}/library/junit-4.3.1.jar"/>
+        <file name="${core_basedir}/library/hsqldb_1_8_0_7.jar"/>
+        <file name="${core_basedir}/library/ibatis-2.3.0.677.jar"/>
+	</filelist>
+	
+    <path id="core_dependencies">
+		<filelist refid="core_dependency_files"/>
+    </path>
+
+	<property name="core_lib" location="${core_basedir}/build/lib"/>
+	
+    <target name="core_build">
+        <mkdir dir="${core_basedir}/classes"/>    
+        <mkdir dir="${core_basedir}/build"/>    
+        <javac 
+		  includeantruntime="false" 
+          srcdir="${core_basedir}/src/java"
+          destdir="${core_basedir}/classes"
+          classpathref="core_dependencies"
+          debug="on"
+        />
+
+        <copy todir="${core_basedir}/classes">
+            <fileset dir="${core_basedir}/src/java">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    	
+    	<mkdir dir="${core_lib}"/>
+    	<jar basedir="${core_basedir}/classes"
+	    	destfile="${core_lib}/thoughtpatterns_core.jar"/>
+    	
+    </target>
+
+    <target name="core_build_test">
+        <mkdir dir="${core_basedir}/classes"/>    
+        <javac 
+          srcdir="${core_basedir}/src/test"
+          destdir="${core_basedir}/classes"
+          classpathref="core_dependencies"
+          debug="on"
+        />
+        <copy todir="${core_basedir}/classes">
+            <fileset dir="${core_basedir}/src/test">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <taskdef name="core_junit" classname="org.apache.tools.ant.taskdefs.optional.junit.JUnitTask">
+		<classpath>
+        	<pathelement path="${core_basedir}/library/junit-4.3.1.jar"/>
+		</classpath>
+    </taskdef>
+    	
+	<target name="core_regression" depends="core_build,core_build_test">
+		<property name="junit_dir" location="${core_basedir}/build/junit-results"/>
+		<mkdir dir="${junit_dir}"/>
+		<junit printsummary="yes" fork="yes" haltonfailure="yes">
+			<formatter type="xml"/>
+			<test name="au.com.thoughtpatterns.core.CoreRegression_Test" toDir="${junit_dir}"/>
+			<classpath>
+        		<pathelement path="${core_basedir}/classes"/>
+        		<path refid="core_dependencies"/>
+			</classpath>
+		</junit>
+	</target>
+
+    <target name="core_javadoc">
+        <mkdir dir="${core_basedir}/build/javadoc"/>    
+		<javadoc 
+			sourcepath="${core_basedir}/src/java" 
+			destdir="${core_basedir}/build/javadoc"
+	        classpathref="core_dependencies"/>
+	</target>
+	
+	<target name="core_clean">
+		<delete dir="${core_basedir}/build"/>
+		<delete dir="${core_basedir}/classes"/>
+	</target>
+	
+	<!-- Targets to package the core as an eclipse plugin -->
+	<target name="core_build_plugin" depends="core_build">
+
+		<property name="core_plugin_dir" location="${core_basedir}/build/eclipse/plugins/au.com.thoughtpatterns.core"/>
+		<property name="core_plugin_version" value="17"/>
+		<mkdir dir="${core_plugin_dir}"/>
+		<copy todir="${core_plugin_dir}" file="${core_lib}/thoughtpatterns_core.jar"/>
+		<mkdir dir="${core_plugin_dir}/META-INF"/>
+		<echo   file="${core_plugin_dir}/META-INF/MANIFEST.MF">Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ThoughtPatterns core
+Bundle-SymbolicName: au.com.thoughtpatterns.core;singleton:=true
+Bundle-Version: 2.0
+Bundle-Vendor: ThoughtPatterns
+Bundle-Localization: plugin
+Eclipse-LazyStart: true
+Bundle-ClassPath: thoughtpatterns_core.jar,
+ library/log4j-1.2.14.jar,
+ library/junit-4.3.1.jar,
+ library/hsqldb_1_8_0_7.jar,
+ library/ibatis-2.3.0.677.jar			
+Export-Package: au.com.thoughtpatterns.core.util,
+ au.com.thoughtpatterns.core.json,
+ au.com.thoughtpatterns.core.json.schema,
+ au.com.thoughtpatterns.core.json.gen			
+</echo>
+	</target>
+	
+	
+</project>

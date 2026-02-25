@@ -1,0 +1,23 @@
+{
+    "type": "object", 
+    "java": "au.com.thoughtpatterns.myop.bo.json.PlanNodeJson",
+    "properties": {
+        "service_levels": {
+            "type": "array", 
+        },
+        "name": { "type": "string" },
+        "children": { 
+            "type": "array",
+            "items": { "$ref": "#" }
+        },
+        "ndisRef": { "type": "string" },
+        "desc": { "type": "string" },
+        "unit": { "type": "string" },
+        "price": { "type": "integer" },
+        "supportCluster": { "type": "string" },
+        "supportClusterNo": { "type": "string" },
+        "outcomesDomain":  { "type": "string" },
+        "inputs": { "$ref": "#/definitions/inputs" },
+        "items": { "$ref", "#/definitions/serviceLevel" }
+    }
+}

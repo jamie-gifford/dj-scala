@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "properties": {
+        "profile": {
+            "$ref": "../a/a1.json"
+        },
+        "preferences": {
+            "type": "object",
+            "properties": {
+                "working_plan": { "type": "number" }
+            }
+        },
+        "privileges": {
+            "type": "object",
+            "properties": {
+                "administrator": { "type": "boolean" },
+                "manager": { "type": "boolean" }
+            }
+        }
+    }
+}

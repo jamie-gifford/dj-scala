@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="au.com.thoughtpatterns.core.bo.bos">
+
+  <!-- Use type aliases to avoid typing the full classname every time. -->
+  <typeAlias alias="AltPerson" type="au.com.thoughtpatterns.core.bo.bos.AltPerson"/>
+
+  <resultMap id="AltPersonResult" class="AltPerson"
+      extends="au.com.thoughtpatterns.core.bo.ManagedObjectResult">
+    <result property="givenName" column="given_name"/>
+    <result property="familyName" column="family_name"/>
+    <result property="activityId" column="audit_id"/>
+  </resultMap>
+
+  <select id="au.com.thoughtpatterns.core.bo.bos.AltPerson.load" 
+  		parameterClass="long"
+  		resultMap="AltPersonResult">
+    select * from test_person where id = #id#
+  </select>
+
+  <select id="au.com.thoughtpatterns.core.bo.bos.AltPerson.bulkload" 
+  		parameterClass="list"
+  		resultMap="AltPersonResult">
+    select * from test_person where id in
+    <iterate open="(" close=")" conjunction=",">#[]#</iterate>
+  </select>
+   
+  <insert id="au.com.thoughtpatterns.core.bo.bos.AltPerson.insert" parameterClass="AltPerson">
+    insert into test_person (
+      id,
+      given_name,
+      family_name,
+      audit_id
+    ) values (
+      #id#, #givenName#, #familyName#, #activityId#
+    )
+  </insert>
+
+  <update id="au.com.thoughtpatterns.core.bo.bos.AltPerson.update" parameterClass="AltPerson">
+    update test_person set
+      given_name = #givenName#,
+      family_name = #familyName#,
+      audit_id = #activityId#
+    where
+      id = #id# and audit_id = #loadedActivityId#
+  </update>
+  
+  <delete id="au.com.thoughtpatterns.core.bo.bos.AltPerson.delete" parameterClass="long">
+    delete from test_person where id = #id#
+  </delete>
+
+</sqlMap>

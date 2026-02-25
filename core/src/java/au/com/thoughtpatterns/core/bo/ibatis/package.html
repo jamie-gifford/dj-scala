@@ -1,0 +1,102 @@
+<body>
+Persistent implementation of Box that uses the Apache Ibatis SQL mapper.
+
+<h1>
+How to use the IbatisBox
+</h1>
+
+<h2>High-level IbatisBox configuration and registering sqlMaps</h2>
+
+Apache Ibatis must be configured by XML resources. The IbatisBox feeds configuration 
+to Ibatis by reading runtime parameters and dynamically creating the appropriate XML 
+resources.
+
+The entry point for Ibatis configuration is the 
+<pre>au.com.thoughtpatterns.core.bo.ibatis.IbatisBox.config</pre>
+runtime parameter, which should give the resource names of a (template) Ibatis
+XML configuration file.
+
+By default the value of this parameter is 
+<pre>au/com/thoughtpatterns/core/bo/ibatis/sqlmap_config.xml</pre>
+
+<p />
+This config file may contain the string <code>$maps</code>, in which case a 
+dynamically-generated list of sqlMap resources will be substituted.
+The dynamically-generated list is based on the (comma separated) value of the runtime parameter
+<pre>
+au.com.thoughtpatterns.core.bo.ibatis.IbatisBox.maps
+</pre>
+
+The sqlMap resources are needed to define the CRUD SQL statements for each PersistentObject 
+class.
+
+The intention for applications that use the IbatisBox 
+is that either the default sqlmap_config.xml is used, or a once-off,
+whole-of-application config file is used. Then, as new PersistentObjects are added to 
+the project, new sqlMap files are created and linked to the Ibatis configuration by 
+adding a new runtime parameter definition for 
+
+<pre>
+au.com.thoughtpatterns.core.bo.ibatis.IbatisBox.maps
+</pre>
+
+(using the += operator to append comma separated values incrementally).
+This way we are able to maintain a modular Ibatis configuration, using runtime
+parameters to "glue" it all together.
+
+<p />
+Each component in this runtime parameter will be converted to an XML fragment
+<pre>
+&lt;sqlMap resource="..."/>
+</pre>
+and then included in the Ibatis config file in place of the $maps string.
+
+<h2>Required sqlMap entries</h2>
+
+Apache Ibatis is capable of invoking SQL statements that it has been given, identified by 
+a String identifier. The IbatisBox assumes that the application developer has created 
+and registered certain statements as sqlMaps, using a naming convention that is described below. 
+
+The CRUD operations for PersistentObjects are implemented by the IbatisBox by assuming that 
+the following statements have been registered:
+
+<dl>
+  <dt>Create</dt>
+  <dd><code><it>FULL_CLASSNAME</it>.insert</code></dd>
+  
+  <dt>Read</dt>
+  <dd><code><it>FULL_CLASSNAME</it>.load</code> and <code><it>FULL_CLASSNAME</it>.loadBulk</code></dd>
+
+  <dt>Update</dt>
+  <dd><code><it>FULL_CLASSNAME</it>.update</code></dd>
+
+  <dt>Delete</dt>
+  <dd><code><it>FULL_CLASSNAME</it>.delete</code></dd>
+</dl>
+
+See below for the location of a worked example.
+
+<h2>Dependent objects</h2>
+
+The Box supports collection-valued attributes of PersistentObjects through the use of 
+the <code>DependentList</code> and <code>DependentObject</code> classes.
+To map DependentObjects to the database the sqlMap file should include 
+a statement called <code>CLASSNAME.dependentLoad</code>, which loads a 
+list of objects by parent foreign key. 
+
+<h1>
+Examples of IbatisBox configuration
+</h1>
+
+There are examples of the IbatisBox and its configuration in <code>core/src/test</code>.
+In particular there is an Ibatis sqlMap file with comments in 
+<code>au/com/thoughtpatterns/core/bo/bos/person_ibatis.xml</code>
+and
+<code>au/com/thoughtpatterns/core/bo/bos/address_ibatis.xml</code>
+
+<p />
+
+There are examples of DependentObjects and configuration in 
+<code>au/com/thoughtpatterns/core/bo/bos/alt_address_ibatis.xml</code>.
+
+</body>

@@ -1,0 +1,38 @@
+{
+    "title": "Person",
+    "type": "object",
+    "properties": {
+        "firstName": {
+            "type": "string",
+            "maxLength": 10
+        },
+        "lastName": {
+            "type": "string"
+        },
+        "age": {
+            "$ref": "#/definitions/age"
+        },
+        "hobbies": {
+            "$ref": "#/definitions/list-of-hobbies"
+        }
+    },
+    "required": ["firstName", "lastName"],
+    "definitions": {
+        "list-of-hobbies": {
+            "title": "List of hobbies",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/hobbies"
+            }
+        },
+        "hobbies": {
+            "enum": [ "eating", "drinking", "smoking", "farting" ] 
+        },
+        "age": {
+            "description": "Age in years",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+        }
+    }
+}

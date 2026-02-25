@@ -1,0 +1,52 @@
+* Persistence frameworks
+
+** Hibernate
+
+Big, clunky. 
+
+** OJB
+
+
+** SavePoint
+
+First release in June 2007. Very simple, attractive. Only offers
+Java-JDBC bridge - no object lifecycle management at all. No
+object-relational mapping - SQL is all handwritten.
+
+Not free but licence costs have not been revealed yet. Zero-cost for
+use against "free" databases (mysql, hsqldb).
+
+** iBATIS
+
+Similar in concept to SavePoint. Less elegant. Still fairly small. No
+external dependencies.
+
+** Torque
+
+Generates persistent classes statically instead of using
+reflection/dynamic techniques. This is enough to rule it out of
+contention. 
+
+** Castor
+
+A framework for both Java - XML and Java - relational mapping. 
+Looks like Java-relational mapping is not its strong point. 
+
+
+** Java UltraLite Persistence
+
+Very small. Looks cheesy. Forces classes to extend his abstract
+persistence object. No good.
+
+** Prevayler
+
+Not a relational database persistence layer, but an alternative
+architecture based on in-heap (persistent) objects.
+
+** Velosurf
+
+Not really a Java persistence layer - more of an alternative syntax
+for simple database queries.
+
+** Java persistence API
+

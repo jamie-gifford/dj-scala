@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/java"/>
+	<classpathentry kind="src" path="src/test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="library/log4j-1.2.14.jar" sourcepath="library/log4j-1.2.14-src.zip"/>
+	<classpathentry exported="true" kind="lib" path="library/junit-4.3.1.jar" sourcepath="library/junit-4.3.1-src.jar"/>
+	<classpathentry exported="true" kind="lib" path="library/hsqldb_1_8_0_7.jar" sourcepath="library/hsqldb_1_8_0_7-src.zip"/>
+	<classpathentry kind="lib" path="library/ibatis-2.3.0.677.jar" sourcepath="library/ibatis-2.3.0.677-src.zip"/>
+	<classpathentry kind="output" path="classes"/>
+</classpath>

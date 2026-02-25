@@ -1,0 +1,10 @@
+* XUI
+
+Client-side framework. Emphasis on use of JSPs and taglibs for housing
+the HTML.
+
+* Tapestry
+
+Static page structure.
+
+

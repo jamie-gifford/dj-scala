@@ -1,0 +1,10 @@
+{
+    "title": "A bunch of constraints on integers and numbers",
+    "type": "object",
+    "properties": {
+        "even": { "type": "integer", "multipleOf": 2 },
+        "thousands": { "type": "number", "multipleOf": 1000 },
+        "positive": { "type": "number", "exclusiveMinimum": true, "minimum": 0 },
+        "non-negative": { "type": "number", "exclusiveMinimum": false, "minimum": 0 }
+    }
+}
