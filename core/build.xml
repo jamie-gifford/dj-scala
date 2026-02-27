@@ -19,10 +19,12 @@
         <mkdir dir="${core_basedir}/classes"/>    
         <mkdir dir="${core_basedir}/build"/>    
         <javac 
-		  includeantruntime="false" 
+          includeantruntime="false" 
           srcdir="${core_basedir}/src/java"
           destdir="${core_basedir}/classes"
           classpathref="core_dependencies"
+          target="8"
+          source="8"
           debug="on"
         />
 

@@ -1,5 +1,0 @@
-{
-    "java": "au.com.thoughtpatterns.core.json.schema.c.TestDate",
-    "type": "string",
-    "pattern": "[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}"
-}

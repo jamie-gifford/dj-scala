@@ -1,8 +1,0 @@
-{
-    "title": "A list of non-negative numbers",
-    "type": "array",
-    "items": {
-        "type": "number",
-        "minimum": 0
-    }
-}

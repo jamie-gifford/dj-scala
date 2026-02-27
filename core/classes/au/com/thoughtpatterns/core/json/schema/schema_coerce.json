@@ -1,9 +1,0 @@
-{
-    "type": "object", 
-    "properties": {
-        "age1": { "type": "number" },
-        "age2": { "type": "number", "coerce": true },
-        "name1": { "type": "string" },
-        "name2": { "type": "string", "coerce": true }
-    }
-}
