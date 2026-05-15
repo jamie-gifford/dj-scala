@@ -23,6 +23,8 @@ mkdir -p build/classes
 
 ( cd src/scala ; javac  -cp $bootcp:$CLASSPATH -d ../../build/classes/ $(find . -name '*.java') )
 
+( cd src/scala ; rsync --exclude "*.java" --exclude "*.scala" -av ./ ../../build/classes/ )
+
 
 mkdir -p build/lib
 rm -f build/lib/dj.jar
